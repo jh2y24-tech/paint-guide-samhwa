@@ -162,9 +162,9 @@
         "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
       },
       "docs": {
-        "tech": "1tech3490771_KSM6080_1종_상온건조형_노면표지용도료.pdf",
-        "spec_sheet": "1pntg3490771_KSM6080_1종_상온건조형_노면표지용_도료.pdf",
-        "tech_dated": "2024-07-18"
+        "tech": null,
+        "spec_sheet": null,
+        "note": "저장소 pdf/ 폴더에 해당 파일이 존재하지 않음 (기존 코드 3490771 미확인) — 원본 PDF 재업로드 필요"
       }
     },
     {
@@ -1263,9 +1263,9 @@
         "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
       },
       "docs": {
-        "tech": "1tech3799545_비노출_타르방수탄.pdf",
-        "spec_sheet": "1pntg3799545_비노출_타르방수탄.pdf",
-        "tech_dated": "2025-09-11"
+        "tech": null,
+        "spec_sheet": null,
+        "note": "저장소 pdf/ 폴더에 해당 파일이 존재하지 않음 (기존 코드 3799545 미확인) — 원본 PDF 재업로드 필요"
       }
     },
     {
@@ -1664,10 +1664,9 @@
         "eco_label": true
       },
       "docs": {
-        "tech": null,
+        "tech": "1tech3051817.pdf",
         "spec_sheet": "1pntg3050013.pdf",
-        "tech_dated": null,
-        "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
+        "tech_dated": "2024-12-17"
       }
     }
   ]
