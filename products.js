@@ -13,7 +13,7 @@
      (로컬 확인:  python3 -m http.server 8000)
    ───────────────────────────────────────────── */
 
-window.PRODUCT_DB = null;
+window.PRODUCTS_CATALOG = null;
 
 const _esc = (v) =>
   String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -152,7 +152,7 @@ async function initProducts() {
     const res = await fetch('products.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const db = await res.json();
-    window.PRODUCT_DB = db;
+    window.PRODUCTS_CATALOG = db;
 
     const byId = {};
     db.products.forEach((p) => (byId[p.id] = p));
@@ -178,8 +178,8 @@ async function initProducts() {
 }
 
 /* 검색·조회용 헬퍼 (앱·API 전환 시 그대로 재사용) */
-window.findProduct = (id) => window.PRODUCT_DB?.products.find((p) => p.id === id) || null;
+window.findProduct = (id) => window.PRODUCTS_CATALOG?.products.find((p) => p.id === id) || null;
 window.productsByCategory = (cat) =>
-  window.PRODUCT_DB?.products.filter((p) => (p.categories || []).includes(cat)) || [];
+  window.PRODUCTS_CATALOG?.products.filter((p) => (p.categories || []).includes(cat)) || [];
 
 document.addEventListener('DOMContentLoaded', initProducts);
