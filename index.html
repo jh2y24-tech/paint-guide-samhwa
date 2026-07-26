@@ -60,18 +60,8 @@ a{color:var(--brand);text-decoration:none}
 .header p{font-size:13.5px;color:var(--muted);margin-top:10px;font-weight:500}
 
 .mat-section{margin-bottom:24px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;position:relative}
-.mat-section::before{content:"";display:block;height:22px;background:var(--mat) center/cover no-repeat;box-shadow:inset 0 -1px 0 rgba(0,0,0,.14)}
-#concrete::before{background-image:url(textures/concrete.png)}
-#silk::before{background-image:url(textures/wallpaper.png)}
-#coated::before{background-image:url(textures/steel-plate.png)}
-#iron::before{background-image:url(textures/stainless.png)}
-#wood::before{background-image:url(textures/wood.png)}
-#mold::before{background-image:url(textures/mold.png)}
-#tile::before{background-image:url(textures/tile.png)}
-#roof::before{background-image:url(textures/roof.png)}
-#wp::before{background-image:url(textures/rooftop-green.png)}
-#road::before{background:repeating-linear-gradient(45deg,#1a1a1a 0 14px,#f2c200 14px 28px)}
-#floor::before{background:linear-gradient(100deg,#8b9298 0%,#b9bfc4 30%,#9aa1a7 55%,#c3c9cd 78%,#a4abb0 100%);background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 60%)}
+.mat-section::before{content:"";display:block;height:5px;background:var(--brand)}
+#concrete::before,#silk::before,#coated::before,#iron::before,#wood::before,#mold::before,#tile::before,#roof::before,#road::before,#wp::before,#floor::before{display:none}
 .mat-concrete{--mat:var(--water);--mat-bg:var(--water-bg)}
 .mat-silk{--mat:var(--primer-o);--mat-bg:var(--primer-o-bg)}
 .mat-wood{--mat:var(--oil);--mat-bg:var(--oil-bg)}
@@ -82,12 +72,13 @@ a{color:var(--brand);text-decoration:none}
 .mat-roof{--mat:var(--roof);--mat-bg:var(--roof-bg)}
 .mat-floor{--mat:var(--floor);--mat-bg:var(--floor-bg)}
 .mat-road{--mat:var(--road);--mat-bg:var(--road-bg)}
-.mat-title{display:flex;align-items:center;gap:10px;padding:16px 18px;font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--mat);background:var(--mat-bg);border-bottom:1px solid var(--border)}
+.mat-title{position:relative;display:flex;align-items:center;gap:10px;padding:18px 18px;min-height:68px;font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--mat);background-color:#fff;background-repeat:no-repeat;background-image:linear-gradient(to right,#fff 0,#fff calc(100% - 280px),rgba(255,255,255,0) calc(100% - 220px)),var(--mat-tex,none);border-bottom:1px solid var(--border)}
+.mat-title>span{text-shadow:0 1px 3px rgba(255,255,255,.85),0 0 10px rgba(255,255,255,.6)}
 .mat-title .icon{font-size:18px;line-height:1}
 .mat-title .sub{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--mat);background:var(--card);border:1px solid color-mix(in srgb,var(--mat) 32%,transparent);padding:3px 9px;border-radius:999px;letter-spacing:.03em;white-space:nowrap;line-height:1.5;flex-shrink:0}
 .mat-title{cursor:pointer;user-select:none}
 .mat-title:hover{filter:brightness(.98)}
-.mat-hint{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;white-space:nowrap;flex-shrink:0}
+.mat-hint{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;white-space:nowrap;flex-shrink:0;background:rgba(255,255,255,.92);padding:5px 6px 5px 12px;border-radius:999px;box-shadow:0 1px 4px rgba(20,38,42,.10)}
 .mat-chevron{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:var(--card);color:var(--mat);font-size:13px;line-height:1;border:1px solid var(--mat);transition:transform .28s ease}
 .mat-section.open .mat-chevron{transform:rotate(180deg)}
 .mat-body{display:none}
@@ -436,6 +427,49 @@ a{color:var(--brand);text-decoration:none}
 #pdfViewer.mobile .pv-fallback{display:block;}
 #pdfViewer .pv-frame{flex:1; width:100%; border:0; background:#525659;}
 
+/* ===== 소재별 헤더 비주얼 — 실사 이미지(로컬 파일), 전부 280px 폭으로 통일 ===== */
+#concrete .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/concrete.jpg")}
+
+#silk .mat-title{--mat-tex:
+  repeating-linear-gradient(52deg, rgba(255,255,255,.6) 0 5px, rgba(214,199,163,.22) 5px 10px),
+  repeating-linear-gradient(-52deg, rgba(255,255,255,.35) 0 7px, rgba(214,199,163,.12) 7px 14px),
+  linear-gradient(120deg,#f5efe2,#e8dcc3)}
+
+#coated .mat-title{background-size:auto,32px 32px;background-repeat:no-repeat,repeat;--mat-tex:
+  url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23fbf8f1%27%2F%3E%3Ccircle%20cx%3D%279%27%20cy%3D%279%27%20r%3D%274%27%20fill%3D%27%2325324a%27%2F%3E%3Ccircle%20cx%3D%2725%27%20cy%3D%2725%27%20r%3D%274%27%20fill%3D%27%2325324a%27%2F%3E%3C%2Fsvg%3E")}
+
+#iron .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/stainless.jpg")}
+
+#wood .mat-title{--mat-tex:
+  repeating-linear-gradient(89deg, rgba(255,255,255,.05) 0 2px, rgba(45,22,8,.10) 2px 4px, rgba(45,22,8,0) 4px 7px),
+  linear-gradient(100deg,#b98247,#8a5a34 55%,#6b4426)}
+
+#mold .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/condensation.jpg")}
+
+#tile .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/tile.jpg")}
+
+#roof .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/roof.jpg")}
+
+#road .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
+  url("images/road.jpg")}
+
+
+#wp .mat-title{--mat-tex:
+  linear-gradient(125deg, rgba(255,255,255,.5), transparent 42%),
+  linear-gradient(160deg,#3fb371,#1c7a45 65%,#166238)}
+
+#floor .mat-title{--mat-tex:
+  linear-gradient(125deg, rgba(255,255,255,.55), transparent 42%),
+  linear-gradient(160deg,#d7dadc,#9aa1a5 60%,#c3c8cb)}
+
+@media (max-width:479px){
+  .mat-title{background-image:none !important}
+}
 </style>
 </head>
 <body>
