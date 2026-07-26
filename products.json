@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-07-26",
   "note": "형제상사 제품 데이터 단일 소스. HTML·앱·API 모두 이 파일을 읽는다. 수정은 항상 여기서만.",
   "field_guide": {
     "id": "영문 소문자+하이픈. 절대 변경 금지 (DB 이관 시 PK로 사용)",
@@ -291,7 +291,7 @@
     },
     {
       "id": "watersoluble-binder-200",
-      "status": "listed",
+      "status": "documented",
       "name": "수성바인다200",
       "brand": "삼화페인트",
       "categories": [
@@ -301,7 +301,79 @@
       "role": "primer",
       "aliases": [
         "수성바인다 200"
-      ]
+      ],
+      "summary": "아크릴 공중합 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면의 표면 눈메꿈, 수성도료와 피도면 간 접착력 증가, 구도막 보수 시 접착력 보강용으로 사용. 도막 형성이 아닌 피도면에 스며들도록 도장.",
+      "spec": {
+        "composition": "1액형",
+        "finish": "투명(스며듦)",
+        "colors": [
+          "투명"
+        ],
+        "volume_solids_pct": 10,
+        "dft_um": null,
+        "coats": 1,
+        "coverage_m2_per_l": 10.0,
+        "dry_hard_min": 120,
+        "recoat_hours": 3,
+        "thinner": "무희석",
+        "thinning_pct_max": 0,
+        "pack_sizes": [
+          "18L",
+          "3.5L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "surface_moisture_pct_max": 10,
+        "surface_ph": [
+          7,
+          9
+        ],
+        "cure_days": 28
+      },
+      "system": {
+        "primer": null,
+        "primer_note": "하도 전용 제품 — 상도용으로 사용 불가",
+        "topcoat_self": false
+      },
+      "estimate": {
+        "basis": "하도 1회 · 스며듦",
+        "primer_l_per_m2": 0.1,
+        "note": "부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "타 도료와 혼합 금지",
+          "반드시 피도면에 스며들도록 충분히 도장",
+          "상도용으로 사용 불가",
+          "목재·철재·플라스틱 유성도막 부위 도장 금지",
+          "비 오는 날/습도 85% 이상/기온 5℃ 이하 도장 금지"
+        ],
+        "info": [
+          "도료 보관·운송 시 동결 금지 (5~35℃ 실내보관)"
+        ]
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true,
+        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "docs": {
+        "tech": "1tech3050157.pdf",
+        "spec_sheet": "1pntg3050157.pdf",
+        "tech_dated": "2025-10-29"
+      }
     },
     {
       "id": "ginger-mold-killing-primer",
@@ -326,72 +398,498 @@
     },
     {
       "id": "ilux-multiflat",
-      "status": "listed",
+      "status": "documented",
       "name": "아이럭스 멀티플랫",
       "brand": "삼화페인트",
       "categories": [
         "concrete",
-        "mold"
+        "silk"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "summary": "Low VOC 극무광 타입. 은폐력과 작업성이 우수하고 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 내부용 프리미엄 페인트.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "벽지면"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "무광",
+        "colors": [
+          "백색",
+          "담색"
+        ],
+        "volume_solids_pct": 39.32,
+        "dft_um": 60,
+        "coats": "2~3",
+        "coverage_m2_per_l": 6.55,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "10L",
+          "4L",
+          "1L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true,
+        "midcoat": "아이생각데코텍스VP",
+        "midcoat_note": "오염 비침·광얼룩 우려 시에만 사용",
+        "primer_required_when": [
+          "콘크리트 소지 상태 불량",
+          "구도막 부위",
+          "동절기 시공",
+          "쵸킹 소지",
+          "흡수차가 심한 바탕면"
+        ]
+      },
+      "estimate": {
+        "basis": "중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
+        "midcoat_l_per_m2": 0.08,
+        "topcoat_l_per_m2": 0.15
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "벽지 접착이 약해 들뜬 부위는 도장 시 주름 발생 가능",
+          "과도한 희석은 도막성능 저하 초래",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true,
+        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "docs": {
+        "tech": "1tech3051826.pdf",
+        "spec_sheet": "1pntg3051826.pdf",
+        "tech_dated": "2026-02-10"
+      }
     },
     {
       "id": "ilux-multi-eggshell",
-      "status": "listed",
+      "status": "documented",
       "name": "아이럭스 멀티에그쉘",
       "brand": "삼화페인트",
       "categories": [
         "concrete",
-        "mold"
+        "iron",
+        "wood"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "summary": "듀폰 불소계 특수첨가제로 오염 발생을 최소화하고 오염물 제거가 쉬운 이지클리닝 페인트. 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 다기능 프리미엄 페인트.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "표면처리된 목재",
+        "표면처리된 철재"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "저광(에그쉘)",
+        "colors": [
+          "백색",
+          "담색"
+        ],
+        "volume_solids_pct": 39.4,
+        "dft_um": 60,
+        "coats": "2~3",
+        "coverage_m2_per_l": 6.57,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "10L",
+          "4L",
+          "1L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200, 아이럭스파워젯소",
+        "primer_conditional": true,
+        "midcoat": "아이생각데코텍스VP",
+        "midcoat_note": "인테리어 도장 시 필요에 한함",
+        "primer_note_extra": "철재·목재 상도 도장 시 샌딩처리 및 젯소 도장 후 적용"
+      },
+      "estimate": {
+        "basis": "하도 1회 + 중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
+        "primer_l_per_m2": 0.1,
+        "midcoat_l_per_m2": 0.08,
+        "topcoat_l_per_m2": 0.15
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true,
+        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "docs": {
+        "tech": "1tech3051831.pdf",
+        "spec_sheet": "1pntg3051831.pdf",
+        "tech_dated": "2026-07-13"
+      }
     },
     {
       "id": "ilux-durox",
-      "status": "listed",
+      "status": "documented",
       "name": "아이럭스 듀로X",
       "brand": "삼화페인트",
       "categories": [
         "concrete",
-        "mold"
+        "silk",
+        "wood"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "summary": "고강도 도막으로 흠집·스크래치 방지 효과가 뛰어나고 오염물 제거가 용이한 수성 무광 페인트. 항균·곰팡이 억제 기능을 갖춘 고급형 친환경 내부용 페인트.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "벽지",
+        "표면처리된 가구·목재"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "무광(로우쉰광)",
+        "colors": [
+          "백색",
+          "담색"
+        ],
+        "volume_solids_pct": 41.92,
+        "dft_um": 60,
+        "coats": "2~3",
+        "coverage_m2_per_l": 6.99,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "10L",
+          "4L",
+          "1L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200, 아이생각데코텍스VP",
+        "primer_conditional": true
+      },
+      "estimate": {
+        "basis": "상도 2~3회 · 60㎛"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
+          "가소제 함유 피도면 접촉 시 오염·변색 주의"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+      },
+      "docs": {
+        "tech": "1tech3052056.pdf",
+        "spec_sheet": "1pntg3052056.pdf",
+        "tech_dated": "2026-01-09"
+      }
     },
     {
       "id": "ilux-allcoating",
-      "status": "listed",
+      "status": "documented",
       "name": "아이럭스 올코팅",
       "brand": "삼화페인트",
       "categories": [
         "concrete",
-        "iron"
+        "iron",
+        "wood",
+        "silk"
       ],
       "role": "topcoat",
       "aliases": [
         "아이럭스 올코팅 (실내외)"
-      ]
+      ],
+      "summary": "특수 아크릴에멀젼+내후성 안료 주성분. 내알칼리·내오염·내후성이 우수하고 미장효과가 높아 콘크리트·철재 시설물에 적합하며, 수성/아크릴/에나멜 등 기존 구도막 보수용으로도 사용.",
+      "substrates": [
+        "콘크리트",
+        "시멘트몰탈",
+        "석고보드",
+        "철재(Light duty)",
+        "목재",
+        "벽지(무광만)"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "유광/반광/무광",
+        "colors": [
+          "각색"
+        ],
+        "volume_solids_pct": 39.27,
+        "dft_um": 50,
+        "coats": "2~3",
+        "coverage_m2_per_l": 7.85,
+        "dry_touch_min": 60,
+        "dry_hard_min": 120,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "10L",
+          "4L",
+          "1L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true
+      },
+      "estimate": {
+        "basis": "상도 2~3회 · 50㎛",
+        "note": "철판은 샌드블라스팅 SA2 전처리·유분 제거 후 도장"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "철판 도장 시 샌드블라스팅 SA2까지 전처리 및 세정 필수",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+      },
+      "docs": {
+        "tech": "1tech3051969.pdf",
+        "spec_sheet": "1pntg3051969.pdf",
+        "tech_dated": "2025-04-15"
+      }
     },
     {
       "id": "aisenggak-onecoat",
-      "status": "listed",
+      "status": "documented",
       "name": "아이생각 원코트",
       "brand": "삼화페인트",
       "categories": [
-        "concrete",
-        "mold"
+        "concrete"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "standard": "KS M 6010 1종 2급",
+      "summary": "높은 은폐력과 1회 도장시스템으로 작업시간·인건비를 절감하는 친환경 고급형 수성페인트. 콘크리트·몰탈·시멘트 건축물의 내·외부 겸용.",
+      "substrates": [
+        "콘크리트",
+        "몰탈",
+        "시멘트"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "무광",
+        "colors": [
+          "백색",
+          "각색"
+        ],
+        "volume_solids_pct": 37.26,
+        "dft_um": 60,
+        "coats": 1,
+        "coverage_m2_per_l": 6.21,
+        "dry_touch_min": 30,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 5,
+        "pack_sizes": [
+          "16L",
+          "4L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 80,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true,
+        "primer_required_when": [
+          "콘크리트 소지 상태 불량",
+          "구도막 부위",
+          "동절기 시공",
+          "쵸킹 소지",
+          "흡수차가 심한 바탕면",
+          "시멘트 용출이 심한 부위"
+        ]
+      },
+      "estimate": {
+        "basis": "상도 1회 · 60㎛",
+        "topcoat_l_per_m2": 0.16,
+        "note": "부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "밝은 원색 도장 시 구도막 비침 우려 부위는 백색 초벌 후 상도",
+          "동일 LOT·도장기구·방법 유지로 이색현상 방지",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": [
+          "퍼티 비침 우려 부위는 초벌 도장 후 상도"
+        ]
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true,
+        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "docs": {
+        "tech": "1tech3052141.pdf",
+        "spec_sheet": "1pntg3052141.pdf",
+        "tech_dated": "2025-05-12"
+      }
     },
     {
       "id": "homestar-pastel-ok-plus",
-      "status": "listed",
+      "status": "documented",
       "name": "홈스타파스텔OK플러스",
       "brand": "삼화페인트",
       "categories": [
-        "concrete",
-        "mold"
+        "concrete"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "summary": "수용성 아크릴-우레탄수지+내후성 안료 주성분. 은은한 파스텔톤 질감과 오염제거 성능을 갖춘 건축물 내부 미장용 수성페인트.",
+      "substrates": [
+        "콘크리트",
+        "몰탈면",
+        "석고보드"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "dft_um": 60,
+        "coats": "1~2",
+        "coverage_m2_per_l": 5.88,
+        "recoat_hours": 2,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ]
+      },
+      "system": {
+        "primer": "홈스타 젯소",
+        "primer_dft_um": 30,
+        "primer_l_per_m2": 0.076,
+        "primer_note": "지정 하도 필수 사용"
+      },
+      "estimate": {
+        "basis": "하도(홈스타 젯소) 1회 + 상도 1~2회",
+        "topcoat_l_per_m2": 0.17
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "하도는 반드시 지정 도료(홈스타 젯소) 사용",
+          "구도막·유색도료 도장면은 적합성 확인 후 시공",
+          "타 도료와 혼합 금지",
+          "5℃ 이하에서는 작업 금지"
+        ],
+        "info": [
+          "과도막 시 고온다습 환경에서 끈적임 발생 가능 (특히 유광·반광)"
+        ]
+      },
+      "compliance": {},
+      "docs": {
+        "tech": null,
+        "spec_sheet": "1pntg3050921.pdf",
+        "tech_dated": null,
+        "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
+      }
     },
     {
       "id": "color-deco-lining",
@@ -768,6 +1266,408 @@
         "tech": "1tech3799545_비노출_타르방수탄.pdf",
         "spec_sheet": "1pntg3799545_비노출_타르방수탄.pdf",
         "tech_dated": "2025-09-11"
+      }
+    },
+    {
+      "id": "aisaengkag-high-viscosity-mixing",
+      "status": "documented",
+      "name": "아이생각고점도 믹싱",
+      "name_en": "Aisaengkag High Viscosity Mixing",
+      "brand": "삼화페인트",
+      "categories": [
+        "concrete",
+        "mold"
+      ],
+      "role": "primer",
+      "summary": "아크릴 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면 표면 눈메꿈, 접착력 증가, 구도막 보강용. 물과 1:3 비율로 희석해 피도면에 스며들도록 도장.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "석고"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "투명(스며듦)",
+        "colors": [
+          "투명"
+        ],
+        "volume_solids_pct": 30,
+        "coats": 1,
+        "coverage_m2_per_l": 30.0,
+        "dry_hard_min": 120,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_ratio": "아이생각고점도믹싱 : 물 = 1 : 3",
+        "pack_sizes": [
+          "18L",
+          "3.5L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": null,
+        "primer_note": "하도 전용 — 상도용 사용 불가",
+        "topcoat_self": false
+      },
+      "estimate": {
+        "basis": "하도 1회 (1:3 희석) · 스며듦",
+        "note": "부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "반드시 물과 지정 희석비(1:3)로 희석하여 도장",
+          "피도면에 고르게 스며들도록 도장",
+          "상도용으로 사용 불가",
+          "타 도료와 혼합 금지",
+          "과도막 시 후속 도장 물성저하 우려"
+        ],
+        "info": [
+          "도료 보관·운송 시 동결 금지"
+        ]
+      },
+      "compliance": {
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+      },
+      "docs": {
+        "tech": "1tech3051618.pdf",
+        "spec_sheet": "1pntg3051618.pdf",
+        "tech_dated": "2026-03-24"
+      }
+    },
+    {
+      "id": "aisaengkag-water-borne-pro-interior",
+      "status": "documented",
+      "name": "아이생각수성내부프로",
+      "name_en": "Aisaengkag Water-borne Pro for Interior",
+      "brand": "삼화페인트",
+      "categories": [
+        "concrete"
+      ],
+      "role": "topcoat",
+      "standard": "KS M 6010 2종 2급",
+      "summary": "아크릴에멀젼+내후성 안료 주성분. 내수성·내알칼리성·내세척성이 뛰어나고 유기용제·중금속을 사용하지 않아 환경마크·친환경건축자재인증 최우수등급을 획득한 내부용 친환경 수성페인트.",
+      "substrates": [
+        "콘크리트",
+        "몰탈",
+        "석고보드"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "무광",
+        "colors": [
+          "백색",
+          "담색"
+        ],
+        "volume_solids_pct": 37.6,
+        "dft_um": 60,
+        "coats": "1~2",
+        "coverage_m2_per_l": 6.0,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "4L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "surface_moisture_pct_max": 10,
+        "surface_ph": [
+          7,
+          9
+        ],
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true,
+        "primer_required_when": [
+          "콘크리트 소지 상태 불량",
+          "구도막 부위",
+          "동절기 시공",
+          "시멘트 견출·미장면 쵸킹 소지",
+          "흡수차가 심한 바탕면",
+          "시멘트 용출이 심한 부위"
+        ]
+      },
+      "estimate": {
+        "basis": "상도 1~2회 · 60㎛",
+        "topcoat_l_per_m2": 0.16,
+        "note": "부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "비오는 날/습도 85%이상/기온 5℃이하 도장 금지",
+          "구도막 보수도장은 사전 적합성 확인 후 진행",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
+          "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의"
+        ],
+        "info": [
+          "도장 전 균일 혼합, 도장 중 주기적 교반"
+        ]
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true,
+        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "docs": {
+        "tech": "1tech3051753.pdf",
+        "spec_sheet": "1pntg3051753.pdf",
+        "tech_dated": "2025-09-04"
+      }
+    },
+    {
+      "id": "aisaengkag-water-borne-acron",
+      "status": "documented",
+      "name": "아이생각수성아크론",
+      "name_en": "Aisaengkag Water-Borne Acron",
+      "brand": "삼화페인트",
+      "categories": [
+        "concrete",
+        "roof"
+      ],
+      "role": "topcoat",
+      "summary": "특수 아크릴에멀젼+내후성 안료 주성분의 고광택 수성페인트. 낙서방지효과가 우수하고(반광 이상) 가정에서 쉽게 도장 가능한 DIY형 제품으로 환경마크를 획득.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "석고",
+        "기와",
+        "슬레이트"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "유광/반광/에그쉘광/무광",
+        "colors": [
+          "백색",
+          "담색(주문한정)"
+        ],
+        "volume_solids_pct": 36.0,
+        "dft_um": 60,
+        "coats": "2~3",
+        "coverage_m2_per_l": 6.08,
+        "dry_hard_min": 120,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "4L",
+          "2L(유광)"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "cure_days": 28
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true,
+        "primer_required_when": [
+          "콘크리트 소지 상태 불량",
+          "구도막 부위",
+          "동절기 시공",
+          "쵸킹 소지",
+          "흡수차가 심한 바탕면",
+          "시멘트 용출이 심한 부위"
+        ]
+      },
+      "estimate": {
+        "basis": "상도 2회 · 각 30㎛",
+        "note": "반광·에그쉘·무광 소요량은 소비자상담실 문의"
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "도장 후 25℃ 기준 최소 3시간 경과 후 재도장",
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "voc_regulation": "수도권대기환경개선 특별법 규제 만족 (수도권 사용 가능)"
+      },
+      "docs": {
+        "tech": "1tech3051788.pdf",
+        "spec_sheet": "1pntg3051788.pdf",
+        "tech_dated": "2023-04-18"
+      }
+    },
+    {
+      "id": "aisaengkag-water-borne-pro-exterior",
+      "status": "documented",
+      "name": "아이생각수성외부프로",
+      "name_en": "Aisaengkag Water-borne Pro for Exterior",
+      "brand": "삼화페인트",
+      "categories": [
+        "concrete"
+      ],
+      "role": "topcoat",
+      "standard": "KS M 6010 1종 2급",
+      "summary": "아크릴에멀젼+내후성 안료 주성분의 외부 노출면 보호용 친환경 수성페인트. 환경마크 획득.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "석고보드"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "무광",
+        "colors": [
+          "백색",
+          "각색"
+        ],
+        "volume_solids_pct": 35.2,
+        "dft_um": 60,
+        "coats": 2,
+        "coverage_m2_per_l": 5.8,
+        "dry_hard_min": 60,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "pack_sizes": [
+          "18L",
+          "4L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ]
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true
+      },
+      "estimate": {
+        "basis": "상도 2회 · 60㎛",
+        "topcoat_l_per_m2": 0.145
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true
+      },
+      "docs": {
+        "tech": "1tech3051945.pdf",
+        "spec_sheet": "1pntg3051945.pdf",
+        "tech_dated": "2024-12-17"
+      }
+    },
+    {
+      "id": "aisaengkag-acron-exterior",
+      "status": "documented",
+      "name": "아이생각 아크로 외부용",
+      "name_en": "Aisaengkag Acron for Exterior",
+      "brand": "삼화페인트",
+      "categories": [
+        "concrete"
+      ],
+      "role": "topcoat",
+      "standard": "KS M 6010 1종 2급",
+      "summary": "아크릴에멀젼+내후성 안료 주성분의 건축물 외부마감용 친환경 수성페인트. 환경마크 획득.",
+      "substrates": [
+        "콘크리트",
+        "시멘트",
+        "몰탈",
+        "석고"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "dft_um": 60,
+        "coats": 2,
+        "coverage_m2_per_l": 6.25,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 10,
+        "storage_temp_c": [
+          5,
+          35
+        ],
+        "shelf_life_months": 12
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85
+      },
+      "system": {
+        "primer": "수성바인다200",
+        "primer_conditional": true
+      },
+      "estimate": {
+        "basis": "상도 2회 · 각 30㎛",
+        "topcoat_l_per_m2": 0.16
+      },
+      "cautions": {
+        "danger": [],
+        "warn": [
+          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+        ],
+        "info": []
+      },
+      "compliance": {
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+        "eco_label": true
+      },
+      "docs": {
+        "tech": null,
+        "spec_sheet": "1pntg3050013.pdf",
+        "tech_dated": null,
+        "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
       }
     }
   ]
