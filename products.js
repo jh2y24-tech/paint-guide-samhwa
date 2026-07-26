@@ -149,7 +149,7 @@ async function initProducts() {
   const slots = document.querySelectorAll('[data-product][data-render]');
   if (!slots.length) return;
   try {
-    const res = await fetch('products.json', { cache: 'no-cache' });
+    const res = await fetch('products.json?v=2', { cache: 'no-cache' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const db = await res.json();
     window.PRODUCTS_CATALOG = db;

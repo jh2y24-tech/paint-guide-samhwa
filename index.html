@@ -369,9 +369,10 @@ a{color:var(--brand);text-decoration:none}
 .prod-link{cursor:pointer; position:relative;}
 .prod-link::after{content:"";}
 .product-chip.prod-link{text-decoration:none;}
-.branch-card li.prod-link{list-style:none; padding:6px 10px; position:relative; display:inline-flex; align-items:center; gap:5px; background:var(--card2); border:1px solid var(--border-2); border-radius:999px; line-height:1.3; white-space:nowrap;}
+.branch-card li.prod-link{list-style:none; padding:6px 12px; position:relative; display:inline-flex; align-items:center; gap:5px; background:var(--brand-tint); border:1px solid transparent; border-radius:999px; line-height:1.3; white-space:nowrap; color:var(--brand); font-weight:600; cursor:pointer;}
 .branch-card li.prod-link::before{content:none;}
-.branch-card li.prod-link:hover{color:var(--text); border-color:var(--accent, #2a7); background:var(--brand-tint);}
+.branch-card li.prod-link:hover{background:#DCEAE7;}
+.branch-card li.prod-link:active{background:#CFE1DD;}
 .rtable-name.prod-link:hover{text-decoration:underline; text-underline-offset:3px;}
 .prod-link:hover{filter:brightness(0.97);}
 .prod-link:active{transform:translateY(1px);}
@@ -3086,11 +3087,6 @@ function enhanceProductLinks(){
       el.classList.add('prod-link');
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
-      var tap = document.createElement('span');
-      tap.className = 'prod-tap';
-      tap.textContent = 'ⓘ';
-      el.appendChild(document.createTextNode(' '));
-      el.appendChild(tap);
     });
   });
 }
@@ -3110,6 +3106,6 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 else enhanceProductLinks();
 </script>
 
-<script src="products.js"></script>
+<script src="products.js?v=2"></script>
 </body>
 </html>
