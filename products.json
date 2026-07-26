@@ -202,7 +202,6 @@
         "thinner": "물 (상수도)",
         "thinning_pct_max": 10,
         "pack_sizes": [
-          "18L",
           "4L",
           "1L"
         ],
@@ -429,10 +428,7 @@
         "thinner": "물",
         "thinning_pct_max": 10,
         "pack_sizes": [
-          "18L",
-          "10L",
-          "4L",
-          "1L"
+          "4L"
         ],
         "shelf_life_months": 12,
         "storage_temp_c": [
@@ -448,23 +444,8 @@
         "humidity_pct_max": 85,
         "cure_days": 28
       },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "midcoat": "아이생각데코텍스VP",
-        "midcoat_note": "오염 비침·광얼룩 우려 시에만 사용",
-        "primer_required_when": [
-          "콘크리트 소지 상태 불량",
-          "구도막 부위",
-          "동절기 시공",
-          "쵸킹 소지",
-          "흡수차가 심한 바탕면"
-        ]
-      },
       "estimate": {
-        "basis": "중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
-        "midcoat_l_per_m2": 0.08,
-        "topcoat_l_per_m2": 0.15
+        "basis": "상도 2~3회 · 60㎛"
       },
       "cautions": {
         "danger": [],
@@ -485,7 +466,8 @@
         "tech": "1tech3051826.pdf",
         "spec_sheet": "1pntg3051826.pdf",
         "tech_dated": "2026-02-10"
-      }
+      },
+      "system": {}
     },
     {
       "id": "ilux-multi-eggshell",
@@ -504,7 +486,8 @@
         "시멘트",
         "몰탈",
         "표면처리된 목재",
-        "표면처리된 철재"
+        "표면처리된 철재",
+        "합지"
       ],
       "spec": {
         "composition": "1액형",
@@ -522,9 +505,6 @@
         "thinner": "물",
         "thinning_pct_max": 10,
         "pack_sizes": [
-          "18L",
-          "10L",
-          "4L",
           "1L"
         ],
         "shelf_life_months": 12,
@@ -609,8 +589,6 @@
         "thinner": "물",
         "thinning_pct_max": 10,
         "pack_sizes": [
-          "18L",
-          "10L",
           "4L",
           "1L"
         ],
@@ -627,10 +605,6 @@
         ],
         "humidity_pct_max": 85,
         "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200, 아이생각데코텍스VP",
-        "primer_conditional": true
       },
       "estimate": {
         "basis": "상도 2~3회 · 60㎛"
@@ -651,7 +625,8 @@
         "tech": "1tech3052056.pdf",
         "spec_sheet": "1pntg3052056.pdf",
         "tech_dated": "2026-01-09"
-      }
+      },
+      "system": {}
     },
     {
       "id": "ilux-allcoating",
@@ -861,20 +836,12 @@
           35
         ]
       },
-      "system": {
-        "primer": "홈스타 젯소",
-        "primer_dft_um": 30,
-        "primer_l_per_m2": 0.076,
-        "primer_note": "지정 하도 필수 사용"
-      },
       "estimate": {
-        "basis": "하도(홈스타 젯소) 1회 + 상도 1~2회",
-        "topcoat_l_per_m2": 0.17
+        "basis": "상도 1~2회 · 60㎛"
       },
       "cautions": {
         "danger": [],
         "warn": [
-          "하도는 반드시 지정 도료(홈스타 젯소) 사용",
           "구도막·유색도료 도장면은 적합성 확인 후 시공",
           "타 도료와 혼합 금지",
           "5℃ 이하에서는 작업 금지"
@@ -889,7 +856,8 @@
         "spec_sheet": "1pntg3050921.pdf",
         "tech_dated": null,
         "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
-      }
+      },
+      "system": {}
     },
     {
       "id": "color-deco-lining",
@@ -1481,8 +1449,7 @@
         "thinning_pct_max": 10,
         "pack_sizes": [
           "18L",
-          "4L",
-          "2L(유광)"
+          "4L"
         ],
         "shelf_life_months": 12,
         "storage_temp_c": [
