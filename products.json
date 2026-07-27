@@ -1602,7 +1602,10 @@
           5,
           35
         ],
-        "shelf_life_months": 12
+        "shelf_life_months": 12,
+        "pack_sizes": [
+          "1L"
+        ]
       },
       "conditions": {
         "air_temp_c": [
