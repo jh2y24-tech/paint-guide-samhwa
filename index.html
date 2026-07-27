@@ -117,7 +117,7 @@ a{color:var(--brand);text-decoration:none}
 .hi-roof{color:var(--roof);font-weight:700}
 
 .product-list{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
-.product-chip{display:inline-block;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:8px;border:1px solid}
+.product-chip{display:inline-block;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:4px;border:1px solid}
 .chip-water{background:var(--water-bg);color:var(--water);border-color:rgba(21,95,182,.28)}
 .chip-oil{background:var(--oil-bg);color:var(--oil);border-color:rgba(149,88,15,.28)}
 .chip-tile{background:var(--tile-bg);color:var(--tile);border-color:rgba(14,133,122,.28)}
@@ -371,7 +371,7 @@ a{color:var(--brand);text-decoration:none}
 .prod-link{cursor:pointer; position:relative;}
 .prod-link::after{content:"";}
 .product-chip.prod-link{text-decoration:none;}
-.branch-card li.prod-link{list-style:none; padding:6px 12px; position:relative; display:inline-flex; align-items:center; gap:5px; background:var(--brand-tint); border:1px solid transparent; border-radius:999px; line-height:1.3; white-space:nowrap; color:var(--brand); font-weight:600; cursor:pointer;}
+.branch-card li.prod-link{list-style:none; padding:6px 12px; position:relative; display:inline-flex; align-items:center; gap:5px; background:var(--brand-tint); border:1px solid transparent; border-radius:4px; line-height:1.3; white-space:nowrap; color:var(--brand); font-weight:600; cursor:pointer;}
 .branch-card li.prod-link::before{content:none;}
 .branch-card li.prod-link:hover{background:#DCEAE7;}
 .branch-card li.prod-link:active{background:#CFE1DD;}
@@ -1129,6 +1129,14 @@ a{color:var(--brand);text-decoration:none}
             </div>
           </div>
           <div class="rtable-row">
+            <div class="rtable-name">에나멜속건프라이머</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">외부 철재 시설·기구 (속건 방청)</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">EN신나3000 10% 이내</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">25℃ 기준 6시간 이후</span></div>
+            </div>
+          </div>
+          <div class="rtable-row">
             <div class="rtable-name">워시프라이머</div>
             <div class="rtable-fields">
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">아연도금 · 비철재</span></div>
@@ -1180,7 +1188,7 @@ a{color:var(--brand);text-decoration:none}
 
         <div class="star-box">
           ★ 에나멜 도장 위에 우레탄 도장을 원하는 경우<br>
-          → <b>슈퍼폭시360 알루미늄</b>을 실러로 도장 후 우레탄 도장 가능
+          → <span class="product-chip chip-acc">슈퍼폭시360 알루미늄</span>을 실러로 도장 후 우레탄 도장 가능
         </div>
         <div class="danger-box">
           ★ 약한 페인트 위에 강한 신나를 사용하는 페인트 도장 시<br>
@@ -1196,14 +1204,14 @@ a{color:var(--brand);text-decoration:none}
       <div class="step-header"><span class="step-num">4</span><span class="step-label">상도 선택</span><span class="step-badge badge-paint-o">상도</span></div>
       <div class="step-content">
 
-        <div style="font-size:13px; font-weight:800; color:var(--oil); margin-bottom:8px;">777에나멜</div>
+        <div style="margin-bottom:8px;"><span class="product-chip chip-oil">777에나멜</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>희석</strong><span class="val">에나멜신나 50% 이내</span></div>
           <div class="spec-item"><strong>재도장 (25℃)</strong><span class="val">9시간 이후</span></div>
           <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 7㎡/ℓ</span></div>
         </div>
 
-        <div style="font-size:13px; font-weight:800; color:var(--accent); margin:14px 0 8px;">매직탄 (우레탄 · 내구성 우수)</div>
+        <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">매직탄</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제</strong><span class="val">3 : 1</span></div>
           <div class="spec-item"><strong>가사시간 (25℃)</strong><span class="val">5시간 이내</span></div>
@@ -1212,7 +1220,7 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 7~8㎡/ℓ (소지 상태에 따라 상이)</span></div>
         </div>
 
-        <div style="font-size:13px; font-weight:800; color:var(--accent); margin:14px 0 8px;">스피롤탄 (우레탄 · 내구성 우수)</div>
+        <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">스피롤탄</span><span class="product-chip chip-acc">스피롤탄 S형</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수 (S형은 스프레이 전용)</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제</strong><span class="val">5 : 1</span></div>
           <div class="spec-item"><strong>가사시간 (25℃)</strong><span class="val">6시간</span></div>
@@ -2983,11 +2991,11 @@ Object.assign(window.PRODUCT_DB, {
       { label: "시방서 (PDF)", url: "pdf/1pntg3621020.pdf" }
     ]
   },
-  "에나멜속건프라이머(N) 갈색NT": {
+  "에나멜속건프라이머": {
     category: "하도 · 유성 방청 프라이머 (속건 알키드)",
-    desc: "알키드수지와 고순도 안료를 주성분으로 한 자연 건조형으로 건조시간이 빠르고 부착력·접착성·내충격성·작업성이 좋은 철재 하도용 방청 프라이머입니다.",
+    desc: "알키드수지와 고순도 안료를 주성분으로 한 자연 건조형으로 건조시간이 빠르고 부착력·접착성·내충격성·작업성이 좋은 철재 하도용 방청 프라이머입니다. (갈색NT / 회색NT)",
     uses: "각종 외부 철재 시설 및 기구의 방청용 프라이머",
-    spec: "피도면: 철재 · 조성 1액형 · 마감 무광\n색상: 갈색 · 오렌지 · 회색\n부피고형분: 48~50%\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 12.0~12.5㎡/L\n건조시간(25℃): 고화 3시간 이내 (도막 40㎛시)\n재도장간격(25℃): 6시간 이후\n희석: EN신나3000 10% (도료 부피비)\n포장: 4L · 16L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 에나멜속건프라이머(N) 갈색NT / 상도 알키드 도료",
+    spec: "피도면: 철재 · 조성 1액형 · 마감 무광\n색상: 갈색NT(갈색·오렌지·회색) / 회색NT(회색)\n부피고형분: 갈색NT 48~50% · 회색NT 46%\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 갈색NT 12.0~12.5㎡/L · 회색NT 11.5㎡/L\n건조시간(25℃): 고화 3시간 이내 (도막 40㎛시)\n재도장간격(25℃): 6시간 이후\n희석: EN신나3000 10% (도료 부피비)\n포장: 4L · 16L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 에나멜속건프라이머(N) / 상도 알키드 도료",
     cautions: [
       "본 제품을 타 도료와 혼합하여 사용하지 마세요",
       "1회에 후도막 형성 시 건조가 지연되므로 재도장 간격 준수",
@@ -2995,24 +3003,94 @@ Object.assign(window.PRODUCT_DB, {
     ],
     filters: "대기환경보전법 VOC 규제 만족",
     pdfs: [
-      { label: "제품안내서 (PDF)", url: "pdf/1tech3790954.pdf" },
-      { label: "시방서 (PDF)", url: "pdf/1pntg3790954.pdf" }
+      { label: "갈색NT 제품안내서 (PDF)", url: "pdf/1tech3790954.pdf" },
+      { label: "갈색NT 시방서 (PDF)", url: "pdf/1pntg3790954.pdf" },
+      { label: "회색NT 제품안내서 (PDF)", url: "pdf/1tech3790974.pdf" },
+      { label: "회색NT 시방서 (PDF)", url: "pdf/1pntg3790974.pdf" }
     ]
   },
-  "에나멜속건프라이머(N) 회색NT": {
-    category: "하도 · 유성 방청 프라이머 (속건 알키드)",
-    desc: "알키드수지와 고순도 안료를 주성분으로 한 자연 건조형으로 건조시간이 빠르고 부착력·접착성·내충격성·작업성이 좋은 철재 하도용 방청 프라이머입니다.",
-    uses: "각종 외부 철재 시설 및 기구의 방청용 프라이머",
-    spec: "피도면: 철재 · 조성 1액형 · 마감 무광\n색상: 회색\n부피고형분: 46%\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 11.5㎡/L\n건조시간(25℃): 고화 3시간 이내 (도막 40㎛시)\n재도장간격(25℃): 6시간 이후\n희석: EN신나3000 10% (도료 부피비)\n포장: 4L · 16L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 에나멜속건프라이머(N) 회색NT / 상도 알키드 도료",
+  "777에나멜": {
+    category: "상도 · 유성 에나멜 (고광택 알키드)",
+    desc: "고광택 알키드수지계를 주성분으로 한 에나멜 도료로 내후성과 광택이 우수하고 내구력·접착력이 강해 외부 철재·목재의 미장 보호용으로 적합한 상도도료입니다. (KSM6020 유성도료 2종 자연건조형 에나멜)",
+    uses: "심하지 않은 부식환경의 외부 철재 및 목재시설 보호용 상도",
+    spec: "피도면: 방청프라이머가 처리된 철재 및 목재 · 마감 유광/반광/무광\n색상: 각색\n부피고형분: 41.37~45% (백색 기준 41.37%)\n추천 건조도막두께: 60㎛ · 도장횟수 1~2회\n이론도포면적: 6.89~7.5㎡/L (60㎛ 기준)\n건조시간(25℃): 고화 5시간 이내\n재도장간격(25℃): 9시간 이후\n희석: EN신나3000 50% 이내 (도료 무게비)\n포장: 18L · 4L · 1L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 알키드 프라이머 / 상도 777에나멜",
     cautions: [
       "본 제품을 타 도료와 혼합하여 사용하지 마세요",
-      "1회에 후도막 형성 시 건조가 지연되므로 재도장 간격 준수",
+      "무광·반광 로라 도장 시 광얼룩이 생길 수 있어 속도·패턴을 일정하게 유지",
+      "보수도장 시 소부용 도료 위에는 사용 금지 · 에나멜 구도막은 샌딩 후 도장",
+      "1회에 후도막 형성 시 건조 지연 · 재도장 간격 준수",
       "비오는 날·습도 85% 이상·기온 5℃ 이하에는 작업 금지"
+    ],
+    filters: "수도권대기환경개선 특별법 VOC 규제 만족",
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3020787.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3020787.pdf" }
+    ]
+  },
+  "매직탄": {
+    category: "상도 · 2액형 우레탄 (아크릴 폴리우레탄)",
+    desc: "내후성이 우수한 아크릴 폴리우레탄 수지를 주성분으로 한 2액형 마감도료. 부착성·내수성·내약품성·기계적 물성이 우수하며 다양한 소지와 구도막에 하도 없이 바로 도장할 수 있고 로라·스프레이 작업성이 우수합니다.",
+    uses: "산업기계 · 철재 · 비철금속 · 목재 · 몰탈 · 타일 상도용 (※ 방수재·보행용 바닥재 용도 금지)",
+    spec: "마감: 유광/반광/무광 · 색상 백색 및 각색 · 조성 2액형\n주제:경화제 = 3 : 1 (부피비)\n부피고형분: 37.57% (백색)\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 9.39㎡/L (40㎛ 기준, 백색)\n건조시간(25℃): 지촉 12분 · 고화 12시간 이내\n가사시간(25℃): 5시간 이내\n재도장간격: 25℃ 18시간 이상 / 15℃ 이하 24시간 이상\n희석: 유니올신나 30% 이내 (부피비)\n포장: 16L(12:4) · 4L(3:1) · 저장기간 12개월 (5~35℃ 실내보관)",
+    cautions: [
+      "타 도료와 혼합 금지 · 경화제 혼합 후 가사시간 이내 사용 (겔화 주의)",
+      "계절별 지정신나 사용 · 대기온도 30℃ 이상 롤라작업 시 지건신나(T-0091)",
+      "알루미늄·구리 등 비철금속 소지는 도장 전 샌드페이퍼 작업 권장",
+      "옥외·넓은 범위(2m×2m 이상) 및 메탈릭 색상 광얼룩 주의",
+      "동절기 부착력 저하 시 하도 스피폭시FD프라이머 / 상도 매직탄 시스템 권장"
+    ],
+    filters: "실내공기질관리법 다중이용시설·100~500세대 공동주택 실내 사용 가능",
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3231446.pdf" }
+    ]
+  },
+  "스피롤탄": {
+    category: "상도 · 2액형 아크릴 우레탄",
+    desc: "무황변 타입의 2액형 아크릴 우레탄 도료로 부착성·내마모성·내약품성·기계적 물성이 매우 우수하며, 로라·스프레이 작업성과 은폐력이 우수해 보수 도장에 적합합니다.",
+    uses: "공업용 일반철재 상도 및 각종 산업·가전기기 보수도장용 상도",
+    spec: "마감: 유광/반광/무광 · 색상 투명·각색 · 조성 2액형\n주제:경화제 = 5 : 1 (부피비)\n부피고형분: 46.07% (백색)\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 11.52㎡/L (40㎛ 기준)\n가사시간(25℃): 6시간\n건조시간(25℃): 지촉 10분 · 경화 7시간\n재도장간격(25℃): 6시간 이상\n희석: 유니올신나 최대 20% 이내 (부피비)\n저장기간: 12개월 (5~38℃ 실내보관)\n도장시스템: 하도 스피롤탄 하도 · 스피롤탄S형 하도 · 스피폭시FD 프라이머",
+    cautions: [
+      "타 도료와 혼합 금지 · 경화제는 수분 민감 → 밀봉하여 냉암소 보관",
+      "경화제 혼합 후 가사시간 이내 사용 · 지정 혼합비율 준수 (물성 변화 주의)",
+      "계절별 지정신나 사용 (봄가을 유니올 춘추용 · 겨울 동절기용 · 여름 하절기용)",
+      "옥외·넓은 범위(2m×2m 이상) 및 메탈릭 색상 광얼룩 주의"
+    ],
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3230725.pdf" }
+    ]
+  },
+  "스피롤탄 S형": {
+    category: "상도 · 속건 2액형 아크릴 우레탄 (스프레이 전용)",
+    desc: "무황변 타입의 속건성 2액형 아크릴 우레탄 도료로 살오름성·부착성·내마모성·내약품성이 우수하고, 특히 건조성·외관·기계적 물성이 우수합니다.",
+    uses: "공업용 일반철재 상도 및 각종 산업·가전기기 보수도장용 상도",
+    spec: "마감: 유광/반광/무광 · 색상 투명·각색 · 조성 2액형\n주제:경화제 = 5 : 1 (부피비)\n부피고형분: 41.13% (백색)\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 10.28㎡/L (40㎛ 기준)\n가사시간(25℃): 6시간\n건조시간(25℃): 지촉 10분 · 경화 4시간\n재도장간격(25℃): 6시간 이상\n희석: 유니올신나 최대 20% (부피비)\n저장기간: 12개월 (5~38℃ 실내보관)\n도장시스템: 하도 스피롤탄 하도 · 스피롤탄S형 하도 · 스피폭시FD 프라이머 / 상도 스피롤탄S형 투명(필요 시)",
+    cautions: [
+      "스프레이 작업 전용 — 로라·붓 도장 시 외관 불량(소포성) 우려로 비권장",
+      "타 도료와 혼합 금지 · 경화제 혼합 후 가사시간 이내 사용",
+      "PCM강판에 스피폭시FD/스피롤탄 시스템 도장 시 소재처리(샌딩) 선행",
+      "내후성·광택 향상을 위해 우레탄 투명 상도 도장 권장",
+      "옥외·넓은 범위(2m×2m 이상) 및 메탈릭 색상 광얼룩 주의"
+    ],
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3230908.pdf" }
+    ]
+  },
+  "슈퍼폭시360 알루미늄": {
+    category: "하도겸상도 · 2액형 에폭시 (자체하도)",
+    desc: "고성능 녹방지용 에폭시 도료로, 연마제 분사처리가 곤란한 신·구 철재의 녹과 흑피만 벗겨내고 간단히 도장할 수 있는 자체하도겸 상도 도료입니다. 침투성·표면 습착성이 우수해 일반 구도막 위에도 도장이 가능합니다.",
+    uses: "일반철재 · 송전탑 · 해상구조물 · 교량 · 파이프 등, 특히 블라스트 처리가 불가능한 철재시설물 및 보수도장",
+    spec: "피도면: 철재 · 에나멜 구도막 · 아연도강판 · 마감 반광 · 색상 은색\n조성 2액형 · 주제:경화제 = 1 : 1 (부피비)\n부피고형분: 약 83%\n추천 건조도막두께: 125~200㎛ · 도장횟수 1~2회\n이론도포면적: 6.64㎡/L (125㎛ 기준)\n가사시간(20℃): 2시간\n건조시간(20℃): 경화 20시간\n재도장간격(20℃): 18시간 ~ 1개월\n희석: 신나395 최대 10% (부피비)\n포장: 18L[9/9] · 4L[2/2] · 저장기간 1년 (5~35℃ 실내보관)\n도장시스템: 상도(외부노출 시) 슈퍼탄300BG · 스피플론S 등",
+    cautions: [
+      "지시된 혼합비율 준수 · 혼합 도료는 가사시간 이내 사용",
+      "10℃ 이하에서는 동절기용 경화제 사용 (색상이 일반용과 상이)",
+      "에나멜 구도막 보수 시 과량 희석하면 주름 현상 발생 → 슈퍼신나30 사용",
+      "노출부위 적용 시 황변·쵸킹 발생 가능 → 외부노출 시 내후성 상도 필수",
+      "비오는 날·습도 85% 이상·기온 -5℃ 이하에는 작업 금지"
     ],
     filters: "대기환경보전법 VOC 규제 만족",
     pdfs: [
-      { label: "제품안내서 (PDF)", url: "pdf/1tech3790974.pdf" },
-      { label: "시방서 (PDF)", url: "pdf/1pntg3790974.pdf" }
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3210235.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3210235.pdf" }
     ]
   }
 });
@@ -3025,13 +3103,12 @@ Object.assign(window.PRODUCT_DB, {
   });
 })();
 
-/* 괄호 제거 표기(클릭 시 자동 정제된 이름)도 같은 데이터로 연결 */
+/* 표기 변형(공백/괄호 등) 이름도 같은 데이터로 연결 */
 (function(){
-  var db = window.PRODUCT_DB;
-  [["에나멜속건프라이머(N) 갈색NT","에나멜속건프라이머 갈색NT"],
-   ["에나멜속건프라이머(N) 회색NT","에나멜속건프라이머 회색NT"]].forEach(function(p){
-    if (db[p[0]] && !db[p[1]]) db[p[1]] = db[p[0]];
-  });
+  var db = window.PRODUCT_DB, e = db["에나멜속건프라이머"];
+  if (e) ["에나멜속건프라이머(N)","에나멜속건프라이머 갈색NT","에나멜속건프라이머 회색NT"].forEach(function(n){ if (!db[n]) db[n] = e; });
+  var s = db["슈퍼폭시360 알루미늄"];
+  if (s && !db["슈퍼폭시 360 알루미늄"]) db["슈퍼폭시 360 알루미늄"] = s;
 })();
 
 /* 제품이 아닌 칩(기법 안내 등)은 클릭 대상에서 제외 */
