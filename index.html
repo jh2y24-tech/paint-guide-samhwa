@@ -159,10 +159,13 @@ a{color:var(--brand);text-decoration:none}
 .rtable-field .rf-val.danger{color:var(--danger)}
 .rtable-field .rf-val.time{color:var(--water)}
 
-.warn-box{background:var(--warn-bg);border:1px solid var(--border-2);border-left:3px solid var(--warn);border-radius:10px;padding:11px 14px;font-size:13.5px;color:#6B5310;font-weight:600;margin-top:10px;line-height:1.7}
+.warn-box{position:relative;overflow:hidden;background:var(--warn-bg);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#6B5310;font-weight:600;margin-top:10px;line-height:1.7}
+.warn-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--warn) 0%,transparent 88%);pointer-events:none}
 .warn-box .wr{color:var(--danger);font-weight:700}
-.info-box{background:var(--water-bg);border:1px solid var(--border-2);border-left:3px solid var(--water);border-radius:10px;padding:11px 14px;font-size:13.5px;color:#1B4E7C;font-weight:600;margin-top:10px;line-height:1.7}
-.danger-box{background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-left:3px solid var(--danger);border-radius:10px;padding:11px 14px;font-size:13.5px;color:#A62A22;font-weight:600;margin-top:10px;line-height:1.7}
+.info-box{position:relative;overflow:hidden;background:var(--water-bg);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#1B4E7C;font-weight:600;margin-top:10px;line-height:1.7}
+.info-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--water) 0%,transparent 88%);pointer-events:none}
+.danger-box{position:relative;overflow:hidden;background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#A62A22;font-weight:600;margin-top:10px;line-height:1.7}
+.danger-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--danger) 0%,transparent 88%);pointer-events:none}
 /* ── 외벽 도장 안내 섹션 ── */
 .why-wrap{margin:0 0 22px}
 .why-grid{display:grid;grid-template-columns:1fr;gap:0}
@@ -203,7 +206,10 @@ a{color:var(--brand);text-decoration:none}
 .pm-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 /* ── 유성 바니시 제품 카드 (한 줄에 하나씩) ── */
 .vcard-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-.vcard{display:block;width:100%;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:11px;padding:12px 14px}
+.vcard{display:block;width:100%;position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-top:3px solid transparent;border-radius:11px;padding:12px 14px}
+.vcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
+#woodPurposeStep .rtable-row{position:relative;overflow:hidden;border-top:3px solid transparent}
+#woodPurposeStep .rtable-row::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
 .vcard-head{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border-2)}
 .vcard-title{font-size:14px;font-weight:800;color:var(--text)}
 .vcard-tag{font-size:11.5px;font-weight:700;color:var(--brand-2);background:var(--accent-bg);border:1px solid var(--border-2);border-radius:999px;padding:2px 9px}
@@ -219,8 +225,10 @@ a{color:var(--brand);text-decoration:none}
 .vcard-dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
 .vcard-dl dd{margin:0;color:var(--text);font-weight:600}
 @media(max-width:480px){.vcard-dl{grid-template-columns:1fr;gap:2px}.vcard-dl dd{margin-bottom:6px}}
-.star-box{background:var(--accent-bg);border:1px solid var(--border-2);border-left:3px solid var(--accent);border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--brand-2);font-weight:600;margin-top:10px;line-height:1.7}
-.green-box{background:var(--primer-w-bg);border:1px solid var(--border-2);border-left:3px solid var(--primer-w);border-radius:10px;padding:11px 14px;font-size:13.5px;color:#155F3C;font-weight:600;margin-top:10px;line-height:1.7}
+.star-box{position:relative;overflow:hidden;background:var(--accent-bg);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--brand-2);font-weight:600;margin-top:10px;line-height:1.7}
+.star-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
+.green-box{position:relative;overflow:hidden;background:var(--primer-w-bg);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#155F3C;font-weight:600;margin-top:10px;line-height:1.7}
+.green-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--primer-w) 0%,transparent 88%);pointer-events:none}
 
 .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .spec-item{background:var(--card);border-radius:10px;padding:11px 13px;border:1px solid var(--border);font-size:13.5px;line-height:1.5}
@@ -269,11 +277,13 @@ a{color:var(--brand);text-decoration:none}
 .search-btn{flex-shrink:0;background:var(--brand);color:#fff;border:none;border-radius:11px;padding:0 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .14s}
 .search-btn:hover{background:var(--brand-2)}
 .search-btn:active{opacity:.85}
-.search-result{margin-top:11px;font-size:13.5px;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
+.search-result{position:relative;overflow:hidden;margin-top:11px;font-size:13.5px;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
 .search-result.show{display:block}
-.search-result.found{background:var(--accent-bg);border:1px solid var(--border-2);border-left:3px solid var(--brand);color:var(--text)}
+.search-result.found{background:var(--accent-bg);border:1px solid var(--border-2);border-top:3px solid transparent;color:var(--text)}
+.search-result.found::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--brand) 0%,transparent 88%);pointer-events:none}
 .search-result.found b{color:var(--brand)}
-.search-result.notfound{background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-left:3px solid var(--danger);color:var(--danger)}
+.search-result.notfound{background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-top:3px solid transparent;color:var(--danger)}
+.search-result.notfound::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--danger) 0%,transparent 88%);pointer-events:none}
 
 .diag-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:22px;box-shadow:var(--shadow)}
 .diag-box-title{font-family:var(--display);font-size:14.5px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px;color:var(--text)}
@@ -296,7 +306,8 @@ a{color:var(--brand);text-decoration:none}
 .diag-item.dg-wp .diag-a{color:var(--sky)}
 .diag-item.dg-road .diag-a{color:var(--road)}
 .doc-list{display:flex;flex-direction:column;gap:7px;margin-top:12px}
-.doc-link{display:flex;align-items:center;gap:9px;background:var(--card2);border:1px solid var(--border-2);border-left:3px solid var(--mat,var(--brand));border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;transition:background .15s,transform .15s}
+.doc-link{position:relative;overflow:hidden;display:flex;align-items:center;gap:9px;background:var(--card2);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;transition:background .15s,transform .15s}
+.doc-link::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--mat,var(--brand)) 0%,transparent 88%);pointer-events:none}
 .doc-link:hover{background:var(--brand-tint);transform:translateX(2px)}
 .doc-link .doc-ico{font-size:15px;flex-shrink:0}
 .doc-link .doc-tag{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--faint);font-weight:700}
@@ -1034,7 +1045,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🧩</span>
     <span>철재·비철재·목재·시트지·유성도막 위</span>
-    <span class="sub">접착 어려운 소지 · 기존 도막 위</span>
+    <span class="sub">접착 어려운 소지 수성페인트 마감</span>
   </div>
   <div class="mat-body">
 
@@ -1089,7 +1100,8 @@ a{color:var(--brand);text-decoration:none}
           </div>
         </div>
         <div class="info-box" style="margin-top:10px;">
-          💡 <b>아이럭스 올코팅</b>은 콘크리트는 물론 철재, 목재, 유성 도막 위에 사용 가능하며 젯소를 바르지 않아도 접착력이 뛰어난 제품입니다.
+          💡 <b>아이럭스 올코팅</b>은 콘크리트는 물론 철재, 목재, 유성 도막 위에 사용 가능하며 젯소를 바르지 않아도 접착력이 뛰어난 제품입니다.<br>
+          목재에 색상 도장용으로 활용하는 자세한 방법은 <a onclick="goTo('wood')" style="font-weight:700; cursor:pointer; text-decoration:underline;">🪑 목재 섹션</a>에서 확인하세요.
         </div>
         <div class="note-small">1회 칠 후 25℃ 기준 3시간 이후 재도장 가능</div>
       </div>
@@ -1270,12 +1282,12 @@ a{color:var(--brand);text-decoration:none}
 
     <div class="step">
       <div class="step-header"><span class="step-num">2</span><span class="step-label">목적별 도료 선택</span><span class="step-badge badge-paint">도료 선택</span></div>
-      <div class="step-content">
+      <div class="step-content" id="woodPurposeStep">
 
         <!-- 스테인 -->
         <div style="margin-bottom:14px;">
           <div style="font-size:13px; font-weight:800; color:var(--oil); margin-bottom:6px;">
-            🌿 결 살리기 · 착색 · 방부 · 방충 · 햇빛에 의한 부식 방지 → 스테인
+            🌿 결 살리기 · 착색 · 방부 · 방충 · 햇빛에 의한 부식 방지 (페인트 칠이 되지 않은 목재 기준) → 스테인
           </div>
           <div class="vcard-list">
 
@@ -1285,7 +1297,7 @@ a{color:var(--brand);text-decoration:none}
                 <span class="vcard-title">아이생각수성스테인</span>
                 <span class="vcard-tag">수성</span>
                 <span class="vcard-tag">실내 · 실외 목재</span>
-                <span class="vcard-tag">18L · 4L · 0.9L · 0.4L</span>
+                <span class="vcard-tag">3.5L · 0.4L</span>
               </div>
               <dl class="vcard-dl">
                 <dt>희석비</dt><dd>희석하지 않음 (원액)</dd>
@@ -1317,6 +1329,7 @@ a{color:var(--brand);text-decoration:none}
                 <span class="vcard-title">월드스테인마스터</span>
                 <span class="vcard-tag">오일(유성) 스테인</span>
                 <span class="vcard-tag">실외 목재 전용</span>
+                <span class="vcard-tag">3.5L · 16L</span>
               </div>
               <dl class="vcard-dl">
                 <dt>희석비</dt><dd>희석하지 않음 (원액)</dd>
@@ -1389,6 +1402,7 @@ a{color:var(--brand);text-decoration:none}
                 <span class="vcard-title">LOV HS락카</span>
                 <span class="vcard-tag">빠른건조</span>
                 <span class="vcard-tag">실내전용 · 환기 필수</span>
+                <span class="vcard-tag">1L · 4L</span>
               </div>
               <dl class="vcard-dl">
                 <dt>희석비</dt><dd>LA신나2000 · 최대 60% (부피비)</dd>
@@ -1462,6 +1476,7 @@ a{color:var(--brand);text-decoration:none}
                 <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">원액 또는 물 5~10%</span></div>
                 <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">2시간 이후</span></div>
                 <div class="rtable-field full"><span class="rf-label">이론도포면적</span><span class="rf-val">약 7㎡/ℓ</span></div>
+                <div class="rtable-field full"><span class="rf-label">포장단위</span><span class="rf-val">0.9L · 3.5L</span></div>
               </div>
             </div>
           </div>
@@ -2712,8 +2727,8 @@ Object.assign(window.PRODUCT_DB, {
   "아이럭스 올코팅": {
     category: "상도 · 친환경 수성",
     desc: "젯소를 바르지 않아도 접착력이 뛰어난 다용도 친환경 수성페인트. 실내·외 겸용.",
-    uses: "콘크리트 · 철재 · 목재 · 유성도막 위",
-    spec: "희석: 물 10% 이내(부피비)\n재도장(25℃): 3시간 이후\n이론도포면적: 유광 8.02 · 반광 7.82 · 무광 7.72㎡/L (60㎛)\n도장횟수 2~3회 · 마감 유광/반광/무광",
+    uses: "철재 · 목재 · 콘크리트 · 시멘트 · 몰탈 · 벽지(무광만)",
+    spec: "희석: 물 10% 이내(부피비)\n재도장(25℃): 3시간 이후\n이론도포면적: 유광 8.02 · 반광 7.82 · 무광 7.72㎡/L (50㎛ 기준)\n도장횟수 2~3회 · 마감 유광/반광/무광",
     packaging: "1L · 4L",
     cautions: [
       "Light duty 전용 — Heavy duty 환경 사용 불가",
