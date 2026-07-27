@@ -199,6 +199,8 @@ a{color:var(--brand);text-decoration:none}
 .pm-vid{margin:0}
 .pm-vid video{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--border);background:#000}
 .pm-vid figcaption{margin-top:5px;font-size:12.5px;color:var(--muted);font-weight:600}
+.pm-yt{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#000}
+.pm-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 /* ── 유성 바니시 제품 카드 (한 줄에 하나씩) ── */
 .vcard-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .vcard{display:block;width:100%;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:11px;padding:12px 14px}
@@ -2922,6 +2924,96 @@ Object.assign(window.PRODUCT_DB, {
       { label: "제품안내서 (PDF)", url: "pdf/1tech3051817.pdf" },
       { label: "시방서 (PDF)", url: "pdf/1pntg3050013.pdf" }
     ]
+  },
+  "방청프라이머": {
+    category: "하도 · 유성 방청 프라이머 (알키드계)",
+    desc: "알키드수지와 고순도 방청안료를 주성분으로 한 알키드계 하도. 상도에 알키드 상도로 도장이 가능하며 내구력·접착력이 우수한 방청 프라이머입니다. (ONE-STOP 방청프라이머 KS)",
+    uses: "철재 및 철구조물의 방청 프라이머 (KSM 6030 1종 알키드 프라이머)",
+    spec: "피도면: 철재 · 조성 1액형\n색상: 갈색 · 회색 · 오렌지색 및 기타색\n부피고형분: 48.56±1% (갈색 기준)\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 12.14㎡/L (건조도막 40㎛ 기준)\n건조시간: 20℃ 지촉 30분·고화 6시간 이내 / 5℃ 지촉 60분·고화 24시간 이내\n재도장간격: 20℃ 기준 12시간 이후\n희석: EN신나3000 30% (도료 무게비)\n저장기간: 12개월 (5~35℃ 실내보관)\n도장시스템: 상도 알키드 도료",
+    cautions: [
+      "본 제품을 타 도료와 혼합하여 사용하지 마세요",
+      "에나멜 구도막은 샌딩 처리 후 도장 (구도막 종류 미파악 시 당사 의뢰)",
+      "1회에 후도막 형성 시 건조가 지연되므로 재도장 간격 준수",
+      "비오는 날·습도 85% 이상·기온 5℃ 이하에는 작업 금지 (균열·부착불량 우려)",
+      "페인트 묻은 헝겊·필터는 자연발화 위험 — 물에 적셔 그늘진 곳 보관"
+    ],
+    filters: "실내공기질관리법 다중이용시설·100~500세대 공동주택 실내 사용 가능 · 수도권대기환경개선 특별법 VOC 규제 만족",
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3070109.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3070109.pdf" }
+    ]
+  },
+  "워시프라이머": {
+    category: "하도 · 비철금속 전처리 (에칭 프라이머)",
+    desc: "폴리비닐부치랄수지 및 에폭시수지를 주성분으로 한 중금속 FREE 타입 1액형 워시프라이머. 일시 방청력을 발휘하여 후속 방청도료·상도와의 접착력을 높여주는 비철금속 전처리용 도료입니다. (ONE-STOP 워시프라이머 회색)",
+    uses: "경금속 · 동판 · 아연판 · 알루미늄 · 주석판 등 비철재 전처리용 (KSM 6030 4종 에칭 프라이머)",
+    spec: "피도면: 비철금속 · 조성 1액형 · 마감 무광\n색상: 회색 · 백색 · 적갈색 및 기타색\n부피고형분: 20.53% (회색 기준)\n추천 건조도막두께: 10㎛ · 도장횟수 1회\n이론도포면적: 20.53㎡/L\n건조시간(25℃): 지촉 30분 · 고화 1시간 이내\n상도도장 가능시간(25℃): 16시간 이후\n희석: 신나395(에폭시신나) 15% 이내\n포장: 4L · 18L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 상도 알키드 도료 및 우레탄 도료",
+    cautions: [
+      "본 제품을 타 도료와 혼합하여 사용하지 마세요",
+      "매끄러운 금속면은 접착력이 불량할 수 있어 시범 도장이나 샌딩 후 사용",
+      "표면처리가 제대로 안 되면 접착력이 저하되므로 유의",
+      "비오는 날·습도 85% 이상·기온 5℃ 이하에는 작업 금지"
+    ],
+    filters: "실내공기질관리법 다중이용시설·100~500세대 공동주택 실내 사용 가능 · 수도권대기환경개선 특별법 VOC 규제 만족",
+    youtube: [
+      { id: "3EMbjUnZRpM", caption: "워시프라이머 시공 참고영상" }
+    ],
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3070103.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3070103.pdf" }
+    ]
+  },
+  "스피폭시FD 프라이머": {
+    category: "하도 · 2액형 에폭시 프라이머 (범용)",
+    desc: "속건성으로 부착력이 우수하고 재도장 시간이 빠르며 부착성·내수성·내방청성·내마모성·내약품성이 우수한 2액형 에폭시 폴리아마이드계 하도용 도료입니다.",
+    uses: "철재 · 아연도금소재 · FRP · 알루미늄 · 콘크리트 · 타일소재 하도용",
+    spec: "피도면: 철재 · 비철금속 · FRP · 조성 2액형 · 마감 반광/무광\n색상: 백색 · 회색 · 적청색\n주제:경화제 혼합비 1 : 1 (부피비)\n부피고형분: 32.45% (백색 기준)\n추천 건조도막두께: 50㎛ · 도장횟수 1~2회\n이론도포면적: 6.56㎡/L (50㎛ 기준)\n가사시간(25℃): 6시간\n건조시간(25℃): 지촉 10분 · 경화 4시간\n재도장간격(25℃): 6시간 이상 ~ 3일 이내\n희석: 신나395 10% (부피비)\n저장기간: 12개월 (5~38℃ 실내보관)\n도장시스템: 상도 불소 · 우레탄 · 에폭시계",
+    cautions: [
+      "타 도료와의 혼합 사용 금지 · 지정된 신나(신나395)만 사용",
+      "혼합비대로 교반 후 10~20분 숙성시켜 가사시간 이내 사용",
+      "표면온도는 이슬점보다 최소 3℃ 이상이어야 함",
+      "재도장은 6시간~3일 이내 엄수 (3일 초과 시 재샌딩 필요)",
+      "옥외·넓은 범위(2m×2m 이상) 도장 시 광얼룩 발생 주의"
+    ],
+    youtube: [
+      { id: "DGdEFJZe_Bs", caption: "스피폭시 FD 프라이머 시공 참고영상" }
+    ],
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3621020.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3621020.pdf" }
+    ]
+  },
+  "에나멜속건프라이머(N) 갈색NT": {
+    category: "하도 · 유성 방청 프라이머 (속건 알키드)",
+    desc: "알키드수지와 고순도 안료를 주성분으로 한 자연 건조형으로 건조시간이 빠르고 부착력·접착성·내충격성·작업성이 좋은 철재 하도용 방청 프라이머입니다.",
+    uses: "각종 외부 철재 시설 및 기구의 방청용 프라이머",
+    spec: "피도면: 철재 · 조성 1액형 · 마감 무광\n색상: 갈색 · 오렌지 · 회색\n부피고형분: 48~50%\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 12.0~12.5㎡/L\n건조시간(25℃): 고화 3시간 이내 (도막 40㎛시)\n재도장간격(25℃): 6시간 이후\n희석: EN신나3000 10% (도료 부피비)\n포장: 4L · 16L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 에나멜속건프라이머(N) 갈색NT / 상도 알키드 도료",
+    cautions: [
+      "본 제품을 타 도료와 혼합하여 사용하지 마세요",
+      "1회에 후도막 형성 시 건조가 지연되므로 재도장 간격 준수",
+      "비오는 날·습도 85% 이상·기온 5℃ 이하에는 작업 금지"
+    ],
+    filters: "대기환경보전법 VOC 규제 만족",
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3790954.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3790954.pdf" }
+    ]
+  },
+  "에나멜속건프라이머(N) 회색NT": {
+    category: "하도 · 유성 방청 프라이머 (속건 알키드)",
+    desc: "알키드수지와 고순도 안료를 주성분으로 한 자연 건조형으로 건조시간이 빠르고 부착력·접착성·내충격성·작업성이 좋은 철재 하도용 방청 프라이머입니다.",
+    uses: "각종 외부 철재 시설 및 기구의 방청용 프라이머",
+    spec: "피도면: 철재 · 조성 1액형 · 마감 무광\n색상: 회색\n부피고형분: 46%\n추천 건조도막두께: 40㎛ · 도장횟수 1~2회\n이론도포면적: 11.5㎡/L\n건조시간(25℃): 고화 3시간 이내 (도막 40㎛시)\n재도장간격(25℃): 6시간 이후\n희석: EN신나3000 10% (도료 부피비)\n포장: 4L · 16L · 저장기간 12개월 (5~35℃ 실내보관)\n도장시스템: 하도 에나멜속건프라이머(N) 회색NT / 상도 알키드 도료",
+    cautions: [
+      "본 제품을 타 도료와 혼합하여 사용하지 마세요",
+      "1회에 후도막 형성 시 건조가 지연되므로 재도장 간격 준수",
+      "비오는 날·습도 85% 이상·기온 5℃ 이하에는 작업 금지"
+    ],
+    filters: "대기환경보전법 VOC 규제 만족",
+    pdfs: [
+      { label: "제품안내서 (PDF)", url: "pdf/1tech3790974.pdf" },
+      { label: "시방서 (PDF)", url: "pdf/1pntg3790974.pdf" }
+    ]
   }
 });
 
@@ -2930,6 +3022,15 @@ Object.assign(window.PRODUCT_DB, {
   var db = window.PRODUCT_DB, base = db["아이럭스 결로스탑규조토"];
   if (base) ["결로스탑규조토 백색", "아이럭스결로스탑 규조토 백색", "아이럭스결로스탑 규조토"].forEach(function(n){
     if (!db[n]) db[n] = base;
+  });
+})();
+
+/* 괄호 제거 표기(클릭 시 자동 정제된 이름)도 같은 데이터로 연결 */
+(function(){
+  var db = window.PRODUCT_DB;
+  [["에나멜속건프라이머(N) 갈색NT","에나멜속건프라이머 갈색NT"],
+   ["에나멜속건프라이머(N) 회색NT","에나멜속건프라이머 회색NT"]].forEach(function(p){
+    if (db[p[0]] && !db[p[1]]) db[p[1]] = db[p[0]];
   });
 })();
 
@@ -2998,6 +3099,19 @@ function openProduct(name){
         if (!src) return;
         html += '<figure class="pm-vid">' +
                 '<video src="' + src + '" autoplay muted loop playsinline preload="metadata"></video>' +
+                (cap ? '<figcaption>' + cap + '</figcaption>' : '') +
+                '</figure>';
+      });
+      html += '</div></div>';
+    }
+    if (Array.isArray(p.youtube) && p.youtube.length){
+      html += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
+      p.youtube.forEach(function(v){
+        var id = (typeof v === 'string') ? v : (v.id || '');
+        var cap = (typeof v === 'object' && v.caption) ? v.caption : '';
+        if (!id) return;
+        html += '<figure class="pm-vid">' +
+                '<div class="pm-yt"><iframe src="https://www.youtube.com/embed/' + id + '" title="시공 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>' +
                 (cap ? '<figcaption>' + cap + '</figcaption>' : '') +
                 '</figure>';
       });
