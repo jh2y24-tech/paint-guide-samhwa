@@ -100,8 +100,12 @@ function renderEstimate(p) {
   if (e.topcoat_kg_per_m2 != null) r.push(_row('상도 이론 소요량', e.topcoat_kg_per_m2 + ' kg/㎡'));
   if (e.thinner_l_per_m2 != null) r.push(_row('희석제 소요량', e.thinner_l_per_m2 + ' L/㎡'));
   if (e.basis) r.push(_row('산출 기준', e.basis, true));
+  const canCalc = p.spec && (p.spec.coverage_m2_per_l != null || p.spec.coverage_kg_per_m2 != null);
+  const pill = (canCalc && typeof window.openCalcByName === 'function')
+    ? `<button type="button" class="calc-pill" onclick="openCalcByName('${_esc(p.name).replace(/'/g, "\\'")}')">🧮 이 값으로 계산하기</button>`
+    : '';
   return `<div class="spec-grid">${r.join('')}</div>` +
-    (e.note ? `<div class="info-box">💡 ${_esc(e.note)}</div>` : '');
+    (e.note ? `<div class="info-box">💡 ${_esc(e.note)}</div>` : '') + pill;
 }
 
 /* ── 주의사항 ── */

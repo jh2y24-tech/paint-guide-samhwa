@@ -31,6 +31,7 @@
   --twp:#8A5A10;--twp-bg:rgba(138,90,16,.07);
   --road:#B4530A;--road-bg:rgba(180,83,10,.07);
   --amber:#C9701A;
+  --orange:#E2571E;--orange-dark:#B8420F;
   --shadow:0 1px 2px rgba(10,40,44,.045),0 3px 10px rgba(10,40,44,.045);
   --shadow-lg:0 10px 26px rgba(0,45,50,.13);
   --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -119,6 +120,49 @@ a{color:var(--brand);text-decoration:none}
 .hi-roof{color:var(--roof);font-weight:700}
 
 .product-list{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
+/* ══════════ 소요량 계산기 ══════════ */
+.calc-wrap{margin:14px 0 4px;border:1px solid var(--border-2);border-radius:12px;background:var(--card2);overflow:hidden}
+.calc-toggle{width:100%;display:flex;align-items:center;gap:9px;padding:12px 14px;background:var(--orange);border:none;border-bottom:1px solid var(--orange-dark);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;text-align:left;line-height:1.4}
+.calc-toggle:hover{background:var(--orange-dark)}
+.calc-toggle .calc-chev{margin-left:auto;font-size:11px;transition:transform .18s ease;flex:none}
+.calc-wrap.open .calc-toggle .calc-chev{transform:rotate(180deg)}
+.calc-panel{display:none;padding:14px}
+.calc-wrap.open .calc-panel{display:block}
+.calc-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;flex-wrap:wrap}
+.calc-row label{flex:none;width:88px;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.01em}
+.calc-row input[type=number]{flex:1;min-width:100px;padding:9px 11px;border:1px solid var(--border);border-radius:8px;background:var(--card);font-family:var(--mono);font-size:15px;font-weight:600;color:var(--text)}
+.calc-row input[type=number]:focus{outline:2px solid var(--orange);outline-offset:-1px}
+.calc-row input[type=range]{flex:1;min-width:110px;accent-color:var(--orange)}
+.calc-unit{flex:none;font-size:12.5px;font-weight:600;color:var(--muted);font-family:var(--mono)}
+.calc-out{margin-top:13px;border-top:1px dashed var(--border);padding-top:13px}
+.calc-hero{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;margin-bottom:10px}
+.calc-hero .ch-lab{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.03em;margin-bottom:5px}
+.calc-hero .ch-val{font-family:var(--mono);font-size:25px;font-weight:700;color:var(--orange-dark);line-height:1.15}
+.calc-hero .ch-sub{font-size:11.5px;color:var(--faint);margin-top:6px;font-family:var(--mono);line-height:1.5}
+.calc-list{display:grid;gap:7px}
+.calc-item{display:flex;align-items:baseline;gap:9px;background:var(--card);border:1px solid var(--border-2);border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.5}
+.calc-item b{flex:none;font-size:11.5px;font-weight:700;color:var(--muted);width:74px}
+.calc-item span{flex:1;font-family:var(--mono);font-weight:600;color:var(--text)}
+.calc-note{margin-top:10px;background:rgba(0,71,79,.05);border:1px solid rgba(0,71,79,.16);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--brand);line-height:1.6}
+.calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
+.calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
+.calc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 15px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.4}
+.calc-pill:hover{background:var(--orange-dark)}
+.calc-sel{width:100%;padding:10px 11px;border:1px solid var(--border);border-radius:8px;background:var(--card);font-family:inherit;font-size:14px;font-weight:600;color:var(--text)}
+#calcFab{position:fixed;right:16px;bottom:16px;z-index:900;width:auto;padding:13px 18px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:7px;line-height:1}
+#calcFab:hover{background:var(--orange-dark)}
+#calcModal{position:fixed;inset:0;z-index:1000;display:none}
+#calcModal.open{display:block}
+#calcModal .cm-backdrop{position:absolute;inset:0;background:rgba(17,24,28,.55)}
+#calcModal .cm-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100% - 28px));max-height:calc(100dvh - 56px);overflow:auto;background:var(--card);border-radius:16px;box-shadow:var(--shadow-lg)}
+#calcModal .cm-head{position:sticky;top:0;background:var(--card);padding:17px 19px 12px;border-bottom:1px solid var(--border-2);display:flex;align-items:center;gap:10px;z-index:2}
+#calcModal .cm-title{flex:1;font-size:17px;font-weight:800;color:var(--text)}
+#calcModal .cm-close{flex:none;width:32px;height:32px;border-radius:8px;border:1px solid var(--border-2);background:var(--card);font-size:18px;cursor:pointer;color:var(--muted);line-height:1}
+#calcModal .cm-body{padding:15px 19px 22px}
+@media (max-width:520px){
+  .calc-row label{width:100%}
+  #calcFab{padding:12px 15px;font-size:12.5px}
+}
 .product-chip{display:inline-block;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:4px;border:1px solid}
 .chip-water{background:var(--water-bg);color:var(--water);border-color:rgba(21,95,182,.28)}
 .chip-oil{background:var(--oil-bg);color:var(--oil);border-color:rgba(149,88,15,.28)}
@@ -2610,6 +2654,20 @@ function searchSymptom() {
 }
 </script>
 <!-- ══ 제품 상세 팝업(모달) ══ -->
+<!-- ══ 소요량 계산기 (독립) ══ -->
+<button id="calcFab" type="button" onclick="openCalcStandalone()" aria-label="소요량 계산기 열기">🧮 소요량 계산</button>
+
+<div id="calcModal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
+  <div class="cm-backdrop" onclick="closeCalc()"></div>
+  <div class="cm-card" role="document">
+    <div class="cm-head">
+      <div id="calcTitle" class="cm-title">소요량 계산기</div>
+      <button class="cm-close" onclick="closeCalc()" aria-label="닫기">×</button>
+    </div>
+    <div id="calcBody" class="cm-body"></div>
+  </div>
+</div>
+
 <div id="prodModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
   <div class="pm-backdrop" onclick="closeProduct()"></div>
   <div class="pm-card" role="document">
@@ -3220,6 +3278,8 @@ function openProduct(name){
     html += renderField('설명', p.desc);
     html += renderField('용도', p.uses);
     html += renderField('규격 · 시공', p.spec);
+    var _cuid = 'pmcalc';
+    html += calcBlockFor(name, _cuid);
     html += renderField('포장', p.packaging);
     html += renderField('호환 · 관련', p.filters);
     if (p.cautions){
@@ -3272,6 +3332,7 @@ function openProduct(name){
   m.classList.add('open');
   document.body.style.overflow = 'hidden';
   m.querySelector('.pm-card').scrollTop = 0;
+  if (document.getElementById('pmcalc-panel')) calcFill(name, 'pmcalc');
 }
 
 function closeProduct(){
@@ -3308,6 +3369,7 @@ function closePdf(){
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape'){
     if (document.getElementById('pdfViewer').classList.contains('open')) closePdf();
+    else if (document.getElementById('calcModal').classList.contains('open')) closeCalc();
     else closeProduct();
   }
 });
@@ -3352,6 +3414,304 @@ document.addEventListener('keydown', function(e){
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enhanceProductLinks);
 else enhanceProductLinks();
+</script>
+
+<script>
+/* ══════════ 소요량 계산기 ══════════
+   products.json 의 수치를 읽어 도장면적 → 필요 도료량·통 수를 산출한다.
+   진입점 3개: 제품 모달 / 일위대가 필 / 우하단 플로팅 버튼
+   ────────────────────────────────── */
+
+var CALC_STATE = {};
+
+/* products.json 카탈로그 확보 (products.js 가 이미 받아뒀으면 재사용) */
+function calcEnsureCatalog(){
+  if (window.PRODUCTS_CATALOG) return Promise.resolve(window.PRODUCTS_CATALOG);
+  if (window.__calcCatalogPromise) return window.__calcCatalogPromise;
+  window.__calcCatalogPromise = fetch('products.json?v=2', { cache:'no-cache' })
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(db){ window.PRODUCTS_CATALOG = db; return db; });
+  return window.__calcCatalogPromise;
+}
+
+var _cnorm = function(s){ return String(s||'').replace(/[\s·()]/g,'').toLowerCase(); };
+
+/* 이름·별칭으로 products.json 항목 찾기 */
+function calcFindProduct(db, name){
+  if (!db || !db.products) return null;
+  var key = _cnorm(name);
+  if (!key) return null;
+  for (var i=0;i<db.products.length;i++){
+    var p = db.products[i];
+    if (_cnorm(p.name) === key) return p;
+    var al = p.aliases || [];
+    for (var j=0;j<al.length;j++) if (_cnorm(al[j]) === key) return p;
+  }
+  for (var k=0;k<db.products.length;k++){
+    var q = db.products[k], qk = _cnorm(q.name);
+    if (qk && (qk.indexOf(key) >= 0 || key.indexOf(qk) >= 0)) return q;
+  }
+  return null;
+}
+
+/* "18L (28kg)" → {v:18,u:'L'} / "20kg" → {v:20,u:'kg'} */
+function calcParsePack(s){
+  var m = String(s||'').match(/([\d.]+)\s*(kg|L|ℓ)/i);
+  if (!m) return null;
+  var u = m[2].toLowerCase() === 'kg' ? 'kg' : 'L';
+  return { v: parseFloat(m[1]), u: u, label: String(s) };
+}
+
+/* 필요량을 덮는 포장 조합 — 최소 통 수 / 최소 낭비 두 가지 */
+function calcPacks(need, packs){
+  if (!packs.length || !(need > 0)) return null;
+  var sizes = packs.slice().sort(function(a,b){ return b.v - a.v; }).slice(0,3);
+  var best = null, least = null, combos = [];
+  var lim = sizes.map(function(s){ return Math.ceil(need / s.v) + 1; });
+  var c0 = lim[0], c1 = sizes[1] ? lim[1] : 0, c2 = sizes[2] ? lim[2] : 0;
+  for (var a=0;a<=c0;a++) for (var b=0;b<=c1;b++) for (var c=0;c<=c2;c++){
+    var tot = a*sizes[0].v + (sizes[1]?b*sizes[1].v:0) + (sizes[2]?c*sizes[2].v:0);
+    if (tot < need - 1e-9) continue;
+    var cans = a+b+c;
+    if (cans === 0) continue;
+    combos.push({ cans:cans, total:tot, waste:tot-need, parts:[a,b,c] });
+  }
+  if (!combos.length) return null;
+  combos.forEach(function(x){
+    if (!best || x.cans < best.cans || (x.cans === best.cans && x.waste < best.waste)) best = x;
+    if (!least || x.waste < least.waste || (x.waste === least.waste && x.cans < least.cans)) least = x;
+  });
+  var fmt = function(x){
+    var out = [];
+    for (var i=0;i<sizes.length;i++) if (x.parts[i]) out.push(sizes[i].label + ' × ' + x.parts[i]);
+    return out.join(' + ');
+  };
+  return {
+    min:  { text: fmt(best),  cans: best.cans,  total: best.total,  waste: best.waste },
+    lean: { text: fmt(least), cans: least.cans, total: least.total, waste: least.waste },
+    same: fmt(best) === fmt(least)
+  };
+}
+
+/* spec.coats "1~2" → {min:1,max:2} */
+function calcCoats(v){
+  if (v == null) return { min:1, max:1 };
+  var m = String(v).match(/(\d+)\s*~\s*(\d+)/);
+  if (m) return { min:+m[1], max:+m[2] };
+  var n = parseInt(v,10);
+  return isNaN(n) ? { min:1, max:1 } : { min:n, max:n };
+}
+
+var _r = function(n, d){ var f = Math.pow(10, d==null?2:d); return Math.round(n*f)/f; };
+
+/* 핵심 계산 */
+function calcCompute(p, area, coats, loss){
+  var s = p.spec || {}, e = p.estimate || {};
+  var unit = null, perCoat = null;
+  if (s.coverage_m2_per_l != null && s.coverage_m2_per_l > 0){
+    unit = 'L'; perCoat = 1 / s.coverage_m2_per_l;
+  } else if (s.coverage_kg_per_m2 != null && s.coverage_kg_per_m2 > 0){
+    unit = 'kg'; perCoat = s.coverage_kg_per_m2;
+  } else return null;
+
+  var basePerM2 = perCoat * coats;
+  var need = area * basePerM2 * (1 + loss/100);
+
+  var packs = (s.pack_sizes || []).map(calcParsePack).filter(function(x){ return x && x.u === unit; });
+  var pk = calcPacks(need, packs);
+
+  var thinner = null;
+  if (s.thinner && s.thinner !== '무희석' && s.thinning_pct_max > 0){
+    thinner = {
+      amount: need * s.thinning_pct_max / 100,
+      pct: s.thinning_pct_max,
+      name: s.thinner,
+      basis: s.thinning_basis || '도료 대비'
+    };
+  }
+
+  var mix = null;
+  if (s.mixing_ratio_weight){
+    var mm = String(s.mixing_ratio_weight).match(/([\d.]+)\s*:\s*([\d.]+)/);
+    if (mm){
+      var a1 = parseFloat(mm[1]), b1 = parseFloat(mm[2]), sum = a1 + b1;
+      mix = { main: need * a1 / sum, hard: need * b1 / sum, ratio: s.mixing_ratio_weight };
+    }
+  }
+
+  /* 일위대가 대조값은 이 제품의 역할·단위와 일치하는 항목만 쓴다.
+     (중도 제품에 상도 소요량을 대조하면 엉뚱한 숫자가 나온다) */
+  var cross = null;
+  var pref = (p.role === 'midcoat') ? ['midcoat','topcoat'] : ['topcoat','midcoat'];
+  var estPer = null;
+  for (var pi=0; pi<pref.length && estPer==null; pi++){
+    var kk = pref[pi] + (unit === 'kg' ? '_kg_per_m2' : '_l_per_m2');
+    if (e[kk] != null) estPer = e[kk];
+  }
+  if (estPer != null){
+    var estNeed = area * estPer * (1 + loss/100);
+    var diff = basePerM2 > 0 ? Math.abs(estNeed - need) / need : 0;
+    cross = { perM2: estPer, need: estNeed, diff: diff, basis: e.basis || '' };
+  }
+
+  return {
+    unit: unit, need: need, perM2: basePerM2, coats: coats, loss: loss,
+    dft: s.dft_um, packs: pk, thinner: thinner, mix: mix, cross: cross,
+    primer: (e.primer_l_per_m2 != null) ? { perM2: e.primer_l_per_m2, need: area * e.primer_l_per_m2 * (1+loss/100), name: (p.system && p.system.primer) || '하도' } : null
+  };
+}
+
+/* ── UI ── */
+function calcRenderShell(uid, p){
+  var s = p.spec || {}, ct = calcCoats(s.coats);
+  var cov = (s.coverage_m2_per_l != null)
+        ? s.coverage_m2_per_l + '㎡/L'
+        : (s.coverage_kg_per_m2 != null ? s.coverage_kg_per_m2 + 'kg/㎡' : '-');
+  return '' +
+  '<div class="calc-row"><label for="'+uid+'-area">도장면적</label>' +
+    '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">㎡</span></div>' +
+  '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
+    '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+ct.min+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||1)+'회</span></div>' +
+  '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
+    '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="15" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">15%</span></div>' +
+  '<div class="calc-out" id="'+uid+'-out"></div>' +
+  '<div class="calc-note">기준값 — 이론도포면적 '+cov+ (s.dft_um ? ' (건조도막두께 '+s.dft_um+'㎛ 기준)' : '') +'</div>';
+}
+
+function calcUpdate(uid){
+  var st = CALC_STATE[uid];
+  if (!st) return;
+  var p = st.product;
+  var area  = parseFloat((document.getElementById(uid+'-area')||{}).value) || 0;
+  var coats = parseInt((document.getElementById(uid+'-coats')||{}).value, 10) || 1;
+  var loss  = parseFloat((document.getElementById(uid+'-loss')||{}).value) || 0;
+  var lv = document.getElementById(uid+'-lossv'); if (lv) lv.textContent = loss + '%';
+  var out = document.getElementById(uid+'-out'); if (!out) return;
+
+  if (!(area > 0)){ out.innerHTML = '<div class="calc-na">도장면적을 입력하세요.</div>'; return; }
+  var r = calcCompute(p, area, coats, loss);
+  if (!r){ out.innerHTML = '<div class="calc-na">이 제품은 이론도포면적이 등록되어 있지 않습니다.</div>'; return; }
+
+  var u = r.unit;
+  var h = '<div class="calc-hero"><div class="ch-lab">필요 도료량</div>' +
+          '<div class="ch-val">' + _r(r.need, 2) + ' ' + u + '</div>' +
+          '<div class="ch-sub">' + area + '㎡ × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '% · ' + coats + '회 도장</div></div>';
+
+  h += '<div class="calc-list">';
+  if (r.packs){
+    h += '<div class="calc-item"><b>최소 통 수</b><span>' + r.packs.min.text + ' = ' + _r(r.packs.min.total,2) + u + ' (여유 ' + _r(r.packs.min.waste,2) + u + ')</span></div>';
+    if (!r.packs.same)
+      h += '<div class="calc-item"><b>최소 낭비</b><span>' + r.packs.lean.text + ' = ' + _r(r.packs.lean.total,2) + u + ' (여유 ' + _r(r.packs.lean.waste,2) + u + ')</span></div>';
+  }
+  if (r.mix){
+    h += '<div class="calc-item"><b>주제</b><span>' + _r(r.mix.main,2) + ' ' + u + '</span></div>' +
+         '<div class="calc-item"><b>경화제</b><span>' + _r(r.mix.hard,2) + ' ' + u + ' · 배합비 ' + r.mix.ratio + '</span></div>';
+  }
+  if (r.thinner){
+    h += '<div class="calc-item"><b>희석제</b><span>' + _r(r.thinner.amount,2) + ' ' + u + ' 이내 · ' + r.thinner.name + ' (' + r.thinner.pct + '% ' + r.thinner.basis + ')</span></div>';
+  }
+  if (r.primer){
+    h += '<div class="calc-item"><b>하도 참고</b><span>' + _r(r.primer.need,2) + ' L · ' + r.primer.name + ' (' + r.primer.perM2 + ' L/㎡)</span></div>';
+  }
+  h += '</div>';
+
+  if (r.cross){
+    var cd = Math.round(r.cross.diff * 100);
+    if (r.cross.diff > 0.2){
+      h += '<div class="calc-warn">⚠ 도장사양서 일위대가로는 ' + _r(r.cross.need,2) + ' ' + u +
+           ' (' + r.cross.perM2 + ' ' + u + '/㎡) 로 위 값과 약 ' + cd + '% 차이가 납니다.' +
+           (r.cross.basis ? '<br>일위대가 산출 기준 — ' + r.cross.basis : '') +
+           '<br>기술자료의 이론도포면적은 표기 도막두께 1회분 기준이고, 도장사양서는 문서마다 1회분/합계 기준이 달라 생기는 차이입니다. <b>발주 전 도장 횟수를 확인하세요.</b></div>';
+    } else {
+      h += '<div class="calc-note">도장사양서 일위대가 기준 ' + _r(r.cross.need,2) + ' ' + u + ' — 위 값과 일치합니다.</div>';
+    }
+  }
+  h += '<div class="calc-note">이론값입니다. 소지 흡수·표면 거칠기·도장기구에 따라 실제 소요량은 달라집니다. 부가세·시공비 별도.</div>';
+  out.innerHTML = h;
+}
+
+function calcToggle(btn){
+  var w = btn.closest('.calc-wrap');
+  if (!w) return;
+  var open = w.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (open){
+    var uid = w.getAttribute('data-uid');
+    if (uid && CALC_STATE[uid]) calcUpdate(uid);
+  }
+}
+
+/* 제품 모달 안에 넣을 계산기 블록 (비동기로 채움) */
+function calcBlockFor(name, uid){
+  return '<div class="calc-wrap" id="' + uid + '-wrap" data-uid="' + uid + '">' +
+    '<button type="button" class="calc-toggle" aria-expanded="false" onclick="calcToggle(this)">' +
+      '🧮 소요량 계산 <span class="calc-chev">▼</span></button>' +
+    '<div class="calc-panel" id="' + uid + '-panel">' +
+      '<div class="calc-na">불러오는 중…</div>' +
+    '</div></div>';
+}
+
+function calcFill(name, uid){
+  calcEnsureCatalog().then(function(db){
+    var panel = document.getElementById(uid + '-panel');
+    if (!panel) return;
+    var p = calcFindProduct(db, name);
+    if (!p || !p.spec || (p.spec.coverage_m2_per_l == null && p.spec.coverage_kg_per_m2 == null)){
+      panel.innerHTML = '<div class="calc-na">이 제품은 이론도포면적이 아직 등록되지 않아<br>소요량을 계산할 수 없습니다.<br><span style="font-size:12px;">기술자료(TDS)가 확보되면 계산기가 활성화됩니다.</span></div>';
+      return;
+    }
+    CALC_STATE[uid] = { product: p };
+    panel.innerHTML = calcRenderShell(uid, p);
+    calcUpdate(uid);
+  }).catch(function(){
+    var panel = document.getElementById(uid + '-panel');
+    if (panel) panel.innerHTML = '<div class="calc-na">제품 데이터를 불러오지 못했습니다.<br>GitHub Pages 주소로 접속했는지 확인하세요.</div>';
+  });
+}
+
+/* ── 플로팅 버튼 · 독립 계산기 ── */
+function openCalcStandalone(preName){
+  var m = document.getElementById('calcModal');
+  var body = document.getElementById('calcBody');
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  body.innerHTML = '<div class="calc-na">불러오는 중…</div>';
+  calcEnsureCatalog().then(function(db){
+    var list = db.products.filter(function(p){
+      return p.spec && (p.spec.coverage_m2_per_l != null || p.spec.coverage_kg_per_m2 != null);
+    }).sort(function(a,b){ return a.name.localeCompare(b.name,'ko'); });
+    if (!list.length){ body.innerHTML = '<div class="calc-na">계산 가능한 제품이 없습니다.</div>'; return; }
+    var pre = preName ? calcFindProduct(db, preName) : null;
+    var sel = '<div class="calc-row" style="margin-bottom:13px;"><select class="calc-sel" id="calcSel" onchange="calcPick()">' +
+      list.map(function(p){
+        return '<option value="'+p.id+'"'+(pre && pre.id===p.id?' selected':'')+'>'+p.name+'</option>';
+      }).join('') + '</select></div><div id="calcSolo"></div>';
+    body.innerHTML = sel;
+    window.__calcList = list;
+    calcPick();
+  }).catch(function(){
+    body.innerHTML = '<div class="calc-na">제품 데이터를 불러오지 못했습니다.<br>GitHub Pages 주소로 접속했는지 확인하세요.</div>';
+  });
+}
+
+function calcPick(){
+  var id = (document.getElementById('calcSel')||{}).value;
+  var p = (window.__calcList||[]).filter(function(x){ return x.id === id; })[0];
+  var host = document.getElementById('calcSolo');
+  if (!p || !host) return;
+  CALC_STATE['solo'] = { product: p };
+  host.innerHTML = calcRenderShell('solo', p);
+  calcUpdate('solo');
+}
+
+function closeCalc(){
+  document.getElementById('calcModal').classList.remove('open');
+  if (!document.getElementById('prodModal').classList.contains('open')) document.body.style.overflow = '';
+}
+
+/* 일위대가 필 → 해당 제품 계산기 열기 */
+function openCalcByName(name){ openCalcStandalone(name); }
+
 </script>
 
 <script src="products.js?v=2"></script>
