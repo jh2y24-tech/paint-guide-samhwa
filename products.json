@@ -1221,7 +1221,11 @@
         "wp",
         "roof"
       ],
-      "role": "primer"
+      "role": "primer",
+      "docs": {
+        "tech": "1tech3092664.pdf",
+        "spec_sheet": null
+      }
     },
     {
       "id": "waterproof-ace-topcoat",
@@ -1232,7 +1236,11 @@
         "wp",
         "roof"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "docs": {
+        "tech": "1tech3091953.pdf",
+        "spec_sheet": null
+      }
     },
     {
       "id": "epocoat-primer",
@@ -1242,7 +1250,11 @@
       "categories": [
         "floor"
       ],
-      "role": "primer"
+      "role": "primer",
+      "docs": {
+        "tech": "1tech3100756.pdf",
+        "spec_sheet": "1pntg3100756.pdf"
+      }
     },
     {
       "id": "epocoat-topcoat",
@@ -1252,7 +1264,11 @@
       "categories": [
         "floor"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "docs": {
+        "tech": "1tech3100743.pdf",
+        "spec_sheet": null
+      }
     },
     {
       "id": "epocoat-aqua-primer",
@@ -1262,7 +1278,11 @@
       "categories": [
         "floor"
       ],
-      "role": "primer"
+      "role": "primer",
+      "docs": {
+        "tech": null,
+        "spec_sheet": "1pntg3100823.pdf"
+      }
     },
     {
       "id": "epocoat-aqua-topcoat",
@@ -1272,7 +1292,11 @@
       "categories": [
         "floor"
       ],
-      "role": "topcoat"
+      "role": "topcoat",
+      "docs": {
+        "tech": null,
+        "spec_sheet": "1pntg3100824.pdf"
+      }
     },
     {
       "id": "a-floor-clear",
