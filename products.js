@@ -15,6 +15,9 @@
 
 window.PRODUCTS_CATALOG = null;
 
+/* docs 파일이 들어있는 폴더. index.html 의 openPdf('pdf/…') 와 동일하게 맞춘다. */
+const PDF_BASE = 'pdf/';
+
 const _esc = (v) =>
   String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -118,7 +121,7 @@ function renderDocs(p) {
   if (!d) return '';
   const link = (href, ico, label) =>
     href
-      ? `<a class="doc-link" href="${_esc(href)}" target="_blank"><span class="doc-ico">${ico}</span><span>${_esc(p.name)} · ${label}</span><span class="doc-tag">PDF</span></a>`
+      ? `<a class="doc-link" href="${_esc(PDF_BASE + href)}" target="_blank"><span class="doc-ico">${ico}</span><span>${_esc(p.name)} · ${label}</span><span class="doc-tag">PDF</span></a>`
       : '';
   let html = `<div class="doc-list">${link(d.tech, '📄', '기술자료')}${link(d.spec_sheet, '📋', '도장사양서')}</div>`;
 
