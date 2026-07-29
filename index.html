@@ -2199,7 +2199,8 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>구도막 재도장</strong><span class="val">우레탄1000신나 1:1 희석 후 최대한 얇게 도장</span></div>
           <div class="spec-item"><strong>도장 횟수</strong><span class="val">1~2회</span></div>
           <div class="spec-item"><strong>재도장 간격 (20℃)</strong><span class="val">8~48시간</span></div>
-          <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 6~7㎡/ℓ (소지 흡수량에 따라 상이)</span></div>
+          <div class="spec-item"><strong>포장단위</strong><span class="val">14L · 4L</span></div>
+          <div class="spec-item full"><strong>이론도포면적</strong><span class="val"><b>7.2㎡/L</b> (건조도막두께 50㎛시) = 0.139 L/㎡ · 소지 흡수량에 따라 상이</span></div>
         </div>
         <div class="warn-box">
           ⚠️ 하도는 소지가 완전히 흡수하도록 롤러로 얇게 충분히 도포.<br>
@@ -2283,7 +2284,9 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>가사시간 (20℃)</strong><span class="val">3시간</span></div>
           <div class="spec-item"><strong>희석</strong><span class="val">우레탄1000신나 5% 미만</span></div>
           <div class="spec-item"><strong>재도장 간격 (20℃)</strong><span class="val">1일 ~ 2일</span></div>
-          <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 11㎡/ℓ (1회 기준)</span></div>
+          <div class="spec-item"><strong>포장단위</strong><span class="val">12.6L · 4L</span></div>
+          <div class="spec-item"><strong>도장 횟수</strong><span class="val">1~2회</span></div>
+          <div class="spec-item full"><strong>이론도포면적</strong><span class="val"><b>11.3㎡/L</b> (건조도막두께 45㎛시) = 0.088 L/㎡ · 1회 기준</span></div>
         </div>
         <div class="warn-box">
           ⚠️ 상도 희석 최소화 (5% 미만) — 과희석 시 보호 성능 저하.
@@ -2779,21 +2782,30 @@ Object.assign(window.PRODUCT_DB, {
   "방수에이스 하도": {
     category: "하도 · 우레탄 침투형 (방수에이스 시스템)",
     desc: "콘크리트 소지와 중도 우레탄의 접착력을 높이는 침투형 우레탄 하도.",
-    spec: "신규 도장: 원액 사용 · 구도막 재도장: 우레탄1000신나 1:1 희석 후 최대한 얇게 도장\n도장 횟수 1~2회 · 재도장 간격(20℃) 8~48시간\n이론도포면적 약 6~7㎡/ℓ (소지 흡수량에 따라 상이)",
+    uses: "방수에이스 시스템 및 비노출 방수에이스 2류(KSF3211) 시스템의 하도",
+    spec: "추천 건조도막두께 50㎛ · 도장 횟수 1~2회 · 재도장 간격(20℃) 8~48시간\n이론도포면적 7.2㎡/L (건조도막두께 50㎛시) = 0.139 L/㎡\n신규 도장: 원액 사용 · 구도막 재도장: 우레탄1000신나 1:1 희석 후 최대한 얇게 도장\n세척제 우레탄1000신나",
+    packaging: "14L · 4L",
     cautions: [
       "하도는 소지가 완전히 흡수하도록 롤러로 얇게 충분히 도포",
-      "과도한 도포 시 표면 막 형성 → 중도 접착 불량 가능성 ▲"
+      "과도한 도포 시 표면 막 형성 → 중도 접착 불량 가능성 ▲",
+      "하도가 처리되지 않은 부분은 중도 도장 시 기포 발생 — 빠짐없이 도포",
+      "하도 도장 후 2일 이상 경과한 부분은 층간 부착력 보강을 위해 얇게 추가 도장"
     ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3092664.pdf" }
     ]
   },
   "방수에이스 상도": {
-    category: "상도 · 우레탄 (방수에이스 시스템)",
+    category: "상도 · 우레탄 2액형 (방수에이스 시스템)",
     desc: "중도 우레탄 방수층을 자외선·물리적 충격에서 보호하는 최종 코팅 우레탄 상도.",
-    spec: "주제 : 경화제 6.3 : 1 · 가사시간(20℃) 3시간\n희석 우레탄1000신나 5% 미만 · 재도장 간격(20℃) 1일 ~ 2일\n이론도포면적 약 11㎡/ℓ (1회 기준)",
+    uses: "옥상 우레탄 방수층(방수에이스 중도·원샷탄 도막)의 보호 마감",
+    spec: "조성 2액형 · 배합비 주제:경화제 6.3 : 1 · 가사시간(20℃) 3시간\n추천 건조도막두께 45㎛ · 도장 횟수 1~2회 · 재도장 간격(20℃) 1일 ~ 2일\n이론도포면적 11.3㎡/L (건조도막두께 45㎛시) = 0.088 L/㎡ (1회 기준)\n희석 우레탄1000신나 5% 미만 · 세척제 우레탄1000신나",
+    packaging: "12.6L · 4L",
     cautions: [
-      "상도 희석 최소화 (5% 미만) — 과희석 시 보호 성능 저하"
+      "상도 희석 최소화 (5% 미만) — 과희석 시 보호 성능 저하",
+      "가사시간(20℃ 3시간)이 지난 도료는 사용 금지",
+      "중도 도장 후 20℃ 기준 24~48시간 경과 뒤 도장",
+      "배합비 6.3:1의 계량 단위(무게비/부피비)는 용기 표기를 확인 후 계량"
     ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3091953.pdf" }
@@ -3734,14 +3746,20 @@ function calcCompute(p, area, coats, loss){
     };
   }
 
+  /* 주제·경화제 분해는 '무게비'가 명시되고 계산 단위도 kg 일 때만 의미가 있다.
+     L 단위 제품에 무게비를 그대로 나누면 잘못된 값이 나오므로 표시하지 않는다. */
   var mix = null;
-  if (s.mixing_ratio_weight){
+  if (s.mixing_ratio_weight && unit === 'kg'){
     var mm = String(s.mixing_ratio_weight).match(/([\d.]+)\s*:\s*([\d.]+)/);
     if (mm){
       var a1 = parseFloat(mm[1]), b1 = parseFloat(mm[2]), sum = a1 + b1;
       mix = { main: need * a1 / sum, hard: need * b1 / sum, ratio: s.mixing_ratio_weight };
     }
   }
+  /* 무게비가 아니거나 단위가 L 인 2액형은 배합비만 안내 */
+  var mixNote = (!mix && (s.mixing_ratio || s.mixing_ratio_weight))
+    ? { ratio: (s.mixing_ratio || s.mixing_ratio_weight), note: s.mixing_ratio_note || '' }
+    : null;
 
   /* 일위대가 대조값은 이 제품의 역할·단위와 일치하는 항목만 쓴다.
      (중도 제품에 상도 소요량을 대조하면 엉뚱한 숫자가 나온다) */
@@ -3760,7 +3778,8 @@ function calcCompute(p, area, coats, loss){
 
   return {
     unit: unit, need: need, perM2: basePerM2, coats: coats, loss: loss,
-    dft: s.dft_um, packs: pk, thinner: thinner, mix: mix, cross: cross,
+    dft: s.dft_um, packs: pk, thinner: thinner, mix: mix, mixNote: mixNote, cross: cross,
+    noPacks: !pk, packNote: s.pack_sizes_note || '',
     primer: (e.primer_l_per_m2 != null) ? { perM2: e.primer_l_per_m2, need: area * e.primer_l_per_m2 * (1+loss/100), name: (p.system && p.system.primer) || '하도' } : null
   };
 }
@@ -3806,10 +3825,16 @@ function calcUpdate(uid){
     h += '<div class="calc-item"><b>최소 통 수</b><span>' + r.packs.min.text + ' = ' + _r(r.packs.min.total,2) + u + ' (여유 ' + _r(r.packs.min.waste,2) + u + ')</span></div>';
     if (!r.packs.same)
       h += '<div class="calc-item"><b>최소 낭비</b><span>' + r.packs.lean.text + ' = ' + _r(r.packs.lean.total,2) + u + ' (여유 ' + _r(r.packs.lean.waste,2) + u + ')</span></div>';
+  } else {
+    h += '<div class="calc-item"><b>최소 통 수</b><span>포장단위 미등록 — 계산 불가' +
+         (r.packNote ? '<br><span style="font-size:12px;">' + r.packNote + '</span>' : '') + '</span></div>';
   }
   if (r.mix){
-    h += '<div class="calc-item"><b>주제</b><span>' + _r(r.mix.main,2) + ' ' + u + '</span></div>' +
-         '<div class="calc-item"><b>경화제</b><span>' + _r(r.mix.hard,2) + ' ' + u + ' · 배합비 ' + r.mix.ratio + '</span></div>';
+    h += '<div class="calc-item"><b>주제</b><span>' + _r(r.mix.main,2) + ' kg</span></div>' +
+         '<div class="calc-item"><b>경화제</b><span>' + _r(r.mix.hard,2) + ' kg · 무게비 ' + r.mix.ratio + '</span></div>';
+  } else if (r.mixNote){
+    h += '<div class="calc-item"><b>배합비</b><span>' + r.mixNote.ratio +
+         (r.mixNote.note ? '<br><span style="font-size:12px;">' + r.mixNote.note + '</span>' : '') + '</span></div>';
   }
   if (r.thinner){
     h += '<div class="calc-item"><b>희석제</b><span>' + _r(r.thinner.amount,2) + ' ' + u + ' 이내 · ' + r.thinner.name + ' (' + r.thinner.pct + '% ' + r.thinner.basis + ')</span></div>';
