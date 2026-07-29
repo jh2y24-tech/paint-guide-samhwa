@@ -1287,8 +1287,7 @@
       ],
       "spec": {
         "composition": "2액형",
-        "mixing_ratio": "6.3:1 (주제:경화제)",
-        "mixing_ratio_note": "무게비·부피비 구분이 기술자료에서 확인되지 않아 계량 단위를 표기하지 않음. 계량 전 용기 표기를 확인할 것",
+        "mixing_ratio_volume": "6.3:1 (주제:경화제)",
         "dft_um": 45,
         "coats": "1~2",
         "coverage_m2_per_l": 11.3,
