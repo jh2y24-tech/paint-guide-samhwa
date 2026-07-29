@@ -244,6 +244,19 @@ a{color:var(--brand);text-decoration:none}
 .why-term{font-weight:800;color:var(--accent)}
 @media(max-width:480px){.why-title{font-size:17.5px}.why-box{padding:15px}.why-box p{font-size:14px}}
 /* ── 제품 팝업 시공 영상 ── */
+/* 상품 상세 이미지 — 접기식 */
+.pm-gal{border:1px solid var(--border-2);border-radius:10px;overflow:hidden;background:var(--card2)}
+.pm-gal-btn{width:100%;display:flex;align-items:center;gap:8px;padding:12px 14px;background:var(--card);border:none;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--text);text-align:left;line-height:1.4}
+.pm-gal-btn:hover{background:var(--card2)}
+.pm-gal-btn .pg-count{font-size:12px;font-weight:600;color:var(--muted)}
+.pm-gal-btn .pg-chev{margin-left:auto;font-size:11px;color:var(--muted);transition:transform .18s ease}
+.pm-gal.open .pg-chev{transform:rotate(180deg)}
+.pm-gal-body{display:none;padding:12px;border-top:1px solid var(--border-2)}
+.pm-gal.open .pm-gal-body{display:block}
+.pm-gal figure{margin:0 0 12px}
+.pm-gal figure:last-child{margin-bottom:0}
+.pm-gal img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);background:#fff}
+.pm-gal figcaption{margin-top:5px;font-size:12.5px;color:var(--muted);font-weight:600}
 .pm-videos{display:flex;flex-direction:column;gap:10px}
 .pm-vid{margin:0}
 .pm-vid video{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--border);background:#000}
@@ -3677,6 +3690,36 @@ function openProduct(name){
   document.body.style.overflow = 'hidden';
   m.querySelector('.pm-card').scrollTop = 0;
   if (document.getElementById('pmcalc-panel')) calcFill(name, 'pmcalc');
+  fillProductGallery(name);
+}
+
+/* 상품 상세 이미지 — products.json 의 images 필드를 읽어 접기식으로 붙인다.
+   카탈로그가 비동기로 오므로 모달을 연 뒤 채운다. */
+function fillProductGallery(name){
+  var body = document.getElementById('pmBody');
+  if (!body) return;
+  calcEnsureCatalog().then(function(db){
+    var m = document.getElementById('prodModal');
+    if (!m || !m.classList.contains('open')) return;          // 이미 닫혔으면 무시
+    if (body.querySelector('.pm-gal')) return;                 // 중복 방지
+    var p = calcFindProduct(db, name);
+    var img = p && p.images;
+    if (!img || !Array.isArray(img.files) || !img.files.length) return;
+    var dir = img.dir || '';
+    var h = '<div class="pm-field"><div class="pm-gal" id="pmGal">' +
+      '<button type="button" class="pm-gal-btn" onclick="document.getElementById(\'pmGal\').classList.toggle(\'open\')">' +
+        '🖼 상세 이미지 보기 <span class="pg-count">' + img.files.length + '장</span><span class="pg-chev">▼</span>' +
+      '</button><div class="pm-gal-body">';
+    img.files.forEach(function(f){
+      var src = dir + (f.src || '');
+      var cap = f.caption || '';
+      h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy">' +
+           (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
+    });
+    h += '</div></div></div>';
+    var empty = body.querySelector('.pm-empty');
+    if (empty) body.innerHTML = h; else body.insertAdjacentHTML('beforeend', h);
+  }).catch(function(){});
 }
 
 function closeProduct(){
@@ -3778,7 +3821,12 @@ function calcEnsureCatalog(){
   return window.__calcCatalogPromise;
 }
 
-var _cnorm = function(s){ return String(s||'').replace(/[\s·()]/g,'').toLowerCase(); };
+/* NFC 정규화 필수 — macOS 에서 입력된 한글은 자모 분리(NFD)라 눈으로 같아도 === 가 실패한다 */
+var _cnorm = function(s){
+  var t = String(s||'');
+  if (t.normalize) t = t.normalize('NFC');
+  return t.replace(/[\s·()]/g,'').toLowerCase();
+};
 
 /* 이름·별칭으로 products.json 항목 찾기 */
 function calcFindProduct(db, name){

@@ -8,7 +8,8 @@
   "spec.recoat_hours": "재도장 간격(시간). 25℃ 기준",
   "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
   "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보",
-  "spec.coverage_variants": "이론소요량이 도막두께·색상(유색/투명)에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. 항목은 coverage_m2_per_l 또는 coverage_kg_per_m2 중 하나를 가진다. source: catalog=기술자료 / spec_sheet=도장사양서 일위대가 / derived=비례 환산"
+  "spec.coverage_variants": "이론소요량이 도막두께·색상(유색/투명)에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. 항목은 coverage_m2_per_l 또는 coverage_kg_per_m2 중 하나를 가진다. source: catalog=기술자료 / spec_sheet=도장사양서 일위대가 / derived=비례 환산",
+  "images": "상품 상세 이미지. dir + files[].src 로 경로 조립. 파일명·폴더명은 반드시 ASCII (한글 파일명은 GitHub Pages에서 NFC/NFD 불일치로 404)"
  },
  "categories": [
   {
@@ -1293,6 +1294,143 @@
     "tech": "11tech3100925.pdf",
     "spec_sheet": "1pntg3100925.pdf",
     "tech_dated": "2026-04-15"
+   }
+  },
+  {
+   "id": "iseanggak-wood-varnish",
+   "status": "documented",
+   "name": "아이생각 수성우드바니시",
+   "name_en": "ISAENGGAK WATERBORNE WOOD VARNISH",
+   "aliases": [
+    "아이생각수성우드바니시",
+    "수성우드바니시",
+    "우드바니시",
+    "아이생각 우드바니시"
+   ],
+   "brand": "삼화페인트",
+   "categories": [
+    "wood"
+   ],
+   "role": "topcoat",
+   "summary": "수용성 아크릴 에멀젼 수지가 주성분인 수성 바니시. 냄새가 적고 물로 희석해 사용하며 건조성·살오름성·투명성·블로킹성·내수성이 우수하다. 목재 결을 살리며 투명 보호막을 형성한다.",
+   "uses": "원목 가구, 목조 주택 등 실내 목재 표면. 몰딩·루버·목재 완구·DIY 가구·아동 가구",
+   "substrates": [
+    "각종 목재"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광 · 반광 · 무광",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 35.1,
+    "dft_um": 40,
+    "coats": "2~3",
+    "coverage_m2_per_l": 8.78,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "thinning_basis": "무게비(WT%)",
+    "thinning_note": "희석률 5~10% (WT%)",
+    "pack_sizes": [
+     "16L",
+     "3.5L",
+     "0.9L"
+    ],
+    "pack_sizes_note": "표기 18L(실포장량 16L) · 4L(실포장량 3.5L) · 0.9L(실포장량 0.9L)",
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "dry_touch_min": 30,
+    "dry_hard_min": 60,
+    "recoat_hours": 2,
+    "cure_note": "25℃ 기준 — 지촉건조 30분 이내 · 고화건조 1시간 이내 · 재도장간격 2시간 이상",
+    "tools": [
+     "붓",
+     "로라",
+     "스프레이"
+    ]
+   },
+   "system": {
+    "primer": "아이생각 수성스테인",
+    "primer_note": "착색이 필요할 때만. 바니시 단독 사용 가능",
+    "topcoat_self": true
+   },
+   "estimate": {
+    "basis": "2회 도장 · 40㎛",
+    "topcoat_l_per_m2": 0.228,
+    "note": "부가세·시공비 별도. 실제 소요량은 목재 흡수율·도장방법에 따라 가감"
+   },
+   "cautions": {
+    "warn": [
+     "5℃ 이하에서 작업 금지 · 비 오는 날, 습도 높은 날 도장 금지",
+     "계단·바닥 도장에는 추천하지 않음",
+     "거실 마루는 대부분 UV 코팅면이라 추천하지 않음",
+     "수성 도료 위 도장 시 도막 결함 발생 가능 — 사용 금지",
+     "원목 주방 싱크대 등 수분·세제에 노출되는 부위에는 추천하지 않음",
+     "타 도료와 혼합 사용 금지"
+    ],
+    "info": [
+     "목재 마감 도장이라 후속 도장을 추천하지 않으나, 필요시 연마 후 수성페인트 도장 가능",
+     "모니터 환경에 따라 광택(무광·반광·유광) 표현에 차이가 있을 수 있음",
+     "8대 중금속(납·카드뮴·크롬·바륨·안티몬·수은·비소·셀레늄) 불검출 — 한국건설생활환경시험연구원"
+    ]
+   },
+   "compliance": {
+    "eco_label": false,
+    "heavy_metal_test": "8대 중금속 불검출 (한국건설생활환경시험연구원 시험성적서)"
+   },
+   "images": {
+    "dir": "img/iseanggak-wood-varnish/",
+    "note": "상품 상세 이미지. 파일명은 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404 발생)",
+    "files": [
+     {
+      "src": "01-hero.jpg",
+      "caption": "목재의 고유 느낌 그대로 — 목재 보호 코팅제"
+     },
+     {
+      "src": "02-use-case.jpg",
+      "caption": "이럴 때 사용하세요"
+     },
+     {
+      "src": "03-point1-adhesion.jpg",
+      "caption": "POINT 1 · 우수한 부착성"
+     },
+     {
+      "src": "04-point2-self.jpg",
+      "caption": "POINT 2 · 간편한 셀프 시공"
+     },
+     {
+      "src": "05-point3-gloss.jpg",
+      "caption": "POINT 3 · 다양한 광택 표현 (무광·반광·유광)"
+     },
+     {
+      "src": "06-point4-eco.jpg",
+      "caption": "POINT 4 · 친환경 페인트 · 8대 중금속 불검출"
+     },
+     {
+      "src": "07-pack-size.jpg",
+      "caption": "포장 용량 — 0.9L · 3.5L · 16L"
+     },
+     {
+      "src": "08-spec.jpg",
+      "caption": "상품 상세 정보 (물성표)"
+     },
+     {
+      "src": "09-cases.jpg",
+      "caption": "시공사례"
+     },
+     {
+      "src": "10-qna.jpg",
+      "caption": "자주 묻는 질문"
+     }
+    ]
+   },
+   "docs": {
+    "tech": "1tech3051292.pdf",
+    "spec_sheet": null,
+    "tech_dated": "2021-02-03"
    }
   },
   {
