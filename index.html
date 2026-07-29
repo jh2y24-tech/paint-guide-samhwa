@@ -3695,6 +3695,24 @@ function openProduct(name){
 
 /* 상품 상세 이미지 — products.json 의 images 필드를 읽어 접기식으로 붙인다.
    카탈로그가 비동기로 오므로 모달을 연 뒤 채운다. */
+/* 404 등으로 못 불러온 이미지는 깨진 아이콘 대신 해당 figure 를 숨긴다.
+   전부 실패하면 갤러리 블록 자체를 안내문으로 대체 — 파일명·경로 오류를 조용히 넘기지 않기 위해
+   콘솔에 실패한 src 를 남긴다. */
+function pgImgFail(el){
+  var fig = el.closest ? el.closest('figure') : null;
+  if (fig) fig.style.display = 'none';
+  try { console.warn('[상세이미지 로드 실패] ' + el.getAttribute('src')); } catch(e){}
+  var gal = document.getElementById('pmGal');
+  if (!gal) return;
+  var figs = gal.querySelectorAll('.pm-gal-body figure');
+  var dead = gal.querySelectorAll('.pm-gal-body figure[style*="none"]');
+  if (figs.length && dead.length === figs.length){
+    var body = gal.querySelector('.pm-gal-body');
+    if (body) body.innerHTML = '<div class="pm-empty"><span class="pm-emoji">🖼</span>' +
+      '상세 이미지를 불러오지 못했습니다. img/ 경로와 파일명(확장자 포함)을 확인해 주세요.</div>';
+  }
+}
+
 function fillProductGallery(name){
   var body = document.getElementById('pmBody');
   if (!body) return;
@@ -3711,9 +3729,11 @@ function fillProductGallery(name){
         '🖼 상세 이미지 보기 <span class="pg-count">' + img.files.length + '장</span><span class="pg-chev">▼</span>' +
       '</button><div class="pm-gal-body">';
     img.files.forEach(function(f){
-      var src = dir + (f.src || '');
+      var s = f.src || '';
+      /* 절대경로(http/https)면 dir 을 붙이지 않는다 */
+      var src = /^(https?:)?\/\//i.test(s) ? s : dir + s;
       var cap = f.caption || '';
-      h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy">' +
+      h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy" onerror="pgImgFail(this)">' +
            (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
     });
     h += '</div></div></div>';
