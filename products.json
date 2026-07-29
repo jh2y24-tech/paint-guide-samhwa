@@ -1,2480 +1,2557 @@
 {
-  "$schema_version": "1.0",
-  "updated_at": "2026-07-29",
-  "note": "형제상사 제품 데이터 단일 소스. HTML·앱·API 모두 이 파일을 읽는다. 수정은 항상 여기서만.",
-  "field_guide": {
-    "id": "영문 소문자+하이픈. 절대 변경 금지 (DB 이관 시 PK로 사용)",
-    "spec.coverage_m2_per_l": "이론도포면적. dft_um 기준값",
-    "spec.recoat_hours": "재도장 간격(시간). 25℃ 기준",
-    "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
-    "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보"
+ "$schema_version": "1.0",
+ "updated_at": "2026-07-29",
+ "note": "형제상사 제품 데이터 단일 소스. HTML·앱·API 모두 이 파일을 읽는다. 수정은 항상 여기서만.",
+ "field_guide": {
+  "id": "영문 소문자+하이픈. 절대 변경 금지 (DB 이관 시 PK로 사용)",
+  "spec.coverage_m2_per_l": "이론도포면적. dft_um 기준값",
+  "spec.recoat_hours": "재도장 간격(시간). 25℃ 기준",
+  "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
+  "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보",
+  "spec.coverage_variants": "이론도포면적이 유색/투명·도막두께에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. source: catalog=공식 표기 / derived=두께 반비례 환산"
+ },
+ "categories": [
+  {
+   "id": "concrete",
+   "label": "콘크리트·석고보드"
   },
-  "categories": [
+  {
+   "id": "silk",
+   "label": "실크벽지·시트지"
+  },
+  {
+   "id": "wood",
+   "label": "목재"
+  },
+  {
+   "id": "iron",
+   "label": "철재·비철재"
+  },
+  {
+   "id": "mold",
+   "label": "곰팡이·결로"
+  },
+  {
+   "id": "tile",
+   "label": "타일·줄눈"
+  },
+  {
+   "id": "roof",
+   "label": "기와·슬레이트"
+  },
+  {
+   "id": "wp",
+   "label": "옥상방수(우레탄)"
+  },
+  {
+   "id": "floor",
+   "label": "실내방진(에폭시)"
+  },
+  {
+   "id": "road",
+   "label": "노면표지(차선)"
+  }
+ ],
+ "products": [
+  {
+   "id": "ksm6080-type1-air-drying-traffic-paint",
+   "status": "documented",
+   "name": "KSM6080 1종 상온건조형 노면표지용도료",
+   "name_en": "KSM6080 First Class Air-Drying Type Traffic Paint",
+   "brand": "삼화페인트",
+   "categories": [
+    "road"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6080 1종",
+   "summary": "아크릴 수지 전색제 1액형. 아스팔트·시멘트 노면 부착력이 뛰어나고 내마모성이 우수하며 내후·내충격·내수·내알칼리성이 좋다.",
+   "substrates": [
+    "아스팔트",
+    "콘크리트 시멘트 몰탈"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "흰색",
+     "노란색"
+    ],
+    "volume_solids_pct": 52,
+    "dft_um": 100,
+    "coats": "1~2",
+    "coverage_m2_per_l": 5.2,
+    "dry_touch_min": 20,
+    "dry_hard_min": 30,
+    "recoat_hours": 1,
+    "thinner": "노면표지용 신나",
+    "thinning_pct_max": 5,
+    "pack_sizes": [
+     "18L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "tools": [
+     "붓",
+     "로라",
+     "스프레이"
+    ],
+    "surface_moisture_pct_max_source": "기술자료 표면함수율 6% 이하 / 도장사양서 평형함수율 8% 이하 — 보수적으로 6% 적용"
+   },
+   "system": {
+    "primer": null,
+    "primer_note": "별도의 하도 없음",
+    "topcoat_self": true
+   },
+   "estimate": {
+    "basis": "2회 도장 · 100㎛",
+    "topcoat_l_per_m2": 0.193,
+    "thinner_l_per_m2": 0.01,
+    "note": "부가세·시공비 별도. 실제 소요량은 작업조건에 따라 가감"
+   },
+   "options": [
     {
-      "id": "concrete",
-      "label": "콘크리트·석고보드"
-    },
-    {
-      "id": "silk",
-      "label": "실크벽지·시트지"
-    },
-    {
-      "id": "wood",
-      "label": "목재"
-    },
-    {
-      "id": "iron",
-      "label": "철재·비철재"
-    },
-    {
-      "id": "mold",
-      "label": "곰팡이·결로"
-    },
-    {
-      "id": "tile",
-      "label": "타일·줄눈"
-    },
-    {
-      "id": "roof",
-      "label": "기와·슬레이트"
-    },
-    {
-      "id": "wp",
-      "label": "옥상방수(우레탄)"
-    },
-    {
-      "id": "floor",
-      "label": "실내방진(에폭시)"
-    },
-    {
-      "id": "road",
-      "label": "노면표지(차선)"
+     "name": "유리알 살포 (야간 재귀반사)",
+     "amount": "도료 1L당 약 800g",
+     "critical": "도막이 건조되기 전에 살포. 25℃ 불점착 20분이므로 도장조·살포조 동시 진행"
     }
-  ],
-  "products": [
-    {
-      "id": "ksm6080-type1-air-drying-traffic-paint",
-      "status": "documented",
-      "name": "KSM6080 1종 상온건조형 노면표지용도료",
-      "name_en": "KSM6080 First Class Air-Drying Type Traffic Paint",
-      "brand": "삼화페인트",
-      "categories": [
-        "road"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6080 1종",
-      "summary": "아크릴 수지 전색제 1액형. 아스팔트·시멘트 노면 부착력이 뛰어나고 내마모성이 우수하며 내후·내충격·내수·내알칼리성이 좋다.",
-      "substrates": [
-        "아스팔트",
-        "콘크리트 시멘트 몰탈"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "흰색",
-          "노란색"
-        ],
-        "volume_solids_pct": 52,
-        "dft_um": 100,
-        "coats": "1~2",
-        "coverage_m2_per_l": 5.2,
-        "dry_touch_min": 20,
-        "dry_hard_min": 30,
-        "recoat_hours": 1,
-        "thinner": "노면표지용 신나",
-        "thinning_pct_max": 5,
-        "pack_sizes": [
-          "18L",
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 80,
-        "surface_temp_c_max": 40,
-        "surface_moisture_pct_max": 6,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "dew_point_margin_c": 3,
-        "cure_days": 28,
-        "tools": [
-          "붓",
-          "로라",
-          "스프레이"
-        ],
-        "surface_moisture_pct_max_source": "기술자료 표면함수율 6% 이하 / 도장사양서 평형함수율 8% 이하 — 보수적으로 6% 적용"
-      },
-      "system": {
-        "primer": null,
-        "primer_note": "별도의 하도 없음",
-        "topcoat_self": true
-      },
-      "estimate": {
-        "basis": "2회 도장 · 100㎛",
-        "topcoat_l_per_m2": 0.193,
-        "thinner_l_per_m2": 0.01,
-        "note": "부가세·시공비 별도. 실제 소요량은 작업조건에 따라 가감"
-      },
-      "options": [
-        {
-          "name": "유리알 살포 (야간 재귀반사)",
-          "amount": "도료 1L당 약 800g",
-          "critical": "도막이 건조되기 전에 살포. 25℃ 불점착 20분이므로 도장조·살포조 동시 진행"
-        }
-      ],
-      "cautions": {
-        "danger": [
-          "실내 시멘트면의 바닥재용으로 사용 금지 — 차선·표시선 전용",
-          "밀폐된 장소에서 절대 도장 금지 (인화성 · 질식·화재 위험)",
-          "정전기·스파크 화재 위험 — 기온 낮은 아침이나 늦은 오후 작업, 저위험 재질 도장기구 사용",
-          "도료 묻은 헝겊은 자연발화 위험 — 불연성 용기에 담아 폐기"
-        ],
-        "warn": [
-          "고강도 콘크리트(260 kgf/㎠ 이상)는 그라인딩 시 부착 불량 — 블라스팅 후 부착성능 확인",
-          "후도막 도장 금지 — 용제 미휘발로 물성 저하 및 바퀴자국·발자국 발생",
-          "과도한 희석 금지 — 은폐력·살오름성·도막강도 저하",
-          "심한 균열이 있는 노면에는 도장 금지",
-          "에폭시계 도료 대비 내마모성이 떨어짐",
-          "구도막 보수 도장은 사전 시험도장 후 진행",
-          "타 도료 혼합 금지 · 가열 금지",
-          "작업 후 모든 도장기구는 지정 세척제로 세척",
-          "개봉 후 잔량은 건조피막·굳음 발생 — 즉시 전량 사용"
-        ],
-        "info": [
-          "신축·거친 콘크리트 소지면이나 기포꽈리 우려 구간은 아크릴 플로아코트 1회 선도장 후 재도장 간격 준수",
-          "동일 제품·색상·Lot라도 희석비·도장기구·도장방법이 다르면 이색현상 발생"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": false,
-        "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)",
-        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내 사용 가능 (사용 가능 인증이며 실내 전용이라는 뜻이 아님). 단 주의사항에 '실내 시멘트면의 바닥재용으로 사용 금지'가 별도 명시되어 있음"
-      },
-      "docs": {
-        "tech": "1tech3490771.pdf",
-        "spec_sheet": "1pntg3490771.pdf",
-        "tech_dated": "2024-07-18"
-      }
-    },
-    {
-      "id": "ilux-condensation-stop-diatomite-white",
-      "status": "documented",
-      "name": "아이럭스결로스탑 규조토 백색",
-      "name_en": "ILUX Condensation Stop Diatomite",
-      "brand": "삼화페인트",
-      "categories": [
-        "mold",
-        "concrete"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6010 2종 1급",
-      "summary": "규조토의 호흡성으로 실내 표면 결로를 흡수했다가 서서히 방출해 결로를 보완하는 기능성 수성페인트. 도막 위 곰팡이 생성도 억제.",
-      "substrates": [
-        "콘크리트",
-        "시멘트몰탈",
-        "석고보드"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "담색(주문 한정)"
-        ],
-        "volume_solids_pct": 38.88,
-        "dft_um": 100,
-        "coats": "2~3",
-        "coverage_m2_per_l": 3.89,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "recoat_hours_source": "기술자료 3시간 / 도장사양서 2시간 — 현장 기준은 3시간으로 확정",
-        "thinner": "물 (상수도)",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "4L",
-          "1L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "surface_moisture_pct_max": 10,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "cure_days": 28,
-        "cure_note": "25℃ · 상대습도 50% 기준",
-        "tools": [
-          "붓",
-          "로라",
-          "스프레이"
-        ],
-        "filler": "월드퍼티 (틈새·홈 메움 후 표면조정)"
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "primer_required_when": [
-          "콘크리트 소지 상태 불량",
-          "구도막 부위",
-          "동절기 시공",
-          "시멘트 견출면·미장면 등 쵸킹 소지",
-          "흡수차가 심한 바탕면",
-          "시멘트 용출이 심한 부위"
-        ]
-      },
-      "estimate": {
-        "basis": "하도 1회 + 상도 2~3회 · 100㎛",
-        "primer_l_per_m2": 0.1,
-        "topcoat_l_per_m2": 0.26,
-        "note": "실제 소요량은 작업조건·작업방법에 따라 가감"
-      },
-      "cautions": {
-        "danger": [
-          "결로량이 많으면 도막 강도가 저하되어 문지르거나 긁으면 묻어남 — 결로 심한 곳은 단열 공사 선행 필수",
-          "주거활동으로 긁힘·마찰이 잦은 부위에는 부적합",
-          "유성도료가 도장된 목재·철재·플라스틱 부위 도장 금지 (부착 불량)",
-          "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·끈적거림·변색"
-        ],
-        "warn": [
-          "비 오는 날, 습도 85% 이상, 기온 5℃ 이하 도장 금지",
-          "보관·운송 시 동결 금지 (수성)",
-          "캔 개봉 후 즉시 사용 — 외부 오염에 의한 변질 우려",
-          "타 도료 혼합 금지",
-          "도장 전 균일 혼합 및 도장 중 주기적 교반. 믹서 교반 시 기포 주의",
-          "현장 조색은 아크로텍스잉크로 최대 5%(부피비). 과량 시 이색·건조불량·내수성불량·VOC 증가",
-          "스프레이는 연속작업 원칙. 끊길 경우 골부위나 부위 경계에서 끊기",
-          "구도막 보수 도장은 적합성을 소비자상담실 확인 후 진행",
-          "동일 제품·색상·LOT라도 희석비·도장기구·도장방법이 다르면 이색현상 발생"
-        ],
-        "info": [
-          "화기·직사광선을 피해 건냉암소 보관. 용기 밀폐 후 주입구가 상단을 향하도록 세워 보관 (잔량 동일)",
-          "어린이 손이 닿지 않는 곳에 보관. 동·식물 섭취 시 유해",
-          "폐도료는 환경부 지정 폐기물처리업체를 통해 폐기",
-          "유효기간 내 사용, 경과 제품은 소비자상담실 확인 후 사용",
-          "취급 전 물질안전보건자료(MSDS) 확인"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소",
-        "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
-      },
-      "docs": {
-        "tech": "1tech3052309.pdf",
-        "spec_sheet": "1pntg3052309.pdf",
-        "tech_dated": "2025-09-09"
-      }
-    },
-    {
-      "id": "watersoluble-binder-200",
-      "status": "documented",
-      "name": "수성바인다200",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "mold"
-      ],
-      "role": "primer",
-      "aliases": [
-        "수성바인다 200"
-      ],
-      "summary": "아크릴 공중합 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면의 표면 눈메꿈, 수성도료와 피도면 간 접착력 증가, 구도막 보수 시 접착력 보강용으로 사용. 도막 형성이 아닌 피도면에 스며들도록 도장.",
-      "spec": {
-        "composition": "1액형",
-        "finish": "투명(스며듦)",
-        "colors": [
-          "투명"
-        ],
-        "volume_solids_pct": 10,
-        "dft_um": null,
-        "coats": 1,
-        "coverage_m2_per_l": 10.0,
-        "dry_hard_min": 120,
-        "recoat_hours": 3,
-        "thinner": "무희석",
-        "thinning_pct_max": 0,
-        "pack_sizes": [
-          "18L",
-          "3.5L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "surface_moisture_pct_max": 10,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "cure_days": 28
-      },
-      "system": {
-        "primer": null,
-        "primer_note": "하도 전용 제품 — 상도용으로 사용 불가",
-        "topcoat_self": false
-      },
-      "estimate": {
-        "basis": "하도 1회 · 스며듦",
-        "primer_l_per_m2": 0.1,
-        "note": "부가세·시공비 별도"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "타 도료와 혼합 금지",
-          "반드시 피도면에 스며들도록 충분히 도장",
-          "상도용으로 사용 불가",
-          "목재·철재·플라스틱 유성도막 부위 도장 금지",
-          "비 오는 날/습도 85% 이상/기온 5℃ 이하 도장 금지"
-        ],
-        "info": [
-          "도료 보관·운송 시 동결 금지 (5~35℃ 실내보관)"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
-      },
-      "docs": {
-        "tech": "1tech3050157.pdf",
-        "spec_sheet": "1pntg3050157.pdf",
-        "tech_dated": "2025-10-29"
-      }
-    },
-    {
-      "id": "aisaenggak-waterborn-elastic-seal",
-      "status": "documented",
-      "name": "아이생각 수성탄성씰",
-      "name_en": "AISAENGKAG WATER-BORN ELASTIC SEAL",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "mold"
-      ],
-      "role": "midcoat",
-      "aliases": [
-        "아이생각수성탄성씰",
-        "수성탄성씰",
-        "아이생각 수성 탄성씰"
-      ],
-      "summary": "특수 아크릴에멀젼 및 수용성 아크릴우레탄 에멀젼과 내후성이 좋은 안료를 주성분으로 메꿈성·탄성·내후성·방수성이 좋도록 설계된 1액형 수성 메꿈제. 접착력과 내구력이 강해 시멘트 기재 건축물의 균열부·이음새·창문틀·벽체 사이 틈을 메꾸는 데 적합하며, 상도 도막을 오염시키지 않고 작업성이 우수하다.",
-      "uses": "일반건축물의 균열부분, 조립식 건축물의 이음부분 및 각종 틈의 메꿈을 요구하는 고탄성 메꿈제",
-      "substrates": [
-        "시멘트",
-        "콘크리트면"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "아이보리색"
-        ],
-        "viscosity": "PASTE상",
-        "volume_solids_pct": 70,
-        "volume_solids_source": "TDS 표기 '고형분 70%' — 부피/중량 구분 표기 없음",
-        "dft_um": 500,
-        "coats": "1~2",
-        "coverage_kg_per_m2": 1.15,
-        "coverage_m2_per_l": null,
-        "coverage_note": "1.15㎏/㎡ (건조도막두께 500㎛ 기준). 도장작업 시 손실량과 표면상태를 고려할 것",
-        "max_thickness_per_coat_mm": 1,
-        "dry_touch_min": 60,
-        "dry_hard_min": null,
-        "full_dry_days": 7,
-        "recoat_hours": 24,
-        "recoat_hours_source": "TDS 상도작업가능건조 1일 / 도장사양서 25℃ 기준 24시간 이후 — 습도·통풍·도막두께에 따라 차이",
-        "thinner": "무희석",
-        "thinning_pct_max": 0,
-        "pack_sizes": [
-          "20kg",
-          "5kg"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "surface_equilibrium_moisture_pct_max": 85,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "cure_days": 28,
-        "cure_note": "25℃ 기준 28일 이상 충분히 양생. 얇은 틈새나 홈은 V컷팅한 후 충진",
-        "tools": [
-          "헤라(주걱)"
-        ]
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "primer_note": "필요시 도장. 피도물의 쵸킹이 심할 경우에는 반드시 수성바인다200 도장 후 충전",
-        "midcoat": "아이생각 수성탄성씰 (본 제품)",
-        "midcoat_note": "1회 마감 시 건조도막두께 500㎛. 필요시 1차 백색 250㎛ 시공 후 최소 10시간 경과 뒤 2차 아이보리색 250㎛",
-        "topcoat": [
-          "아이생각수성외부1급",
-          "인플러스 수성 실리콘(RS)"
-        ],
-        "topcoat_note": "건조 후 상도 도장 시 외부 1급류 수성페인트를 사용. 안료분이 높은 페인트는 크랙 우려가 있어 상도적합성 사전 확인 필요",
-        "topcoat_self": false
-      },
-      "estimate": {
-        "basis": "도장사양서 일위대가 · 하도 1회 + 중도 1~2회(500㎛) + 상도 2회 · 합계 4~5회",
-        "primer_l_per_m2": 0.11,
-        "midcoat_kg_per_m2": 1.15,
-        "topcoat_l_per_m2": 0.14,
-        "topcoat_dft_um": 60,
-        "note": "부가세·시공비 별도. 실제소요량은 작업조건·작업방법에 따라 가감될 수 있음"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "상도로 안료분이 높은 페인트를 도장할 경우 크랙이 발생할 수 있으므로 상도적합성(크랙·부착·이색) 유무를 미리 확인",
-          "비 오는 날·습도 85% 이상·기온 5℃ 이하에는 정상적인 물성을 발휘하지 못하므로 도장작업 금지 (도막 균열·부착 불량 발생)",
-          "눈·비가 예상될 때에는 작업 금지",
-          "피도물의 쵸킹이 심할 경우 수성바인다200을 도장한 후 충전",
-          "구도막 위 보수도장 시 구도막과의 적합성을 확인 후 사용 (대리점 또는 소비자상담실 문의)",
-          "타 도료와 혼합하여 사용 금지",
-          "25℃ 기준 상도 도장은 24시간 이후 가능하나 습도·통풍·도막두께에 따라 차이가 있으므로 건조 상태 확인 필수"
-        ],
-        "info": [
-          "도료 보관이나 운송 시 얼지 않도록 유의",
-          "화기 및 직사광선을 피해 상온(5~35℃) 건냉암소에 보관하되 용기는 밀폐하고 주입구가 상단을 향하도록 세워서 보관. 사용 후 잔량도 동일",
-          "어린이 손에 닿지 않는 곳에 보관하고 동·식물이 섭취하지 않도록 폐기·보관에 주의",
-          "도장작업 완료 후 노출된 피부는 깨끗이 씻을 것",
-          "폐도료는 환경부에서 지정한 폐기물처리업체를 통해 폐기",
-          "장기간 보관 시 변질될 수 있으므로 유효기간 내 사용. 기간 경과 제품은 소비자상담실 확인 후 사용",
-          "취급 전 물질안전보건자료(MSDS) 확인"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택의 실내에 사용 가능",
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소"
-      },
-      "docs": {
-        "tech": "1tech3051579.pdf",
-        "spec_sheet": "1pntg3051579.pdf",
-        "tech_dated": "2026-02-23"
-      }
-    },
-    {
-      "id": "ginger-mold-killing-primer",
-      "status": "listed",
-      "name": "진저 몰드킬링 프라이머",
-      "brand": "삼화페인트",
-      "categories": [
-        "mold"
-      ],
-      "role": "primer"
-    },
-    {
-      "id": "power-jesso",
-      "status": "listed",
-      "name": "파워젯소",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "wood"
-      ],
-      "role": "primer"
-    },
-    {
-      "id": "ilux-multiflat",
-      "status": "documented",
-      "name": "아이럭스 멀티플랫",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "silk"
-      ],
-      "role": "topcoat",
-      "summary": "Low VOC 극무광 타입. 은폐력과 작업성이 우수하고 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 내부용 프리미엄 페인트.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "벽지면"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "담색"
-        ],
-        "volume_solids_pct": 39.32,
-        "dft_um": 60,
-        "coats": "2~3",
-        "coverage_m2_per_l": 6.55,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "estimate": {
-        "basis": "상도 2~3회 · 60㎛"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "벽지 접착이 약해 들뜬 부위는 도장 시 주름 발생 가능",
-          "과도한 희석은 도막성능 저하 초래",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
-      },
-      "docs": {
-        "tech": "1tech3051826.pdf",
-        "spec_sheet": "1pntg3051826.pdf",
-        "tech_dated": "2026-02-10"
-      },
-      "system": {}
-    },
-    {
-      "id": "ilux-multi-eggshell",
-      "status": "documented",
-      "name": "아이럭스 멀티에그쉘",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "iron",
-        "wood"
-      ],
-      "role": "topcoat",
-      "summary": "듀폰 불소계 특수첨가제로 오염 발생을 최소화하고 오염물 제거가 쉬운 이지클리닝 페인트. 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 다기능 프리미엄 페인트.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "표면처리된 목재",
-        "표면처리된 철재",
-        "합지"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "저광(에그쉘)",
-        "colors": [
-          "백색",
-          "담색"
-        ],
-        "volume_solids_pct": 39.4,
-        "dft_um": 60,
-        "coats": "2~3",
-        "coverage_m2_per_l": 6.57,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "1L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200, 아이럭스파워젯소",
-        "primer_conditional": true,
-        "midcoat": "아이생각데코텍스VP",
-        "midcoat_note": "인테리어 도장 시 필요에 한함",
-        "primer_note_extra": "철재·목재 상도 도장 시 샌딩처리 및 젯소 도장 후 적용"
-      },
-      "estimate": {
-        "basis": "하도 1회 + 중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
-        "primer_l_per_m2": 0.1,
-        "midcoat_l_per_m2": 0.08,
-        "topcoat_l_per_m2": 0.15
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
-      },
-      "docs": {
-        "tech": "1tech3051831.pdf",
-        "spec_sheet": "1pntg3051831.pdf",
-        "tech_dated": "2026-07-13"
-      }
-    },
-    {
-      "id": "ilux-durox",
-      "status": "documented",
-      "name": "아이럭스 듀로X",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "silk",
-        "wood"
-      ],
-      "role": "topcoat",
-      "summary": "고강도 도막으로 흠집·스크래치 방지 효과가 뛰어나고 오염물 제거가 용이한 수성 무광 페인트. 항균·곰팡이 억제 기능을 갖춘 고급형 친환경 내부용 페인트.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "벽지",
-        "표면처리된 가구·목재"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광(로우쉰광)",
-        "colors": [
-          "백색",
-          "담색"
-        ],
-        "volume_solids_pct": 41.92,
-        "dft_um": 60,
-        "coats": "2~3",
-        "coverage_m2_per_l": 6.99,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "4L",
-          "1L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "estimate": {
-        "basis": "상도 2~3회 · 60㎛"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
-          "가소제 함유 피도면 접촉 시 오염·변색 주의"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
-      },
-      "docs": {
-        "tech": "1tech3052056.pdf",
-        "spec_sheet": "1pntg3052056.pdf",
-        "tech_dated": "2026-01-09"
-      },
-      "system": {}
-    },
-    {
-      "id": "ilux-allcoating",
-      "status": "documented",
-      "name": "아이럭스 올코팅",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "iron",
-        "wood",
-        "silk"
-      ],
-      "role": "topcoat",
-      "aliases": [
-        "아이럭스 올코팅 (실내외)"
-      ],
-      "summary": "특수 아크릴에멀젼+내후성 안료 주성분. 내알칼리·내오염·내후성이 우수하고 미장효과가 높아 콘크리트·철재 시설물에 적합하며, 수성/아크릴/에나멜 등 기존 구도막 보수용으로도 사용.",
-      "substrates": [
-        "콘크리트",
-        "시멘트몰탈",
-        "석고보드",
-        "철재(Light duty)",
-        "목재",
-        "벽지(무광만)"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "유광/반광/무광",
-        "colors": [
-          "각색"
-        ],
-        "volume_solids_pct": 39.27,
-        "dft_um": 50,
-        "coats": "2~3",
-        "coverage_m2_per_l": 7.85,
-        "dry_touch_min": 60,
-        "dry_hard_min": 120,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "10L",
-          "4L",
-          "1L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true
-      },
-      "estimate": {
-        "basis": "상도 2~3회 · 50㎛",
-        "note": "철판은 샌드블라스팅 SA2 전처리·유분 제거 후 도장"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "철판 도장 시 샌드블라스팅 SA2까지 전처리 및 세정 필수",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
-      },
-      "docs": {
-        "tech": "1tech3051969.pdf",
-        "spec_sheet": "1pntg3051969.pdf",
-        "tech_dated": "2025-04-15"
-      }
-    },
-    {
-      "id": "aisenggak-onecoat",
-      "status": "documented",
-      "name": "아이생각 원코트",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6010 1종 2급",
-      "summary": "높은 은폐력과 1회 도장시스템으로 작업시간·인건비를 절감하는 친환경 고급형 수성페인트. 콘크리트·몰탈·시멘트 건축물의 내·외부 겸용.",
-      "substrates": [
-        "콘크리트",
-        "몰탈",
-        "시멘트"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "각색"
-        ],
-        "volume_solids_pct": 37.26,
-        "dft_um": 60,
-        "coats": 1,
-        "coverage_m2_per_l": 6.21,
-        "dry_touch_min": 30,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 5,
-        "pack_sizes": [
-          "16L",
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 80,
-        "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "primer_required_when": [
-          "콘크리트 소지 상태 불량",
-          "구도막 부위",
-          "동절기 시공",
-          "쵸킹 소지",
-          "흡수차가 심한 바탕면",
-          "시멘트 용출이 심한 부위"
-        ]
-      },
-      "estimate": {
-        "basis": "상도 1회 · 60㎛",
-        "topcoat_l_per_m2": 0.16,
-        "note": "부가세·시공비 별도"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "밝은 원색 도장 시 구도막 비침 우려 부위는 백색 초벌 후 상도",
-          "동일 LOT·도장기구·방법 유지로 이색현상 방지",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": [
-          "퍼티 비침 우려 부위는 초벌 도장 후 상도"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
-      },
-      "docs": {
-        "tech": "1tech3052141.pdf",
-        "spec_sheet": "1pntg3052141.pdf",
-        "tech_dated": "2025-05-12"
-      }
-    },
-    {
-      "id": "homestar-pastel-ok-plus",
-      "status": "documented",
-      "name": "홈스타파스텔OK플러스",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete"
-      ],
-      "role": "topcoat",
-      "summary": "수용성 아크릴-우레탄수지+내후성 안료 주성분. 은은한 파스텔톤 질감과 오염제거 성능을 갖춘 건축물 내부 미장용 수성페인트.",
-      "substrates": [
-        "콘크리트",
-        "몰탈면",
-        "석고보드"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "dft_um": 60,
-        "coats": "1~2",
-        "coverage_m2_per_l": 5.88,
-        "recoat_hours": 2,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ]
-      },
-      "estimate": {
-        "basis": "상도 1~2회 · 60㎛"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "구도막·유색도료 도장면은 적합성 확인 후 시공",
-          "타 도료와 혼합 금지",
-          "5℃ 이하에서는 작업 금지"
-        ],
-        "info": [
-          "과도막 시 고온다습 환경에서 끈적임 발생 가능 (특히 유광·반광)"
-        ]
-      },
-      "compliance": {},
-      "docs": {
-        "tech": null,
-        "spec_sheet": "1pntg3050921.pdf",
-        "tech_dated": null,
-        "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
-      },
-      "system": {}
-    },
-    {
-      "id": "color-deco-lining",
-      "status": "listed",
-      "name": "컬러데코라이닝",
-      "brand": "삼화페인트",
-      "categories": [
-        "silk"
-      ],
-      "role": "topcoat"
-    },
-    {
-      "id": "water-clear-plus-matte",
-      "status": "listed",
-      "name": "수성크리어PLUS 무광",
-      "brand": "삼화페인트",
-      "categories": [
-        "wood",
-        "silk"
-      ],
-      "role": "clear"
-    },
-    {
-      "id": "water-clear-plus-gloss",
-      "status": "listed",
-      "name": "수성크리어PLUS 유광",
-      "brand": "삼화페인트",
-      "categories": [
-        "wood",
-        "silk"
-      ],
-      "role": "clear"
-    },
-    {
-      "id": "lacquer",
-      "status": "listed",
-      "name": "락카",
-      "brand": "삼화페인트",
-      "categories": [
-        "wood",
-        "iron"
-      ],
-      "role": "topcoat",
-      "note": "빠른 건조 · 환기 필수"
-    },
-    {
-      "id": "enamel-777",
-      "status": "listed",
-      "name": "777에나멜",
-      "brand": "삼화페인트",
-      "categories": [
-        "iron",
-        "wood"
-      ],
-      "role": "topcoat",
-      "note": "실내외"
-    },
-    {
-      "id": "ksm6020-type4-acrylic",
-      "status": "documented",
-      "name": "KSM 6020 4종 아크릴도료",
-      "name_en": "KSM 6020 Type 4 Acrylic paint",
-      "brand": "삼화페인트",
-      "categories": [
-        "roof",
-        "iron"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6020 4종",
-      "note": "유성 · 1액형 · 별도의 하도 없음",
-      "summary": "아크릴수지와 내후성이 좋은 안료를 주성분으로 한 슬레이트·기와용 1액형 유성도료. 접착력과 내구력이 강하고 내약품성·내후성·내수성이 우수하며 고광택의 매끈한 도막이 형성된다.",
-      "uses": "기와, 슬레이트 지붕 등의 외부용 도료 (도장사양서 기준 콘크리트·몰탈 외부면 포함)",
-      "substrates": [
-        "기와",
-        "슬레이트"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "유광",
-        "colors": [
-          "남색",
-          "녹색",
-          "오렌지",
-          "갈색",
-          "청기와색 등"
-        ],
-        "volume_solids_pct": 48.19,
-        "volume_solids_range_pct": [
-          47.19,
-          49.19
-        ],
-        "dft_um": 40,
-        "coats": "2~3",
-        "coverage_m2_per_l": 9.3,
-        "coverage_m2_per_l_range": [
-          9.3,
-          12.3
-        ],
-        "coverage_note": "9.30~12.30㎡/L (건조도막두께 40㎛ 기준). 도장작업 시 손실량과 표면상태를 고려할 것",
-        "dry_hard_min": 120,
-        "recoat_hours": 5,
-        "thinner": "AC 신나 3000",
-        "thinner_code": "SB-TN-607",
-        "thinning_pct_max": 50,
-        "thinning_basis": "도료 무게비",
-        "pack_sizes": [
-          "4L",
-          "18L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ],
-        "product_code": "SB-AP-100"
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "surface_temp_c_max": 35,
-        "surface_moisture_pct_max": 10,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "cure_days": 28,
-        "cure_note": "신축 건물의 시멘트 소재는 25℃·상대습도 50% 기준 28일 이상 충분히 양생. 틈새나 홈은 퍼티로 메꾸고 표면조정 후 도장",
-        "tools": [
-          "붓",
-          "로라",
-          "에어스프레이"
-        ]
-      },
-      "system": {
-        "primer": null,
-        "primer_note": "별도의 하도 없음. 다만 쵸킹이 심하거나 노후된 피도물은 묽게 희석해 1회 도장한 뒤 본 도장",
-        "topcoat_self": true
-      },
-      "estimate": {
-        "basis": "도장사양서 일위대가 · 상도 2회 · 합계 60㎛",
-        "topcoat_l_per_m2": 0.083,
-        "thinner_l_per_m2": null,
-        "thinner_note": "AC신나3000 · 도료량의 50%",
-        "note": "부가세·시공비 별도. 실제소요량은 작업조건·작업방법에 따라 가감될 수 있음"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "수성도료가 칠해져 있는 면에는 도장 금지. 부실한 구도막은 제거 후 도장",
-          "피도물 온도가 35℃ 이상이면 접착력이 저하되므로 도장 금지",
-          "콘크리트 및 몰탈의 바닥재로 사용 금지",
-          "세라믹과 같이 기공이 없는 소재는 부착 불량이 발생할 수 있으므로 도장 금지",
-          "규정된 도막두께 이상으로 도장 금지. 1회에 과도막 도장 시 기포꽈리 발생 가능",
-          "비 오는 날·습도 85% 이상·기온 5℃ 이하에는 도장작업 금지 (도막 균열·부착 불량 발생)",
-          "구도막 위 보수도장 시 구도막과의 적합성을 확인 후 사용",
-          "동일 제품·색상·LOT라도 희석비·도장기구·도장방법에 따라 이색현상이 발생할 수 있으므로 동일 LOT·동일 용구·동일 방법으로 도장하고 색상 확인 후 작업",
-          "타 도료와 혼합하여 사용 금지"
-        ],
-        "info": [
-          "쵸킹이 심하거나 노후된 피도물은 묽게 희석하여 1회 도장 후 본 도장",
-          "화기 및 직사광선을 피해 상온(5~35℃) 건냉암소에 보관하되 용기는 밀폐하고 주입구가 상단을 향하도록 세워서 보관. 사용 후 잔량도 동일",
-          "도장작업 완료 후 노출된 피부는 깨끗이 씻을 것",
-          "폐도료는 환경부에서 지정한 폐기물처리업체를 통해 폐기",
-          "장기간 보관 시 변질될 수 있으므로 유효기간 내 사용. 기간 경과 제품은 소비자상담실 확인 후 사용"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": false,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": false
-      },
-      "docs": {
-        "tech": "1tech3060009.pdf",
-        "spec_sheet": "1pntg3060009.pdf",
-        "tech_dated": "2026-07-03"
-      }
-    },
-    {
-      "id": "magictan",
-      "status": "listed",
-      "name": "매직탄",
-      "brand": "삼화페인트",
-      "categories": [
-        "tile"
-      ],
-      "role": "topcoat",
-      "note": "유성 · 실내/실외 색상 변경 · 벽면 추천"
-    },
-    {
-      "id": "magictan-wallcoat-clear",
-      "status": "listed",
-      "name": "매직탄 월코트 투명",
-      "brand": "삼화페인트",
-      "categories": [
-        "tile"
-      ],
-      "role": "clear",
-      "note": "유성 · 2액형 방수 코팅"
-    },
-    {
-      "id": "homestar-tile-paint",
-      "status": "listed",
-      "name": "홈스타 타일페인트",
-      "brand": "삼화페인트",
-      "categories": [
-        "tile"
-      ],
-      "role": "topcoat",
-      "note": "수성 · 실내 벽면 색상 변경"
-    },
-    {
-      "id": "ansim-nusu",
-      "status": "listed",
-      "name": "안심누수",
-      "brand": "삼화페인트",
-      "categories": [
-        "tile",
-        "wp"
-      ],
-      "role": "sealer",
-      "note": "수성 · 1액형 줄눈·벽 침투방수"
-    },
-    {
-      "id": "waterproof-ace-primer",
-      "status": "documented",
-      "name": "방수에이스 하도",
-      "brand": "삼화페인트",
-      "categories": [
-        "wp",
-        "roof"
-      ],
-      "role": "primer",
-      "docs": {
-        "tech": "1tech3092664.pdf",
-        "spec_sheet": null
-      },
-      "name_en": "WATERPROOFING MEMBRANE ACE PRIMER",
-      "application_type": "침투형 우레탄 하도 (방수에이스 시스템)",
-      "summary": "콘크리트 소지와 중도 우레탄의 접착력을 높이는 침투형 우레탄 하도.",
-      "substrates": [
-        "콘크리트",
-        "시멘트 몰탈"
-      ],
-      "uses": [
-        "방수에이스 시스템의 하도",
-        "비노출 방수에이스 2류(KSF3211) 시스템의 하도"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "dft_um": 50,
-        "coats": "1~2",
-        "coverage_m2_per_l": 7.2,
-        "coverage_note": "건조도막두께 50㎛ 기준 = 0.139 L/㎡. 소지 흡수량에 따라 상이",
-        "recoat_hours": "8~48 (20℃)",
-        "thinner": "우레탄1000신나",
-        "thinning_note": "신규 도장은 원액 사용. 구도막 재도장 시에만 우레탄1000신나 1:1 희석 후 최대한 얇게 도장",
-        "cleaner": "우레탄1000신나",
-        "pack_sizes": [
-          "14L",
-          "4L"
-        ]
-      },
-      "cautions": {
-        "warn": [
-          "하도는 소지가 완전히 흡수하도록 롤러로 얇게 충분히 도포",
-          "과도한 도포 시 표면 막 형성 → 중도 접착 불량 가능성 증가",
-          "하도가 처리되지 않은 부분은 중도 도장 시 기포 발생 — 빠짐없이 도포",
-          "하도 도장 후 2일 이상 경과한 부분은 층간 부착력 보강을 위해 얇게 추가 도장"
-        ]
-      }
-    },
-    {
-      "id": "waterproof-ace-topcoat",
-      "status": "documented",
-      "name": "방수에이스 상도",
-      "brand": "삼화페인트",
-      "categories": [
-        "wp",
-        "roof"
-      ],
-      "role": "topcoat",
-      "docs": {
-        "tech": "1tech3091953.pdf",
-        "spec_sheet": null
-      },
-      "name_en": "WATERPROOFING MEMBRANE ACE TOPCOAT",
-      "application_type": "노출형 우레탄 상도 (방수에이스 시스템)",
-      "summary": "중도 우레탄 방수층을 자외선·물리적 충격에서 보호하는 최종 코팅 우레탄 상도.",
-      "substrates": [
-        "방수에이스 중도 도막",
-        "원샷탄 도막"
-      ],
-      "uses": [
-        "옥상 우레탄 방수층 보호 마감"
-      ],
-      "spec": {
-        "composition": "2액형",
-        "mixing_ratio_volume": "6.3:1 (주제:경화제)",
-        "dft_um": 45,
-        "coats": "1~2",
-        "coverage_m2_per_l": 11.3,
-        "coverage_note": "건조도막두께 45㎛ 기준 = 0.088 L/㎡ (1회분)",
-        "pot_life_hours": 3,
-        "recoat_hours": "24~48 (20℃)",
-        "thinner": "우레탄1000신나",
-        "thinning_pct_max": 5,
-        "thinning_basis": "도료 부피 대비",
-        "cleaner": "우레탄1000신나",
-        "pack_sizes": [
-          "12.6L",
-          "4L"
-        ]
-      },
-      "cautions": {
-        "warn": [
-          "희석 최소화(5% 미만) — 과희석 시 보호 성능 저하",
-          "가사시간(20℃ 3시간) 초과 도료는 사용 금지",
-          "중도 도장 후 20℃ 기준 24~48시간 경과 뒤 도장"
-        ]
-      }
-    },
-    {
-      "id": "waterproof-ace-midcoat",
-      "status": "documented",
-      "name": "방수에이스 중도",
-      "name_en": "WATERPROOFING MEMBRANE ACE",
-      "brand": "삼화페인트",
-      "categories": [
-        "wp",
-        "roof"
-      ],
-      "role": "midcoat",
-      "application_type": "노출형 (옥상 우레탄 방수 — 방수에이스 시스템 표준 중도)",
-      "summary": "MOCA·6대 유해 프탈레이트·4대 중금속을 사용하지 않는 우레탄 수지를 주성분으로 설계된 친환경 옥상 방수용 중도. 기온차에 따른 수축·팽창 견딤성이 좋아 균열부 수분 침투를 막고, 내수성·내한성·접착력·내구력·도막강도가 우수하다.",
-      "substrates": [
-        "하도 처리된 콘크리트",
-        "시멘트 몰탈"
-      ],
-      "uses": [
-        "각종 토목·건축물의 옥상 및 기타부위 방수용 중도"
-      ],
-      "spec": {
-        "composition": "2액형",
-        "finish": "반광",
-        "colors": [
-          "녹색",
-          "회색"
-        ],
-        "mixing_ratio_weight": "16.6:3.4 (주제:경화제)",
-        "volume_solids_pct": "92.5±3",
-        "dft_um": 3000,
-        "coats": "1~2",
-        "coverage_kg_per_m2": 4.86,
-        "coverage_note": "건조도막두께 3㎜ 기준. 20kg 1통 ≒ 4.1㎡(약 1.2평). 도장 시 손실량·표면상태 고려",
-        "shore_hardness": "45~65 (Shore A)",
-        "elongation_pct_min": 550,
-        "tensile_strength_mpa_min": 2.0,
-        "tear_strength_n_mm_min": 12.8,
-        "thinner": "무희석",
-        "cleaner": "우레탄1000신나",
-        "pack_sizes": [
-          "20kg (16L용)"
-        ],
-        "shelf_life_months": 6,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "cure_table": {
-        "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
-        "columns": [
-          "5℃",
-          "20℃",
-          "30℃"
-        ],
-        "rows": [
-          {
-            "label": "지촉건조",
-            "unit": "시간",
-            "values": [
-              8,
-              4,
-              3
-            ]
-          },
-          {
-            "label": "경화건조",
-            "unit": "시간",
-            "values": [
-              48,
-              24,
-              18
-            ]
-          },
-          {
-            "label": "완전건조",
-            "unit": "일",
-            "values": [
-              10,
-              5,
-              3
-            ]
-          },
-          {
-            "label": "가사시간",
-            "unit": "분",
-            "values": [
-              40,
-              30,
-              20
-            ]
-          },
-          {
-            "label": "재도장 간격",
-            "unit": "시간",
-            "values": [
-              "48~96",
-              "24~48",
-              "18~48"
-            ]
-          }
-        ]
-      },
-      "conditions": {
-        "air_temp_c_min": 5,
-        "air_temp_c_max": 35,
-        "humidity_pct_max": 80,
-        "surface_temp_c_max": 40,
-        "surface_moisture_pct_max": 6,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "dew_point_margin_c": 3,
-        "cure_days": 28,
-        "cure_note": "25℃ 기준 상대습도 80% 이하",
-        "tools": [
-          "흙손",
-          "전용레기"
-        ],
-        "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
-      },
-      "system": {
-        "primer": "방수에이스 하도",
-        "midcoat": "방수에이스 중도",
-        "topcoat": "방수에이스 상도",
-        "scraping_note": "하도 후 6~48시간 이내에 0.5㎜ 선행도장(스크래핑) → 20℃에서 최소 24시간 경과 후 2.5㎜ 본도장으로 총 3㎜ 확보",
-        "mixing_note": "주제·경화제를 전동교반기(1,000RPM·700W 이상)로 2~3분간 균일하게 교반"
-      },
-      "cautions": {
-        "danger": [
-          "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
-          "혼합비(16.6:3.4)를 지키지 않으면 미경화·부풀음 발생 — 도장 면적과 두께에 맞춰 정확히 계량",
-          "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
-          "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅 후 부착성능 확인"
-        ],
-        "warn": [
-          "임의 희석 금지(무희석 제품) — 흐름현상·작업성·물성 저하. 저온 작업성 개선 목적의 과량 희석은 건조불량·도막경도 저하·크랙 유발",
-          "하도가 처리되지 않은 부분은 중도 도장 시 기포가 발생하므로 빠짐없이 도포",
-          "주제에 경화제를 미리 부어두면 혼합 전에도 반응이 진행되어 Seed 발생·퍼짐성 저하 — 부은 즉시 혼합해 도장",
-          "남은 경화제는 대기 중 수분과 반응해 굳으므로 즉시 밀봉하여 냉암소 보관",
-          "중도 도장 후 후속도장 기간이 지났거나 도막이 비·눈·이슬·수분 응축에 노출된 경우 우레탄1000신나로 세척하고 하도를 최대한 얇게 추가 도장 후 후속 도장",
-          "하절기 폭염(대기온도 28℃ 이상) 예상일에는 옥외 작업 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 중도 작업",
-          "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지 (도막균열·부착불량·기포 발생)",
-          "제품 가열 금지 · 타 도료와 혼합 금지",
-          "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척"
-        ],
-        "info": [
-          "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
-          "소지 기공에 의한 핀홀·부풀음 발생 시 해당 부위를 제거하고 우레탄 실란트로 메꾼 뒤 후속 도장",
-          "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염감소",
-        "hazard_free": "MOCA·6대 유해 프탈레이트·4대 중금속 무첨가"
-      },
-      "docs": {
-        "tech": "1tech3092251.pdf",
-        "spec_sheet": "1pntg3092251.pdf"
-      },
-      "estimate": {
-        "basis": "하도 1회(50㎛) + 중도 1~2회(3,000㎛) + 상도 1~2회(45㎛)",
-        "primer_l_per_m2": 0.139,
-        "midcoat_kg_per_m2": 4.86,
-        "topcoat_l_per_m2": 0.088,
-        "note": "부가세·시공비 별도. 실제 소요량은 소지상태·작업조건에 따라 가감"
-      }
-    },
-    {
-      "id": "oneshot-tan",
-      "status": "documented",
-      "name": "원샷탄",
-      "name_en": "ONESHOT-TAN",
-      "brand": "삼화페인트",
-      "categories": [
-        "wp",
-        "roof"
-      ],
-      "role": "midcoat",
-      "application_type": "노출형 (1액형 습기경화 우레탄 중도)",
-      "summary": "주성분이 공기 중 수분과 반응해 탄성 도막을 형성하는 1액형 습기경화 우레탄 방수재. 후도막이 형성되어 방수효과가 뛰어나고 접착력이 우수하며 하지의 균열·수축팽창에도 적응력이 좋다. 경화제 계량이 필요 없어 작업이 간편하다.",
-      "substrates": [
-        "하도 처리된 콘크리트",
-        "시멘트 몰탈",
-        "블록",
-        "벽돌"
-      ],
-      "uses": [
-        "각종 건축물의 방수용 — 콘크리트·블록·벽돌 등 방수가 요구되는 면"
-      ],
-      "spec": {
-        "composition": "1액형 (습기경화형)",
-        "finish": "반광",
-        "colors": [
-          "녹색",
-          "회색"
-        ],
-        "volume_solids_pct": "88±3",
-        "dft_um": 1000,
-        "coats": "1~2",
-        "coverage_kg_per_m2": 1.6,
-        "coverage_note": "건조도막두께 1㎜ 기준. 18kg 1통 ≒ 11.3㎡(약 3.4평). 도장 시 손실량·표면상태 고려",
-        "shore_hardness": "45~65 (Shore A)",
-        "elongation_pct_min": 550,
-        "tensile_strength_mpa_min": 2.0,
-        "tear_strength_n_mm_min": 12.8,
-        "thinner": "무희석",
-        "cleaner": "우레탄1000신나",
-        "pack_sizes": [
-          "18kg (18L용)",
-          "4kg (4L용)"
-        ],
-        "shelf_life_months": 6,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "cure_table": {
-        "unit_note": "1액형이지만 공기 중 수분과 반응해 경화하므로 개봉 후에는 즉시 전량 사용할 것",
-        "columns": [
-          "10℃",
-          "20℃",
-          "30℃"
-        ],
-        "rows": [
-          {
-            "label": "지촉건조",
-            "unit": "분",
-            "values": [
-              120,
-              90,
-              60
-            ]
-          },
-          {
-            "label": "경화건조",
-            "unit": "시간",
-            "values": [
-              72,
-              24,
-              12
-            ]
-          },
-          {
-            "label": "완전건조",
-            "unit": "일",
-            "values": [
-              6,
-              4,
-              3
-            ]
-          },
-          {
-            "label": "재도장 간격",
-            "unit": "일",
-            "values": [
-              "2~3",
-              "1~2",
-              "1~2"
-            ]
-          }
-        ]
-      },
-      "conditions": {
-        "air_temp_c_min": 5,
-        "air_temp_c_max": 35,
-        "humidity_pct_max": 80,
-        "surface_temp_c_max": 40,
-        "surface_moisture_pct_max": 6,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "dew_point_margin_c": 3,
-        "cure_days": 28,
-        "cure_note": "25℃ 기준 상대습도 80% 이하",
-        "tools": [
-          "붓",
-          "로라",
-          "전용레기"
-        ],
-        "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
-      },
-      "system": {
-        "primer": "그린방수마스터하도 / 그린방수마스터속건형하도",
-        "midcoat": "원샷탄",
-        "topcoat": "그린방수마스터상도",
-        "system_note": "기술자료상 표준 시스템은 그린방수마스터 계열. 방수에이스 시스템의 1액형 대안으로 쓸 경우 하도·상도 조합에 대해 사전 시험도장으로 부착력을 확인할 것.",
-        "build_note": "하도 후 6~48시간 이내 1㎜ 도장 → 20℃에서 최소 24시간 경과 후 필요 시 1㎜ 추가 도장",
-        "mixing_note": "1액형이지만 균일해지도록 전동교반기(1,000RPM·700W 이상)로 2~3분간 교반 후 사용"
-      },
-      "cautions": {
-        "danger": [
-          "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
-          "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
-          "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅 후 부착성능 확인"
-        ],
-        "warn": [
-          "1액형이지만 공기 중 수분과 반응해 경화하므로 '가사시간 무제한'이 아님 — 개봉 후 남은 잔량은 건조피막·굳음이 발생하므로 즉시 전량 사용",
-          "과도한 희석은 흐름현상·작업성·물성 저하를 유발하고, 저온에서 신나를 과량 희석하면 건조불량·도막경도 저하·크랙 발생",
-          "하도가 처리되지 않은 부분은 중도 도장 시 기포가 발생하므로 빠짐없이 도포",
-          "도막이 비·눈·이슬·수분 응축에 노출되거나 후속도장기간이 지난 경우 하도를 최대한 얇게 추가 도장 후 후속 도장",
-          "하절기 폭염(대기온도 28℃ 이상) 예상일에는 옥외 작업 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 중도 작업",
-          "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지",
-          "제품 가열 금지 · 타 도료와 혼합 금지",
-          "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척"
-        ],
-        "info": [
-          "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
-          "소지 기공에 의한 핀홀·부풀음 발생 시 해당 부위를 제거하고 우레탄 실란트로 메꾼 뒤 후속 도장",
-          "용기는 반드시 밀폐해 주입구가 상단을 향하도록 보관"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소"
-      },
-      "docs": {
-        "tech": "1tech3090700.pdf",
-        "spec_sheet": "1pntg3090700.pdf"
-      }
-    },
-    {
-      "id": "epocoat-primer",
-      "status": "listed",
-      "name": "에포코트 하도",
-      "brand": "삼화페인트",
-      "categories": [
-        "floor"
-      ],
-      "role": "primer",
-      "docs": {
-        "tech": "1tech3100756.pdf",
-        "spec_sheet": "1pntg3100756.pdf"
-      }
-    },
-    {
-      "id": "epocoat-topcoat",
-      "status": "listed",
-      "name": "에포코트 상도",
-      "brand": "삼화페인트",
-      "categories": [
-        "floor"
-      ],
-      "role": "topcoat",
-      "docs": {
-        "tech": "1tech3100743.pdf",
-        "spec_sheet": null
-      }
-    },
-    {
-      "id": "epocoat-aqua-primer",
-      "status": "listed",
-      "name": "에포코트아쿠아 하도",
-      "brand": "삼화페인트",
-      "categories": [
-        "floor"
-      ],
-      "role": "primer",
-      "docs": {
-        "tech": null,
-        "spec_sheet": "1pntg3100823.pdf"
-      }
-    },
-    {
-      "id": "epocoat-aqua-topcoat",
-      "status": "listed",
-      "name": "에포코트아쿠아 코팅",
-      "brand": "삼화페인트",
-      "categories": [
-        "floor"
-      ],
-      "role": "topcoat",
-      "docs": {
-        "tech": null,
-        "spec_sheet": "1pntg3100824.pdf"
-      }
-    },
-    {
-      "id": "a-floor-clear",
-      "status": "documented",
-      "name": "A플로어투명",
-      "name_en": "A-Floor clear",
-      "brand": "삼화페인트",
-      "aliases": [
-        "A-플로어 투명",
-        "A플로어 투명",
-        "에이플로어투명"
-      ],
-      "categories": [
-        "floor"
-      ],
-      "role": "clear",
-      "application_type": "1액형 아크릴 침투성 강화 방진 바닥재 (하도 불필요)",
-      "summary": "아크릴 수지를 주성분으로 한 바닥용 도료. 작업이 용이하고 접착력·내수성이 우수한 콘크리트 바닥 침투성 강화 방진용 투명 코팅제로, 하도 없이 1회 도장으로 마감한다.",
-      "substrates": [
-        "콘크리트",
-        "시멘트 몰탈"
-      ],
-      "uses": [
-        "각종 콘크리트 시설물의 바닥 침투성 강화 방진용"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "유광",
-        "colors": [
-          "투명"
-        ],
-        "volume_solids_pct": 43.0,
-        "dft_um": 50,
-        "coats": "1회",
-        "coverage_m2_per_l": 8.6,
-        "coverage_note": "건조도막두께 50㎛ 기준 = 0.116 L/㎡. 도장 시 손실량·표면상태 고려",
-        "thinner": "AC신나4000",
-        "thinning_pct_max": 50,
-        "thinning_basis": "도료 부피비",
-        "thinning_note": "기술자료 상한 50% 이내. 도장사양서 권장 희석은 도료량의 20~40%",
-        "recoat_hours": "5℃ 6h / 20℃ 3h / 30℃ 2h",
-        "pack_sizes": [
-          "18L",
-          "3.5L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "cure_table": {
-        "columns": [
-          "5℃",
-          "20℃",
-          "30℃"
-        ],
-        "rows": [
-          {
-            "label": "지촉건조",
-            "unit": "시간",
-            "values": [
-              "1시간",
-              "40분",
-              "20분"
-            ]
-          },
-          {
-            "label": "고화건조",
-            "unit": "시간",
-            "values": [
-              "4시간",
-              "2시간",
-              "1.5시간"
-            ]
-          },
-          {
-            "label": "재도장 간격",
-            "unit": "시간",
-            "values": [
-              "6시간",
-              "3시간",
-              "2시간"
-            ]
-          }
-        ]
-      },
-      "conditions": {
-        "air_temp_c_min": 5,
-        "air_temp_c_max": 35,
-        "humidity_pct_max": 80,
-        "surface_temp_c_max": 40,
-        "surface_moisture_pct_max": 6,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "dew_point_margin_c": 3,
-        "cure_days": 28,
-        "cure_note": "25℃ 기준 상대습도 80% 이하",
-        "tools": [
-          "붓",
-          "로라"
-        ],
-        "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
-      },
-      "system": {
-        "primer": null,
-        "primer_note": "하도 없음",
-        "topcoat": "아크릴 플로아코트 / A-플로어 투명"
-      },
-      "estimate": {
-        "basis": "상도 1회 50㎛ · 이론소요량 8.6㎡/L",
-        "topcoat_l_per_m2": 0.116,
-        "thinner_pct": "도료량의 20~40%",
-        "note": "부가세·시설비 별도. 실제 소요량은 작업조건·작업방법에 따라 가감"
-      },
-      "cautions": {
-        "danger": [
-          "밀폐된 장소에서 절대 도장 금지 — 질식·화재 위험",
-          "환기가 부족하면 도장 및 건조 중 옥외로 강제 배기하거나 충분히 환기",
-          "피도면 온도가 높거나 습도가 낮은 날은 붓·로라 작업 시 정전기·스파크로 화재 위험 — 기온이 낮은 아침이나 늦은 오후에 도장하고 화재 위험성이 낮은 재질의 도장기구 사용"
-        ],
-        "warn": [
-          "에폭시계 도료에 비해 내마모성이 떨어짐 — 내마모·내약품성이 중요한 환경은 에포코트 권장",
-          "아크릴 구도막에 재도장 시 건조지연으로 바퀴자국·발자국 등 자국현상 발생 가능 — 반드시 샘플테스트 후 도장 (구도막이 두꺼울수록 건조지연 심화)",
-          "후도막으로 도장하면 도막 내부 용제가 휘발되지 않아 물성 저하 — 규정 두께 준수",
-          "추천 희석제(AC신나4000)만 사용 · 과도한 희석은 흐름현상·작업성·물성 저하",
-          "제품 가열 금지 · 타 도료와 혼합 금지",
-          "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지",
-          "동일 제품이라도 LOT·희석비·도장기구·도장방법에 따라 작업성 차이 발생 — 가급적 동일 LOT·동일 도장용구로 시공",
-          "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행",
-          "작업 후 모든 도장기구는 지정 세척제로 세척"
-        ],
-        "info": [
-          "신축줄눈·크랙이 심한 부분은 V-cutting 후 폴리에틸렌(PE) 백업재로 충진, 틈새·홈은 슈퍼에폭씰로 메꾸고 표면 조정 후 도장",
-          "벽면과 바닥이 접한 부위 등 가장자리는 V-cutting",
-          "개봉 후 남은 잔량은 건조피막·굳음이 발생하므로 즉시 전량 사용",
-          "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
-        ]
-      },
-      "compliance": {
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
-      },
-      "docs": {
-        "tech": "1tech3060015.pdf",
-        "spec_sheet": "1pntg3060015.pdf",
-        "note": "업로드 파일명이 1tech3060015_A.pdf / 1pntg3060015_A.pdf 라면 경로를 그에 맞춰 수정할 것"
-      }
-    },
-    {
-      "id": "acryl-floorcoat",
-      "status": "listed",
-      "name": "아크릴 플로아코트",
-      "brand": "삼화페인트",
-      "categories": [
-        "road",
-        "floor"
-      ],
-      "role": "primer",
-      "note": "신축·거친 콘크리트 기공 메움용"
-    },
-    {
-      "id": "green-waterproof-master-primer",
-      "status": "listed",
-      "name": "그린방수마스터하도",
-      "brand": "삼화페인트",
-      "categories": [
-        "wp"
-      ],
-      "role": "primer",
-      "aliases": [
-        "그린방수마스터속건형하도"
-      ],
-      "note": "원샷탄(그린방수마스터 시스템) 전용 하도. 신규 50㎛ 1회 도장, 구도막·2일 경과 후 재도장 시 얇게 추가. 비노출 방수에이스 2류(KSF3211)의 하도는 '방수에이스 하도'이므로 혼동 주의. 별도 기술자료 미확보 — 확보 시 spec 채울 것."
-    },
-    {
-      "id": "non-exposed-tar-waterproofing-tan",
-      "status": "documented",
-      "name": "비노출 방수에이스 2류(KSF3211)",
-      "name_en": "UNEXPOSED WATERPROOF ACE CLASS.2(KSF3211)",
-      "brand": "삼화페인트",
-      "aliases": [
-        "비노출 방수에이스 2류",
-        "비노출방수에이스2류",
-        "비노출 타르방수탄"
-      ],
-      "rename_note": "구 제품명 '비노출 타르방수탄'에서 '비노출 방수에이스 2류(KSF3211)'로 변경. id는 PK이므로 유지.",
-      "categories": [
-        "wp"
-      ],
-      "role": "topcoat",
-      "application_type": "비노출형 (타일·몰탈 등으로 덮이는 시공 — 옥상 노출형과 다름)",
-      "summary": "MOCA·6대 유해 프탈레이트·4대 중금속을 사용하지 않는 우레탄 수지를 주성분으로 설계된, KS F 3211 우레탄고무계 2류 물성을 만족하는 친환경 비노출 2액형 난타르(non-tar) 우레탄 방수도료. 건조 도막이 탄성을 보유해 기온차·진동에 의한 수축·팽창에도 견딤성이 좋아 균열부 수분 침투를 방지한다.",
-      "substrates": [
-        "하도 처리된 콘크리트",
-        "시멘트 몰탈"
-      ],
-      "uses": [
-        "각종 토목·건축물의 옥상 및 기타부위 비노출 방수",
-        "일반건축물",
-        "하수종말처리장",
-        "정화조용",
-        "욕실·화장실",
-        "옥상정원"
-      ],
-      "spec": {
-        "composition": "2액형",
-        "finish": "반광",
-        "colors": [
-          "흑색",
-          "회색"
-        ],
-        "mixing_ratio_weight": "4:1 (주제:경화제)",
-        "dft_um": 3000,
-        "dft_note": "표준 3㎜. 단, 세대 욕실·발코니는 도막두께 1.0㎜ 이상이면 방수성능 확보 가능.",
-        "coats": "1~2",
-        "specific_gravity": 1.5,
-        "coverage_kg_per_m2": 4.5,
-        "coverage_note": "비중 1.50 · 무희석 · 3㎜ 기준 이론 산출값. 기술자료·도장사양서에 추천소요량 수치가 명시되어 있지 않으므로 참고값으로만 사용할 것.",
-        "shore_hardness": "45~65 (Shore A)",
-        "elongation_pct_min": 550,
-        "tensile_strength_mpa_min": 2.0,
-        "tear_strength_n_mm_min": 12.8,
-        "thinner": "무희석",
-        "cleaner": "우레탄1000신나",
-        "pack_sizes": [
-          "25kg",
-          "20kg"
-        ],
-        "shelf_life_months": 6,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "cure_table": {
-        "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
-        "columns": [
-          "5℃",
-          "20℃",
-          "30℃"
-        ],
-        "rows": [
-          {
-            "label": "지촉건조",
-            "unit": "시간",
-            "values": [
-              8,
-              4,
-              3
-            ]
-          },
-          {
-            "label": "경화건조",
-            "unit": "시간",
-            "values": [
-              48,
-              24,
-              18
-            ]
-          },
-          {
-            "label": "완전건조",
-            "unit": "일",
-            "values": [
-              10,
-              5,
-              3
-            ]
-          },
-          {
-            "label": "가사시간",
-            "unit": "분",
-            "values": [
-              40,
-              30,
-              20
-            ]
-          },
-          {
-            "label": "재도장 간격",
-            "unit": "시간",
-            "values": [
-              "48~96",
-              "24~48",
-              "18~48"
-            ]
-          }
-        ]
-      },
-      "conditions": {
-        "air_temp_c_min": 5,
-        "air_temp_c_max": 35,
-        "humidity_pct_max": 80,
-        "surface_temp_c_max": 40,
-        "surface_moisture_pct_max": 6,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "dew_point_margin_c": 3,
-        "cure_days": 28,
-        "cure_note": "25℃ 기준 상대습도 80% 이하",
-        "tools": [
-          "흙손",
-          "전용레기"
-        ],
-        "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
-      },
-      "system": {
-        "primer": "방수에이스 하도",
-        "primer_dft_um": 50,
-        "primer_coats": 1,
-        "primer_note": "로울러 또는 붓으로 50㎛ 1회 도장. 도장 후 2일 이상 경과 시 층간 부착력 보강을 위해 하도를 얇게 추가 도장",
-        "midcoat": null,
-        "midcoat_note": "중도 없음 — 하도 + 상도 2단계 시스템",
-        "topcoat": "비노출 방수에이스 2류(KSF3211)",
-        "topcoat_recoat_note": "하도 도장 후 6시간 이상 48시간 이내에 상도(A·B부 4:1 무게비 혼합) 시공",
-        "scraping_note": "기포 방지를 위해 상도 물량 일부로 약 0.5㎜ 선행도장(스크래핑) 후, 20℃ 기준 최소 24시간 경과 뒤 잔량 2.5㎜를 도포해 총 3㎜ 확보"
-      },
-      "estimate": {
-        "basis": "하도 1회(50㎛) + 상도 1~2회(3,000㎛) · 합계 2~3회 3,050㎛",
-        "primer_l_per_m2": 0.138,
-        "topcoat_kg_per_m2": 4.5,
-        "note": "부가세·시공비 별도. 실제 소요량은 소지상태·작업조건에 따라 가감. 상도 소요량은 비중 1.50 기준 이론값."
-      },
-      "cautions": {
-        "danger": [
-          "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
-          "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
-          "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인",
-          "혼합비를 지키지 않으면 미경화·부풀음이 발생하므로 주제:경화제 4:1(무게비)을 정확히 계량"
-        ],
-        "warn": [
-          "균열이 심한 부분·신축줄눈은 V-cutting 후 폴리에칠렌 백업재 삽입, 우레탄 실란트(스피실 원샷/우레탄/우레탄HM)로 씰링 후 도장",
-          "옥상 바닥 줄눈에 스피실 원샷·우레탄 실란트 사용 시 가소제 이행 차단을 위해 우레탄 하도를 후속 도장",
-          "벽면과 접한 부위 등 가장자리는 V-cutting",
-          "콘크리트 소지 기공에 의한 기포 발생 최소화를 위해 약 0.5~0.8㎜ 두께로 선행도장(스크래핑) 필수",
-          "도막두께 1㎜ 이하 도장 시 평활성·소포성이 떨어지므로 RAKE보다 흙손 사용 권장",
-          "주제와 경화제는 전동교반기(1,000~1,500RPM, 700W 이상)로 2~3분간 균일하게 혼합",
-          "봄·가을 이른 아침(수분응축)이나 안개다발지역 아침 시공 금지 — 부풀음·부착불량 원인",
-          "하절기 폭염(대기온도 28℃ 이상)에는 시공 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 상도 작업",
-          "저온에서 신나 과량 희석 시 건조불량·도막경도 저하·크랙 발생",
-          "경화제는 대기 중 수분과 반응해 굳으므로 남은 경화제는 즉시 밀봉하여 냉암소 보관",
-          "주제에 경화제를 미리 부어두면 혼합 전에도 반응이 진행되어 Seed 발생·퍼짐성 저하 — 부은 즉시 혼합해 도장",
-          "상도 도막이 비·눈·이슬·수분 응축에 노출되거나 후속도장기간이 지난 경우 하도를 최대한 얇게 추가 도장 후 후속 도장",
-          "혼합 교반 시 시공면 오염 방지를 위해 깔판 사용 또는 시공면 밖에서 혼합",
-          "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척",
-          "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행",
-          "타 도료와 혼합 금지 · 가열 금지"
-        ],
-        "info": [
-          "도장 완료 후 1일 이후 3일 이내에 콘크리트 또는 보호몰탈로 눌러 바르는 공법으로 마감",
-          "시공 이음매 레벨링을 고려해 신속히 시공",
-          "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
-          "피도면이 매끄러워 하도가 스며들지 않는 경우 우레탄 하도 기술자료의 희석비 참조",
-          "대기 온도에 따라 건조속도를 조정한 제품 — 하절기용을 저온에서 사용하면 표면결함 발생 가능"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소",
-        "ks_certified": "KS F 3211 우레탄고무계 2류",
-        "hazard_free": "MOCA·6대 유해 프탈레이트·4대 중금속 무첨가",
-        "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
-      },
-      "docs": {
-        "tech": "1tech3092686.pdf",
-        "spec_sheet": "1pntg3092686.pdf",
-        "note": "2026-07-28자 기술자료 및 3㎜ 도장사양서 확보. 저장소 pdf/ 폴더 파일명이 다르면 실제 파일명에 맞춰 수정할 것."
-      }
-    },
-    {
-      "id": "aisaengkag-high-viscosity-mixing",
-      "status": "documented",
-      "name": "아이생각고점도 믹싱",
-      "name_en": "Aisaengkag High Viscosity Mixing",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "mold"
-      ],
-      "role": "primer",
-      "summary": "아크릴 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면 표면 눈메꿈, 접착력 증가, 구도막 보강용. 물과 1:3 비율로 희석해 피도면에 스며들도록 도장.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "석고"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "투명(스며듦)",
-        "colors": [
-          "투명"
-        ],
-        "volume_solids_pct": 30,
-        "coats": 1,
-        "coverage_m2_per_l": 30.0,
-        "dry_hard_min": 120,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_ratio": "아이생각고점도믹싱 : 물 = 1 : 3",
-        "pack_sizes": [
-          "18L",
-          "3.5L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "system": {
-        "primer": null,
-        "primer_note": "하도 전용 — 상도용 사용 불가",
-        "topcoat_self": false
-      },
-      "estimate": {
-        "basis": "하도 1회 (1:3 희석) · 스며듦",
-        "note": "부가세·시공비 별도"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "반드시 물과 지정 희석비(1:3)로 희석하여 도장",
-          "피도면에 고르게 스며들도록 도장",
-          "상도용으로 사용 불가",
-          "타 도료와 혼합 금지",
-          "과도막 시 후속 도장 물성저하 우려"
-        ],
-        "info": [
-          "도료 보관·운송 시 동결 금지"
-        ]
-      },
-      "compliance": {
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
-      },
-      "docs": {
-        "tech": "1tech3051618.pdf",
-        "spec_sheet": "1pntg3051618.pdf",
-        "tech_dated": "2026-03-24"
-      }
-    },
-    {
-      "id": "aisaengkag-water-borne-pro-interior",
-      "status": "documented",
-      "name": "아이생각수성내부프로",
-      "name_en": "Aisaengkag Water-borne Pro for Interior",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6010 2종 2급",
-      "summary": "아크릴에멀젼+내후성 안료 주성분. 내수성·내알칼리성·내세척성이 뛰어나고 유기용제·중금속을 사용하지 않아 환경마크·친환경건축자재인증 최우수등급을 획득한 내부용 친환경 수성페인트.",
-      "substrates": [
-        "콘크리트",
-        "몰탈",
-        "석고보드"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "담색"
-        ],
-        "volume_solids_pct": 37.6,
-        "dft_um": 60,
-        "coats": "1~2",
-        "coverage_m2_per_l": 6.0,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "18L",
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "surface_moisture_pct_max": 10,
-        "surface_ph": [
-          7,
-          9
-        ],
-        "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "primer_required_when": [
-          "콘크리트 소지 상태 불량",
-          "구도막 부위",
-          "동절기 시공",
-          "시멘트 견출·미장면 쵸킹 소지",
-          "흡수차가 심한 바탕면",
-          "시멘트 용출이 심한 부위"
-        ]
-      },
-      "estimate": {
-        "basis": "상도 1~2회 · 60㎛",
-        "topcoat_l_per_m2": 0.16,
-        "note": "부가세·시공비 별도"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "비오는 날/습도 85%이상/기온 5℃이하 도장 금지",
-          "구도막 보수도장은 사전 적합성 확인 후 진행",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
-          "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의"
-        ],
-        "info": [
-          "도장 전 균일 혼합, 도장 중 주기적 교반"
-        ]
-      },
-      "compliance": {
-        "indoor_air_quality_act": true,
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true,
-        "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
-      },
-      "docs": {
-        "tech": "1tech3051753.pdf",
-        "spec_sheet": "1pntg3051753.pdf",
-        "tech_dated": "2025-09-04"
-      }
-    },
-    {
-      "id": "aisaengkag-water-borne-acron",
-      "status": "documented",
-      "name": "아이생각수성아크론",
-      "name_en": "Aisaengkag Water-Borne Acron",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete",
-        "roof"
-      ],
-      "role": "topcoat",
-      "summary": "특수 아크릴에멀젼+내후성 안료 주성분의 고광택 수성페인트. 낙서방지효과가 우수하고(반광 이상) 가정에서 쉽게 도장 가능한 DIY형 제품으로 환경마크를 획득.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "석고",
-        "기와",
-        "슬레이트"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "유광/반광/에그쉘광/무광",
-        "colors": [
-          "백색",
-          "담색(주문한정)"
-        ],
-        "volume_solids_pct": 36.0,
-        "dft_um": 60,
-        "coats": "2~3",
-        "coverage_m2_per_l": 6.08,
-        "dry_hard_min": 120,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "18L",
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85,
-        "cure_days": 28
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true,
-        "primer_required_when": [
-          "콘크리트 소지 상태 불량",
-          "구도막 부위",
-          "동절기 시공",
-          "쵸킹 소지",
-          "흡수차가 심한 바탕면",
-          "시멘트 용출이 심한 부위"
-        ]
-      },
-      "estimate": {
-        "basis": "상도 2회 · 각 30㎛",
-        "note": "반광·에그쉘·무광 소요량은 소비자상담실 문의"
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "도장 후 25℃ 기준 최소 3시간 경과 후 재도장",
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "voc_regulation": "수도권대기환경개선 특별법 규제 만족 (수도권 사용 가능)"
-      },
-      "docs": {
-        "tech": "1tech3051788.pdf",
-        "spec_sheet": "1pntg3051788.pdf",
-        "tech_dated": "2023-04-18"
-      }
-    },
-    {
-      "id": "aisaengkag-water-borne-pro-exterior",
-      "status": "documented",
-      "name": "아이생각수성외부프로",
-      "name_en": "Aisaengkag Water-borne Pro for Exterior",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6010 1종 2급",
-      "summary": "아크릴에멀젼+내후성 안료 주성분의 외부 노출면 보호용 친환경 수성페인트. 환경마크 획득.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "석고보드"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "finish": "무광",
-        "colors": [
-          "백색",
-          "각색"
-        ],
-        "volume_solids_pct": 35.2,
-        "dft_um": 60,
-        "coats": 2,
-        "coverage_m2_per_l": 5.8,
-        "dry_hard_min": 60,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "pack_sizes": [
-          "18L",
-          "4L"
-        ],
-        "shelf_life_months": 12,
-        "storage_temp_c": [
-          5,
-          35
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ]
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true
-      },
-      "estimate": {
-        "basis": "상도 2회 · 60㎛",
-        "topcoat_l_per_m2": 0.145
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true
-      },
-      "docs": {
-        "tech": "1tech3051945.pdf",
-        "spec_sheet": "1pntg3051945.pdf",
-        "tech_dated": "2024-12-17"
-      }
-    },
-    {
-      "id": "aisaengkag-acron-exterior",
-      "status": "documented",
-      "name": "아이생각 아크로 외부용",
-      "name_en": "Aisaengkag Acron for Exterior",
-      "brand": "삼화페인트",
-      "categories": [
-        "concrete"
-      ],
-      "role": "topcoat",
-      "standard": "KS M 6010 1종 2급",
-      "summary": "아크릴에멀젼+내후성 안료 주성분의 건축물 외부마감용 친환경 수성페인트. 환경마크 획득.",
-      "substrates": [
-        "콘크리트",
-        "시멘트",
-        "몰탈",
-        "석고"
-      ],
-      "spec": {
-        "composition": "1액형",
-        "dft_um": 60,
-        "coats": 2,
-        "coverage_m2_per_l": 6.25,
-        "recoat_hours": 3,
-        "thinner": "물",
-        "thinning_pct_max": 10,
-        "storage_temp_c": [
-          5,
-          35
-        ],
-        "shelf_life_months": 12,
-        "pack_sizes": [
-          "1L"
-        ]
-      },
-      "conditions": {
-        "air_temp_c": [
-          5,
-          35
-        ],
-        "humidity_pct_max": 85
-      },
-      "system": {
-        "primer": "수성바인다200",
-        "primer_conditional": true
-      },
-      "estimate": {
-        "basis": "상도 2회 · 각 30㎛",
-        "topcoat_l_per_m2": 0.16
-      },
-      "cautions": {
-        "danger": [],
-        "warn": [
-          "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
-        ],
-        "info": []
-      },
-      "compliance": {
-        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
-        "eco_label": true
-      },
-      "docs": {
-        "tech": "1tech3051817.pdf",
-        "spec_sheet": "1pntg3050013.pdf",
-        "tech_dated": "2024-12-17"
-      }
-    }
-  ]
+   ],
+   "cautions": {
+    "danger": [
+     "실내 시멘트면의 바닥재용으로 사용 금지 — 차선·표시선 전용",
+     "밀폐된 장소에서 절대 도장 금지 (인화성 · 질식·화재 위험)",
+     "정전기·스파크 화재 위험 — 기온 낮은 아침이나 늦은 오후 작업, 저위험 재질 도장기구 사용",
+     "도료 묻은 헝겊은 자연발화 위험 — 불연성 용기에 담아 폐기"
+    ],
+    "warn": [
+     "고강도 콘크리트(260 kgf/㎠ 이상)는 그라인딩 시 부착 불량 — 블라스팅 후 부착성능 확인",
+     "후도막 도장 금지 — 용제 미휘발로 물성 저하 및 바퀴자국·발자국 발생",
+     "과도한 희석 금지 — 은폐력·살오름성·도막강도 저하",
+     "심한 균열이 있는 노면에는 도장 금지",
+     "에폭시계 도료 대비 내마모성이 떨어짐",
+     "구도막 보수 도장은 사전 시험도장 후 진행",
+     "타 도료 혼합 금지 · 가열 금지",
+     "작업 후 모든 도장기구는 지정 세척제로 세척",
+     "개봉 후 잔량은 건조피막·굳음 발생 — 즉시 전량 사용"
+    ],
+    "info": [
+     "신축·거친 콘크리트 소지면이나 기포꽈리 우려 구간은 아크릴 플로아코트 1회 선도장 후 재도장 간격 준수",
+     "동일 제품·색상·Lot라도 희석비·도장기구·도장방법이 다르면 이색현상 발생"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": false,
+    "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)",
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내 사용 가능 (사용 가능 인증이며 실내 전용이라는 뜻이 아님). 단 주의사항에 '실내 시멘트면의 바닥재용으로 사용 금지'가 별도 명시되어 있음"
+   },
+   "docs": {
+    "tech": "1tech3490771.pdf",
+    "spec_sheet": "1pntg3490771.pdf",
+    "tech_dated": "2024-07-18"
+   }
+  },
+  {
+   "id": "ilux-condensation-stop-diatomite-white",
+   "status": "documented",
+   "name": "아이럭스결로스탑 규조토 백색",
+   "name_en": "ILUX Condensation Stop Diatomite",
+   "brand": "삼화페인트",
+   "categories": [
+    "mold",
+    "concrete"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6010 2종 1급",
+   "summary": "규조토의 호흡성으로 실내 표면 결로를 흡수했다가 서서히 방출해 결로를 보완하는 기능성 수성페인트. 도막 위 곰팡이 생성도 억제.",
+   "substrates": [
+    "콘크리트",
+    "시멘트몰탈",
+    "석고보드"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "담색(주문 한정)"
+    ],
+    "volume_solids_pct": 38.88,
+    "dft_um": 100,
+    "coats": "2~3",
+    "coverage_m2_per_l": 3.89,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "recoat_hours_source": "기술자료 3시간 / 도장사양서 2시간 — 현장 기준은 3시간으로 확정",
+    "thinner": "물 (상수도)",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "4L",
+     "1L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "surface_moisture_pct_max": 10,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "cure_days": 28,
+    "cure_note": "25℃ · 상대습도 50% 기준",
+    "tools": [
+     "붓",
+     "로라",
+     "스프레이"
+    ],
+    "filler": "월드퍼티 (틈새·홈 메움 후 표면조정)"
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true,
+    "primer_required_when": [
+     "콘크리트 소지 상태 불량",
+     "구도막 부위",
+     "동절기 시공",
+     "시멘트 견출면·미장면 등 쵸킹 소지",
+     "흡수차가 심한 바탕면",
+     "시멘트 용출이 심한 부위"
+    ]
+   },
+   "estimate": {
+    "basis": "하도 1회 + 상도 2~3회 · 100㎛",
+    "primer_l_per_m2": 0.1,
+    "topcoat_l_per_m2": 0.26,
+    "note": "실제 소요량은 작업조건·작업방법에 따라 가감"
+   },
+   "cautions": {
+    "danger": [
+     "결로량이 많으면 도막 강도가 저하되어 문지르거나 긁으면 묻어남 — 결로 심한 곳은 단열 공사 선행 필수",
+     "주거활동으로 긁힘·마찰이 잦은 부위에는 부적합",
+     "유성도료가 도장된 목재·철재·플라스틱 부위 도장 금지 (부착 불량)",
+     "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·끈적거림·변색"
+    ],
+    "warn": [
+     "비 오는 날, 습도 85% 이상, 기온 5℃ 이하 도장 금지",
+     "보관·운송 시 동결 금지 (수성)",
+     "캔 개봉 후 즉시 사용 — 외부 오염에 의한 변질 우려",
+     "타 도료 혼합 금지",
+     "도장 전 균일 혼합 및 도장 중 주기적 교반. 믹서 교반 시 기포 주의",
+     "현장 조색은 아크로텍스잉크로 최대 5%(부피비). 과량 시 이색·건조불량·내수성불량·VOC 증가",
+     "스프레이는 연속작업 원칙. 끊길 경우 골부위나 부위 경계에서 끊기",
+     "구도막 보수 도장은 적합성을 소비자상담실 확인 후 진행",
+     "동일 제품·색상·LOT라도 희석비·도장기구·도장방법이 다르면 이색현상 발생"
+    ],
+    "info": [
+     "화기·직사광선을 피해 건냉암소 보관. 용기 밀폐 후 주입구가 상단을 향하도록 세워 보관 (잔량 동일)",
+     "어린이 손이 닿지 않는 곳에 보관. 동·식물 섭취 시 유해",
+     "폐도료는 환경부 지정 폐기물처리업체를 통해 폐기",
+     "유효기간 내 사용, 경과 제품은 소비자상담실 확인 후 사용",
+     "취급 전 물질안전보건자료(MSDS) 확인"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소",
+    "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
+   },
+   "docs": {
+    "tech": "1tech3052309.pdf",
+    "spec_sheet": "1pntg3052309.pdf",
+    "tech_dated": "2025-09-09"
+   }
+  },
+  {
+   "id": "watersoluble-binder-200",
+   "status": "documented",
+   "name": "수성바인다200",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "mold"
+   ],
+   "role": "primer",
+   "aliases": [
+    "수성바인다 200"
+   ],
+   "summary": "아크릴 공중합 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면의 표면 눈메꿈, 수성도료와 피도면 간 접착력 증가, 구도막 보수 시 접착력 보강용으로 사용. 도막 형성이 아닌 피도면에 스며들도록 도장.",
+   "spec": {
+    "composition": "1액형",
+    "finish": "투명(스며듦)",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 10,
+    "dft_um": null,
+    "coats": 1,
+    "coverage_m2_per_l": 10.0,
+    "dry_hard_min": 120,
+    "recoat_hours": 3,
+    "thinner": "무희석",
+    "thinning_pct_max": 0,
+    "pack_sizes": [
+     "18L",
+     "3.5L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "surface_moisture_pct_max": 10,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "cure_days": 28
+   },
+   "system": {
+    "primer": null,
+    "primer_note": "하도 전용 제품 — 상도용으로 사용 불가",
+    "topcoat_self": false
+   },
+   "estimate": {
+    "basis": "하도 1회 · 스며듦",
+    "primer_l_per_m2": 0.1,
+    "note": "부가세·시공비 별도"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "타 도료와 혼합 금지",
+     "반드시 피도면에 스며들도록 충분히 도장",
+     "상도용으로 사용 불가",
+     "목재·철재·플라스틱 유성도막 부위 도장 금지",
+     "비 오는 날/습도 85% 이상/기온 5℃ 이하 도장 금지"
+    ],
+    "info": [
+     "도료 보관·운송 시 동결 금지 (5~35℃ 실내보관)"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+   },
+   "docs": {
+    "tech": "1tech3050157.pdf",
+    "spec_sheet": "1pntg3050157.pdf",
+    "tech_dated": "2025-10-29"
+   }
+  },
+  {
+   "id": "aisaenggak-waterborn-elastic-seal",
+   "status": "documented",
+   "name": "아이생각 수성탄성씰",
+   "name_en": "AISAENGKAG WATER-BORN ELASTIC SEAL",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "mold"
+   ],
+   "role": "midcoat",
+   "aliases": [
+    "아이생각수성탄성씰",
+    "수성탄성씰",
+    "아이생각 수성 탄성씰"
+   ],
+   "summary": "특수 아크릴에멀젼 및 수용성 아크릴우레탄 에멀젼과 내후성이 좋은 안료를 주성분으로 메꿈성·탄성·내후성·방수성이 좋도록 설계된 1액형 수성 메꿈제. 접착력과 내구력이 강해 시멘트 기재 건축물의 균열부·이음새·창문틀·벽체 사이 틈을 메꾸는 데 적합하며, 상도 도막을 오염시키지 않고 작업성이 우수하다.",
+   "uses": "일반건축물의 균열부분, 조립식 건축물의 이음부분 및 각종 틈의 메꿈을 요구하는 고탄성 메꿈제",
+   "substrates": [
+    "시멘트",
+    "콘크리트면"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "아이보리색"
+    ],
+    "viscosity": "PASTE상",
+    "volume_solids_pct": 70,
+    "volume_solids_source": "TDS 표기 '고형분 70%' — 부피/중량 구분 표기 없음",
+    "dft_um": 500,
+    "coats": "1~2",
+    "coverage_kg_per_m2": 1.15,
+    "coverage_m2_per_l": null,
+    "coverage_note": "1.15㎏/㎡ (건조도막두께 500㎛ 기준). 도장작업 시 손실량과 표면상태를 고려할 것",
+    "max_thickness_per_coat_mm": 1,
+    "dry_touch_min": 60,
+    "dry_hard_min": null,
+    "full_dry_days": 7,
+    "recoat_hours": 24,
+    "recoat_hours_source": "TDS 상도작업가능건조 1일 / 도장사양서 25℃ 기준 24시간 이후 — 습도·통풍·도막두께에 따라 차이",
+    "thinner": "무희석",
+    "thinning_pct_max": 0,
+    "pack_sizes": [
+     "20kg",
+     "5kg"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "surface_equilibrium_moisture_pct_max": 85,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "cure_days": 28,
+    "cure_note": "25℃ 기준 28일 이상 충분히 양생. 얇은 틈새나 홈은 V컷팅한 후 충진",
+    "tools": [
+     "헤라(주걱)"
+    ]
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true,
+    "primer_note": "필요시 도장. 피도물의 쵸킹이 심할 경우에는 반드시 수성바인다200 도장 후 충전",
+    "midcoat": "아이생각 수성탄성씰 (본 제품)",
+    "midcoat_note": "1회 마감 시 건조도막두께 500㎛. 필요시 1차 백색 250㎛ 시공 후 최소 10시간 경과 뒤 2차 아이보리색 250㎛",
+    "topcoat": [
+     "아이생각수성외부1급",
+     "인플러스 수성 실리콘(RS)"
+    ],
+    "topcoat_note": "건조 후 상도 도장 시 외부 1급류 수성페인트를 사용. 안료분이 높은 페인트는 크랙 우려가 있어 상도적합성 사전 확인 필요",
+    "topcoat_self": false
+   },
+   "estimate": {
+    "basis": "도장사양서 일위대가 · 하도 1회 + 중도 1~2회(500㎛) + 상도 2회 · 합계 4~5회",
+    "primer_l_per_m2": 0.11,
+    "midcoat_kg_per_m2": 1.15,
+    "topcoat_l_per_m2": 0.14,
+    "topcoat_dft_um": 60,
+    "note": "부가세·시공비 별도. 실제소요량은 작업조건·작업방법에 따라 가감될 수 있음"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "상도로 안료분이 높은 페인트를 도장할 경우 크랙이 발생할 수 있으므로 상도적합성(크랙·부착·이색) 유무를 미리 확인",
+     "비 오는 날·습도 85% 이상·기온 5℃ 이하에는 정상적인 물성을 발휘하지 못하므로 도장작업 금지 (도막 균열·부착 불량 발생)",
+     "눈·비가 예상될 때에는 작업 금지",
+     "피도물의 쵸킹이 심할 경우 수성바인다200을 도장한 후 충전",
+     "구도막 위 보수도장 시 구도막과의 적합성을 확인 후 사용 (대리점 또는 소비자상담실 문의)",
+     "타 도료와 혼합하여 사용 금지",
+     "25℃ 기준 상도 도장은 24시간 이후 가능하나 습도·통풍·도막두께에 따라 차이가 있으므로 건조 상태 확인 필수"
+    ],
+    "info": [
+     "도료 보관이나 운송 시 얼지 않도록 유의",
+     "화기 및 직사광선을 피해 상온(5~35℃) 건냉암소에 보관하되 용기는 밀폐하고 주입구가 상단을 향하도록 세워서 보관. 사용 후 잔량도 동일",
+     "어린이 손에 닿지 않는 곳에 보관하고 동·식물이 섭취하지 않도록 폐기·보관에 주의",
+     "도장작업 완료 후 노출된 피부는 깨끗이 씻을 것",
+     "폐도료는 환경부에서 지정한 폐기물처리업체를 통해 폐기",
+     "장기간 보관 시 변질될 수 있으므로 유효기간 내 사용. 기간 경과 제품은 소비자상담실 확인 후 사용",
+     "취급 전 물질안전보건자료(MSDS) 확인"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택의 실내에 사용 가능",
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소"
+   },
+   "docs": {
+    "tech": "1tech3051579.pdf",
+    "spec_sheet": "1pntg3051579.pdf",
+    "tech_dated": "2026-02-23"
+   }
+  },
+  {
+   "id": "ginger-mold-killing-primer",
+   "status": "listed",
+   "name": "진저 몰드킬링 프라이머",
+   "brand": "삼화페인트",
+   "categories": [
+    "mold"
+   ],
+   "role": "primer"
+  },
+  {
+   "id": "power-jesso",
+   "status": "listed",
+   "name": "파워젯소",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "wood"
+   ],
+   "role": "primer"
+  },
+  {
+   "id": "ilux-multiflat",
+   "status": "documented",
+   "name": "아이럭스 멀티플랫",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "silk"
+   ],
+   "role": "topcoat",
+   "summary": "Low VOC 극무광 타입. 은폐력과 작업성이 우수하고 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 내부용 프리미엄 페인트.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "벽지면"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "담색"
+    ],
+    "volume_solids_pct": 39.32,
+    "dft_um": 60,
+    "coats": "2~3",
+    "coverage_m2_per_l": 6.55,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "estimate": {
+    "basis": "상도 2~3회 · 60㎛"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "벽지 접착이 약해 들뜬 부위는 도장 시 주름 발생 가능",
+     "과도한 희석은 도막성능 저하 초래",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+   },
+   "docs": {
+    "tech": "1tech3051826.pdf",
+    "spec_sheet": "1pntg3051826.pdf",
+    "tech_dated": "2026-02-10"
+   },
+   "system": {}
+  },
+  {
+   "id": "ilux-multi-eggshell",
+   "status": "documented",
+   "name": "아이럭스 멀티에그쉘",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "iron",
+    "wood"
+   ],
+   "role": "topcoat",
+   "summary": "듀폰 불소계 특수첨가제로 오염 발생을 최소화하고 오염물 제거가 쉬운 이지클리닝 페인트. 항균·곰팡이 억제 성능을 갖춘 병원·유치원 등 최고급 다기능 프리미엄 페인트.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "표면처리된 목재",
+    "표면처리된 철재",
+    "합지"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "저광(에그쉘)",
+    "colors": [
+     "백색",
+     "담색"
+    ],
+    "volume_solids_pct": 39.4,
+    "dft_um": 60,
+    "coats": "2~3",
+    "coverage_m2_per_l": 6.57,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "1L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "system": {
+    "primer": "수성바인다200, 아이럭스파워젯소",
+    "primer_conditional": true,
+    "midcoat": "아이생각데코텍스VP",
+    "midcoat_note": "인테리어 도장 시 필요에 한함",
+    "primer_note_extra": "철재·목재 상도 도장 시 샌딩처리 및 젯소 도장 후 적용"
+   },
+   "estimate": {
+    "basis": "하도 1회 + 중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
+    "primer_l_per_m2": 0.1,
+    "midcoat_l_per_m2": 0.08,
+    "topcoat_l_per_m2": 0.15
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+   },
+   "docs": {
+    "tech": "1tech3051831.pdf",
+    "spec_sheet": "1pntg3051831.pdf",
+    "tech_dated": "2026-07-13"
+   }
+  },
+  {
+   "id": "ilux-durox",
+   "status": "documented",
+   "name": "아이럭스 듀로X",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "silk",
+    "wood"
+   ],
+   "role": "topcoat",
+   "summary": "고강도 도막으로 흠집·스크래치 방지 효과가 뛰어나고 오염물 제거가 용이한 수성 무광 페인트. 항균·곰팡이 억제 기능을 갖춘 고급형 친환경 내부용 페인트.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "벽지",
+    "표면처리된 가구·목재"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광(로우쉰광)",
+    "colors": [
+     "백색",
+     "담색"
+    ],
+    "volume_solids_pct": 41.92,
+    "dft_um": 60,
+    "coats": "2~3",
+    "coverage_m2_per_l": 6.99,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "4L",
+     "1L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "estimate": {
+    "basis": "상도 2~3회 · 60㎛"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
+     "가소제 함유 피도면 접촉 시 오염·변색 주의"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+   },
+   "docs": {
+    "tech": "1tech3052056.pdf",
+    "spec_sheet": "1pntg3052056.pdf",
+    "tech_dated": "2026-01-09"
+   },
+   "system": {}
+  },
+  {
+   "id": "ilux-allcoating",
+   "status": "documented",
+   "name": "아이럭스 올코팅",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "iron",
+    "wood",
+    "silk"
+   ],
+   "role": "topcoat",
+   "aliases": [
+    "아이럭스 올코팅 (실내외)"
+   ],
+   "summary": "특수 아크릴에멀젼+내후성 안료 주성분. 내알칼리·내오염·내후성이 우수하고 미장효과가 높아 콘크리트·철재 시설물에 적합하며, 수성/아크릴/에나멜 등 기존 구도막 보수용으로도 사용.",
+   "substrates": [
+    "콘크리트",
+    "시멘트몰탈",
+    "석고보드",
+    "철재(Light duty)",
+    "목재",
+    "벽지(무광만)"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광/반광/무광",
+    "colors": [
+     "각색"
+    ],
+    "volume_solids_pct": 39.27,
+    "dft_um": 50,
+    "coats": "2~3",
+    "coverage_m2_per_l": 7.85,
+    "dry_touch_min": 60,
+    "dry_hard_min": 120,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "10L",
+     "4L",
+     "1L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true
+   },
+   "estimate": {
+    "basis": "상도 2~3회 · 50㎛",
+    "note": "철판은 샌드블라스팅 SA2 전처리·유분 제거 후 도장"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "철판 도장 시 샌드블라스팅 SA2까지 전처리 및 세정 필수",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+   },
+   "docs": {
+    "tech": "1tech3051969.pdf",
+    "spec_sheet": "1pntg3051969.pdf",
+    "tech_dated": "2025-04-15"
+   }
+  },
+  {
+   "id": "aisenggak-onecoat",
+   "status": "documented",
+   "name": "아이생각 원코트",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6010 1종 2급",
+   "summary": "높은 은폐력과 1회 도장시스템으로 작업시간·인건비를 절감하는 친환경 고급형 수성페인트. 콘크리트·몰탈·시멘트 건축물의 내·외부 겸용.",
+   "substrates": [
+    "콘크리트",
+    "몰탈",
+    "시멘트"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "각색"
+    ],
+    "volume_solids_pct": 37.26,
+    "dft_um": 60,
+    "coats": 1,
+    "coverage_m2_per_l": 6.21,
+    "dry_touch_min": 30,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 5,
+    "pack_sizes": [
+     "16L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 80,
+    "cure_days": 28
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true,
+    "primer_required_when": [
+     "콘크리트 소지 상태 불량",
+     "구도막 부위",
+     "동절기 시공",
+     "쵸킹 소지",
+     "흡수차가 심한 바탕면",
+     "시멘트 용출이 심한 부위"
+    ]
+   },
+   "estimate": {
+    "basis": "상도 1회 · 60㎛",
+    "topcoat_l_per_m2": 0.16,
+    "note": "부가세·시공비 별도"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "밝은 원색 도장 시 구도막 비침 우려 부위는 백색 초벌 후 상도",
+     "동일 LOT·도장기구·방법 유지로 이색현상 방지",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": [
+     "퍼티 비침 우려 부위는 초벌 도장 후 상도"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+   },
+   "docs": {
+    "tech": "1tech3052141.pdf",
+    "spec_sheet": "1pntg3052141.pdf",
+    "tech_dated": "2025-05-12"
+   }
+  },
+  {
+   "id": "homestar-pastel-ok-plus",
+   "status": "documented",
+   "name": "홈스타파스텔OK플러스",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete"
+   ],
+   "role": "topcoat",
+   "summary": "수용성 아크릴-우레탄수지+내후성 안료 주성분. 은은한 파스텔톤 질감과 오염제거 성능을 갖춘 건축물 내부 미장용 수성페인트.",
+   "substrates": [
+    "콘크리트",
+    "몰탈면",
+    "석고보드"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "dft_um": 60,
+    "coats": "1~2",
+    "coverage_m2_per_l": 5.88,
+    "recoat_hours": 2,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ]
+   },
+   "estimate": {
+    "basis": "상도 1~2회 · 60㎛"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "구도막·유색도료 도장면은 적합성 확인 후 시공",
+     "타 도료와 혼합 금지",
+     "5℃ 이하에서는 작업 금지"
+    ],
+    "info": [
+     "과도막 시 고온다습 환경에서 끈적임 발생 가능 (특히 유광·반광)"
+    ]
+   },
+   "compliance": {},
+   "docs": {
+    "tech": null,
+    "spec_sheet": "1pntg3050921.pdf",
+    "tech_dated": null,
+    "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
+   },
+   "system": {}
+  },
+  {
+   "id": "color-deco-lining",
+   "status": "listed",
+   "name": "컬러데코라이닝",
+   "brand": "삼화페인트",
+   "categories": [
+    "silk"
+   ],
+   "role": "topcoat"
+  },
+  {
+   "id": "water-clear-plus-matte",
+   "status": "listed",
+   "name": "수성크리어PLUS 무광",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood",
+    "silk"
+   ],
+   "role": "clear"
+  },
+  {
+   "id": "water-clear-plus-gloss",
+   "status": "listed",
+   "name": "수성크리어PLUS 유광",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood",
+    "silk"
+   ],
+   "role": "clear"
+  },
+  {
+   "id": "lacquer",
+   "status": "listed",
+   "name": "락카",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood",
+    "iron"
+   ],
+   "role": "topcoat",
+   "note": "빠른 건조 · 환기 필수"
+  },
+  {
+   "id": "enamel-777",
+   "status": "listed",
+   "name": "777에나멜",
+   "brand": "삼화페인트",
+   "categories": [
+    "iron",
+    "wood"
+   ],
+   "role": "topcoat",
+   "note": "실내외"
+  },
+  {
+   "id": "ksm6020-type4-acrylic",
+   "status": "documented",
+   "name": "KSM 6020 4종 아크릴도료",
+   "name_en": "KSM 6020 Type 4 Acrylic paint",
+   "brand": "삼화페인트",
+   "categories": [
+    "roof",
+    "iron"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6020 4종",
+   "note": "유성 · 1액형 · 별도의 하도 없음",
+   "summary": "아크릴수지와 내후성이 좋은 안료를 주성분으로 한 슬레이트·기와용 1액형 유성도료. 접착력과 내구력이 강하고 내약품성·내후성·내수성이 우수하며 고광택의 매끈한 도막이 형성된다.",
+   "uses": "기와, 슬레이트 지붕 등의 외부용 도료 (도장사양서 기준 콘크리트·몰탈 외부면 포함)",
+   "substrates": [
+    "기와",
+    "슬레이트"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광",
+    "colors": [
+     "남색",
+     "녹색",
+     "오렌지",
+     "갈색",
+     "청기와색 등"
+    ],
+    "volume_solids_pct": 48.19,
+    "volume_solids_range_pct": [
+     47.19,
+     49.19
+    ],
+    "dft_um": 40,
+    "coats": "2~3",
+    "coverage_m2_per_l": 9.3,
+    "coverage_m2_per_l_range": [
+     9.3,
+     12.3
+    ],
+    "coverage_note": "9.30~12.30㎡/L (건조도막두께 40㎛ 기준). 도장작업 시 손실량과 표면상태를 고려할 것",
+    "dry_hard_min": 120,
+    "recoat_hours": 5,
+    "thinner": "AC 신나 3000",
+    "thinner_code": "SB-TN-607",
+    "thinning_pct_max": 50,
+    "thinning_basis": "도료 무게비",
+    "pack_sizes": [
+     "4L",
+     "18L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "product_code": "SB-AP-100"
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "surface_temp_c_max": 35,
+    "surface_moisture_pct_max": 10,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "cure_days": 28,
+    "cure_note": "신축 건물의 시멘트 소재는 25℃·상대습도 50% 기준 28일 이상 충분히 양생. 틈새나 홈은 퍼티로 메꾸고 표면조정 후 도장",
+    "tools": [
+     "붓",
+     "로라",
+     "에어스프레이"
+    ]
+   },
+   "system": {
+    "primer": null,
+    "primer_note": "별도의 하도 없음. 다만 쵸킹이 심하거나 노후된 피도물은 묽게 희석해 1회 도장한 뒤 본 도장",
+    "topcoat_self": true
+   },
+   "estimate": {
+    "basis": "도장사양서 일위대가 · 상도 2회 · 합계 60㎛",
+    "topcoat_l_per_m2": 0.083,
+    "thinner_l_per_m2": null,
+    "thinner_note": "AC신나3000 · 도료량의 50%",
+    "note": "부가세·시공비 별도. 실제소요량은 작업조건·작업방법에 따라 가감될 수 있음"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "수성도료가 칠해져 있는 면에는 도장 금지. 부실한 구도막은 제거 후 도장",
+     "피도물 온도가 35℃ 이상이면 접착력이 저하되므로 도장 금지",
+     "콘크리트 및 몰탈의 바닥재로 사용 금지",
+     "세라믹과 같이 기공이 없는 소재는 부착 불량이 발생할 수 있으므로 도장 금지",
+     "규정된 도막두께 이상으로 도장 금지. 1회에 과도막 도장 시 기포꽈리 발생 가능",
+     "비 오는 날·습도 85% 이상·기온 5℃ 이하에는 도장작업 금지 (도막 균열·부착 불량 발생)",
+     "구도막 위 보수도장 시 구도막과의 적합성을 확인 후 사용",
+     "동일 제품·색상·LOT라도 희석비·도장기구·도장방법에 따라 이색현상이 발생할 수 있으므로 동일 LOT·동일 용구·동일 방법으로 도장하고 색상 확인 후 작업",
+     "타 도료와 혼합하여 사용 금지"
+    ],
+    "info": [
+     "쵸킹이 심하거나 노후된 피도물은 묽게 희석하여 1회 도장 후 본 도장",
+     "화기 및 직사광선을 피해 상온(5~35℃) 건냉암소에 보관하되 용기는 밀폐하고 주입구가 상단을 향하도록 세워서 보관. 사용 후 잔량도 동일",
+     "도장작업 완료 후 노출된 피부는 깨끗이 씻을 것",
+     "폐도료는 환경부에서 지정한 폐기물처리업체를 통해 폐기",
+     "장기간 보관 시 변질될 수 있으므로 유효기간 내 사용. 기간 경과 제품은 소비자상담실 확인 후 사용"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": false,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": false
+   },
+   "docs": {
+    "tech": "1tech3060009.pdf",
+    "spec_sheet": "1pntg3060009.pdf",
+    "tech_dated": "2026-07-03"
+   }
+  },
+  {
+   "id": "magictan",
+   "status": "listed",
+   "name": "매직탄",
+   "brand": "삼화페인트",
+   "categories": [
+    "tile"
+   ],
+   "role": "topcoat",
+   "note": "유성 · 실내/실외 색상 변경 · 벽면 추천"
+  },
+  {
+   "id": "magictan-wallcoat-clear",
+   "status": "listed",
+   "name": "매직탄 월코트 투명",
+   "brand": "삼화페인트",
+   "categories": [
+    "tile"
+   ],
+   "role": "clear",
+   "note": "유성 · 2액형 방수 코팅"
+  },
+  {
+   "id": "homestar-tile-paint",
+   "status": "listed",
+   "name": "홈스타 타일페인트",
+   "brand": "삼화페인트",
+   "categories": [
+    "tile"
+   ],
+   "role": "topcoat",
+   "note": "수성 · 실내 벽면 색상 변경"
+  },
+  {
+   "id": "ansim-nusu",
+   "status": "listed",
+   "name": "안심누수",
+   "brand": "삼화페인트",
+   "categories": [
+    "tile",
+    "wp"
+   ],
+   "role": "sealer",
+   "note": "수성 · 1액형 줄눈·벽 침투방수"
+  },
+  {
+   "id": "waterproof-ace-primer",
+   "status": "documented",
+   "name": "방수에이스 하도",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp",
+    "roof"
+   ],
+   "role": "primer",
+   "docs": {
+    "tech": "1tech3092664.pdf",
+    "spec_sheet": null
+   },
+   "name_en": "WATERPROOFING MEMBRANE ACE PRIMER",
+   "application_type": "침투형 우레탄 하도 (방수에이스 시스템)",
+   "summary": "콘크리트 소지와 중도 우레탄의 접착력을 높이는 침투형 우레탄 하도.",
+   "substrates": [
+    "콘크리트",
+    "시멘트 몰탈"
+   ],
+   "uses": [
+    "방수에이스 시스템의 하도",
+    "비노출 방수에이스 2류(KSF3211) 시스템의 하도"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "dft_um": 50,
+    "coats": "1~2",
+    "coverage_m2_per_l": 7.2,
+    "coverage_note": "건조도막두께 50㎛ 기준 = 0.139 L/㎡. 소지 흡수량에 따라 상이",
+    "recoat_hours": "8~48 (20℃)",
+    "thinner": "우레탄1000신나",
+    "thinning_note": "신규 도장은 원액 사용. 구도막 재도장 시에만 우레탄1000신나 1:1 희석 후 최대한 얇게 도장",
+    "cleaner": "우레탄1000신나",
+    "pack_sizes": [
+     "14L",
+     "4L"
+    ]
+   },
+   "cautions": {
+    "warn": [
+     "하도는 소지가 완전히 흡수하도록 롤러로 얇게 충분히 도포",
+     "과도한 도포 시 표면 막 형성 → 중도 접착 불량 가능성 증가",
+     "하도가 처리되지 않은 부분은 중도 도장 시 기포 발생 — 빠짐없이 도포",
+     "하도 도장 후 2일 이상 경과한 부분은 층간 부착력 보강을 위해 얇게 추가 도장"
+    ]
+   }
+  },
+  {
+   "id": "waterproof-ace-topcoat",
+   "status": "documented",
+   "name": "방수에이스 상도",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp",
+    "roof"
+   ],
+   "role": "topcoat",
+   "docs": {
+    "tech": "1tech3091953.pdf",
+    "spec_sheet": null
+   },
+   "name_en": "WATERPROOFING MEMBRANE ACE TOPCOAT",
+   "application_type": "노출형 우레탄 상도 (방수에이스 시스템)",
+   "summary": "중도 우레탄 방수층을 자외선·물리적 충격에서 보호하는 최종 코팅 우레탄 상도.",
+   "substrates": [
+    "방수에이스 중도 도막",
+    "원샷탄 도막"
+   ],
+   "uses": [
+    "옥상 우레탄 방수층 보호 마감"
+   ],
+   "spec": {
+    "composition": "2액형",
+    "mixing_ratio_volume": "6.3:1 (주제:경화제)",
+    "dft_um": 45,
+    "coats": "1~2",
+    "coverage_m2_per_l": 11.3,
+    "coverage_note": "건조도막두께 45㎛ 기준 = 0.088 L/㎡ (1회분)",
+    "pot_life_hours": 3,
+    "recoat_hours": "24~48 (20℃)",
+    "thinner": "우레탄1000신나",
+    "thinning_pct_max": 5,
+    "thinning_basis": "도료 부피 대비",
+    "cleaner": "우레탄1000신나",
+    "pack_sizes": [
+     "12.6L",
+     "4L"
+    ]
+   },
+   "cautions": {
+    "warn": [
+     "희석 최소화(5% 미만) — 과희석 시 보호 성능 저하",
+     "가사시간(20℃ 3시간) 초과 도료는 사용 금지",
+     "중도 도장 후 20℃ 기준 24~48시간 경과 뒤 도장"
+    ]
+   }
+  },
+  {
+   "id": "waterproof-ace-midcoat",
+   "status": "documented",
+   "name": "방수에이스 중도",
+   "name_en": "WATERPROOFING MEMBRANE ACE",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp",
+    "roof"
+   ],
+   "role": "midcoat",
+   "application_type": "노출형 (옥상 우레탄 방수 — 방수에이스 시스템 표준 중도)",
+   "summary": "MOCA·6대 유해 프탈레이트·4대 중금속을 사용하지 않는 우레탄 수지를 주성분으로 설계된 친환경 옥상 방수용 중도. 기온차에 따른 수축·팽창 견딤성이 좋아 균열부 수분 침투를 막고, 내수성·내한성·접착력·내구력·도막강도가 우수하다.",
+   "substrates": [
+    "하도 처리된 콘크리트",
+    "시멘트 몰탈"
+   ],
+   "uses": [
+    "각종 토목·건축물의 옥상 및 기타부위 방수용 중도"
+   ],
+   "spec": {
+    "composition": "2액형",
+    "finish": "반광",
+    "colors": [
+     "녹색",
+     "회색"
+    ],
+    "mixing_ratio_weight": "16.6:3.4 (주제:경화제)",
+    "volume_solids_pct": "92.5±3",
+    "dft_um": 3000,
+    "coats": "1~2",
+    "coverage_kg_per_m2": 4.86,
+    "coverage_note": "건조도막두께 3㎜ 기준. 20kg 1통 ≒ 4.1㎡(약 1.2평). 도장 시 손실량·표면상태 고려",
+    "shore_hardness": "45~65 (Shore A)",
+    "elongation_pct_min": 550,
+    "tensile_strength_mpa_min": 2.0,
+    "tear_strength_n_mm_min": 12.8,
+    "thinner": "무희석",
+    "cleaner": "우레탄1000신나",
+    "pack_sizes": [
+     "20kg (16L용)"
+    ],
+    "shelf_life_months": 6,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "cure_table": {
+    "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
+    "columns": [
+     "5℃",
+     "20℃",
+     "30℃"
+    ],
+    "rows": [
+     {
+      "label": "지촉건조",
+      "unit": "시간",
+      "values": [
+       8,
+       4,
+       3
+      ]
+     },
+     {
+      "label": "경화건조",
+      "unit": "시간",
+      "values": [
+       48,
+       24,
+       18
+      ]
+     },
+     {
+      "label": "완전건조",
+      "unit": "일",
+      "values": [
+       10,
+       5,
+       3
+      ]
+     },
+     {
+      "label": "가사시간",
+      "unit": "분",
+      "values": [
+       40,
+       30,
+       20
+      ]
+     },
+     {
+      "label": "재도장 간격",
+      "unit": "시간",
+      "values": [
+       "48~96",
+       "24~48",
+       "18~48"
+      ]
+     }
+    ]
+   },
+   "conditions": {
+    "air_temp_c_min": 5,
+    "air_temp_c_max": 35,
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "cure_note": "25℃ 기준 상대습도 80% 이하",
+    "tools": [
+     "흙손",
+     "전용레기"
+    ],
+    "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
+   },
+   "system": {
+    "primer": "방수에이스 하도",
+    "midcoat": "방수에이스 중도",
+    "topcoat": "방수에이스 상도",
+    "scraping_note": "하도 후 6~48시간 이내에 0.5㎜ 선행도장(스크래핑) → 20℃에서 최소 24시간 경과 후 2.5㎜ 본도장으로 총 3㎜ 확보",
+    "mixing_note": "주제·경화제를 전동교반기(1,000RPM·700W 이상)로 2~3분간 균일하게 교반"
+   },
+   "cautions": {
+    "danger": [
+     "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
+     "혼합비(16.6:3.4)를 지키지 않으면 미경화·부풀음 발생 — 도장 면적과 두께에 맞춰 정확히 계량",
+     "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
+     "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅 후 부착성능 확인"
+    ],
+    "warn": [
+     "임의 희석 금지(무희석 제품) — 흐름현상·작업성·물성 저하. 저온 작업성 개선 목적의 과량 희석은 건조불량·도막경도 저하·크랙 유발",
+     "하도가 처리되지 않은 부분은 중도 도장 시 기포가 발생하므로 빠짐없이 도포",
+     "주제에 경화제를 미리 부어두면 혼합 전에도 반응이 진행되어 Seed 발생·퍼짐성 저하 — 부은 즉시 혼합해 도장",
+     "남은 경화제는 대기 중 수분과 반응해 굳으므로 즉시 밀봉하여 냉암소 보관",
+     "중도 도장 후 후속도장 기간이 지났거나 도막이 비·눈·이슬·수분 응축에 노출된 경우 우레탄1000신나로 세척하고 하도를 최대한 얇게 추가 도장 후 후속 도장",
+     "하절기 폭염(대기온도 28℃ 이상) 예상일에는 옥외 작업 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 중도 작업",
+     "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지 (도막균열·부착불량·기포 발생)",
+     "제품 가열 금지 · 타 도료와 혼합 금지",
+     "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척"
+    ],
+    "info": [
+     "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
+     "소지 기공에 의한 핀홀·부풀음 발생 시 해당 부위를 제거하고 우레탄 실란트로 메꾼 뒤 후속 도장",
+     "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염감소",
+    "hazard_free": "MOCA·6대 유해 프탈레이트·4대 중금속 무첨가"
+   },
+   "docs": {
+    "tech": "1tech3092251.pdf",
+    "spec_sheet": "1pntg3092251.pdf"
+   },
+   "estimate": {
+    "basis": "하도 1회(50㎛) + 중도 1~2회(3,000㎛) + 상도 1~2회(45㎛)",
+    "primer_l_per_m2": 0.139,
+    "midcoat_kg_per_m2": 4.86,
+    "topcoat_l_per_m2": 0.088,
+    "note": "부가세·시공비 별도. 실제 소요량은 소지상태·작업조건에 따라 가감"
+   }
+  },
+  {
+   "id": "oneshot-tan",
+   "status": "documented",
+   "name": "원샷탄",
+   "name_en": "ONESHOT-TAN",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp",
+    "roof"
+   ],
+   "role": "midcoat",
+   "application_type": "노출형 (1액형 습기경화 우레탄 중도)",
+   "summary": "주성분이 공기 중 수분과 반응해 탄성 도막을 형성하는 1액형 습기경화 우레탄 방수재. 후도막이 형성되어 방수효과가 뛰어나고 접착력이 우수하며 하지의 균열·수축팽창에도 적응력이 좋다. 경화제 계량이 필요 없어 작업이 간편하다.",
+   "substrates": [
+    "하도 처리된 콘크리트",
+    "시멘트 몰탈",
+    "블록",
+    "벽돌"
+   ],
+   "uses": [
+    "각종 건축물의 방수용 — 콘크리트·블록·벽돌 등 방수가 요구되는 면"
+   ],
+   "spec": {
+    "composition": "1액형 (습기경화형)",
+    "finish": "반광",
+    "colors": [
+     "녹색",
+     "회색"
+    ],
+    "volume_solids_pct": "88±3",
+    "dft_um": 1000,
+    "coats": "1~2",
+    "coverage_kg_per_m2": 1.6,
+    "coverage_note": "건조도막두께 1㎜ 기준. 18kg 1통 ≒ 11.3㎡(약 3.4평). 도장 시 손실량·표면상태 고려",
+    "shore_hardness": "45~65 (Shore A)",
+    "elongation_pct_min": 550,
+    "tensile_strength_mpa_min": 2.0,
+    "tear_strength_n_mm_min": 12.8,
+    "thinner": "무희석",
+    "cleaner": "우레탄1000신나",
+    "pack_sizes": [
+     "18kg (18L용)",
+     "4kg (4L용)"
+    ],
+    "shelf_life_months": 6,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "cure_table": {
+    "unit_note": "1액형이지만 공기 중 수분과 반응해 경화하므로 개봉 후에는 즉시 전량 사용할 것",
+    "columns": [
+     "10℃",
+     "20℃",
+     "30℃"
+    ],
+    "rows": [
+     {
+      "label": "지촉건조",
+      "unit": "분",
+      "values": [
+       120,
+       90,
+       60
+      ]
+     },
+     {
+      "label": "경화건조",
+      "unit": "시간",
+      "values": [
+       72,
+       24,
+       12
+      ]
+     },
+     {
+      "label": "완전건조",
+      "unit": "일",
+      "values": [
+       6,
+       4,
+       3
+      ]
+     },
+     {
+      "label": "재도장 간격",
+      "unit": "일",
+      "values": [
+       "2~3",
+       "1~2",
+       "1~2"
+      ]
+     }
+    ]
+   },
+   "conditions": {
+    "air_temp_c_min": 5,
+    "air_temp_c_max": 35,
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "cure_note": "25℃ 기준 상대습도 80% 이하",
+    "tools": [
+     "붓",
+     "로라",
+     "전용레기"
+    ],
+    "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
+   },
+   "system": {
+    "primer": "그린방수마스터하도 / 그린방수마스터속건형하도",
+    "midcoat": "원샷탄",
+    "topcoat": "그린방수마스터상도",
+    "system_note": "기술자료상 표준 시스템은 그린방수마스터 계열. 방수에이스 시스템의 1액형 대안으로 쓸 경우 하도·상도 조합에 대해 사전 시험도장으로 부착력을 확인할 것.",
+    "build_note": "하도 후 6~48시간 이내 1㎜ 도장 → 20℃에서 최소 24시간 경과 후 필요 시 1㎜ 추가 도장",
+    "mixing_note": "1액형이지만 균일해지도록 전동교반기(1,000RPM·700W 이상)로 2~3분간 교반 후 사용"
+   },
+   "cautions": {
+    "danger": [
+     "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
+     "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
+     "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅 후 부착성능 확인"
+    ],
+    "warn": [
+     "1액형이지만 공기 중 수분과 반응해 경화하므로 '가사시간 무제한'이 아님 — 개봉 후 남은 잔량은 건조피막·굳음이 발생하므로 즉시 전량 사용",
+     "과도한 희석은 흐름현상·작업성·물성 저하를 유발하고, 저온에서 신나를 과량 희석하면 건조불량·도막경도 저하·크랙 발생",
+     "하도가 처리되지 않은 부분은 중도 도장 시 기포가 발생하므로 빠짐없이 도포",
+     "도막이 비·눈·이슬·수분 응축에 노출되거나 후속도장기간이 지난 경우 하도를 최대한 얇게 추가 도장 후 후속 도장",
+     "하절기 폭염(대기온도 28℃ 이상) 예상일에는 옥외 작업 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 중도 작업",
+     "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지",
+     "제품 가열 금지 · 타 도료와 혼합 금지",
+     "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척"
+    ],
+    "info": [
+     "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
+     "소지 기공에 의한 핀홀·부풀음 발생 시 해당 부위를 제거하고 우레탄 실란트로 메꾼 뒤 후속 도장",
+     "용기는 반드시 밀폐해 주입구가 상단을 향하도록 보관"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소"
+   },
+   "docs": {
+    "tech": "1tech3090700.pdf",
+    "spec_sheet": "1pntg3090700.pdf"
+   }
+  },
+  {
+   "id": "epocoat-primer",
+   "status": "documented",
+   "name": "에포코트 하도",
+   "brand": "삼화페인트",
+   "categories": [
+    "floor"
+   ],
+   "role": "primer",
+   "docs": {
+    "tech": "1tech3100756.pdf",
+    "spec_sheet": "1pntg3100756.pdf"
+   },
+   "spec": {
+    "composition": "2액형",
+    "finish": "유광",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 30,
+    "dft_um": 50,
+    "coats": "1~2",
+    "coverage_m2_per_l": 6.6,
+    "mixing_ratio_volume": "1:1",
+    "thinner": "에포코트1000 신나",
+    "thinning_pct_max": 0,
+    "thinning_note": "신규 도장은 원액 사용. 구도막 재도장 시에만 에포코트1000신나 1:1 희석 후 얇게 도장",
+    "pack_sizes": [
+     "14L",
+     "3.5L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "dry_touch_min": 30,
+    "pot_life_hours": 20,
+    "recoat_hours": 6,
+    "cure_note": "10℃/20℃/30℃ — 지촉건조 1h/30분/15분 · 경화건조 18h/6h/4h · 가사시간 24h/20h/12h · 재도장간격 18~72h/6~72h/4~72h"
+   }
+  },
+  {
+   "id": "epocoat-topcoat",
+   "status": "documented",
+   "name": "에포코트 상도",
+   "brand": "삼화페인트",
+   "categories": [
+    "floor"
+   ],
+   "role": "topcoat",
+   "docs": {
+    "tech": "1tech3100743.pdf",
+    "spec_sheet": null
+   },
+   "spec": {
+    "composition": "2액형",
+    "coats": "1~2",
+    "dft_um": 40,
+    "coverage_m2_per_l": 13.3,
+    "coverage_variants": [
+     {
+      "id": "color-40",
+      "label": "유색 · 40㎛",
+      "dft_um": 40,
+      "coverage_m2_per_l": 13.3,
+      "source": "catalog"
+     },
+     {
+      "id": "color-80",
+      "label": "유색 · 80㎛",
+      "dft_um": 80,
+      "coverage_m2_per_l": 6.6,
+      "source": "catalog"
+     },
+     {
+      "id": "clear-40",
+      "label": "투명 · 40㎛",
+      "dft_um": 40,
+      "coverage_m2_per_l": 10.8,
+      "source": "catalog"
+     },
+     {
+      "id": "clear-80",
+      "label": "투명 · 80㎛ (환산)",
+      "dft_um": 80,
+      "coverage_m2_per_l": 5.4,
+      "source": "derived",
+      "note": "카탈로그 미표기 — 40㎛ 10.8㎡/L를 도막두께 반비례 환산"
+     }
+    ],
+    "coverage_variants_default": "color-40",
+    "mixing_ratio_volume": "2.7:1",
+    "thinner": "에포코트1000 신나",
+    "thinning_pct_max": 5,
+    "thinning_basis": "도료 부피비",
+    "pack_sizes": [
+     "14L",
+     "3.5L"
+    ],
+    "recoat_hours": 24,
+    "recoat_note": "재도장 간격(20℃) 1일~4일"
+   }
+  },
+  {
+   "id": "epocoat-aqua-primer",
+   "status": "listed",
+   "name": "에포코트아쿠아 하도",
+   "brand": "삼화페인트",
+   "categories": [
+    "floor"
+   ],
+   "role": "primer",
+   "docs": {
+    "tech": null,
+    "spec_sheet": "1pntg3100823.pdf"
+   }
+  },
+  {
+   "id": "epocoat-aqua-topcoat",
+   "status": "listed",
+   "name": "에포코트아쿠아 코팅",
+   "brand": "삼화페인트",
+   "categories": [
+    "floor"
+   ],
+   "role": "topcoat",
+   "docs": {
+    "tech": null,
+    "spec_sheet": "1pntg3100824.pdf"
+   }
+  },
+  {
+   "id": "a-floor-clear",
+   "status": "documented",
+   "name": "A플로어투명",
+   "name_en": "A-Floor clear",
+   "brand": "삼화페인트",
+   "aliases": [
+    "A-플로어 투명",
+    "A플로어 투명",
+    "에이플로어투명"
+   ],
+   "categories": [
+    "floor"
+   ],
+   "role": "clear",
+   "application_type": "1액형 아크릴 침투성 강화 방진 바닥재 (하도 불필요)",
+   "summary": "아크릴 수지를 주성분으로 한 바닥용 도료. 작업이 용이하고 접착력·내수성이 우수한 콘크리트 바닥 침투성 강화 방진용 투명 코팅제로, 하도 없이 1회 도장으로 마감한다.",
+   "substrates": [
+    "콘크리트",
+    "시멘트 몰탈"
+   ],
+   "uses": [
+    "각종 콘크리트 시설물의 바닥 침투성 강화 방진용"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 43.0,
+    "dft_um": 50,
+    "coats": "1회",
+    "coverage_m2_per_l": 8.6,
+    "coverage_note": "건조도막두께 50㎛ 기준 = 0.116 L/㎡. 도장 시 손실량·표면상태 고려",
+    "thinner": "AC신나4000",
+    "thinning_pct_max": 50,
+    "thinning_basis": "도료 부피비",
+    "thinning_note": "기술자료 상한 50% 이내. 도장사양서 권장 희석은 도료량의 20~40%",
+    "recoat_hours": "5℃ 6h / 20℃ 3h / 30℃ 2h",
+    "pack_sizes": [
+     "18L",
+     "3.5L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "cure_table": {
+    "columns": [
+     "5℃",
+     "20℃",
+     "30℃"
+    ],
+    "rows": [
+     {
+      "label": "지촉건조",
+      "unit": "시간",
+      "values": [
+       "1시간",
+       "40분",
+       "20분"
+      ]
+     },
+     {
+      "label": "고화건조",
+      "unit": "시간",
+      "values": [
+       "4시간",
+       "2시간",
+       "1.5시간"
+      ]
+     },
+     {
+      "label": "재도장 간격",
+      "unit": "시간",
+      "values": [
+       "6시간",
+       "3시간",
+       "2시간"
+      ]
+     }
+    ]
+   },
+   "conditions": {
+    "air_temp_c_min": 5,
+    "air_temp_c_max": 35,
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "cure_note": "25℃ 기준 상대습도 80% 이하",
+    "tools": [
+     "붓",
+     "로라"
+    ],
+    "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
+   },
+   "system": {
+    "primer": null,
+    "primer_note": "하도 없음",
+    "topcoat": "아크릴 플로아코트 / A-플로어 투명"
+   },
+   "estimate": {
+    "basis": "상도 1회 50㎛ · 이론소요량 8.6㎡/L",
+    "topcoat_l_per_m2": 0.116,
+    "thinner_pct": "도료량의 20~40%",
+    "note": "부가세·시설비 별도. 실제 소요량은 작업조건·작업방법에 따라 가감"
+   },
+   "cautions": {
+    "danger": [
+     "밀폐된 장소에서 절대 도장 금지 — 질식·화재 위험",
+     "환기가 부족하면 도장 및 건조 중 옥외로 강제 배기하거나 충분히 환기",
+     "피도면 온도가 높거나 습도가 낮은 날은 붓·로라 작업 시 정전기·스파크로 화재 위험 — 기온이 낮은 아침이나 늦은 오후에 도장하고 화재 위험성이 낮은 재질의 도장기구 사용"
+    ],
+    "warn": [
+     "에폭시계 도료에 비해 내마모성이 떨어짐 — 내마모·내약품성이 중요한 환경은 에포코트 권장",
+     "아크릴 구도막에 재도장 시 건조지연으로 바퀴자국·발자국 등 자국현상 발생 가능 — 반드시 샘플테스트 후 도장 (구도막이 두꺼울수록 건조지연 심화)",
+     "후도막으로 도장하면 도막 내부 용제가 휘발되지 않아 물성 저하 — 규정 두께 준수",
+     "추천 희석제(AC신나4000)만 사용 · 과도한 희석은 흐름현상·작업성·물성 저하",
+     "제품 가열 금지 · 타 도료와 혼합 금지",
+     "비오는 날·습도 80% 이상·기온 5℃ 이하·표면온도 40℃ 이상에서는 도장 금지",
+     "동일 제품이라도 LOT·희석비·도장기구·도장방법에 따라 작업성 차이 발생 — 가급적 동일 LOT·동일 도장용구로 시공",
+     "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행",
+     "작업 후 모든 도장기구는 지정 세척제로 세척"
+    ],
+    "info": [
+     "신축줄눈·크랙이 심한 부분은 V-cutting 후 폴리에틸렌(PE) 백업재로 충진, 틈새·홈은 슈퍼에폭씰로 메꾸고 표면 조정 후 도장",
+     "벽면과 바닥이 접한 부위 등 가장자리는 V-cutting",
+     "개봉 후 남은 잔량은 건조피막·굳음이 발생하므로 즉시 전량 사용",
+     "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
+    ]
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+   },
+   "docs": {
+    "tech": "1tech3060015.pdf",
+    "spec_sheet": "1pntg3060015.pdf",
+    "note": "업로드 파일명이 1tech3060015_A.pdf / 1pntg3060015_A.pdf 라면 경로를 그에 맞춰 수정할 것"
+   }
+  },
+  {
+   "id": "acryl-floorcoat",
+   "status": "listed",
+   "name": "아크릴 플로아코트",
+   "brand": "삼화페인트",
+   "categories": [
+    "road",
+    "floor"
+   ],
+   "role": "primer",
+   "note": "신축·거친 콘크리트 기공 메움용"
+  },
+  {
+   "id": "green-waterproof-master-primer",
+   "status": "listed",
+   "name": "그린방수마스터하도",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp"
+   ],
+   "role": "primer",
+   "aliases": [
+    "그린방수마스터속건형하도"
+   ],
+   "note": "원샷탄(그린방수마스터 시스템) 전용 하도. 신규 50㎛ 1회 도장, 구도막·2일 경과 후 재도장 시 얇게 추가. 비노출 방수에이스 2류(KSF3211)의 하도는 '방수에이스 하도'이므로 혼동 주의. 별도 기술자료 미확보 — 확보 시 spec 채울 것."
+  },
+  {
+   "id": "non-exposed-tar-waterproofing-tan",
+   "status": "documented",
+   "name": "비노출 방수에이스 2류(KSF3211)",
+   "name_en": "UNEXPOSED WATERPROOF ACE CLASS.2(KSF3211)",
+   "brand": "삼화페인트",
+   "aliases": [
+    "비노출 방수에이스 2류",
+    "비노출방수에이스2류",
+    "비노출 타르방수탄"
+   ],
+   "rename_note": "구 제품명 '비노출 타르방수탄'에서 '비노출 방수에이스 2류(KSF3211)'로 변경. id는 PK이므로 유지.",
+   "categories": [
+    "wp"
+   ],
+   "role": "topcoat",
+   "application_type": "비노출형 (타일·몰탈 등으로 덮이는 시공 — 옥상 노출형과 다름)",
+   "summary": "MOCA·6대 유해 프탈레이트·4대 중금속을 사용하지 않는 우레탄 수지를 주성분으로 설계된, KS F 3211 우레탄고무계 2류 물성을 만족하는 친환경 비노출 2액형 난타르(non-tar) 우레탄 방수도료. 건조 도막이 탄성을 보유해 기온차·진동에 의한 수축·팽창에도 견딤성이 좋아 균열부 수분 침투를 방지한다.",
+   "substrates": [
+    "하도 처리된 콘크리트",
+    "시멘트 몰탈"
+   ],
+   "uses": [
+    "각종 토목·건축물의 옥상 및 기타부위 비노출 방수",
+    "일반건축물",
+    "하수종말처리장",
+    "정화조용",
+    "욕실·화장실",
+    "옥상정원"
+   ],
+   "spec": {
+    "composition": "2액형",
+    "finish": "반광",
+    "colors": [
+     "흑색",
+     "회색"
+    ],
+    "mixing_ratio_weight": "4:1 (주제:경화제)",
+    "dft_um": 3000,
+    "dft_note": "표준 3㎜. 단, 세대 욕실·발코니는 도막두께 1.0㎜ 이상이면 방수성능 확보 가능.",
+    "coats": "1~2",
+    "specific_gravity": 1.5,
+    "coverage_kg_per_m2": 4.5,
+    "coverage_note": "비중 1.50 · 무희석 · 3㎜ 기준 이론 산출값. 기술자료·도장사양서에 추천소요량 수치가 명시되어 있지 않으므로 참고값으로만 사용할 것.",
+    "shore_hardness": "45~65 (Shore A)",
+    "elongation_pct_min": 550,
+    "tensile_strength_mpa_min": 2.0,
+    "tear_strength_n_mm_min": 12.8,
+    "thinner": "무희석",
+    "cleaner": "우레탄1000신나",
+    "pack_sizes": [
+     "25kg",
+     "20kg"
+    ],
+    "shelf_life_months": 6,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "cure_table": {
+    "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
+    "columns": [
+     "5℃",
+     "20℃",
+     "30℃"
+    ],
+    "rows": [
+     {
+      "label": "지촉건조",
+      "unit": "시간",
+      "values": [
+       8,
+       4,
+       3
+      ]
+     },
+     {
+      "label": "경화건조",
+      "unit": "시간",
+      "values": [
+       48,
+       24,
+       18
+      ]
+     },
+     {
+      "label": "완전건조",
+      "unit": "일",
+      "values": [
+       10,
+       5,
+       3
+      ]
+     },
+     {
+      "label": "가사시간",
+      "unit": "분",
+      "values": [
+       40,
+       30,
+       20
+      ]
+     },
+     {
+      "label": "재도장 간격",
+      "unit": "시간",
+      "values": [
+       "48~96",
+       "24~48",
+       "18~48"
+      ]
+     }
+    ]
+   },
+   "conditions": {
+    "air_temp_c_min": 5,
+    "air_temp_c_max": 35,
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "cure_note": "25℃ 기준 상대습도 80% 이하",
+    "tools": [
+     "흙손",
+     "전용레기"
+    ],
+    "high_strength_concrete_note": "260kgf/㎠ 이상 고강도 콘크리트는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인"
+   },
+   "system": {
+    "primer": "방수에이스 하도",
+    "primer_dft_um": 50,
+    "primer_coats": 1,
+    "primer_note": "로울러 또는 붓으로 50㎛ 1회 도장. 도장 후 2일 이상 경과 시 층간 부착력 보강을 위해 하도를 얇게 추가 도장",
+    "midcoat": null,
+    "midcoat_note": "중도 없음 — 하도 + 상도 2단계 시스템",
+    "topcoat": "비노출 방수에이스 2류(KSF3211)",
+    "topcoat_recoat_note": "하도 도장 후 6시간 이상 48시간 이내에 상도(A·B부 4:1 무게비 혼합) 시공",
+    "scraping_note": "기포 방지를 위해 상도 물량 일부로 약 0.5㎜ 선행도장(스크래핑) 후, 20℃ 기준 최소 24시간 경과 뒤 잔량 2.5㎜를 도포해 총 3㎜ 확보"
+   },
+   "estimate": {
+    "basis": "하도 1회(50㎛) + 상도 1~2회(3,000㎛) · 합계 2~3회 3,050㎛",
+    "primer_l_per_m2": 0.138,
+    "topcoat_kg_per_m2": 4.5,
+    "note": "부가세·시공비 별도. 실제 소요량은 소지상태·작업조건에 따라 가감. 상도 소요량은 비중 1.50 기준 이론값."
+   },
+   "cautions": {
+    "danger": [
+     "알코올 성분이 함유된 신나(에폭시신나·락카신나·사제신나 등)는 절대 사용 금지 — 건조되지 않음",
+     "가사시간이 초과된 도료는 퍼짐성이 나빠져 도막 외관이 불량해지므로 사용 금지",
+     "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅으로 표면처리 후 부착성능 확인",
+     "혼합비를 지키지 않으면 미경화·부풀음이 발생하므로 주제:경화제 4:1(무게비)을 정확히 계량"
+    ],
+    "warn": [
+     "균열이 심한 부분·신축줄눈은 V-cutting 후 폴리에칠렌 백업재 삽입, 우레탄 실란트(스피실 원샷/우레탄/우레탄HM)로 씰링 후 도장",
+     "옥상 바닥 줄눈에 스피실 원샷·우레탄 실란트 사용 시 가소제 이행 차단을 위해 우레탄 하도를 후속 도장",
+     "벽면과 접한 부위 등 가장자리는 V-cutting",
+     "콘크리트 소지 기공에 의한 기포 발생 최소화를 위해 약 0.5~0.8㎜ 두께로 선행도장(스크래핑) 필수",
+     "도막두께 1㎜ 이하 도장 시 평활성·소포성이 떨어지므로 RAKE보다 흙손 사용 권장",
+     "주제와 경화제는 전동교반기(1,000~1,500RPM, 700W 이상)로 2~3분간 균일하게 혼합",
+     "봄·가을 이른 아침(수분응축)이나 안개다발지역 아침 시공 금지 — 부풀음·부착불량 원인",
+     "하절기 폭염(대기온도 28℃ 이상)에는 시공 금지. 불가피하면 하도 후 6~48시간 이내 오후 4시 이후 상도 작업",
+     "저온에서 신나 과량 희석 시 건조불량·도막경도 저하·크랙 발생",
+     "경화제는 대기 중 수분과 반응해 굳으므로 남은 경화제는 즉시 밀봉하여 냉암소 보관",
+     "주제에 경화제를 미리 부어두면 혼합 전에도 반응이 진행되어 Seed 발생·퍼짐성 저하 — 부은 즉시 혼합해 도장",
+     "상도 도막이 비·눈·이슬·수분 응축에 노출되거나 후속도장기간이 지난 경우 하도를 최대한 얇게 추가 도장 후 후속 도장",
+     "혼합 교반 시 시공면 오염 방지를 위해 깔판 사용 또는 시공면 밖에서 혼합",
+     "작업 후 모든 도장기구는 지정 세척제(우레탄1000신나)로 세척",
+     "구도막 보수 도장은 사전 시험도장 후 부착력 등 이상이 없을 때 진행",
+     "타 도료와 혼합 금지 · 가열 금지"
+    ],
+    "info": [
+     "도장 완료 후 1일 이후 3일 이내에 콘크리트 또는 보호몰탈로 눌러 바르는 공법으로 마감",
+     "시공 이음매 레벨링을 고려해 신속히 시공",
+     "도포 후 소포가 되지 않으면 우레탄1000신나를 살포해 기포 제거",
+     "피도면이 매끄러워 하도가 스며들지 않는 경우 우레탄 하도 기술자료의 희석비 참조",
+     "대기 온도에 따라 건조속도를 조정한 제품 — 하절기용을 저온에서 사용하면 표면결함 발생 가능"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 500세대 미만 공동주택의 실내에 사용 가능",
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소",
+    "ks_certified": "KS F 3211 우레탄고무계 2류",
+    "hazard_free": "MOCA·6대 유해 프탈레이트·4대 중금속 무첨가",
+    "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
+   },
+   "docs": {
+    "tech": "1tech3092686.pdf",
+    "spec_sheet": "1pntg3092686.pdf",
+    "note": "2026-07-28자 기술자료 및 3㎜ 도장사양서 확보. 저장소 pdf/ 폴더 파일명이 다르면 실제 파일명에 맞춰 수정할 것."
+   }
+  },
+  {
+   "id": "aisaengkag-high-viscosity-mixing",
+   "status": "documented",
+   "name": "아이생각고점도 믹싱",
+   "name_en": "Aisaengkag High Viscosity Mixing",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "mold"
+   ],
+   "role": "primer",
+   "summary": "아크릴 에멀젼 주성분의 1액형 투명 하도. 콘크리트·몰탈면 표면 눈메꿈, 접착력 증가, 구도막 보강용. 물과 1:3 비율로 희석해 피도면에 스며들도록 도장.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "석고"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "투명(스며듦)",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 30,
+    "coats": 1,
+    "coverage_m2_per_l": 30.0,
+    "dry_hard_min": 120,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_ratio": "아이생각고점도믹싱 : 물 = 1 : 3",
+    "pack_sizes": [
+     "18L",
+     "3.5L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "system": {
+    "primer": null,
+    "primer_note": "하도 전용 — 상도용 사용 불가",
+    "topcoat_self": false
+   },
+   "estimate": {
+    "basis": "하도 1회 (1:3 희석) · 스며듦",
+    "note": "부가세·시공비 별도"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "반드시 물과 지정 희석비(1:3)로 희석하여 도장",
+     "피도면에 고르게 스며들도록 도장",
+     "상도용으로 사용 불가",
+     "타 도료와 혼합 금지",
+     "과도막 시 후속 도장 물성저하 우려"
+    ],
+    "info": [
+     "도료 보관·운송 시 동결 금지"
+    ]
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+   },
+   "docs": {
+    "tech": "1tech3051618.pdf",
+    "spec_sheet": "1pntg3051618.pdf",
+    "tech_dated": "2026-03-24"
+   }
+  },
+  {
+   "id": "aisaengkag-water-borne-pro-interior",
+   "status": "documented",
+   "name": "아이생각수성내부프로",
+   "name_en": "Aisaengkag Water-borne Pro for Interior",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6010 2종 2급",
+   "summary": "아크릴에멀젼+내후성 안료 주성분. 내수성·내알칼리성·내세척성이 뛰어나고 유기용제·중금속을 사용하지 않아 환경마크·친환경건축자재인증 최우수등급을 획득한 내부용 친환경 수성페인트.",
+   "substrates": [
+    "콘크리트",
+    "몰탈",
+    "석고보드"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "담색"
+    ],
+    "volume_solids_pct": 37.6,
+    "dft_um": 60,
+    "coats": "1~2",
+    "coverage_m2_per_l": 6.0,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "18L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "surface_moisture_pct_max": 10,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "cure_days": 28
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true,
+    "primer_required_when": [
+     "콘크리트 소지 상태 불량",
+     "구도막 부위",
+     "동절기 시공",
+     "시멘트 견출·미장면 쵸킹 소지",
+     "흡수차가 심한 바탕면",
+     "시멘트 용출이 심한 부위"
+    ]
+   },
+   "estimate": {
+    "basis": "상도 1~2회 · 60㎛",
+    "topcoat_l_per_m2": 0.16,
+    "note": "부가세·시공비 별도"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "비오는 날/습도 85%이상/기온 5℃이하 도장 금지",
+     "구도막 보수도장은 사전 적합성 확인 후 진행",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)",
+     "가소제 함유 피도면·발포벽지·가죽소파 접촉 시 오염·변색 주의"
+    ],
+    "info": [
+     "도장 전 균일 혼합, 도장 중 주기적 교반"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+   },
+   "docs": {
+    "tech": "1tech3051753.pdf",
+    "spec_sheet": "1pntg3051753.pdf",
+    "tech_dated": "2025-09-04"
+   }
+  },
+  {
+   "id": "aisaengkag-water-borne-acron",
+   "status": "documented",
+   "name": "아이생각수성아크론",
+   "name_en": "Aisaengkag Water-Borne Acron",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete",
+    "roof"
+   ],
+   "role": "topcoat",
+   "summary": "특수 아크릴에멀젼+내후성 안료 주성분의 고광택 수성페인트. 낙서방지효과가 우수하고(반광 이상) 가정에서 쉽게 도장 가능한 DIY형 제품으로 환경마크를 획득.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "석고",
+    "기와",
+    "슬레이트"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광/반광/에그쉘광/무광",
+    "colors": [
+     "백색",
+     "담색(주문한정)"
+    ],
+    "volume_solids_pct": 36.0,
+    "dft_um": 60,
+    "coats": "2~3",
+    "coverage_m2_per_l": 6.08,
+    "dry_hard_min": 120,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "18L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85,
+    "cure_days": 28
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true,
+    "primer_required_when": [
+     "콘크리트 소지 상태 불량",
+     "구도막 부위",
+     "동절기 시공",
+     "쵸킹 소지",
+     "흡수차가 심한 바탕면",
+     "시멘트 용출이 심한 부위"
+    ]
+   },
+   "estimate": {
+    "basis": "상도 2회 · 각 30㎛",
+    "note": "반광·에그쉘·무광 소요량은 소비자상담실 문의"
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "도장 후 25℃ 기준 최소 3시간 경과 후 재도장",
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "voc_regulation": "수도권대기환경개선 특별법 규제 만족 (수도권 사용 가능)"
+   },
+   "docs": {
+    "tech": "1tech3051788.pdf",
+    "spec_sheet": "1pntg3051788.pdf",
+    "tech_dated": "2023-04-18"
+   }
+  },
+  {
+   "id": "aisaengkag-water-borne-pro-exterior",
+   "status": "documented",
+   "name": "아이생각수성외부프로",
+   "name_en": "Aisaengkag Water-borne Pro for Exterior",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6010 1종 2급",
+   "summary": "아크릴에멀젼+내후성 안료 주성분의 외부 노출면 보호용 친환경 수성페인트. 환경마크 획득.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "석고보드"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "colors": [
+     "백색",
+     "각색"
+    ],
+    "volume_solids_pct": 35.2,
+    "dft_um": 60,
+    "coats": 2,
+    "coverage_m2_per_l": 5.8,
+    "dry_hard_min": 60,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "18L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ]
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true
+   },
+   "estimate": {
+    "basis": "상도 2회 · 60㎛",
+    "topcoat_l_per_m2": 0.145
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true
+   },
+   "docs": {
+    "tech": "1tech3051945.pdf",
+    "spec_sheet": "1pntg3051945.pdf",
+    "tech_dated": "2024-12-17"
+   }
+  },
+  {
+   "id": "aisaengkag-acron-exterior",
+   "status": "documented",
+   "name": "아이생각 아크로 외부용",
+   "name_en": "Aisaengkag Acron for Exterior",
+   "brand": "삼화페인트",
+   "categories": [
+    "concrete"
+   ],
+   "role": "topcoat",
+   "standard": "KS M 6010 1종 2급",
+   "summary": "아크릴에멀젼+내후성 안료 주성분의 건축물 외부마감용 친환경 수성페인트. 환경마크 획득.",
+   "substrates": [
+    "콘크리트",
+    "시멘트",
+    "몰탈",
+    "석고"
+   ],
+   "spec": {
+    "composition": "1액형",
+    "dft_um": 60,
+    "coats": 2,
+    "coverage_m2_per_l": 6.25,
+    "recoat_hours": 3,
+    "thinner": "물",
+    "thinning_pct_max": 10,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "shelf_life_months": 12,
+    "pack_sizes": [
+     "1L"
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 85
+   },
+   "system": {
+    "primer": "수성바인다200",
+    "primer_conditional": true
+   },
+   "estimate": {
+    "basis": "상도 2회 · 각 30㎛",
+    "topcoat_l_per_m2": 0.16
+   },
+   "cautions": {
+    "danger": [],
+    "warn": [
+     "현장 조색은 아크로텍스잉크 최대 5%(부피비)"
+    ],
+    "info": []
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true
+   },
+   "docs": {
+    "tech": "1tech3051817.pdf",
+    "spec_sheet": "1pntg3050013.pdf",
+    "tech_dated": "2024-12-17"
+   }
+  }
+ ]
 }

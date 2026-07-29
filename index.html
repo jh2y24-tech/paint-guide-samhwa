@@ -2785,6 +2785,9 @@ Object.assign(window.PRODUCT_DB, {
       "제품을 가열하거나 타 도료와 혼합 금지",
       "밀폐된 장소에서 작업 금지 — 부득이한 경우 충분히 환기 후 작업"
     ],
+    youtube: [
+      { id: "sPet2uItV-A", caption: "에포코트 하도 시공 참고" }
+    ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3100756.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3100756.pdf" }
@@ -2934,7 +2937,11 @@ Object.assign(window.PRODUCT_DB, {
   "에포코트 상도": {
     category: "상도 · 에폭시 2액형 (실내 방진 바닥)",
     desc: "내마모·방진·내약품성이 우수한 에폭시 마감재(상도).",
-    spec: "주제 : 경화제 2.7 : 1 · 희석 에포코트1000신나 5% 미만\n도장 횟수 1~2회 · 재도장 간격(20℃) 1일 ~ 4일\n이론도포면적 (투명) 약 9㎡/ℓ · (유색) 약 6~12㎡/ℓ",
+    spec: "주제 : 경화제 2.7 : 1 (부피비) · 희석 에포코트1000신나 5% 이내 (도료 부피비)\n도장 횟수 1~2회 · 재도장 간격(20℃) 1일 ~ 4일 · 포장단위 14L, 3.5L\n추천도포면적 (유색) 13.3㎡/L (건조도막두께 40㎛시) · 6.6㎡/L (80㎛시)\n추천도포면적 (투명) 10.8㎡/L (건조도막두께 40㎛시) · 5.4㎡/L (80㎛시, 두께 반비례 환산)",
+    youtube: [
+      { id: "sDAFXBS2aQU", caption: "에포코트 상도 시공 참고 ①" },
+      { id: "yflDB6bJWcc", caption: "에포코트 상도 시공 참고 ②" }
+    ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3100743.pdf" }
     ]
@@ -3763,9 +3770,33 @@ function calcCoats(v){
 
 var _r = function(n, d){ var f = Math.pow(10, d==null?2:d); return Math.round(n*f)/f; };
 
+/* spec.coverage_variants — 유색/투명·도막두께별로 이론도포면적이 여러 개인 제품.
+   선택된 변형의 값으로 spec 을 덮어쓴 사본을 돌려준다. */
+function calcVariants(p){
+  var v = (p.spec || {}).coverage_variants;
+  return (Array.isArray(v) && v.length) ? v : null;
+}
+function calcPickVariant(p, vid){
+  var vs = calcVariants(p);
+  if (!vs) return null;
+  for (var i=0;i<vs.length;i++) if (vs[i].id === vid) return vs[i];
+  var def = p.spec.coverage_variants_default;
+  for (var j=0;j<vs.length;j++) if (vs[j].id === def) return vs[j];
+  return vs[0];
+}
+function calcSpecFor(p, vid){
+  var s = p.spec || {}, v = calcPickVariant(p, vid);
+  if (!v) return s;
+  var o = {}; for (var k in s) if (Object.prototype.hasOwnProperty.call(s,k)) o[k] = s[k];
+  o.coverage_m2_per_l = v.coverage_m2_per_l;
+  if (v.dft_um != null) o.dft_um = v.dft_um;
+  o.coverage_kg_per_m2 = null;
+  return o;
+}
+
 /* 핵심 계산 */
-function calcCompute(p, area, coats, loss){
-  var s = p.spec || {}, e = p.estimate || {};
+function calcCompute(p, area, coats, loss, vid){
+  var s = calcSpecFor(p, vid), e = p.estimate || {};
   var unit = null, perCoat = null;
   if (s.coverage_m2_per_l != null && s.coverage_m2_per_l > 0){
     unit = 'L'; perCoat = 1 / s.coverage_m2_per_l;
@@ -3828,7 +3859,8 @@ function calcCompute(p, area, coats, loss){
 
   return {
     unit: unit, need: need, perM2: basePerM2, coats: coats, loss: loss,
-    dft: s.dft_um, packs: pk, thinner: thinner, mix: mix, mixNote: mixNote, cross: cross,
+    dft: s.dft_um, cov: s.coverage_m2_per_l, variant: calcPickVariant(p, vid),
+    packs: pk, thinner: thinner, mix: mix, mixNote: mixNote, cross: cross,
     noPacks: !pk, packNote: s.pack_sizes_note || '',
     primer: (e.primer_l_per_m2 != null) ? { perM2: e.primer_l_per_m2, need: area * e.primer_l_per_m2 * (1+loss/100), name: (p.system && p.system.primer) || '하도' } : null
   };
@@ -3840,7 +3872,17 @@ function calcRenderShell(uid, p){
   var cov = (s.coverage_m2_per_l != null)
         ? s.coverage_m2_per_l + '㎡/L'
         : (s.coverage_kg_per_m2 != null ? s.coverage_kg_per_m2 + 'kg/㎡' : '-');
-  return '' +
+  var vs = calcVariants(p), varRow = '';
+  if (vs){
+    var def = calcPickVariant(p, null);
+    varRow = '<div class="calc-row"><label for="'+uid+'-var">도포 기준</label>' +
+      '<select class="calc-sel" id="'+uid+'-var" style="flex:1;min-width:140px;" onchange="calcUpdate(\''+uid+'\')">' +
+      vs.map(function(v){
+        return '<option value="'+v.id+'"'+(v.id===def.id?' selected':'')+'>'+v.label+' — '+v.coverage_m2_per_l+'㎡/L</option>';
+      }).join('') +
+      '</select></div>';
+  }
+  return '' + varRow +
   '<div class="calc-row"><label for="'+uid+'-area">도장면적</label>' +
     '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">㎡</span></div>' +
   '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
@@ -3848,7 +3890,7 @@ function calcRenderShell(uid, p){
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
     '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="15" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">15%</span></div>' +
   '<div class="calc-out" id="'+uid+'-out"></div>' +
-  '<div class="calc-note">기준값 — 이론도포면적 '+cov+ (s.dft_um ? ' (건조도막두께 '+s.dft_um+'㎛ 기준)' : '') +'</div>';
+  '<div class="calc-note" id="'+uid+'-basis">기준값 — 이론도포면적 '+cov+ (s.dft_um ? ' (건조도막두께 '+s.dft_um+'㎛ 기준)' : '') +'</div>';
 }
 
 function calcUpdate(uid){
@@ -3861,8 +3903,19 @@ function calcUpdate(uid){
   var lv = document.getElementById(uid+'-lossv'); if (lv) lv.textContent = loss + '%';
   var out = document.getElementById(uid+'-out'); if (!out) return;
 
+  var vsel = document.getElementById(uid+'-var');
+  var vid  = vsel ? vsel.value : null;
+
+  var bs = document.getElementById(uid+'-basis');
+  if (bs){
+    var vv = calcPickVariant(p, vid);
+    if (vv) bs.innerHTML = '기준값 — ' + vv.label + ' 이론도포면적 ' + vv.coverage_m2_per_l + '㎡/L' +
+      (vv.dft_um ? ' (건조도막두께 ' + vv.dft_um + '㎛ 기준)' : '') +
+      (vv.source === 'derived' ? '<br>※ ' + (vv.note || '카탈로그 미표기 환산값') : '');
+  }
+
   if (!(area > 0)){ out.innerHTML = '<div class="calc-na">도장면적을 입력하세요.</div>'; return; }
-  var r = calcCompute(p, area, coats, loss);
+  var r = calcCompute(p, area, coats, loss, vid);
   if (!r){ out.innerHTML = '<div class="calc-na">이 제품은 이론도포면적이 등록되어 있지 않습니다.</div>'; return; }
 
   var u = r.unit;
