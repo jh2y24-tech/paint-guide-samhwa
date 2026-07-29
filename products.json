@@ -8,7 +8,7 @@
   "spec.recoat_hours": "재도장 간격(시간). 25℃ 기준",
   "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
   "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보",
-  "spec.coverage_variants": "이론도포면적이 유색/투명·도막두께에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. source: catalog=공식 표기 / derived=두께 반비례 환산"
+  "spec.coverage_variants": "이론소요량이 도막두께·색상(유색/투명)에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. 항목은 coverage_m2_per_l 또는 coverage_kg_per_m2 중 하나를 가진다. source: catalog=기술자료 / spec_sheet=도장사양서 일위대가 / derived=비례 환산"
  },
  "categories": [
   {
@@ -991,13 +991,309 @@
   },
   {
    "id": "color-deco-lining",
-   "status": "listed",
-   "name": "컬러데코라이닝",
+   "status": "documented",
+   "name": "컬러데코라이닝 투명",
+   "name_en": "COLORDECO LINING CLEAR",
+   "aliases": [
+    "컬러데코라이닝",
+    "컬러데코 라이닝",
+    "컬러데코라이닝투명"
+   ],
    "brand": "삼화페인트",
    "categories": [
-    "silk"
+    "floor"
    ],
-   "role": "topcoat"
+   "role": "topcoat",
+   "summary": "에폭시 수지를 주성분으로 하는 무용제형 자체평활 바닥재. 내약품성·내마모성·내충격성이 우수하고 도막두께를 자유롭게 조절할 수 있으며 이음새가 없다.",
+   "uses": "공장, 무진실, 사무실, 전시실, 매장(인테리어) 등의 실내 방진 바닥용",
+   "substrates": [
+    "콘크리트",
+    "시멘트 몰탈"
+   ],
+   "spec": {
+    "composition": "2액형 (무용제)",
+    "finish": "유광",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 97,
+    "dft_um": 2000,
+    "dft_note": "추천 건조도막두께 1~2㎜",
+    "coats": "1",
+    "coverage_m2_per_l": 0.5,
+    "coverage_variants": [
+     {
+      "id": "t1",
+      "label": "1㎜",
+      "dft_um": 1000,
+      "coverage_m2_per_l": 1.0,
+      "source": "spec_sheet",
+      "note": "도장사양서 일위대가 1.00 L/㎡"
+     },
+     {
+      "id": "t1_5",
+      "label": "1.5㎜",
+      "dft_um": 1500,
+      "coverage_m2_per_l": 0.67,
+      "source": "spec_sheet",
+      "note": "도장사양서 일위대가 1.50 L/㎡"
+     },
+     {
+      "id": "t2",
+      "label": "2㎜ (추천)",
+      "dft_um": 2000,
+      "coverage_m2_per_l": 0.5,
+      "source": "catalog",
+      "note": "기술자료 추천소요량 약 2 L/㎡ · 2.17 kg/㎡"
+     }
+    ],
+    "coverage_variants_default": "t2",
+    "mixing_ratio_volume": "3:1",
+    "thinner": "무희석",
+    "thinning_pct_max": 0,
+    "thinning_note": "무용제 제품 — 희석 시 경화지연·강도저하·색분리·크랙·아민브러싱·주름 발생. 동절기 작업성 개선 목적일 때만 3% 내외. 세척제는 에포코트1000신나",
+    "pack_sizes": [
+     "16L",
+     "3.5L"
+    ],
+    "pack_sizes_note": "실포장량 16L = 주제 12L(13.44kg) + 경화제 4L(3.88kg) / 3.5L = 주제 2.63L(2.94kg) + 경화제 0.88L(0.85kg)",
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     38
+    ],
+    "dry_touch_min": 480,
+    "pot_life_min": 25,
+    "recoat_hours": 24,
+    "cure_note": "10℃/20℃/30℃ — 지촉건조 12h/8h/6h · 경화건조 48h/24h/20h · 완전건조 9일/5일/4일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일",
+    "tools": [
+     "흙손",
+     "전용레기",
+     "RAKE"
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     5,
+     35
+    ],
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "tools": [
+     "흙손",
+     "전용레기"
+    ]
+   },
+   "system": {
+    "primer": "에포코트 하도",
+    "primer_alt": [
+     "에포코트 고점도 하도",
+     "에포코트아쿠아 하도"
+    ],
+    "primer_note": "하도 50㎛ 1회 (6.0㎡/L). 하도 후 20℃ 최소 12시간 경과 후 상도",
+    "topcoat_self": true
+   },
+   "estimate": {
+    "basis": "도장사양서 일위대가 · 하도 50㎛ 1회 + 상도 1~1.5㎜ 1회",
+    "primer_l_per_m2": 0.167,
+    "topcoat_l_per_m2": 1.25,
+    "note": "상도 1.00~1.50 L/㎡ 구간의 중앙값. 부가세·시공비 별도"
+   },
+   "cautions": {
+    "danger": [
+     "주제·경화제 혼합 후 가사시간(20℃ 25분) 경과 시 겔화 — 필요한 양만 혼합",
+     "B부(경화제) 투입 후 혼합하지 않아도 반응이 진행되어 겔화 — A부에 B부 혼합 후 즉시 사용, 혼합 후 20℃ 20분 내외로 온도 급상승 주의",
+     "밀폐된 장소에서 작업 금지 — 부득이한 경우 배기장치로 충분히 환기 후 작업",
+     "도료 묻은 헝겊은 자연발화 위험 — 불연성 용기에 담아 폐기"
+    ],
+    "warn": [
+     "1회 도장 시 도막두께 2㎜ 이하 — 초과 시 도막 내 기포 잔존 및 도료 몰림에 의한 주름 발생",
+     "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민브러싱·주름 발생 (동절기 작업성 목적 3% 내외만 허용)",
+     "물·알코올 노출 시 광택저하·변색. 저온에서는 아민브러싱·백화 동반 — 물청소 금지",
+     "외부 적용 시 백화·황변 발생. 내부라도 채광창이 있으면 황변 발생",
+     "보일러 등 열이 가해지는 조건에서 시공 금지 — 황변 촉진 및 도막 강도 저하",
+     "고강도 콘크리트(260 kgf/㎠ 이상)는 그라인딩 시 부착 불량 — 블라스팅 후 부착성능 확인",
+     "제품 가열·타 도료 혼합 금지",
+     "구도막 보수 도장은 사전 부착력 확인 후 진행"
+    ],
+    "info": [
+     "기공에 의한 기포를 줄이기 위해 0.5~0.8㎜ 두께로 선행도장(스크랩핑) 후 20℃ 24시간 경과 뒤 잔량 시공",
+     "바탕색이 흑색 등 진한색이면 미세 잔존 기포가 보일 수 있어 색상 선정 주의",
+     "저온 시공 시 소포력 저하 — 도장 후 에포코트1000신나 살포로 기포 제거",
+     "동절기 저온 작업 후 아민블러싱 발생 시 반드시 에포코트 상도 투명을 도장",
+     "라인마킹은 상도 후 20℃ 24시간 경과 뒤 에포코트210PLUS 사용",
+     "전동교반기 1000RPM·500W 이상으로 1~2분 이내 교반"
+    ]
+   },
+   "compliance": {
+    "indoor_air_quality_act": true,
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "eco_label": true,
+    "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염감소",
+    "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)",
+    "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내 사용 가능"
+   },
+   "docs": {
+    "tech": "1tech3100796.pdf",
+    "spec_sheet": "1pntg3100796.pdf",
+    "tech_dated": "2026-02-24"
+   }
+  },
+  {
+   "id": "epocoat-lining",
+   "status": "documented",
+   "name": "에포코트라이닝",
+   "name_en": "EPOCOAT LINING",
+   "aliases": [
+    "에포코트 라이닝"
+   ],
+   "brand": "삼화페인트",
+   "categories": [
+    "floor"
+   ],
+   "role": "midcoat",
+   "summary": "자체평활성(Self-levelling)이 우수한 무용제형 중상도 겸용 에폭시 바닥재. 내약품성·내마모성·내충격성·접착력·기계적 강도가 양호하다.",
+   "uses": "주차장, 사무실, 식당, 병원, 무진실, 실험실 등 내부 실내 방진 바닥용. 기계실·전기실·화학공장·제약공장·육가공공장·냉장창고 바닥",
+   "substrates": [
+    "콘크리트",
+    "시멘트 몰탈"
+   ],
+   "spec": {
+    "composition": "2액형 (무용제)",
+    "finish": "유광",
+    "colors": [
+     "각 색"
+    ],
+    "volume_solids_pct": 95,
+    "dft_um": 3000,
+    "dft_note": "추천 도막두께 약 1~3㎜",
+    "coats": "1~2",
+    "coverage_kg_per_m2": 4.74,
+    "coverage_variants": [
+     {
+      "id": "t1",
+      "label": "1㎜",
+      "dft_um": 1000,
+      "coverage_kg_per_m2": 1.58,
+      "source": "catalog",
+      "note": "기술자료 추천소요량 1.58kg/㎡ (1㎜ 기준)"
+     },
+     {
+      "id": "t2",
+      "label": "2㎜",
+      "dft_um": 2000,
+      "coverage_kg_per_m2": 3.16,
+      "source": "derived",
+      "note": "1㎜ 1.58kg/㎡의 두께 비례 환산"
+     },
+     {
+      "id": "t3",
+      "label": "3㎜ (사양서 기준)",
+      "dft_um": 3000,
+      "coverage_kg_per_m2": 4.74,
+      "source": "spec_sheet",
+      "note": "도장사양서 일위대가 4.74 kg/㎡"
+     }
+    ],
+    "coverage_variants_default": "t3",
+    "mixing_ratio_weight": "5:1",
+    "mixing_ratio_note": "A부:B부 무게비 5:1",
+    "thinner": "무희석",
+    "thinning_pct_max": 0,
+    "thinning_note": "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민브러싱·주름 발생. 세척제는 에포코트1000신나",
+    "pack_sizes": [
+     "24kg"
+    ],
+    "pack_sizes_note": "16L용 (실포장량 24kg)",
+    "shelf_life_months": 6,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "dry_touch_min": 300,
+    "pot_life_min": 25,
+    "recoat_hours": 24,
+    "cure_note": "10℃/20℃/30℃ — 지촉건조 8h/5h/4h · 경화건조 48h/18h/12h · 완전건조 9일/4일/3일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일",
+    "tools": [
+     "흙손",
+     "일자레기",
+     "RAKE"
+    ]
+   },
+   "conditions": {
+    "air_temp_c": [
+     10,
+     35
+    ],
+    "humidity_pct_max": 80,
+    "surface_temp_c_max": 40,
+    "surface_moisture_pct_max": 6,
+    "surface_ph": [
+     7,
+     9
+    ],
+    "dew_point_margin_c": 3,
+    "cure_days": 28,
+    "tools": [
+     "흙손",
+     "일자레기",
+     "RAKE"
+    ]
+   },
+   "system": {
+    "primer": "에포코트 하도",
+    "primer_alt": [
+     "에포코트 고점도 하도",
+     "에포코트아쿠아 하도"
+    ],
+    "primer_note": "하도 50㎛ 1회 (0.167 L/㎡, 부피비 1:1). 하도 후 20℃ 최소 12시간 경과 후 상도",
+    "topcoat": "에포코트 상도",
+    "topcoat_note": "중상도 겸용이라 단독 마감 가능. 필요 시 에포코트상도·에포코트아쿠아상도로 후속 도장 (아민블러싱 발생 시 세척 후 상도)",
+    "topcoat_self": true
+   },
+   "estimate": {
+    "basis": "도장사양서 일위대가 · 하도 50㎛ 1회 + 에포코트라이닝 3㎜ 1~2회",
+    "primer_l_per_m2": 0.167,
+    "midcoat_kg_per_m2": 4.74,
+    "note": "부가세·시공비 별도. 실제 소요량은 작업조건에 따라 가감"
+   },
+   "cautions": {
+    "danger": [
+     "주제·경화제 혼합 후 가사시간(20℃ 25분) 경과 시 겔화 — 필요한 양만 혼합",
+     "밀폐된 장소에서 작업 금지 — 부득이한 경우 충분히 환기 후 작업",
+     "도료 묻은 헝겊은 자연발화 위험 — 불연성 용기에 담아 폐기"
+    ],
+    "warn": [
+     "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민브러싱·주름 발생",
+     "물·알코올 노출 시 광택저하·변색. 저온에서는 아민브러싱·백화 동반 — 물청소 금지 (필요시 에포코트상도 후속도장)",
+     "외부 적용 시 백화·황변 발생. 내부라도 채광창이 있으면 황변 발생",
+     "비오는 날·습도 80% 이상·기온 10℃ 이하에서는 도장 금지 — 건조지연·균열·부착불량·아민브러싱·백화",
+     "고강도 콘크리트(260 kgf/㎠ 이상)는 그라인딩 시 부착 불량 — 블라스팅 후 부착성능 확인",
+     "저장기간 6개월로 짧음 — 재고 관리 주의"
+    ],
+    "info": [
+     "기공에 의한 기포를 줄이기 위해 0.5~0.8㎜ 두께로 선행도장(스크랩핑) 후 20℃ 24시간 경과 뒤 잔량으로 총 3㎜ 시공",
+     "도막두께 1㎜ 이하 시공은 평활성·소포성이 떨어지므로 RAKE 대신 흙손 사용. 크래터링 발생 주의",
+     "소포가 안 될 때 에포코트1000신나 또는 유성 살충제를 표면에 살포해 기포 제거",
+     "전동교반기 1000~1500RPM으로 2~3분 균일 혼합"
+    ]
+   },
+   "compliance": {
+    "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
+    "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
+   },
+   "docs": {
+    "tech": "11tech3100925.pdf",
+    "spec_sheet": "1pntg3100925.pdf",
+    "tech_dated": "2026-04-15"
+   }
   },
   {
    "id": "water-clear-plus-matte",
