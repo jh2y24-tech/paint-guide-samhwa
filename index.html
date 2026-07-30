@@ -469,12 +469,15 @@ a{color:var(--brand);text-decoration:none}
 #prodModal .pm-field{margin:12px 0;}
 #prodModal .pm-label{font-size:12px; font-weight:800; color:var(--muted,#667); letter-spacing:.02em; margin-bottom:4px;}
 #prodModal .pm-value{font-size:14px; color:var(--text,#222); line-height:1.6; white-space:pre-line;}
-#prodModal .pm-value ul{margin:4px 0 0; padding-left:18px;}
-#prodModal .pm-value li{margin:2px 0;}
+/* 팝업 내 모든 목록 — 왼쪽 점(불릿) 제거. ul 기본 padding-left 도 없애 박스 좌측선에 맞춘다 */
+#prodModal ul{list-style:none; margin:4px 0 0; padding-left:0;}
+#prodModal li{margin:2px 0; padding-left:0;}
+#prodModal li::before{content:none;}
 #prodModal .pm-empty{text-align:center; padding:26px 10px; color:var(--muted,#889);}
 #prodModal .pm-empty .pm-emoji{font-size:34px; display:block; margin-bottom:10px;}
 #prodModal .pm-empty b{color:var(--text,#333);}
 #prodModal .pm-caution{background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:10px 12px; font-size:13px; color:#9a3412; line-height:1.6;}
+#prodModal .pm-caution ul{margin:0;}
 .pm-pdf-btn{position:relative; overflow:hidden; flex:1 1 100%; width:100%; display:flex; align-items:center; gap:9px; font-family:inherit; font-size:13px; font-weight:600; text-align:left; color:var(--text); background:var(--card2); border:1px solid var(--border-2); border-top:3px solid transparent; border-radius:10px; padding:10px 12px; cursor:pointer; transition:background .15s, transform .15s;}
 .pm-pdf-btn::before{content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right,var(--brand) 0%,transparent 88%); pointer-events:none;}
 .pm-pdf-btn::after{content:"PDF"; margin-left:auto; font-family:var(--mono); font-size:10.5px; color:var(--faint); font-weight:700;}
