@@ -304,6 +304,9 @@ a{color:var(--brand);text-decoration:none}
 .vcard-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .vcard{display:block;width:100%;position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-top:3px solid transparent;border-radius:11px;padding:12px 14px}
 .vcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
+#woodPurposeStep .wg-stain .rtable-name{color:#95580F;background:rgba(149,88,15,.10);border-color:rgba(149,88,15,.28)}
+#woodPurposeStep .wg-color .rtable-name{color:#155FB6;background:rgba(21,95,182,.10);border-color:rgba(21,95,182,.28)}
+#woodPurposeStep .wg-varnish .rtable-name{color:#00474F;background:rgba(0,71,79,.10);border-color:rgba(0,71,79,.28)}
 #woodPurposeStep .rtable-row{position:relative;overflow:hidden;border-top:3px solid transparent}
 #woodPurposeStep .rtable-row::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
 .vcard-head{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border-2)}
@@ -1396,7 +1399,7 @@ a{color:var(--brand);text-decoration:none}
           <div style="font-size:13px; font-weight:800; color:var(--oil); margin-bottom:6px;">
             🌿 결 살리기 · 착색 · 방부 · 방충 · 햇빛에 의한 부식 방지 (페인트 칠이 되지 않은 목재 기준) → 스테인
           </div>
-          <div class="rtable">
+          <div class="rtable wg-stain">
           <div class="rtable-row">
             <div class="rtable-name">아이생각수성스테인</div>
             <div class="rtable-fields">
@@ -1423,7 +1426,7 @@ a{color:var(--brand);text-decoration:none}
         <!-- 색상 도장 -->
         <div style="margin-bottom:14px;">
           <div style="font-size:13px; font-weight:800; color:var(--water); margin-bottom:6px;">🎨 색상 도장 원할 때</div>
-          <div class="rtable">
+          <div class="rtable wg-color">
           <div class="rtable-row">
             <div class="rtable-name">777에나멜</div>
             <div class="rtable-fields">
@@ -1450,7 +1453,7 @@ a{color:var(--brand);text-decoration:none}
         <!-- 투명 보호 -->
         <div>
           <div style="font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px;">✨ 투명 보호 마감 원할 때 → 바니쉬 (=니스)</div>
-          <div class="rtable">
+          <div class="rtable wg-varnish">
             <div class="rtable-row">
               <div class="rtable-name">아이생각 수성우드바니시</div>
               <div class="rtable-fields">
@@ -1463,7 +1466,7 @@ a{color:var(--brand);text-decoration:none}
           </div>
           <div style="margin-top:10px;">
             <div style="font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px;">🛢 유성 바니시 (니스)</div>
-          <div class="rtable">
+          <div class="rtable wg-varnish">
           <div class="rtable-row">
             <div class="rtable-name">40바루스파</div>
             <div class="rtable-fields">
