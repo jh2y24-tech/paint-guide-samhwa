@@ -21,17 +21,21 @@
   --oil:#95580F;--oil-bg:rgba(149,88,15,.07);
   --primer-w:#1B7E4E;--primer-w-bg:rgba(27,126,78,.07);
   --primer-o:#BB4915;--primer-o-bg:rgba(187,73,21,.07);
+  --silk:#8A6A4F;--silk-bg:rgba(138,106,79,.08);
+  --concrete:#1289C8;--concrete-bg:rgba(18,137,200,.08);
+  --iron:#A8402A;--iron-bg:rgba(168,64,42,.08);
+  --coated:#6B6076;--coated-bg:rgba(107,96,118,.08);
   --accent:#00474F;--accent-bg:rgba(0,71,79,.07);
   --warn:#8A6410;--warn-bg:rgba(138,100,16,.07);
   --danger:#CB2A20;--mold:#0E876A;--mold-bg:rgba(14,135,106,.07);
-  --sky:#0A6DA3;--sky-bg:rgba(10,109,163,.07);
+  --sky:#12ABD1;--sky-bg:rgba(18,171,209,.10);--sky-deep:#0E8FB0;
   --floor:#7C43C0;--floor-bg:rgba(124,67,192,.07);
-  --tile:#0E857A;--tile-bg:rgba(14,133,122,.07);
-  --roof:#B03A3A;--roof-bg:rgba(176,58,58,.07);
+  --tile:#1B8E96;--tile-bg:rgba(27,142,150,.08);
+  --roof:#E2621B;--roof-bg:rgba(226,98,27,.09);
   --twp:#8A5A10;--twp-bg:rgba(138,90,16,.07);
-  --road:#B4530A;--road-bg:rgba(180,83,10,.07);
+  --road:#4A4E52;--road-bg:rgba(74,78,82,.08);
   --amber:#C9701A;
-  --orange:#E2571E;--orange-dark:#B8420F;
+  --orange:#00474F;--orange-dark:#00343B;
   --shadow:0 1px 2px rgba(10,40,44,.045),0 3px 10px rgba(10,40,44,.045);
   --shadow-lg:0 10px 26px rgba(0,45,50,.13);
   --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -63,10 +67,11 @@ a{color:var(--brand);text-decoration:none}
 .mat-section{margin-bottom:24px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;position:relative}
 .mat-section::before{content:"";display:block;height:5px;background:var(--brand)}
 #concrete::before,#silk::before,#coated::before,#iron::before,#wood::before,#mold::before,#tile::before,#roof::before,#road::before,#wp::before,#floor::before{display:none}
-.mat-concrete{--mat:var(--water);--mat-bg:var(--water-bg)}
-.mat-silk{--mat:var(--primer-o);--mat-bg:var(--primer-o-bg)}
+.mat-concrete{--mat:var(--concrete);--mat-bg:var(--concrete-bg)}
+.mat-silk{--mat:var(--silk);--mat-bg:var(--silk-bg)}
+.mat-coated{--mat:var(--coated);--mat-bg:var(--coated-bg)}
 .mat-wood{--mat:var(--oil);--mat-bg:var(--oil-bg)}
-.mat-iron{--mat:var(--warn);--mat-bg:var(--warn-bg)}
+.mat-iron{--mat:var(--iron);--mat-bg:var(--iron-bg)}
 .mat-mold{--mat:var(--mold);--mat-bg:var(--mold-bg)}
 .mat-wp{--mat:var(--sky);--mat-bg:var(--sky-bg)}
 .mat-tile{--mat:var(--tile);--mat-bg:var(--tile-bg)}
@@ -76,8 +81,8 @@ a{color:var(--brand);text-decoration:none}
 .mat-title{position:relative;display:flex;align-items:center;gap:10px;padding:18px 18px;min-height:68px;font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--mat);background-color:#fff;background-repeat:no-repeat;background-image:linear-gradient(to right,#fff 0,#fff calc(100% - 280px),rgba(255,255,255,0) calc(100% - 220px)),var(--mat-tex,none);border-bottom:1px solid var(--border)}
 .mat-title>span{text-shadow:0 1px 3px rgba(255,255,255,.85),0 0 10px rgba(255,255,255,.6)}
 .mat-title .icon{font-size:18px;line-height:1}
-.mat-title .sub{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--mat);background:var(--card);border:1px solid color-mix(in srgb,var(--mat) 32%,transparent);padding:3px 9px;border-radius:999px;letter-spacing:.03em;white-space:nowrap;line-height:1.5;flex-shrink:0}
-.mat-title .sub.sub-oil{color:var(--oil);background:var(--oil-bg);border-color:color-mix(in srgb,var(--oil) 40%,transparent)}
+.mat-title .sub{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--mat);background:linear-gradient(to right,color-mix(in srgb,var(--mat) 20%,transparent),color-mix(in srgb,var(--mat) 4%,transparent));border:1px solid color-mix(in srgb,var(--mat) 32%,transparent);padding:3px 9px;border-radius:999px;letter-spacing:.03em;white-space:nowrap;line-height:1.5;flex-shrink:0}
+.mat-title .sub.sub-oil{color:var(--oil);background:linear-gradient(to right,rgba(149,88,15,.20),rgba(149,88,15,.04));border-color:color-mix(in srgb,var(--oil) 40%,transparent)}
 #wood .mat-title{flex-wrap:wrap;row-gap:6px}
 .mat-title{cursor:pointer;user-select:none}
 .mat-title:hover{filter:brightness(.98)}
@@ -173,7 +178,39 @@ a{color:var(--brand);text-decoration:none}
 .chip-primer-o{background:var(--primer-o-bg);color:var(--primer-o);border-color:rgba(187,73,21,.28)}
 .chip-acc{background:var(--accent-bg);color:var(--accent);border-color:rgba(0,71,79,.28)}
 .chip-mold{background:var(--mold-bg);color:var(--mold);border-color:rgba(14,135,106,.28)}
-.chip-wp{background:var(--sky-bg);color:var(--sky);border-color:rgba(10,109,163,.28)}
+.chip-wp{background:var(--sky-bg);color:var(--sky);border-color:rgba(23,179,217,.32)}
+/* 방수에이스 — 제품 깡통 라벨 메인 컬러 */
+.chip-wa-primer{background:#F5EAF4;color:#8E3A87;border-color:rgba(142,58,135,.30)}
+.chip-wa-mid{background:#E7F2EE;color:#10684F;border-color:rgba(16,104,79,.30)}
+.chip-wa-top{background:#FDEEE0;color:#D2691A;border-color:rgba(210,105,26,.30)}
+.lbl-wa-primer{color:#8E3A87}
+.lbl-wa-mid{color:#10684F}
+.lbl-wa-top{color:#D2691A}
+.num-wa-primer{background:#8E3A87!important}
+.num-wa-mid{background:#10684F!important}
+.num-wa-top{background:#D2691A!important}
+/* 옥상방수 섹션 — 물방울 느낌의 은은한 그라데이션 (테두리 없음) */
+.mat-wp .step-num{border:none;background:linear-gradient(160deg,#5FD4EE 0%,#12ABD1 55%,#0E8FB0 100%);box-shadow:0 1px 2px rgba(18,171,209,.35)}
+.mat-wp .step-num.num-wa-primer{background:linear-gradient(160deg,#C06BB8 0%,#8E3A87 55%,#702C6A 100%)!important}
+.mat-wp .step-num.num-wa-mid{background:linear-gradient(160deg,#3FA98C 0%,#10684F 55%,#0B5340 100%)!important}
+.mat-wp .step-num.num-wa-top{background:linear-gradient(160deg,#F5A55E 0%,#D2691A 55%,#B25412 100%)!important}
+.mat-wp .step-badge{border:none}
+.mat-wp .chip-wp{color:var(--sky-deep);border-color:transparent;background:linear-gradient(160deg,rgba(95,212,238,.20),rgba(18,171,209,.12))}
+.mat-wp .hi-sky{color:var(--sky)}
+.mat-wp .chip-oneshot{color:var(--primer-w);background:rgba(27,126,78,.12);border-color:transparent}
+.mat-wp .mat-title .sub{color:var(--sky-deep);background:linear-gradient(to right,rgba(18,171,209,.24),rgba(18,171,209,.05));border-color:transparent;font-weight:800}
+/* 배지: 글자색 유지 + 연한 바탕 pill (플로팅 스타일) */
+.mat-wp .step-badge.badge-wp{padding:3px 9px}
+.bdg-wa-primer{color:#8E3A87!important;background:rgba(142,58,135,.10)!important}
+.bdg-wa-mid{color:#10684F!important;background:rgba(16,104,79,.10)!important}
+.bdg-wa-top{color:#D2691A!important;background:rgba(210,105,26,.12)!important}
+/* 중도 선택지 앞 동그라미 */
+.dot-mid{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:linear-gradient(160deg,#3FA98C 0%,#10684F 55%,#0B5340 100%)}
+/* 비노출 방수에이스 2류 */
+.lbl-ne{color:#D81F3C}
+.mat-wp .step-num.num-ne{background:linear-gradient(160deg,#F0687E 0%,#D81F3C 55%,#B01329 100%)!important}
+.mat-wp .step-badge.bdg-ne{background:rgba(216,31,60,.10)!important;color:#D81F3C!important;padding:3px 9px}
+.mat-wp .chip-ne{color:#D81F3C;background:rgba(216,31,60,.08);border-color:transparent}
 .chip-floor{background:var(--floor-bg);color:var(--floor);border-color:rgba(124,67,192,.28)}
 .chip-road{background:var(--road-bg);color:var(--road);border-color:rgba(180,83,10,.28)}
 
@@ -357,10 +394,10 @@ a{color:var(--brand);text-decoration:none}
 .diag-q{font-size:13px;font-weight:700;color:var(--text);line-height:1.45}
 .diag-a{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4;font-weight:600}
 .diag-arrow{font-size:11px;color:var(--faint);flex-shrink:0}
-.diag-item.dg-concrete .diag-a{color:var(--water)}
-.diag-item.dg-silk .diag-a{color:var(--primer-o)}
+.diag-item.dg-concrete .diag-a{color:var(--concrete)}
+.diag-item.dg-silk .diag-a{color:var(--silk)}
 .diag-item.dg-wood .diag-a{color:var(--oil)}
-.diag-item.dg-iron .diag-a{color:var(--warn)}
+.diag-item.dg-iron .diag-a{color:var(--iron)}
 .diag-item.dg-mold .diag-a{color:var(--mold)}
 .diag-item.dg-wp .diag-a{color:var(--sky)}
 .diag-item.dg-road .diag-a{color:var(--road)}
@@ -387,7 +424,8 @@ a{color:var(--brand);text-decoration:none}
 .note-small{font-size:13.5px;color:var(--muted);margin-top:7px;line-height:1.7}
 .footer{text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:34px;padding-top:18px;border-top:1px solid var(--border);letter-spacing:.02em;line-height:1.8}
 
-.to-top{position:fixed;right:16px;bottom:20px;width:48px;height:48px;border-radius:50%;border:0;background:var(--brand);color:#fff;font-size:18px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(0,40,45,.32);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s,background .15s;z-index:100;-webkit-tap-highlight-color:transparent}
+.calc-ico{filter:grayscale(1) brightness(2.6) contrast(.9);display:inline-block}
+.to-top{position:fixed;right:16px;bottom:80px;width:48px;height:48px;border-radius:50%;border:0;background:var(--brand);color:#fff;font-size:18px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(0,40,45,.32);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s,background .15s;z-index:100;-webkit-tap-highlight-color:transparent}
 .to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
 .to-top:hover{background:var(--brand-2)}
 .to-top:active{transform:scale(.92)}
@@ -742,6 +780,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🧱</span>
     <span>콘크리트 · 시멘트 · 몰탈 · 석고보드 벽</span>
+    <span class="sub">실내 / 실외 수성 마감</span>
   </div>
   <div class="mat-body">
 
@@ -1110,7 +1149,7 @@ a{color:var(--brand);text-decoration:none}
 </div>
 
 <!-- ══ 2-2. 철재·비철재·목재·시트지·유성도막 위 ══ -->
-<div class="mat-section mat-silk" id="coated">
+<div class="mat-section mat-coated" id="coated">
   <div class="mat-title">
     <span class="icon">🧩</span>
     <span>철재·비철재·목재·시트지·유성도막 위</span>
@@ -1181,6 +1220,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">⚙️</span>
     <span>철재 · 비철재 · 스텐 · FRP</span>
+    <span class="sub">방청 / 부착력 강화</span>
   </div>
   <div class="mat-body">
 
@@ -1331,8 +1371,8 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🪑</span>
     <span>목재</span>
-    <span class="sub">데크·원목·합판·MDF</span>
-    <span class="sub sub-oil">스테인·바니쉬·니스·유성페인트</span>
+    <span class="sub">데크 / 원목 / 합판 / MDF</span>
+    <span class="sub sub-oil">스테인 / 바니쉬 / 니스 / 유성페인트</span>
   </div>
   <div class="mat-body">
 
@@ -1356,155 +1396,54 @@ a{color:var(--brand);text-decoration:none}
           <div style="font-size:13px; font-weight:800; color:var(--oil); margin-bottom:6px;">
             🌿 결 살리기 · 착색 · 방부 · 방충 · 햇빛에 의한 부식 방지 (페인트 칠이 되지 않은 목재 기준) → 스테인
           </div>
-          <div class="vcard-list">
-
-            <!-- 아이생각수성스테인 -->
-            <div class="vcard">
-              <div class="vcard-head">
-                <span class="vcard-title">아이생각수성스테인</span>
-                <span class="vcard-tag">수성</span>
-                <span class="vcard-tag">실내 · 실외 목재</span>
-                <span class="vcard-tag">3.5L · 0.4L</span>
-              </div>
-              <dl class="vcard-dl">
-                <dt>희석비</dt><dd>희석하지 않음 (원액)</dd>
-                <dt>재도장간격</dt><dd>25℃ 기준 2시간 이상</dd>
-                <dt>이론도포면적</dt><dd>13.11㎡/L (20㎛ · 투명 기준)</dd>
-              </dl>
-              <div class="vcard-actions">
-                <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-              </div>
-              <div class="vcard-detail">
-                <dl class="vcard-dl">
-                  <dt>마감 · 색상</dt><dd>투명 및 유색(반투명) · 투명 및 담색</dd>
-                  <dt>피도면</dt><dd>각종 목재 (실내 · 실외)</dd>
-                  <dt>도장횟수</dt><dd>2회</dd>
-                  <dt>건조도막두께</dt><dd>20㎛</dd>
-                  <dt>부피고형분</dt><dd>15.54%</dd>
-                  <dt>건조시간</dt><dd>고화건조 2시간 (25℃)</dd>
-                  <dt>저장기간</dt><dd>12개월 (5~38℃ 실내보관)</dd>
-                </dl>
-                <div class="warn-box">투명 제품은 <b>외부에 권장하지 않으며</b>, 내부 바닥에 물이 고이면 백화·들뜸이 생길 수 있습니다.<br>점도 조절용 물 희석은 소량만 — 과량 희석 시 물성이 떨어집니다.<br>도장 전·중에 <b>충분히 교반</b>하세요 (색상 편차 발생).</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3051042.pdf','아이생각수성스테인 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3051042.pdf','아이생각수성스테인 시방서')">📐 도장사양서</button>
-              </div>
+          <div class="rtable">
+          <div class="rtable-row">
+            <div class="rtable-name">아이생각수성스테인</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">수성 · 실내 · 실외 목재</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">희석하지 않음 (원액)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">2시간 이상</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">13.11㎡/L (20㎛ · 투명 기준)</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">3.5L · 0.4L</span></div>
             </div>
+          </div>
+          <div class="rtable-row">
+            <div class="rtable-name">월드스테인마스터</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">오일(유성) 스테인 · 실외 목재 전용 (실내 사용 금지)</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">희석하지 않음 (원액)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">3시간 이상</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">8.92㎡/L (40㎛ 기준)</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">3.5L · 16L</span></div>
             </div>
-
-            <!-- 월드스테인마스터 (오일 스테인) -->
-            <div class="vcard">
-              <div class="vcard-head">
-                <span class="vcard-title">월드스테인마스터</span>
-                <span class="vcard-tag">오일(유성) 스테인</span>
-                <span class="vcard-tag">실외 목재 전용</span>
-                <span class="vcard-tag">3.5L · 16L</span>
-              </div>
-              <dl class="vcard-dl">
-                <dt>희석비</dt><dd>희석하지 않음 (원액)</dd>
-                <dt>재도장간격</dt><dd>25℃ 기준 3시간 이상</dd>
-                <dt>이론도포면적</dt><dd>8.92㎡/L (40㎛ 기준)</dd>
-              </dl>
-              <div class="vcard-actions">
-                <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-              </div>
-              <div class="vcard-detail">
-                <dl class="vcard-dl">
-                  <dt>마감 · 색상</dt><dd>투명 및 유색(반투명) · 투명 및 담색</dd>
-                  <dt>피도면</dt><dd>목재 — 실외 목조건물 · 목재조형물 <span class="rf-val danger">(실내 사용 금지)</span></dd>
-                  <dt>도장횟수</dt><dd>2회</dd>
-                  <dt>건조도막두께</dt><dd>40㎛</dd>
-                  <dt>부피고형분</dt><dd>26.77% (투명 기준)</dd>
-                  <dt>건조시간</dt><dd>지촉건조 5시간 · 고화건조 48시간 (25℃)</dd>
-                  <dt>저장기간</dt><dd>12개월 (5~38℃ 실내보관)</dd>
-                </dl>
-                <div class="star-box">💡 스테인 위에 후속 도장이 필요하면 충분히 건조·연마 후 <b>40바루스파 유광</b>을 추천합니다. 우레탄·락카는 내후성이 떨어져 권장하지 않습니다.</div>
-                <div class="warn-box"><b>피막형 구도막이 있으면 완전히 제거한 후</b> 도장하세요.<br>과도막으로 바르면 광택이 올라가고 건조가 불량해져 방부·방미성이 떨어집니다.<br>유성도료라 냄새가 발생합니다.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3010286.pdf','월드스테인마스터 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3010286.pdf','월드스테인마스터 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
-            </div>
-
+          </div>
           </div>
         </div>
 
         <!-- 색상 도장 -->
         <div style="margin-bottom:14px;">
           <div style="font-size:13px; font-weight:800; color:var(--water); margin-bottom:6px;">🎨 색상 도장 원할 때</div>
-          <div class="vcard-list">
-
-            <!-- 777에나멜 -->
-            <div class="vcard">
-              <div class="vcard-head">
-                <span class="vcard-title">777에나멜</span>
-                <span class="vcard-tag">유성 에나멜</span>
-                <span class="vcard-tag">실외 철재 · 목재</span>
-                <span class="vcard-tag">1L · 4L · 18L</span>
-              </div>
-              <dl class="vcard-dl">
-                <dt>희석비</dt><dd>EN신나3000 · 50% 이내 (도료 무게비)</dd>
-                <dt>재도장간격</dt><dd>25℃ 기준 9시간 이후</dd>
-                <dt>이론도포면적</dt><dd>6.89~7.5㎡/L (60㎛ 기준)</dd>
-              </dl>
-              <div class="vcard-actions">
-                <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-              </div>
-              <div class="vcard-detail">
-                <dl class="vcard-dl">
-                  <dt>마감 · 색상</dt><dd>유광 · 반광 · 무광 / 각색</dd>
-                  <dt>피도면</dt><dd>방청프라이머가 처리된 철재 및 목재 (실외용)</dd>
-                  <dt>도장횟수</dt><dd>1~2회</dd>
-                  <dt>건조도막두께</dt><dd>60㎛</dd>
-                  <dt>부피고형분</dt><dd>41.37~45% (색상에 따라 다름)</dd>
-                  <dt>건조시간</dt><dd>고화건조 5시간 이내 (25℃)</dd>
-                  <dt>저장기간</dt><dd>12개월 이내 (5~35℃ 실내보관)</dd>
-                </dl>
-                <div class="warn-box">보수도장 시 <b>소부용 도료 위에는 사용하지 마세요</b>. 에나멜 구도막은 <b>샌딩 처리 후</b> 도장하세요.<br>무광·반광을 로라로 칠하면 광얼룩이 생길 수 있으니 도장 속도와 패턴을 일정하게 유지하세요.<br>1회에 두껍게 바르면 건조가 크게 지연됩니다.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3020787.pdf','777에나멜 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3020787.pdf','777에나멜 시방서')">📐 도장사양서</button>
-              </div>
+          <div class="rtable">
+          <div class="rtable-row">
+            <div class="rtable-name">777에나멜</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">유성 에나멜 · 실외 철재 · 목재</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">EN신나3000 50% 이내 (무게비)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">9시간 이후</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">6.89~7.5㎡/L (60㎛ 기준)</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L · 18L</span></div>
             </div>
+          </div>
+          <div class="rtable-row">
+            <div class="rtable-name">LOV HS락카</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">빠른건조 · 실내전용 (환기 필수)</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">LA신나2000 최대 60% (부피비)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">1~2시간</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">11.83㎡/L (30㎛ 기준)</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
             </div>
-
-            <!-- LOV HS락카 -->
-            <div class="vcard">
-              <div class="vcard-head">
-                <span class="vcard-title">LOV HS락카</span>
-                <span class="vcard-tag">빠른건조</span>
-                <span class="vcard-tag">실내전용 · 환기 필수</span>
-                <span class="vcard-tag">1L · 4L</span>
-              </div>
-              <dl class="vcard-dl">
-                <dt>희석비</dt><dd>LA신나2000 · 최대 60% (부피비)</dd>
-                <dt>재도장간격</dt><dd>25℃ 기준 1~2시간</dd>
-                <dt>이론도포면적</dt><dd>11.83㎡/L (30㎛ 기준)</dd>
-              </dl>
-              <div class="vcard-actions">
-                <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-              </div>
-              <div class="vcard-detail">
-                <dl class="vcard-dl">
-                  <dt>마감 · 색상</dt><dd>유광 (반광 · 무광은 주문에 따름) / 각색</dd>
-                  <dt>피도면</dt><dd>목재 (목재물 미장 및 보호용)</dd>
-                  <dt>도장횟수</dt><dd>1~2회</dd>
-                  <dt>건조도막두께</dt><dd>30㎛</dd>
-                  <dt>부피고형분</dt><dd>35.50% (백색 기준)</dd>
-                  <dt>건조시간</dt><dd>지촉건조 20분 · 고화건조 1시간 (25℃)</dd>
-                  <dt>희석제</dt><dd>LA신나2000 · LA리타다신나(고온다습 시)</dd>
-                  <dt>저장기간</dt><dd>12개월 (5~35℃ 실내보관)</dd>
-                </dl>
-                <div class="danger-box">⚠ <b>충분히 환기</b>하며 작업하고, 밀폐된 장소에서는 반드시 호흡기 보호구를 착용하세요.</div>
-                <div class="warn-box">고온다습할 때는 백화현상이 생기므로 도장을 피하거나 <b>LA리타다신나</b>를 사용하세요.<br>무광 마감을 원하면 유광락카를 수회 도장한 후 무광락카로 1회 마감하세요.<br>과도막이면 건조 저하·끈적임이 생기니 추천 도포량을 지켜주세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3030591.pdf','LOV HS락카 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3030591.pdf','LOV HS락카 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
-            </div>
-
+          </div>
           </div>
         </div>
 
@@ -1522,106 +1461,40 @@ a{color:var(--brand);text-decoration:none}
               </div>
             </div>
           </div>
-          <!-- 유성 바니시 (니스) — 카드 1줄 1개 · 상세 접기/펼치기 -->
           <div style="margin-top:10px;">
             <div style="font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px;">🛢 유성 바니시 (니스)</div>
-            <div class="vcard-list">
-
-              <!-- 40바루스파 (유광 + 무광 통합) -->
-              <div class="vcard">
-                <div class="vcard-head">
-                  <span class="vcard-title">40바루스파</span>
-                  <span class="vcard-tag">A급 유광 · 크리어무광</span>
-                  <span class="vcard-tag">실내 · 실외 목재</span>
-                  <span class="vcard-tag">1L · 4L</span>
-                </div>
-                <dl class="vcard-dl">
-                  <dt>희석비</dt><dd>EN신나3000 · 30% 이내 (도료 부피비)</dd>
-                  <dt>재도장간격</dt><dd>25℃ 기준 9시간 이후</dd>
-                  <dt>이론도포면적</dt><dd>유광 13.0㎡/L · 무광 18.0㎡/L</dd>
-                </dl>
-                <div class="vcard-actions">
-                  <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-                </div>
-                <div class="vcard-detail">
-                  <dl class="vcard-dl">
-                    <dt>마감 · 색상</dt><dd>A급 투명유광 / 크리어무광 투명무광</dd>
-                    <dt>피도면</dt><dd>실내 · 실외 목재</dd>
-                    <dt>도장횟수</dt><dd>유광 3~4회 / 무광 1~2회</dd>
-                    <dt>건조도막두께</dt><dd>30㎛ / 20㎛</dd>
-                    <dt>부피고형분</dt><dd>39.0% / 36.0%</dd>
-                    <dt>건조시간</dt><dd>고화건조 6시간 이내 (25℃)</dd>
-                    <dt>포장단위</dt><dd>1L · 4L</dd>
-                    <dt>저장기간</dt><dd>12개월 이내 (5~35℃ 실내보관)</dd>
-                  </dl>
-                  <div class="star-box">💡 도장이 안 된 목재에 무광 마감할 때 → <b>유광 2~3회 도장 후, 마무리로 무광 1회</b> 도장하세요.</div>
-                  <div class="warn-box">무광은 침전물이 없도록 <b>균일하게 교반한 후</b> 사용하세요.<br>1회에 두껍게 바르면 건조가 지연되므로 재도장 간격을 지켜주세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3040007.pdf','40바루스파 제품안내서')">📄 기술자료</button>
-              </div>
+          <div class="rtable">
+          <div class="rtable-row">
+            <div class="rtable-name">40바루스파</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">A급 유광 · 크리어무광 · 실내 · 실외 목재</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">EN신나3000 30% 이내 (부피비)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">9시간 이후</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">유광 13.0㎡/L · 무광 18.0㎡/L</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
             </div>
-              </div>
-
-              <!-- 우레탄바니시 (PDF 미보유) -->
-              <div class="vcard">
-                <div class="vcard-head">
-                  <span class="vcard-title">우레탄바니시</span>
-                  <span class="vcard-tag">유광</span>
-                  <span class="vcard-tag">실내 목재 · 한지장판</span>
-                  <span class="vcard-tag">1L · 4L</span>
-                </div>
-                <dl class="vcard-dl">
-                  <dt>희석비</dt><dd>에나멜신나 10% 이내</dd>
-                  <dt>재도장간격</dt><dd>25℃ 기준 6시간 이후</dd>
-                  <dt>이론도포면적</dt><dd>14.3㎡/L</dd>
-                </dl>
-                <div class="vcard-actions">
-                  <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-                </div>
-                <div class="vcard-detail">
-                  <dl class="vcard-dl">
-                    <dt>피도면</dt><dd>실내 목재 · 한지장판</dd>
-                    <dt>포장단위</dt><dd>1L · 4L</dd>
-                  </dl>
-                </div>
-              </div>
-
-              <!-- 우레탄멕기스 3000 -->
-              <div class="vcard">
-                <div class="vcard-head">
-                  <span class="vcard-title">우레탄멕기스 3000</span>
-                  <span class="vcard-tag">고광택</span>
-                  <span class="vcard-tag">한지장판 상도 · 실내 목재</span>
-                  <span class="vcard-tag">1L · 2L</span>
-                </div>
-                <dl class="vcard-dl">
-                  <dt>희석비</dt><dd>희석하지 않음 (원액 사용)</dd>
-                  <dt>재도장간격</dt><dd>25℃ 기준 6시간 이후</dd>
-                  <dt>이론도포면적</dt><dd>12.3㎡/L</dd>
-                </dl>
-                <div class="vcard-actions">
-                  <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-                </div>
-                <div class="vcard-detail">
-                  <dl class="vcard-dl">
-                    <dt>마감 · 색상</dt><dd>고광택 · 투명</dd>
-                    <dt>피도면</dt><dd>한지장판 · 실내 목재 (목재시설물 보호용 상도)</dd>
-                    <dt>도장횟수</dt><dd>2회 이상</dd>
-                    <dt>건조도막두께</dt><dd>30㎛</dd>
-                    <dt>부피고형분</dt><dd>36.8%</dd>
-                    <dt>건조시간</dt><dd>고화건조 3시간 이내 (25℃)</dd>
-                    <dt>포장단위</dt><dd>1L · 2L</dd>
-                    <dt>저장기간</dt><dd>12개월 이내 (5~35℃ 실내보관)</dd>
-                  </dl>
-                  <div class="danger-box">⚠ 실내공기질관리법에 따른 <b>다중이용시설 및 100세대 이상 공동주택 실내에는 사용 불가</b>합니다.</div>
-                  <div class="warn-box"><b>락카 샌딩실라 위에는 도장 금지</b> — 접착력이 불량합니다.<br>1회에 두껍게 바르면 주름이 생길 수 있으므로 <b>2~3회 얇게</b> 나눠 도장하세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3040010.pdf','우레탄 멕기스 3000 제품안내서')">📄 기술자료</button>
-              </div>
+          </div>
+          <div class="rtable-row">
+            <div class="rtable-name">우레탄바니시</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">유광 · 실내 목재 · 한지장판</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">에나멜신나 10% 이내</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">6시간 이후</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">14.3㎡/L</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
             </div>
-              </div>
-
+          </div>
+          <div class="rtable-row">
+            <div class="rtable-name">우레탄멕기스 3000</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">구분</span><span class="rf-val">고광택 · 한지장판 상도 · 실내 목재</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">희석하지 않음 (원액)</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">6시간 이후</span></div>
+              <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">12.3㎡/L</span></div>
+              <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 2L</span></div>
             </div>
+          </div>
+          </div>
           </div>
           <div class="info-box" style="margin-top:6px;">💡 바니쉬 = 니스 : 동일 제품 (색상 없는 투명 도료)</div>
         </div>
@@ -1637,6 +1510,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🦠</span>
     <span>곰팡이 · 결로</span>
+    <span class="sub">방지 기능성 페인트</span>
   </div>
   <div class="mat-body">
 
@@ -1790,7 +1664,7 @@ a{color:var(--brand);text-decoration:none}
           <div class="branch-card">
             <div class="branch-card-title" style="color:var(--twp);">☔ 물 침투를 막고 싶을 때</div>
             <ul>
-              <li>매직탄 월코트 (유성 코팅)</li>
+              <li>매직탄 월코트 투명 (유성 코팅)</li>
               <li>안심누수 (수성 침투)</li>
             </ul>
           </div>
@@ -2013,7 +1887,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🛣</span>
     <span>노면표지용 도료 (차선)</span>
-    <span class="sub">아스팔트·시멘트 노면</span>
+    <span class="sub">아스팔트 / 시멘트 노면</span>
   </div>
   <div class="mat-body">
 
@@ -2206,9 +2080,9 @@ a{color:var(--brand);text-decoration:none}
     <div class="step-arrow">↓</div>
 
     <div class="step">
-      <div class="step-header"><span class="step-num">2</span><span class="step-label">방수에이스 하도</span><span class="step-badge badge-wp">우레탄 하도</span></div>
+      <div class="step-header"><span class="step-num num-wa-primer">2</span><span class="step-label lbl-wa-primer">방수에이스 하도</span><span class="step-badge badge-wp bdg-wa-primer">우레탄 하도</span></div>
       <div class="step-content">
-        <span class="product-chip chip-wp">방수에이스 하도</span>
+        <span class="product-chip chip-wa-primer">방수에이스 하도</span>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">콘크리트 소지와 중도 우레탄의 접착력을 높이는 침투형 하도</div>
         <div class="spec-grid">
           <div class="spec-item"><strong>신규 도장</strong><span class="val">원액 사용</span></div>
@@ -2225,13 +2099,53 @@ a{color:var(--brand);text-decoration:none}
       </div>
     </div>
 
+    <div class="step-arrow">↓ 하도 도장 후 6~48시간 이내</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">3</span><span class="step-label">스피실 원샷 실란트 (조인트·크랙 실링)</span><span class="step-badge badge-prep">씰링</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-wp">스피실 원샷 실란트</span>
+        <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">습기경화형 1액형 폴리우레탄 실란트 — 혼합 과정 없이 코킹건으로 바로 충진</div>
+        <div class="spec-grid">
+          <div class="spec-item"><strong>조성 · 마감</strong><span class="val">1액형 · 반광</span></div>
+          <div class="spec-item"><strong>색상</strong><span class="val">백색 · 회색 · 녹색</span></div>
+          <div class="spec-item"><strong>부피고형분 · 비중</strong><span class="val">94±3% · 1.50</span></div>
+          <div class="spec-item"><strong>충진 횟수</strong><span class="val">1~2회</span></div>
+          <div class="spec-item"><strong>인장강도 · 탄성복원성</strong><span class="val">2.0N/㎟ 이상 · 70% 이상</span></div>
+          <div class="spec-item"><strong>경도 (Shore A)</strong><span class="val">30~50</span></div>
+          <div class="spec-item"><strong>희석</strong><span class="val">무희석 — 알코올계 신나 절대 금지</span></div>
+          <div class="spec-item"><strong>포장단위</strong><span class="val">300㎖ · 500㎖</span></div>
+          <div class="spec-item"><strong>저장기간</strong><span class="val">9개월 (5~25℃ · 습도 50% 실내보관)</span></div>
+          <div class="spec-item"><strong>시공 도구</strong><span class="val">코킹건 · 주걱(헤라)</span></div>
+          <div class="spec-item full"><strong>추천 소요량</strong><span class="val"><b>150g</b> — 깊이 10㎜ × 폭 10㎜ × 길이 1,000㎜ 기준 (면적이 아닌 <b>줄눈 길이(m)</b> 기준)</span></div>
+          <div class="spec-item full"><strong>건조 (10℃ / 20℃ / 30℃)</strong><span class="val">지촉 16h / 8h / 4h · 경화 72h / 36h / 18h · 완전건조 7일 / 5일 / 3일 · 재도장 2~4일 / 1~3일 / 1~2일</span></div>
+        </div>
+        <div class="info-box">
+          🔧 <b>시공 방법</b><br>
+          ① 조인트의 먼지·기름·수분·연마 잔여물 제거 후 용제 세척<br>
+          ② 크랙·신축줄눈은 <b>V-cutting 후 폴리에틸렌(PE) 백업재를 조인트 폭보다 3~4㎜ 두껍게</b> 삽입<br>
+          ③ 하도 도장 후 <b>6시간 이상 48시간 이내</b>에 교차부·가장자리부터 빈틈·기포 없이 충진<br>
+          ④ 경화 전 <b>즉시 주걱(헤라)으로 표면 마무리(Tooling)</b> — 교차부·코너는 여러 번 밀어줌<br>
+          <b>줄눈폭 대비 충진 깊이는 ½</b>이 적합 · 실란트와 피착면의 <b>접착면은 6㎜ 이상</b> 확보
+        </div>
+        <div class="warn-box">
+          ⚠️ 하도 처리가 안 된 부분은 실란트 도장 시 기포 발생 — 빠짐없이 도포.<br>
+          ⚠️ 실란트 도장 후 <b>20℃에서 최소 24시간</b> 경과 후 후속 도장.<br>
+          ⚠️ 피착재 온도 50℃ 이상 또는 5℃ 이하 사용 금지 · 습도 80% 이상·기온 5℃ 이하 작업 금지.<br>
+          ⚠️ PE·PP 등 일부 플라스틱에는 부착되지 않음 — 반드시 부착 테스트 후 사용.<br>
+          ⚠️ 실리콘 실란트와 만나는 부분, 석유류 가스·산화물 노출 시 변색 발생.<br>
+          ⚠️ 개봉 후 잔량은 굳음 발생 — 즉시 전량 사용.
+        </div>
+      </div>
+    </div>
+
     <div class="step-arrow">↓ 경화 후</div>
 
     <div class="step">
-      <div class="step-header"><span class="step-num">3</span><span class="step-label">중도 선택 — 2액형 또는 1액형</span><span class="step-badge badge-wp">우레탄 중도</span></div>
+      <div class="step-header"><span class="step-num num-wa-mid">4</span><span class="step-label lbl-wa-mid">중도 선택 — 2액형 또는 1액형</span><span class="step-badge badge-wp bdg-wa-mid">우레탄 중도</span></div>
       <div class="step-content">
 
-        <div style="font-size:13px; font-weight:800; color:var(--sky); margin-bottom:8px;">🔵 <span class="product-chip chip-wp">방수에이스 중도 (2액형)</span> — 표준 사양</div>
+        <div style="font-size:13px; font-weight:800; color:#10684F; margin-bottom:8px;"><span class="dot-mid"></span><span class="product-chip chip-wa-mid">방수에이스 중도 (2액형)</span> — 삼화 도장사양서 기준 사양</div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제 (무게비)</strong><span class="val">16.6 : 3.4</span></div>
           <div class="spec-item"><strong>가사시간</strong><span class="val">5℃ 40분 / 20℃ 30분 / 30℃ 20분</span></div>
@@ -2257,7 +2171,7 @@ a{color:var(--brand);text-decoration:none}
           ⚠️ 소포가 안 될 때만 우레탄1000신나를 <u>살포</u>해 기포 제거 (도료에 섞는 희석제가 아님 — 세척제 용도).
         </div>
 
-        <div style="margin:16px 0 8px; font-size:13px; font-weight:800; color:var(--primer-w);">🟢 <span class="product-chip chip-wp">원샷탄</span> (1액형 중도) — 초보자 권장</div>
+        <div style="margin:16px 0 8px; font-size:13px; font-weight:800; color:var(--primer-w);"><span class="dot-mid"></span><span class="product-chip chip-wp chip-oneshot">원샷탄</span> (1액형 중도) — 초보자 권장</div>
         <div class="spec-grid">
           <div class="spec-item"><strong>혼합 방식</strong><span class="val">경화제 불필요 — 교반 후 바로 사용</span></div>
           <div class="spec-item"><strong>경화 방식</strong><span class="val">공기 중 수분과 반응하는 <b>습기경화형</b></span></div>
@@ -2289,9 +2203,9 @@ a{color:var(--brand);text-decoration:none}
     <div class="step-arrow">↓ 20℃ 기준 24~48시간 이후</div>
 
     <div class="step">
-      <div class="step-header"><span class="step-num">4</span><span class="step-label">방수에이스 상도</span><span class="step-badge badge-wp">우레탄 상도</span></div>
+      <div class="step-header"><span class="step-num num-wa-top">5</span><span class="step-label lbl-wa-top">방수에이스 상도</span><span class="step-badge badge-wp bdg-wa-top">우레탄 상도</span></div>
       <div class="step-content">
-        <span class="product-chip chip-wp">방수에이스 상도</span>
+        <span class="product-chip chip-wa-top">방수에이스 상도</span>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
           중도 우레탄 방수층을 자외선·물리적 충격에서 보호하는 최종 코팅 역할
         </div>
@@ -2314,9 +2228,9 @@ a{color:var(--brand);text-decoration:none}
     <div class="step-arrow">↓ 노출형이 아닌, 타일·몰탈로 덮이는 방수라면</div>
 
     <div class="step">
-      <div class="step-header"><span class="step-num">6</span><span class="step-label">비노출 방수에이스 2류(KSF3211) — 욕실·화장실·정화조</span><span class="step-badge badge-wp">비노출형</span></div>
+      <div class="step-header"><span class="step-num num-ne">6</span><span class="step-label lbl-ne">비노출 방수에이스 2류(KSF3211) — 욕실·화장실·정화조</span><span class="step-badge badge-wp bdg-ne">비노출형</span></div>
       <div class="step-content">
-        <span class="product-chip chip-wp">비노출 방수에이스 2류(KSF3211)</span>
+        <span class="product-chip chip-wp chip-ne">비노출 방수에이스 2류(KSF3211)</span>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
           위 방수에이스는 <b>노출형(옥상)</b>이고, 이 제품은 <b>비노출형</b>입니다 — 타일이나 보호몰탈로 덮이는 <b>욕실·화장실·하수종말처리장·정화조·옥상정원</b>용 방수재입니다.
           MOCA·6대 유해 프탈레이트·4대 중금속을 쓰지 않는 우레탄 수지 기반의 <b>친환경 2액형 난타르(non-tar)</b> 제품으로, <b>KS F 3211 우레탄고무계 2류</b> 물성을 만족합니다.
@@ -2380,7 +2294,7 @@ a{color:var(--brand);text-decoration:none}
   <div class="mat-title">
     <span class="icon">🏭</span>
     <span>실내 방진 도료 (에폭시)</span>
-    <span class="sub">바닥·주차장·창고</span>
+    <span class="sub">바닥 / 주차장 / 창고</span>
   </div>
   <div class="mat-body">
 
@@ -2694,7 +2608,7 @@ var SYMPTOM_MAP = {
   iron:     { label: '⚙️ 철재・비철재 가이드',          keywords: ['철재','비철재','스텐','frp','철대문','철재난간','아연각관','유성페인트','방청프라이머','방청','녹장','광명단','속건프라이머','워시프라이머','신나395','스피폭시','777','에나멜','매직탄','스피롤탄','슈퍼폭시360','알루미늄','철재용우레탄','유니올','중장비','버스','지게차','덤프트럭','포크레인'] },
   tile:     { label: '🚿 타일・줄눈 가이드',             keywords: ['타일','줄눈','욕실','주방','방수코팅','타일페인트','매직탄','매직탄월코트','안심누수','타일방수'] },
   roof:     { label: '🏠 기와・슬레이트(지붕) 가이드',    keywords: ['기와','기와지붕','슬레이트','쓰레트','석면','지붕','기와페인트','슬레이트지붕','청기와','아크릴도료','ac신나3000','신나3000'] },
-  wp:       { label: '💧 옥상 방수(우레탄) 가이드',      keywords: ['옥상방수','옥상누수','베란다방수','베란다','옥상','방수페인트','우레탄방수','우레탄','비노출','비노출방수에이스','비노출방수에이스2류','방수에이스2류','ksf3211','2류','난타르','타르방수탄','욕실방수','화장실방수','정화조','하수처리장','비노출방수','옥상정원','방수','누수','방수에이스','하도','중도','상도','우레탄1000신나','일액형','이액형','원샷탄','주경비','주제경화제비율','비율','주제경화제','타르','방수탄'] },
+  wp:       { label: '💧 옥상 방수(우레탄) 가이드',      keywords: ['스피실','스피실원샷실란트','원샷실란트','우레탄실란트','실란트','코킹','조인트','신축줄눈','크랙보수','그린방수마스터하도','옥상방수','옥상누수','베란다방수','베란다','옥상','방수페인트','우레탄방수','우레탄','비노출','비노출방수에이스','비노출방수에이스2류','방수에이스2류','ksf3211','2류','난타르','타르방수탄','욕실방수','화장실방수','정화조','하수처리장','비노출방수','옥상정원','방수','누수','방수에이스','하도','중도','상도','우레탄1000신나','일액형','이액형','원샷탄','주경비','주제경화제비율','비율','주제경화제','타르','방수탄'] },
   floor:    { label: '🏭 실내 방진 도료(에폭시) 가이드', keywords: ['방진','에폭시','바닥에폭시','창고','지하주차장','주차장','매장','에포코트','컬러데코라이닝','라이닝','에포코트라이닝','a플로어','외부바닥','실내바닥','방진도료','실내에폭시','아쿠아','수성에폭시','냄새적은에폭시','공장바닥','사무실바닥','창고바닥','무용제','a플로어투명','a-플로어','a플로어 투명','에이플로어','침투성강화','방진바닥','아크릴바닥','투명바닥','ac신나4000','ac신나','플로아코트','슈퍼에폭씰','에폭씰','씰링','퍼티','크랙충진','v커팅','에포코트아쿠아상도','에포코트아쿠아하도'] },
   road:     { label: '🛣 노면표지(차선) 가이드',         keywords: ['노면표지','차선','차선도색','주차선','주차구획선','횡단보도','아스팔트','도로','ksm6080','6080','노면','과속방지턱','안전선','도로표지','주차라인','주차','주차차선','주차장차선','장애인차선','장애인주차','차선용','노면표지용'] }
 };
@@ -2752,7 +2666,7 @@ function searchSymptom() {
 </script>
 <!-- ══ 제품 상세 팝업(모달) ══ -->
 <!-- ══ 소요량 계산기 (독립) ══ -->
-<button id="calcFab" type="button" onclick="openCalcStandalone()" aria-label="소요량 계산기 열기">🧮 소요량 계산</button>
+<button id="calcFab" type="button" onclick="openCalcStandalone()" aria-label="소요량 계산기 열기"><span class="calc-ico">🧮</span> 소요량 계산</button>
 
 <div id="calcModal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
   <div class="cm-backdrop" onclick="closeCalc()"></div>
@@ -2859,6 +2773,87 @@ Object.assign(window.PRODUCT_DB, {
     ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3051292.pdf" }
+    ]
+  },
+  "아이생각수성스테인": {
+    category: "스테인 · 수성 (실내 · 실외 목재)",
+    desc: "냄새가 적고 물로 정리할 수 있는 수성 스테인. 목재의 결을 살리면서 착색하고 방부·방충 및 햇빛에 의한 부식을 방지합니다. 페인트 칠이 되지 않은 목재 전용입니다.",
+    spec: "마감 투명 및 유색(반투명) · 색상 투명 및 담색 · 피도면 각종 목재(실내·실외)\n부피고형분 15.54% · 추천 건조도막두께 20㎛ · 도장횟수 2회\n이론도포면적 13.11㎡/L (20㎛ · 투명 기준)\n건조(25℃): 고화 2시간 · 재도장 2시간 이상\n희석 없음(원액) · 점도 조절 시 물 소량\n포장단위 3.5L · 0.4L · 저장기간 12개월 (5~38℃ 실내보관)",
+    cautions: [
+      "투명 제품은 외부에 권장하지 않으며, 내부 바닥에 물이 고이면 백화·들뜸이 생길 수 있음",
+      "점도 조절용 물 희석은 소량만 — 과량 희석 시 물성 저하",
+      "도장 전·중 충분히 교반할 것 (교반 부족 시 색상 편차 발생)",
+      "기존 도막이 있는 목재에는 사용 불가 — 도막 제거 후 도장"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3051042.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3051042.pdf" }
+    ]
+  },
+  "월드스테인마스터": {
+    category: "스테인 · 오일(유성) — 실외 목재 전용",
+    desc: "실외 목조건물·목재조형물용 오일 스테인. 목재의 결을 살리며 착색하고 방부·방충성과 내후성이 우수합니다. 실내에는 사용할 수 없습니다.",
+    spec: "마감 투명 및 유색(반투명) · 색상 투명 및 담색\n피도면 실외 목조건물 · 목재조형물 (실내 사용 금지)\n부피고형분 26.77%(투명 기준) · 추천 건조도막두께 40㎛ · 도장횟수 2회\n이론도포면적 8.92㎡/L (40㎛ 기준)\n건조(25℃): 지촉 5시간 · 고화 48시간 · 재도장 3시간 이상\n희석 없음(원액)\n포장단위 3.5L · 16L · 저장기간 12개월 (5~38℃ 실내보관)",
+    cautions: [
+      "실내 사용 금지 — 실외 전용",
+      "피막형 구도막이 있으면 완전히 제거한 후 도장",
+      "과도막으로 바르면 광택이 올라가고 건조가 불량해져 방부·방미성 저하",
+      "유성도료로 냄새가 발생 — 환기 필요",
+      "후속 도장이 필요하면 충분히 건조·연마 후 40바루스파 유광 추천 (우레탄·락카는 내후성이 떨어져 비권장)"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3010286.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3010286.pdf" }
+    ]
+  },
+  "LOV HS락카": {
+    category: "상도 · 락카 (실내 목재 · 빠른건조)",
+    desc: "건조가 매우 빠른 실내 목재용 락카. 목재물의 미장 및 보호용 상도로 사용하며, 용제 냄새가 강해 충분한 환기가 필요합니다.",
+    spec: "마감 유광 (반광·무광은 주문에 따름) · 색상 각색 · 피도면 목재\n부피고형분 35.50%(백색 기준) · 추천 건조도막두께 30㎛ · 도장횟수 1~2회\n이론도포면적 11.83㎡/L (30㎛ 기준)\n건조(25℃): 지촉 20분 · 고화 1시간 · 재도장 1~2시간\n희석 LA신나2000 최대 60%(부피비) · 고온다습 시 LA리타다신나\n포장단위 1L · 4L · 저장기간 12개월 (5~35℃ 실내보관)",
+    cautions: [
+      "충분히 환기하며 작업하고, 밀폐된 장소에서는 반드시 호흡기 보호구 착용",
+      "고온다습할 때는 백화현상 발생 — 도장을 피하거나 LA리타다신나 사용",
+      "무광 마감을 원하면 유광락카를 수회 도장 후 무광락카로 1회 마감",
+      "과도막이면 건조 저하·끈적임 발생 — 추천 도포량 준수"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3030591.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3030591.pdf" }
+    ]
+  },
+  "40바루스파": {
+    category: "상도 · 유성 바니시(니스) — 실내 · 실외 목재",
+    desc: "A급 유광과 크리어무광이 있는 유성 바니시. 목재에 투명 보호막을 형성하며 내후성이 좋아 스테인 위 후속 도장용으로도 적합합니다.",
+    spec: "마감 A급 투명유광 / 크리어 투명무광 · 피도면 실내 · 실외 목재\n부피고형분 39.0% / 36.0% · 건조도막두께 30㎛ / 20㎛\n도장횟수 유광 3~4회 / 무광 1~2회\n이론도포면적 유광 13.0㎡/L · 무광 18.0㎡/L\n건조(25℃): 고화 6시간 이내 · 재도장 9시간 이후\n희석 EN신나3000 30% 이내 (도료 부피비)\n포장단위 1L · 4L · 저장기간 12개월 이내 (5~35℃ 실내보관)",
+    cautions: [
+      "도장이 안 된 목재에 무광 마감할 때는 유광 2~3회 도장 후 마무리로 무광 1회 도장",
+      "무광은 침전물이 없도록 균일하게 교반한 후 사용",
+      "1회에 두껍게 바르면 건조가 지연 — 재도장 간격 준수"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3040007.pdf" }
+    ]
+  },
+  "우레탄바니시": {
+    category: "상도 · 유성 바니시(니스) — 실내 목재 · 한지장판",
+    desc: "실내 목재 및 한지장판용 유광 우레탄 바니시.",
+    spec: "마감 유광 · 피도면 실내 목재 · 한지장판\n이론도포면적 14.3㎡/L\n재도장간격 25℃ 기준 6시간 이후\n희석 에나멜신나 10% 이내\n포장단위 1L · 4L",
+    cautions: [
+      "제품 기술자료 미보유 — 상세 물성은 확인 후 안내",
+      "1회에 두껍게 바르면 건조가 지연되므로 얇게 나눠 도장"
+    ]
+  },
+  "우레탄멕기스 3000": {
+    category: "상도 · 고광택 우레탄 (한지장판 · 실내 목재)",
+    desc: "한지장판 및 실내 목재시설물 보호용 고광택 투명 상도. 광택과 살오름성이 우수합니다.",
+    spec: "마감 고광택 · 색상 투명 · 피도면 한지장판 · 실내 목재\n부피고형분 36.8% · 추천 건조도막두께 30㎛ · 도장횟수 2회 이상\n이론도포면적 12.3㎡/L\n건조(25℃): 고화 3시간 이내 · 재도장 6시간 이후\n희석 없음(원액 사용)\n포장단위 1L · 2L · 저장기간 12개월 이내 (5~35℃ 실내보관)",
+    cautions: [
+      "실내공기질관리법에 따른 다중이용시설 및 100세대 이상 공동주택 실내에는 사용 불가",
+      "락카 샌딩실라 위에는 도장 금지 — 접착력 불량",
+      "1회에 두껍게 바르면 주름 발생 — 2~3회 얇게 나눠 도장"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3040010.pdf" }
     ]
   },
   "에포코트 하도": {
@@ -3115,6 +3110,27 @@ Object.assign(window.PRODUCT_DB, {
     ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3100824.pdf" }
+    ]
+  },
+  "스피실 원샷 실란트": {
+    category: "중도 · 습기경화형 1액형 폴리우레탄 실란트",
+    desc: "습기 경화형 1액형 폴리우레탄 실란트로 별도의 혼합 과정 없이 사용 가능하며, 탄성·내구성·비오염성·방수성과 각종 건축자재에 대한 접착력이 우수해 방수공사의 크랙 보수·하지 처리에 범용으로 사용합니다.",
+    uses: "콘크리트 몰탈 시설물의 조인트 및 크랙 보수 실링용",
+    spec: "조성 1액형 · 마감 반광 · 색상 백색/회색/녹색\n부피고형분 94±3% · 비중 1.50 · 충진횟수 1~2회\n추천 소요량: 150g (깊이 10㎜ × 폭 10㎜ × 길이 1,000㎜) — 면적이 아닌 줄눈 길이(m) 기준\n인장강도 2.0N/㎟ 이상 · 탄성복원성 70% 이상 · 경도(Shore A) 30~50\n건조(10/20/30℃): 지촉 16h/8h/4h · 경화 72h/36h/18h · 완전건조 7일/5일/3일 · 재도장 2~4일/1~3일/1~2일\n희석 없음 — 알코올 성분 신나 사용 금지\n포장 300㎖ · 500㎖ · 저장기간 9개월 (5~25℃ · 습도 50% 실내보관)\n도장시스템: 하도 그린방수마스터하도 / 우레코트하도 → 중도 스피실 원샷 실란트",
+    cautions: [
+      "하도 도장 후 6시간 이상 48시간 이내에 실란트 충진 · 하도 미처리 부위는 기포 발생",
+      "실란트와 피착면의 접착면 6㎜ 이상 확보 · 줄눈폭 대비 충진 깊이는 ½이 적합",
+      "크랙·신축줄눈은 V-CUTTING 후 폴리에틸렌 백업재를 조인트 폭보다 3~4㎜ 두껍게 삽입",
+      "실란트 도장 후 20℃에서 최소 24시간 경과 후 후속 도장",
+      "피착재 온도 50℃ 이상 또는 5℃ 이하 사용 금지 · 습도 80% 이상·기온 5℃ 이하 작업 금지",
+      "PE·PP 등 일부 플라스틱에는 부착되지 않음 — 반드시 부착 테스트 후 사용",
+      "실리콘 실란트와 만나는 부위, 석유류 가스·산화물 노출 시 변색 발생",
+      "개봉 후 잔량은 굳음 발생 — 즉시 전량 사용 · 타 도료와 혼합 금지"
+    ],
+    filters: "실내공기질관리법에 따른 다중이용시설 및 100~500세대 미만 공동주택 실내 사용 가능 · 대기환경보전법 VOC 규제 만족",
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3792893.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3792893.pdf" }
     ]
   },
   "슈퍼에폭씰": {
@@ -4228,7 +4244,7 @@ function calcToggle(btn){
 function calcBlockFor(name, uid){
   return '<div class="calc-wrap" id="' + uid + '-wrap" data-uid="' + uid + '">' +
     '<button type="button" class="calc-toggle" aria-expanded="false" onclick="calcToggle(this)">' +
-      '🧮 소요량 계산 <span class="calc-chev">▼</span></button>' +
+      '<span class="calc-ico">🧮</span> 소요량 계산 <span class="calc-chev">▼</span></button>' +
     '<div class="calc-panel" id="' + uid + '-panel">' +
       '<div class="calc-na">불러오는 중…</div>' +
     '</div></div>';

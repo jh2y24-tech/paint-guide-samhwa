@@ -1619,7 +1619,37 @@
         "tile"
       ],
       "role": "topcoat",
-      "note": "유성 · 실내/실외 색상 변경 · 벽면 추천"
+      "note": "유성 · 실내/실외 색상 변경 · 벽면 추천",
+      "spec": {
+        "composition": "2액형 (아크릴 폴리우레탄)",
+        "finish": "유광/반광/무광",
+        "colors": [
+          "백색",
+          "각색"
+        ],
+        "volume_solids_pct": 37.57,
+        "dft_um": 40,
+        "coats": "1~2",
+        "coverage_m2_per_l": 9.39,
+        "coverage_note": "건조도막 40㎛ · 백색 기준",
+        "mixing_ratio_volume": "주제:경화제 = 3:1",
+        "pot_life_min": 300,
+        "dry_touch_min": 12,
+        "dry_hard_hours": 12,
+        "recoat_hours": "25℃ 18h 이상 / 15℃ 이하 24h 이상",
+        "thinner": "유니올신나",
+        "thinning_pct_max": 30,
+        "thinning_basis": "부피비",
+        "pack_sizes": [
+          "16L(12:4)",
+          "4L(3:1)"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ]
+      }
     },
     {
       "id": "magictan-wallcoat-clear",
@@ -1630,7 +1660,39 @@
         "tile"
       ],
       "role": "clear",
-      "note": "유성 · 2액형 방수 코팅"
+      "note": "유성 · 2액형 방수 코팅",
+      "spec": {
+        "composition": "2액형 (아크릴 우레탄)",
+        "finish": "유광/무광",
+        "colors": [
+          "투명"
+        ],
+        "volume_solids_pct": 27.7,
+        "dft_um": 30,
+        "coats": "2~3",
+        "coverage_m2_per_l": 9.24,
+        "coverage_note": "건조도막 30㎛ 기준",
+        "mixing_ratio_volume": "주제:경화제 = 3:1",
+        "pot_life_min": 240,
+        "dry_touch_min": 12,
+        "dry_hard_hours": 12,
+        "thinner": "유니올신나",
+        "thinning_note": "알코올계 신나 사용 금지",
+        "pack_sizes": [
+          "16L",
+          "4L"
+        ],
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ],
+        "tools": [
+          "롤라",
+          "붓",
+          "스프레이"
+        ]
+      }
     },
     {
       "id": "homestar-tile-paint",
@@ -1641,7 +1703,38 @@
         "tile"
       ],
       "role": "topcoat",
-      "note": "수성 · 실내 벽면 색상 변경"
+      "note": "수성 · 실내 벽면 색상 변경",
+      "spec": {
+        "composition": "2액형 (수용성 에폭시)",
+        "finish": "유광",
+        "colors": [
+          "백색"
+        ],
+        "volume_solids_pct": 39.86,
+        "dft_um": 60,
+        "coats": "2~3",
+        "coverage_m2_per_l": 6.64,
+        "coverage_note": "건조도막 60㎛ 기준 = 0.151 L/㎡",
+        "mixing_ratio_volume": "A부:B부 = 1:2",
+        "mixing_ratio_weight": "3:4",
+        "pot_life_min": 90,
+        "dry_touch_min": 60,
+        "dry_hard_hours": 8,
+        "recoat_hours": 24,
+        "thinner": "물",
+        "thinning_pct_max": 30,
+        "thinning_basis": "도료 부피비",
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ],
+        "tools": [
+          "롤러",
+          "붓",
+          "스프레이"
+        ]
+      }
     },
     {
       "id": "ansim-nusu",
@@ -1653,7 +1746,34 @@
         "wp"
       ],
       "role": "sealer",
-      "note": "수성 · 1액형 줄눈·벽 침투방수"
+      "note": "수성 · 1액형 줄눈·벽 침투방수",
+      "spec": {
+        "composition": "1액형 (아크릴 에멀젼)",
+        "finish": "유광",
+        "colors": [
+          "투명"
+        ],
+        "volume_solids_pct": 33,
+        "dft_um": 15,
+        "coats": "1~2",
+        "coverage_m2_per_l": 21.5,
+        "coverage_note": "건조도막 15㎛ 기준 = 약 0.05 L/㎡ · 침투형이라 소지 흡수도에 따라 편차",
+        "dry_hard_hours": 2,
+        "recoat_hours": 3,
+        "thinner": "물",
+        "thinning_pct_max": 0,
+        "thinning_note": "원액 권장 (미희석)",
+        "pack_sizes": [
+          "18L",
+          "4L",
+          "1L"
+        ],
+        "shelf_life_months": 12,
+        "tools": [
+          "붓",
+          "로라"
+        ]
+      }
     },
     {
       "id": "waterproof-ace-primer",
@@ -2119,17 +2239,16 @@
         "coats": "1~2",
         "mixing_ratio_weight": "2:1",
         "coverage_formula": "[조인트폭(mm) × 충진두께(mm)] / 1000 = 길이 1m당 씰링재 소요량(L)",
-        "coverage_note": "면적(㎡) 기준이 아니라 줄눈 길이(m) 기준. 예 — 폭 10㎜ × 깊이 10㎜ = 0.1 L/m → 12L 1통으로 약 120m",
-        "calc_na_note": "슈퍼에폭씰은 줄눈 충진재로, 소요량이 면적(㎡)이 아니라 <b>줄눈 길이(m)</b> 기준입니다.<br>[조인트폭(㎜) × 충진두께(㎜)] ÷ 1000 = 길이 1m당 소요량(L)<br>예) 폭 10㎜ × 깊이 10㎜ → 0.1 L/m · 12L 1통으로 약 120m",
+        "coverage_note": "면적(㎡) 기준이 아니라 줄눈 길이(m) 기준. 예 — 폭 10㎜ × 깊이 10㎜ = 0.1 L/m → 4L 1통으로 약 40m",
+        "calc_na_note": "슈퍼에폭씰은 줄눈 충진재로, 소요량이 면적(㎡)이 아니라 <b>줄눈 길이(m)</b> 기준입니다.<br>[조인트폭(㎜) × 충진두께(㎜)] ÷ 1000 = 길이 1m당 소요량(L)<br>예) 폭 10㎜ × 깊이 10㎜ → 0.1 L/m · 4L 1통으로 약 40m",
         "thinner": "무희석",
         "thinning_pct_max": 0,
         "thinning_note": "희석제 사용하지 않음",
         "cleaner": "에포코트1000신나",
         "pack_sizes": [
-          "12L용(15kg)",
           "4L용(5.1kg)"
         ],
-        "pack_sizes_note": "실포장량 — 12L용 15kg · 4L용 5.1kg",
+        "pack_sizes_note": "실포장량 — 4L용 5.1kg (당사 취급 규격)",
         "shelf_life_months": 12,
         "storage_temp_c": [
           5,
@@ -2704,7 +2823,8 @@
       "docs": {
         "tech": "1tech3060015.pdf",
         "spec_sheet": "1pntg3060015.pdf",
-        "note": "업로드 파일명이 1tech3060015_A.pdf / 1pntg3060015_A.pdf 라면 경로를 그에 맞춰 수정할 것"
+        "tech_dated": "2026-01-20",
+        "note": "기술자료·도장사양서 원본 확보 및 검증 완료 (2026-07-30)"
       }
     },
     {
@@ -2732,6 +2852,189 @@
         "그린방수마스터속건형하도"
       ],
       "note": "원샷탄(그린방수마스터 시스템) 전용 하도. 신규 50㎛ 1회 도장, 구도막·2일 경과 후 재도장 시 얇게 추가. 비노출 방수에이스 2류(KSF3211)의 하도는 '방수에이스 하도'이므로 혼동 주의. 별도 기술자료 미확보 — 확보 시 spec 채울 것."
+    },
+    {
+      "id": "spiseal-one-shot-sealant",
+      "status": "documented",
+      "name": "스피실 원샷 실란트",
+      "name_en": "SPISEAL One Shot Urethane Sealant",
+      "brand": "삼화페인트",
+      "aliases": [
+        "스피실원샷실란트",
+        "스피실 실란트",
+        "원샷 실란트",
+        "우레탄 실란트",
+        "스피실"
+      ],
+      "categories": [
+        "wp"
+      ],
+      "role": "sealer",
+      "application_type": "습기경화형 1액형 폴리우레탄 실란트 (무혼합)",
+      "summary": "습기 경화형 1액형 폴리우레탄 실란트. 별도 혼합 과정 없이 사용 가능하며 탄성·내구성·비오염성·방수성과 각종 건축자재에 대한 접착력이 우수해 방수공사의 크랙 보수·하지 처리에 범용으로 사용한다.",
+      "uses": [
+        "콘크리트 몰탈 시설물의 조인트 및 크랙 보수 실링용"
+      ],
+      "substrates": [
+        "하도 처리된 콘크리트",
+        "시멘트 몰탈"
+      ],
+      "procedure": [
+        "피착재 표면의 먼지·기름·수분·연마 잔여물 제거, 오염부는 용제 세척 후 깨끗한 헝겊으로 닦아냄",
+        "접착성 시험으로 피착면 부착 확인 후 프라이머(하도)를 붓으로 균일 도포",
+        "하도 건조시간 경과 후(20~25℃ 6시간 이상, 48시간 이내) 가능한 빨리 실란트 충진",
+        "조인트 교차부·가장자리부터 시작해 빈틈·기포 없이 구석까지 충분히 충진",
+        "경화 전 즉시 주걱(헤라)으로 표면 마무리(Tooling) — 교차·코너부는 여러 번 밀어줌",
+        "경화 중 먼지·오염 보호, 완전경화 전 접촉·움직임 금지"
+      ],
+      "spec": {
+        "composition": "1액형",
+        "finish": "반광",
+        "colors": [
+          "백색",
+          "회색",
+          "녹색"
+        ],
+        "volume_solids_pct": "94±3",
+        "specific_gravity": 1.5,
+        "coats": "1~2회",
+        "coverage_note": "추천소요량 150g — 깊이 10㎜ × 폭 10㎜ × 길이 1,000㎜ 기준",
+        "coverage_formula": "소요량(g/m) ≒ 깊이(㎜) × 폭(㎜) × 1.5",
+        "calc_na_note": "스피실 원샷 실란트는 줄눈 충진재로, 소요량이 면적(㎡)이 아니라 <b>줄눈 길이(m)</b> 기준입니다.<br>깊이 10㎜ × 폭 10㎜ × 길이 1m = 약 150g<br>비중 1.50 기준 → 소요량(g/m) ≒ 깊이(㎜) × 폭(㎜) × 1.5",
+        "tensile_strength": "2.0N/㎟ 이상",
+        "elastic_recovery_pct": "70% 이상",
+        "hardness_shore_a": "30~50",
+        "thinner": null,
+        "thinning_pct_max": 0,
+        "thinning_note": "무희석 — 알코올 성분 신나(에폭시신나·락카신나·사제신나)는 건조 불량 유발, 절대 사용 금지",
+        "pack_sizes": [
+          "300㎖",
+          "500㎖"
+        ],
+        "shelf_life_months": 9,
+        "shelf_life_note": "5~25℃ · 상대습도 50% 실내보관 기준",
+        "storage_temp_c": [
+          5,
+          25
+        ],
+        "recoat_days": "10℃ 2~4일 / 20℃ 1~3일 / 30℃ 1~2일",
+        "recoat_note": "실란트 도장 후 20℃에서 최소 24시간 경과 후 후속 도장",
+        "tools": [
+          "코킹건",
+          "충진용 코킹건",
+          "주걱(헤라)"
+        ]
+      },
+      "cure_table": {
+        "columns": [
+          "10℃",
+          "20℃",
+          "30℃"
+        ],
+        "rows": [
+          {
+            "label": "지촉건조",
+            "unit": "시간",
+            "values": [
+              "16시간",
+              "8시간",
+              "4시간"
+            ]
+          },
+          {
+            "label": "경화건조",
+            "unit": "시간",
+            "values": [
+              "72시간",
+              "36시간",
+              "18시간"
+            ]
+          },
+          {
+            "label": "완전건조",
+            "unit": "일",
+            "values": [
+              "7일",
+              "5일",
+              "3일"
+            ]
+          },
+          {
+            "label": "재도장 간격",
+            "unit": "일",
+            "values": [
+              "2~4일",
+              "1~3일",
+              "1~2일"
+            ]
+          }
+        ]
+      },
+      "conditions": {
+        "air_temp_c_min": 5,
+        "air_temp_c_max": 35,
+        "humidity_pct_max": 80,
+        "surface_temp_c_max": 40,
+        "surface_moisture_pct_max": 6,
+        "surface_ph": [
+          7,
+          9
+        ],
+        "dew_point_margin_c": 3,
+        "note": "피착재 온도가 50℃ 이상 또는 5℃ 이하일 때 사용 금지. 실란트와 피착면의 접착면은 6㎜ 이상 확보"
+      },
+      "system": {
+        "primer": "그린방수마스터하도 / 우레코트하도 (사양서: 그린방수마스터하도·그린방수마스터속건형하도 50㎛)",
+        "primer_note": "하도 처리가 안 된 부분은 실란트 도장 시 기포 발생 우려 — 빠짐없이 도포. 하도 도장 후 6시간 이상 48시간 이내에 실란트 작업",
+        "role_in_system": "중도(실링)",
+        "topcoat": "방수 상도 (시스템에 따라 상이)"
+      },
+      "estimate": {
+        "basis": "하도 그린방수마스터하도 1회 50㎛ (0.138 L/㎡) + 중도 스피실 원샷 실란트 충진",
+        "primer_l_per_m2": 0.138,
+        "note": "실란트 소요량은 면적이 아닌 줄눈 길이 기준 — 제품 기술자료 참조. 줄눈폭 대비 충진 깊이는 ½이 적합. 부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [
+          "화기 근처 보관·작업 금지",
+          "밀폐된 장소 작업 금지 — 부득이한 경우 배기장치로 충분히 환기 후 작업",
+          "알코올 성분 신나(에폭시신나·락카신나·사제신나) 사용 시 건조되지 않음 — 절대 사용 금지"
+        ],
+        "warn": [
+          "비오는 날·상대습도 80% 이상·기온 5℃ 이하에는 작업 금지 (도막균열·부착불량·기포)",
+          "피착재 온도 50℃ 이상 또는 5℃ 이하에서 사용 금지",
+          "실란트와 피착면의 접착면 6㎜ 이상 확보 — 부족 시 박리",
+          "PE·PP 등 일부 플라스틱에는 부착되지 않음 — 반드시 부착성능 테스트 후 사용",
+          "실리콘 실란트 시공부위와 만나는 부분은 변색 발생",
+          "석유류 가스·산화물에 노출되면 변색 발생",
+          "다공성 표면·ALC·우레탄 폼 등은 기포 발생 가능 — 반드시 테스트 후 시공",
+          "페인트 도장 전 부착성·변색 여부·도장성능 확인",
+          "경화속도는 온도·습도·도포량에 따라 달라짐 — 지정 건조시간 준수",
+          "실란트 도막이 수분(비·눈·이슬·결로)에 노출되거나 후속 도장기간 경과 시 접착 불량 — 하도를 희석해 최대한 얇게 추가 도장 후 후속 도장",
+          "옥외 작업 시 대기온도 28℃ 이상 폭염 예상일은 작업 금지 (불가피 시 오후 4시 이후, 하도 후 6~48시간 내 실시)",
+          "제품 가열 금지 · 타 도료와 혼합 금지",
+          "개봉 후 잔량은 건조피막·굳음 발생 — 즉시 전량 사용"
+        ],
+        "info": [
+          "크랙이 심한 부분·신축줄눈은 V-CUTTING 후 폴리에틸렌(PE) 백업재를 조인트 폭보다 3~4㎜ 두껍게 삽입한 뒤 실란트 충진",
+          "틈새·홈은 슈퍼에폭씰로 메꾸고 표면 조정 후 도장",
+          "벽면과 접한 부위 등 가장자리는 V-CUTTING",
+          "고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량 우려 — 블라스팅 처리 후 부착성능 확인",
+          "소지 pH 7~9 · 표면함수율 6% 이하",
+          "소지기공에 의한 핀홀·부풀음 발생 시 해당 부위 제거 후 실란트로 메꿈 도장",
+          "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
+        ]
+      },
+      "compliance": {
+        "indoor_air_quality_act": true,
+        "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내 사용 가능",
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+      },
+      "docs": {
+        "tech": "1tech3792893.pdf",
+        "spec_sheet": "1pntg3792893.pdf",
+        "tech_dated": "2024-12-04"
+      }
     },
     {
       "id": "non-exposed-tar-waterproofing-tan",
