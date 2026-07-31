@@ -34,6 +34,8 @@
   --roof:#E2621B;--roof-bg:rgba(226,98,27,.09);
   --twp:#8A5A10;--twp-bg:rgba(138,90,16,.07);
   --road:#4A4E52;--road-bg:rgba(74,78,82,.08);
+  --fire:#B3261E;--fire-bg:rgba(179,38,30,.08);
+  --pool:#0E7C99;--pool-bg:rgba(14,124,153,.09);
   --amber:#C9701A;
   --orange:#00474F;--orange-dark:#00343B;
   --shadow:0 1px 2px rgba(10,40,44,.045),0 3px 10px rgba(10,40,44,.045);
@@ -78,6 +80,8 @@ a{color:var(--brand);text-decoration:none}
 .mat-roof{--mat:var(--roof);--mat-bg:var(--roof-bg)}
 .mat-floor{--mat:var(--floor);--mat-bg:var(--floor-bg)}
 .mat-road{--mat:var(--road);--mat-bg:var(--road-bg)}
+.mat-fire{--mat:var(--fire);--mat-bg:var(--fire-bg)}
+.mat-pool{--mat:var(--pool);--mat-bg:var(--pool-bg)}
 .mat-title{position:relative;display:flex;align-items:center;gap:10px;padding:18px 18px;min-height:68px;font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--mat);background-color:#fff;background-repeat:no-repeat;background-image:linear-gradient(to right,#fff 0,#fff calc(100% - 280px),rgba(255,255,255,0) calc(100% - 220px)),var(--mat-tex,none);border-bottom:1px solid var(--border)}
 .mat-title>span{text-shadow:0 1px 3px rgba(255,255,255,.85),0 0 10px rgba(255,255,255,.6)}
 .mat-title .icon{font-size:18px;line-height:1}
@@ -213,6 +217,12 @@ a{color:var(--brand);text-decoration:none}
 .mat-wp .chip-ne{color:#D81F3C;background:rgba(216,31,60,.08);border-color:transparent}
 .chip-floor{background:var(--floor-bg);color:var(--floor);border-color:rgba(124,67,192,.28)}
 .chip-road{background:var(--road-bg);color:var(--road);border-color:rgba(180,83,10,.28)}
+.chip-fire{background:var(--fire-bg);color:var(--fire);border-color:rgba(179,38,30,.28)}
+.chip-pool{background:var(--pool-bg);color:var(--pool);border-color:rgba(14,124,153,.28)}
+.badge-fire{background:var(--fire-bg);color:var(--fire)}
+.badge-pool{background:var(--pool-bg);color:var(--pool)}
+.hi-fire{color:var(--fire);font-weight:700}
+.hi-pool{color:var(--pool);font-weight:700}
 
 .branch-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
 .branch-card{background:var(--card);border-radius:11px;padding:12px 13px;border:1px solid var(--border)}
@@ -304,9 +314,6 @@ a{color:var(--brand);text-decoration:none}
 .vcard-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .vcard{display:block;width:100%;position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-top:3px solid transparent;border-radius:11px;padding:12px 14px}
 .vcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
-#woodPurposeStep .wg-stain .rtable-name{color:#95580F;background:rgba(149,88,15,.10);border-color:rgba(149,88,15,.28)}
-#woodPurposeStep .wg-color .rtable-name{color:#155FB6;background:rgba(21,95,182,.10);border-color:rgba(21,95,182,.28)}
-#woodPurposeStep .wg-varnish .rtable-name{color:#00474F;background:rgba(0,71,79,.10);border-color:rgba(0,71,79,.28)}
 #woodPurposeStep .rtable-row{position:relative;overflow:hidden;border-top:3px solid transparent}
 #woodPurposeStep .rtable-row::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent) 0%,transparent 88%);pointer-events:none}
 .vcard-head{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border-2)}
@@ -404,6 +411,8 @@ a{color:var(--brand);text-decoration:none}
 .diag-item.dg-mold .diag-a{color:var(--mold)}
 .diag-item.dg-wp .diag-a{color:var(--sky)}
 .diag-item.dg-road .diag-a{color:var(--road)}
+.diag-item.dg-fire .diag-a{color:var(--fire)}
+.diag-item.dg-pool .diag-a{color:var(--pool)}
 .doc-list{display:flex;flex-direction:column;gap:7px;margin-top:12px}
 .doc-link{position:relative;overflow:hidden;display:flex;align-items:center;gap:9px;background:var(--card2);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;transition:background .15s,transform .15s}
 .doc-link::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--brand) 0%,transparent 88%);pointer-events:none}
@@ -646,6 +655,8 @@ a{color:var(--brand);text-decoration:none}
   <a onclick="goTo('road')">🛣 노면표지(차선)</a>
   <a onclick="goTo('wp')">💧 옥상방수(우레탄)</a>
   <a onclick="goTo('floor')">🏭 실내방진(에폭시)</a>
+  <a onclick="goTo('fire')">🔥 내화도료(철골 보·기둥)</a>
+  <a onclick="goTo('pool')">🏊 실외 수영장</a>
 </div>
 
 <!-- 증상・소재 검색 -->
@@ -733,6 +744,30 @@ a{color:var(--brand);text-decoration:none}
       <span class="diag-text">
         <div class="diag-q">주차장 차선·횡단보도·주차 구획선을 그리고 싶어요</div>
         <div class="diag-a">→ 노면표지(차선) 가이드</div>
+      </span>
+      <span class="diag-arrow">▶</span>
+    </div>
+    <div onclick="goTo('fire')" class="diag-item dg-fire">
+      <span class="diag-icon">🔥</span>
+      <span class="diag-text">
+        <div class="diag-q">철골 보·기둥에 1시간 내화 성능이 필요하다고 합니다</div>
+        <div class="diag-a">→ 내화도료(철골 보·기둥) 가이드</div>
+      </span>
+      <span class="diag-arrow">▶</span>
+    </div>
+    <div onclick="goTo('fire')" class="diag-item dg-fire">
+      <span class="diag-icon">🏗</span>
+      <span class="diag-text">
+        <div class="diag-q">내화도료를 몇 ㎜ 발라야 인정을 받나요? 소요량이 얼마죠?</div>
+        <div class="diag-a">→ 내화도료 인정도막·일위대가 확인</div>
+      </span>
+      <span class="diag-arrow">▶</span>
+    </div>
+    <div onclick="goTo('pool')" class="diag-item dg-pool">
+      <span class="diag-icon">🏊</span>
+      <span class="diag-text">
+        <div class="diag-q">실외 수영장 콘크리트 바닥·벽면을 칠하고 물을 채우려고 해요</div>
+        <div class="diag-a">→ 실외 수영장(슈퍼폭시 370) 가이드</div>
       </span>
       <span class="diag-arrow">▶</span>
     </div>
@@ -1399,7 +1434,7 @@ a{color:var(--brand);text-decoration:none}
           <div style="font-size:13px; font-weight:800; color:var(--oil); margin-bottom:6px;">
             🌿 결 살리기 · 착색 · 방부 · 방충 · 햇빛에 의한 부식 방지 (페인트 칠이 되지 않은 목재 기준) → 스테인
           </div>
-          <div class="rtable wg-stain">
+          <div class="rtable">
           <div class="rtable-row">
             <div class="rtable-name">아이생각수성스테인</div>
             <div class="rtable-fields">
@@ -1426,7 +1461,7 @@ a{color:var(--brand);text-decoration:none}
         <!-- 색상 도장 -->
         <div style="margin-bottom:14px;">
           <div style="font-size:13px; font-weight:800; color:var(--water); margin-bottom:6px;">🎨 색상 도장 원할 때</div>
-          <div class="rtable wg-color">
+          <div class="rtable">
           <div class="rtable-row">
             <div class="rtable-name">777에나멜</div>
             <div class="rtable-fields">
@@ -1453,7 +1488,7 @@ a{color:var(--brand);text-decoration:none}
         <!-- 투명 보호 -->
         <div>
           <div style="font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px;">✨ 투명 보호 마감 원할 때 → 바니쉬 (=니스)</div>
-          <div class="rtable wg-varnish">
+          <div class="rtable">
             <div class="rtable-row">
               <div class="rtable-name">아이생각 수성우드바니시</div>
               <div class="rtable-fields">
@@ -1466,7 +1501,7 @@ a{color:var(--brand);text-decoration:none}
           </div>
           <div style="margin-top:10px;">
             <div style="font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px;">🛢 유성 바니시 (니스)</div>
-          <div class="rtable wg-varnish">
+          <div class="rtable">
           <div class="rtable-row">
             <div class="rtable-name">40바루스파</div>
             <div class="rtable-fields">
@@ -2613,6 +2648,8 @@ var SYMPTOM_MAP = {
   roof:     { label: '🏠 기와・슬레이트(지붕) 가이드',    keywords: ['기와','기와지붕','슬레이트','쓰레트','석면','지붕','기와페인트','슬레이트지붕','청기와','아크릴도료','ac신나3000','신나3000'] },
   wp:       { label: '💧 옥상 방수(우레탄) 가이드',      keywords: ['스피실','스피실원샷실란트','원샷실란트','우레탄실란트','실란트','코킹','조인트','신축줄눈','크랙보수','그린방수마스터하도','옥상방수','옥상누수','베란다방수','베란다','옥상','방수페인트','우레탄방수','우레탄','비노출','비노출방수에이스','비노출방수에이스2류','방수에이스2류','ksf3211','2류','난타르','타르방수탄','욕실방수','화장실방수','정화조','하수처리장','비노출방수','옥상정원','방수','누수','방수에이스','하도','중도','상도','우레탄1000신나','일액형','이액형','원샷탄','주경비','주제경화제비율','비율','주제경화제','타르','방수탄'] },
   floor:    { label: '🏭 실내 방진 도료(에폭시) 가이드', keywords: ['방진','에폭시','바닥에폭시','창고','지하주차장','주차장','매장','에포코트','컬러데코라이닝','라이닝','에포코트라이닝','a플로어','외부바닥','실내바닥','방진도료','실내에폭시','아쿠아','수성에폭시','냄새적은에폭시','공장바닥','사무실바닥','창고바닥','무용제','a플로어투명','a-플로어','a플로어 투명','에이플로어','침투성강화','방진바닥','아크릴바닥','투명바닥','ac신나4000','ac신나','플로아코트','슈퍼에폭씰','에폭씰','씰링','퍼티','크랙충진','v커팅','에포코트아쿠아상도','에포코트아쿠아하도'] },
+  fire:     { label: '🔥 내화도료(철골 보·기둥) 가이드', keywords: ['내화','내화도료','내화페인트','발포성내화도료','발포형','플레임체크','플레임체크ss190','ss190','ss-190','보용','기둥용','철골','철골보','철골기둥','1시간내화','내화구조','내화인정','인정도막','650','슈퍼징크','슈퍼징크190bg','징크','무기질징크','슈퍼폭시130','실러','슈퍼신나200','onestop방청프라이머','원스톱방청프라이머','lov에포마프라이머','에포마','슈퍼러버261cd','슈퍼코트300','슈퍼탄300bg','ksm6030','방청도료','내화중도'] },
+  pool:     { label: '🏊 실외 수영장 가이드',            keywords: ['수영장','실외수영장','풀장','풀','야외수영장','슈퍼폭시370','슈퍼폭시 370','370','변성에폭시','폴리아미드','수영장페인트','수영장도료','침적','담수','물채움','슈퍼폭시1000','에포코트하도투명','슈퍼신나123','침수설비','저수조','물탱크','내수성','내후성에폭시'] },
   road:     { label: '🛣 노면표지(차선) 가이드',         keywords: ['노면표지','차선','차선도색','주차선','주차구획선','횡단보도','아스팔트','도로','ksm6080','6080','노면','과속방지턱','안전선','도로표지','주차라인','주차','주차차선','주차장차선','장애인차선','장애인주차','차선용','노면표지용'] }
 };
 
@@ -2667,6 +2704,272 @@ function searchSymptom() {
   }
 }
 </script>
+
+<!-- ══ 11. 내화도료 (철골 보·기둥) ══ -->
+<div class="mat-section mat-fire" id="fire">
+  <div class="mat-title">
+    <span class="icon">🔥</span>
+    <span>내화도료 (철골 보 · 기둥)</span>
+    <span class="sub">1시간 내화 / 유성 발포형</span>
+  </div>
+  <div class="mat-body">
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">1</span><span class="step-label">이 제품은 이런 현장입니다</span><span class="step-badge badge-fire">먼저 확인</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-fire">플레임체크SS190보용기둥용</span>
+        <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
+          화재로 도막이 가열되면 <b>수십 배로 발포·팽창</b>하여 다공성 단열 탄화층을 만들고, 열이 철골에 전달되는 것을 막는 <b>1액형 유성 발포성 내화도료(중도)</b>입니다.<br>
+          <b>일반시설·주거시설·산업시설·위험물시설의 철골 보 및 기둥 1시간용</b>입니다.
+        </div>
+        <div class="danger-box">
+          ⚠️ <b>옥내 전용입니다.</b><br>
+          결로 발생 부위 및 상시 수분에 노출되는 부위는 <b>제외</b>됩니다. 옥외·상시 수분 노출 부위 적용은 반드시 <b>삼화페인트 고객상담실·연구소에 문의</b>하십시오.<br>
+          → 부득이한 외부 노출 기본 사양 : <b>내화도료 → 에폭시계 실러 → 우레탄계 상도</b> (최소 내구성 확보)
+        </div>
+        <div class="info-box">
+          💡 <b>관급 현장</b>은 삼화페인트 또는 동등 이상 제품으로 <b>사전에 견본을 제출하고 감독관 승인</b>을 받은 뒤 적용합니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">2</span><span class="step-label">표면처리 · 작업 기상조건</span><span class="step-badge badge-prep">필수</span></div>
+      <div class="step-content">
+        <div class="spec-grid">
+          <div class="spec-item full"><strong>하도가 없을 때</strong><span class="val">샌드·쇼트·그리트 블라스팅으로 밀스케일·녹 제거 → <b>SSPC-SP-6~10 (SIS Sa 2½)</b></span></div>
+          <div class="spec-item full"><strong>하도가 이미 있을 때</strong><span class="val">수분·오물·먼지·이물질 완전 제거. 도막 불량 시 표면처리 후 <b>KS M 6030 1종 동급 이상</b> 방청도료 재도장</span></div>
+          <div class="spec-item"><strong>대기온도</strong><span class="val">5 ~ 40℃</span></div>
+          <div class="spec-item"><strong>상대습도</strong><span class="val">30 ~ 85%</span></div>
+          <div class="spec-item full"><strong>피도면 온도</strong><span class="val">이슬점보다 최소 3℃ 이상 높을 것</span></div>
+        </div>
+        <div class="warn-box">
+          ⚠ 당사 추천 하도 이외의 도료가 기 도장된 경우 <b>사전에 적합성 시험</b>을 거친 후 중도를 도장하십시오.<br>
+          ⚠ 비오는 날 · 습도 85% 이상 · 기온 -5℃ 이하에는 도장하지 마십시오.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 하도 50㎛</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">3</span><span class="step-label">하도 — 방청 프라이머</span><span class="step-badge badge-primer-o">하도</span></div>
+      <div class="step-content">
+        <b>KS M 6030 1종 방청도료 및 동등 이상</b>(에폭시계 방청도료 등) · 건조도막 <b>50㎛ 이상</b>.
+        <div class="spec-grid" style="margin-top:10px;">
+          <div class="spec-item"><strong>ONE-STOP방청프라이머(KS) 갈색</strong><span class="val">50㎛ · 0.10 L/㎡</span></div>
+          <div class="spec-item"><strong>ONE-STOP방청프라이머(KS) 오렌지색</strong><span class="val">50㎛ · 0.09 L/㎡</span></div>
+          <div class="spec-item"><strong>LOV에포마프라이머 (SB-EP-400L)</strong><span class="val">50㎛ · 0.12 L/㎡</span></div>
+          <div class="spec-item"><strong>슈퍼폭시 130 (SB-SP-130)</strong><span class="val">50㎛ · 0.10 L/㎡</span></div>
+          <div class="spec-item full"><strong>슈퍼징크 190 BG (SB-SZ-190BG)</strong><span class="val">75㎛ · 0.12 L/㎡ — 무기질 징크</span></div>
+        </div>
+        <div class="danger-box">
+          ⚠️ <b>무기질 징크(슈퍼징크190BG)로 하도했다면 실러가 반드시 필요합니다.</b><br>
+          징크의 다공성 때문에 <b>수포(POPPING)</b>가 생깁니다. 완전 건조를 확인한 뒤 <b>슈퍼폭시130류 실러</b>를 <b>지정희석제(신나 1230) 15~20%(부피비)</b>로 희석해 <b>미스트코트</b> 도장하십시오. (징크 75㎛ 이상 · 실러 40㎛ 이상)
+        </div>
+        <div class="warn-box">
+          ⚠ KS M 6030 1종 방청도료가 하도로 도장된 경우, 하도의 <b>내부 건조 상태</b>에 따라 내화도료 도장 시 <b>주름 현상</b>이 발생할 수 있습니다.<br>
+          ⚠ 방청도료 기도장 철골은 <b>층간 밀착성 확인 후</b> 중도를 시공하고, 불량하면 적합한 하도를 다시 도장하십시오.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 최소 12시간 경과 후 (20℃)</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">4</span><span class="step-label">중도 — 플레임체크 SS-190 (보용 / 기둥용)</span><span class="step-badge badge-fire">핵심</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-fire">플레임체크SS190보용기둥용</span>
+        <div data-product="flamecheck-ss190-beam-column" data-render="spec"></div>
+        <div class="danger-box">
+          ⚠️ <b>도막두께가 곧 내화 성능입니다.</b><br>
+          · 중도 단독 <b>650㎛(0.65㎜) 이상</b><br>
+          · 하도 포함 <b>700㎛ 이상</b> (무기질 징크 사용 시 <b>765㎛ 이상</b>)<br>
+          · 상도까지 총 <b>750㎛ 이상</b> (무기질 징크 사용 시 <b>815㎛ 이상</b>)<br>
+          → <b>인정도막 두께 이상으로 도장되어야만 내화구조로 인정</b>받습니다.
+        </div>
+        <div class="warn-box">
+          ⚠ <b>2회 도장이 원칙</b>이며 기상 여건에 따라 1회 추가합니다. <b>1회 도장 시 건조도막 300~400㎛</b>가 적당합니다.<br>
+          ⚠ <b>습도막 1,000㎛ 이하</b>로 도장하십시오. 1회에 과도하게 두껍게 올리면 <b>건조지연·접착불량·크랙</b>의 원인이 됩니다.<br>
+          ⚠ 중도 도장 중 및 상도 도장 전까지 <b>강우·강설에 노출되지 않도록 보양(가림막·보호막)</b>하십시오. 수분 침투 시 기포·크랙·부착불량이 발생합니다.
+        </div>
+        <div class="info-box">
+          💡 <b>에어리스 스프레이 전용 설계로 희석이 필요 없습니다.</b> 장비 세척 시에만 <b>슈퍼신나200</b>을 추천합니다.<br>
+          · 노즐 0.025″~0.035″ · 분사압력 3,000PSI(210kg/㎠) 이상 · 펌프 60:1 또는 45:1<br>
+          · 피도체와 <b>30cm</b> 거리 · 건 이동속도 <b>50~60cm/sec</b> · <b>30~40% 중첩</b> · 항상 직각 유지<br>
+          · 코너(CORNER)·에지(EDGE) 과도막 주의 · 도장 전 전동교반기로 <b>5분 이상</b> 교반
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 하절기 3일 / 동절기 7일 경과 후</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">5</span><span class="step-label">상도 — 마감 (50㎛)</span><span class="step-badge badge-paint-o">상도</span></div>
+      <div class="step-content">
+        <div class="spec-grid">
+          <div class="spec-item"><strong>KSM 6020 1종 조합페인트 1급 (SB-P-20)</strong><span class="val">50㎛ · 0.05~0.08 L/㎡</span></div>
+          <div class="spec-item"><strong>KSM 6020 2종 자연건조형에나멜 유광 1급 (SB-E-489)</strong><span class="val">50㎛ · 0.09~0.15 L/㎡</span></div>
+          <div class="spec-item"><strong>777에나멜 (SB-E-777)</strong><span class="val">50㎛ · 0.11~0.15 L/㎡</span></div>
+          <div class="spec-item"><strong>슈퍼러버261CD</strong><span class="val">50㎛ · 0.11 L/㎡</span></div>
+          <div class="spec-item"><strong>슈퍼코트300</strong><span class="val">50㎛ · 0.11 L/㎡</span></div>
+          <div class="spec-item"><strong>슈퍼탄 300BG (SB-SU-316)</strong><span class="val">50㎛ · 0.10 L/㎡</span></div>
+        </div>
+        <div class="danger-box">
+          ⚠️ <b>상도는 내화도료 도장 완료 후 하절기 3일 · 동절기 7일이 지난 뒤</b>에 도장하십시오.
+        </div>
+        <div class="warn-box">
+          ⚠ 중도 도장 완료 후 <b>표면의 먼지·이물질을 완전히 제거한 뒤</b> 상도를 도장합니다.<br>
+          ⚠ <b>우레탄계 등 2액형 가교결합형 상도</b>는 2회 이상 도장 시 <b>주름</b>이 발생할 수 있습니다.<br>
+          ⚠ 상도 도장 완료 후 <b>파손부위는 반드시 보수·유지관리</b>하십시오.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 소요량 산출</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">6</span><span class="step-label">일위대가 (하도 + 중도 2회 + 상도)</span><span class="step-badge badge-ep">견적</span></div>
+      <div class="step-content">
+        <div data-product="flamecheck-ss190-beam-column" data-render="estimate"></div>
+        <div class="info-box">
+          💡 중도 <b>1.00 L/㎡</b>가 이 사양의 핵심 수치입니다(650㎛ 기준, 보용·기둥용 동일). 하도·상도는 위 3·5단계에서 선택한 제품의 소요량을 적용하세요.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 현장 주의사항 · 자료</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">7</span><span class="step-label">이건 꼭 확인하세요 · 공식 자료</span><span class="step-badge badge-prep">체크</span></div>
+      <div class="step-content">
+        <div class="warn-box">
+          ⚠ <b>타 도료와의 혼합 사용 금지.</b> 일반도료가 칠해져 있는 곳은 당사 문의 후 추천 시스템으로 도장하십시오.<br>
+          ⚠ <b>구도막 위 보수도장</b>은 적합성 확인 후 진행하십시오. 핀홀은 Touch-up, 두께 미달부는 규정두께까지 재도장, 흘러내림·더스트는 샌딩 후 재도장합니다.<br>
+          ⚠ <b>밀폐된 장소에서 절대 도장 금지</b> — 부득이한 경우 송풍기로 옥외 강제배기 + 방독면 등 안전보호장구 착용 필수.<br>
+          ⚠ <b>인화성</b> — 화기 근처 보관·도장 금지. 상온(5~35℃) 건냉암소에 밀폐·직립 보관.<br>
+          ⚠ <b>유효기간 12개월</b> 내 사용. 경과 제품은 고객상담실 확인 후 사용.<br>
+          ⚠ 동일 제품·색상이라도 희석비·도장기구·방법이 다르면 <b>이색현상</b>이 발생합니다. 동일 LOT·동일 도구로 작업하세요.
+        </div>
+        <div class="info-box">
+          💡 <b>더 자세한 내용은 상세 팝업과 아래 공식 자료를 참고하세요.</b> 제품명을 누르면 물성·주의사항 전문이 열리고, <b>기술자료·도장사양서 PDF</b>에서 일위대가표와 시공 상세를 확인할 수 있습니다.
+        </div>
+        <div data-product="flamecheck-ss190-beam-column" data-render="docs"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ 12. 실외 수영장 (슈퍼폭시 370) ══ -->
+<div class="mat-section mat-pool" id="pool">
+  <div class="mat-title">
+    <span class="icon">🏊</span>
+    <span>실외 수영장 (콘크리트)</span>
+    <span class="sub">변성 에폭시 / 침적용</span>
+  </div>
+  <div class="mat-body">
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">1</span><span class="step-label">이 제품은 이런 현장입니다</span><span class="step-badge badge-pool">먼저 확인</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-pool">슈퍼폭시 370</span>
+        <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
+          특수 변성 에폭시(Polyamide modified epoxy)로 <b>기존 에폭시보다 월등한 내후성</b>과 <b>우수한 내수성</b>을 가지며, 미려한 <b>유광</b> 도막을 얻을 수 있어 <b>실외 수영장용</b>으로 설계된 도료입니다.
+        </div>
+        <div class="info-box">
+          💡 용도 : <b>콘크리트 실외 수영장 등 외부에 폭로되는 시설물.</b> 색상은 청색 및 기타색.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">2</span><span class="step-label">표면처리 · 작업 기상조건</span><span class="step-badge badge-prep">필수</span></div>
+      <div class="step-content">
+        <div class="spec-grid">
+          <div class="spec-item full"><strong>콘크리트</strong><span class="val">충분히 양생된 상태에서 표면상태에 따라 <b>산처리 또는 연마제 분사처리</b></span></div>
+          <div class="spec-item"><strong>도장·경화 온도</strong><span class="val">5℃ 이상</span></div>
+          <div class="spec-item"><strong>상대습도</strong><span class="val">85% 미만</span></div>
+          <div class="spec-item full"><strong>소지면 온도</strong><span class="val">수분 응축 방지를 위해 이슬점보다 3℃ 이상 높을 것</span></div>
+        </div>
+        <div class="warn-box">
+          ⚠ <b>비오는 날 · 습도 85% 이상 · 기온 5℃ 이하에는 도장하지 마십시오.</b> 정상적인 물성이 발휘되지 않아 건조 불량·부착 불량이 발생합니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 도장 시스템</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">3</span><span class="step-label">도장 시스템 (총 250㎛)</span><span class="step-badge badge-primer">3층</span></div>
+      <div class="step-content">
+        <div class="spec-grid">
+          <div class="spec-item"><strong>하도</strong><span class="val">에포코트 하도 투명 · 50㎛</span></div>
+          <div class="spec-item"><strong>중도</strong><span class="val">슈퍼폭시 1000 · 100㎛</span></div>
+          <div class="spec-item"><strong>상도</strong><span class="val">슈퍼폭시 370 · 100㎛</span></div>
+        </div>
+        <div class="note-small" style="margin-top:12px;">💡 제품명을 누르면 상세 사양과 기술자료 · 도장사양서를 볼 수 있습니다.</div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 상도 100㎛</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">4</span><span class="step-label">상도 — 슈퍼폭시 370</span><span class="step-badge badge-pool">핵심</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-pool">슈퍼폭시 370</span>
+        <div data-product="super-epoxy-370" data-render="spec"></div>
+        <div class="danger-box">
+          ⚠️ <b>도장 후 7일(20℃) 이상 건조한 뒤에 물을 채우십시오.</b><br>
+          침적가능건조시간 전에 침적하면 <b>백악화·탈색·부풀음</b> 등 도막 부실 현상이 발생합니다.
+        </div>
+        <div class="warn-box">
+          ⚠ <b>자체 재도장 불가</b> — 도료 특성상 슈퍼폭시370 위에 슈퍼폭시370을 겹쳐 도장하지 않습니다.<br>
+          ⚠ <b>에어리스 스프레이 비추천</b> — 도막 자체에 핀홀·버블이 많이 발생합니다. <b>동력교반기·로라·붓</b>으로 시공하십시오.<br>
+          ⚠ <b>주제:경화제 = 1.8:1(부피비)</b> 준수, 혼합 도료는 <b>가사시간 6시간(20℃)</b> 이내에 사용 완료.<br>
+          ⚠ 희석은 <b>슈퍼신나123(S) 최대 5% 이내(부피비)</b>.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 소요량 산출</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">5</span><span class="step-label">일위대가 (상도 1회 · 100㎛)</span><span class="step-badge badge-ep">견적</span></div>
+      <div class="step-content">
+        <div data-product="super-epoxy-370" data-render="estimate"></div>
+        <div class="info-box">
+          💡 도장사양서 일위대가는 <b>상도(슈퍼폭시370 0.164 L/㎡)</b>만 기재되어 있습니다. 하도(에포코트 하도 투명)·중도(슈퍼폭시1000)는 각 제품 기준으로 별도 산출하세요.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 현장 주의사항 · 자료</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">6</span><span class="step-label">이건 꼭 확인하세요 · 공식 자료</span><span class="step-badge badge-prep">체크</span></div>
+      <div class="step-content">
+        <div class="warn-box">
+          ⚠ <b>방수처리가 끝난 침수설비</b>에 도장할 경우 <b>층간 박리</b> 문제가 발생할 수 있습니다. 당사 제품과의 부착관계를 확인한 후 시공하십시오.<br>
+          ⚠ <b>보수도장</b>은 샌드페이퍼로 표면을 전체 처리한 후 부착력이 우수한 <b>슈퍼폭시1000</b>을 하도로 적용하고 그 위에 슈퍼폭시370을 도장하십시오.<br>
+          ⚠ 동일 제품·색상·LOT라도 희석비·도장기구·방법에 따라 <b>이색현상</b>이 발생합니다. 같은 현장은 조건을 통일하세요.<br>
+          ⚠ 상온(5~35℃) 건냉암소에 밀폐·직립 보관 · <b>저장기간 1년</b> · 폐도료는 환경부 지정 폐기물처리업체를 통해 폐기.
+        </div>
+        <div class="info-box">
+          💡 <b>수영장 개장이 끝나고 물을 뺀 경우</b>, 도막을 <b>검은 비닐 등으로 덮어 보호</b>하면 도막 수명을 연장할 수 있습니다.<br>
+          💡 <b>더 자세한 내용은 상세 팝업과 아래 공식 자료를 참고하세요.</b> 기술자료·도장사양서 PDF에서 물성표와 일위대가를 확인할 수 있습니다.
+        </div>
+        <div data-product="super-epoxy-370" data-render="docs"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ══ 제품 상세 팝업(모달) ══ -->
 <!-- ══ 소요량 계산기 (독립) ══ -->
 <button id="calcFab" type="button" onclick="openCalcStandalone()" aria-label="소요량 계산기 열기"><span class="calc-ico">🧮</span> 소요량 계산</button>
@@ -3641,7 +3944,85 @@ Object.assign(window.PRODUCT_DB, {
       { label: "📐 도장사양서", url: "pdf/1pntg3210235.pdf" }
     ]
   }
+  ,
+  "플레임체크SS190보용기둥용": {
+    category: "중도 · 1액형 유성 발포성 내화도료 (1시간)",
+    desc: "화재 발생 시 불꽃에 의해 도막이 가열되면 급속히 발포·팽창하여 원래 도막의 수십 배 체적으로 부풀고, 다공성의 두터운 단열 탄화층을 형성합니다. 열이 철골에 전달되는 것을 차단해 급격한 내력 저하로 인한 건축물 붕괴를 막아 인명과 재산을 보호하는 고기능성 발포형 내화도료(중도)입니다.",
+    uses: "일반시설 · 주거시설 · 산업시설 및 위험물시설의 철골 보 및 기둥 — 1시간용 유성 내화도료 (옥내 전용)",
+    spec: "피도면: 철골 · 마감 무광 · 조성 1액형 · 불휘발분 66±4%\n추천 건조도막두께: 650㎛ (보용) / 650㎛ (기둥용) · 도장횟수 1~2회\n이론도포면적: 1.00 ㎡/L (건조도막두께 650㎛ 시, 습도막 1,000㎛ 도장 기준)\n지촉건조: 20±1℃ 30분 / 5±1℃ 1시간\n고화건조: 20±1℃ 12시간 / 5±1℃ 24시간\n경화건조: 20±1℃ 30시간 / 5±1℃ 48시간\n재도장간격: 20±1℃ 12시간 / 5±1℃ 24시간\n희석: 불필요 (에어리스 스프레이 적합 설계) · 장비 세척 시 슈퍼신나200\n작업기상조건: 대기온도 5~40℃ · 상대습도 30~85% · 피도면 온도는 이슬점보다 3℃ 이상\n에어리스: 노즐 0.025~0.035인치 · 분사압력 3,000PSI(210kg/㎠) 이상 · 펌프 60:1 / 45:1\n포장: 18L · 저장기간 12개월 (5~35℃ 실내보관)\n\n[도장시스템]\n하도: KSM 6030 1종 방청도료 및 동등 이상 (50㎛)\n중도: 플레임체크SS190보용기둥용 (650㎛ · 2회)\n상도: KSM6020 1종 조합페인트 / 777에나멜 / 슈퍼러버261CD / 슈퍼탄300BG / 슈퍼코트300 등 (50㎛)\n총 건조도막두께: 750㎛ 이상 (무기질 징크 프라이머 사용 시 815㎛ 이상)\n\n[도장사양서 일위대가]\n하도 ONE-STOP방청프라이머(KS) 갈색 50㎛ 0.10 L/㎡\n하도 ONE-STOP방청프라이머(KS) 오렌지색 50㎛ 0.09 L/㎡\n하도 LOV에포마프라이머(SB-EP-400L) 50㎛ 0.12 L/㎡\n하도 슈퍼폭시130(SB-SP-130) 50㎛ 0.10 L/㎡\n하도 슈퍼징크190BG(SB-SZ-190BG) 75㎛ 0.12 L/㎡\n중도 플레임체크SS190 보용 650㎛ 2회 1.00 L/㎡\n중도 플레임체크SS190 기둥용 650㎛ 2회 1.00 L/㎡\n상도 KSM6020 1종 조합페인트 1급(SB-P-20) 50㎛ 0.05~0.08 L/㎡\n상도 KSM6020 2종 자연건조형에나멜 유광 1급(SB-E-489) 50㎛ 0.09~0.15 L/㎡\n상도 777에나멜(SB-E-777) 50㎛ 0.11~0.15 L/㎡\n상도 슈퍼러버261CD 50㎛ 0.11 L/㎡\n상도 슈퍼코트300 50㎛ 0.11 L/㎡\n상도 슈퍼탄300BG(SB-SU-316) 50㎛ 0.10 L/㎡\n합계 4~5회 · 750~815㎛",
+    packaging: "18L",
+    cautions: [
+      "건조도막이 인정도막 두께 이상(중도 650㎛ · 총 750㎛, 무기질 징크 사용 시 815㎛)으로 도장되어야만 내화구조로 인정됩니다",
+      "옥내(결로 및 상시 수분 노출부위 제외) 적용에 한합니다. 옥외·상시 수분 노출부위(결로 포함) 적용 시 반드시 고객상담실·연구소 문의",
+      "외부 노출부위 기본 사양: 내화도료 → 에폭시계 실러 → 우레탄계 상도. 내화도료 위 에폭시 도장 시 변색되나 제품 이상은 아님",
+      "1회 과도막 금지 — 습도막 1,000㎛ 이하, 1회 건조도막 300~400㎛ 적정 (건조지연·접착불량·크랙 원인)",
+      "후속(상도) 도장은 내화도료 도장 완료 후 하절기 3일 / 동절기 7일 이후",
+      "우천 시 도장부위가 비에 직접 노출되지 않도록 보양작업(가림막·보호막) 필수 — 수분 침투 시 기포·크랙·부착불량",
+      "무기질 징크 프라이머 위 도장 시 POPPING 방지를 위해 완전 건조 확인 후 슈퍼폭시130류 실러를 지정희석제(신나1230) 15~20% 희석해 미스트코트 (징크 75㎛ 이상 · 실러 40㎛ 이상)",
+      "KSM 6030 1종 방청도료 하도 위 도장 시 하도 내부 건조 상태에 따라 주름현상 발생 가능",
+      "우레탄계 등 2액형 가교결합형 상도는 2회 이상 도장 시 주름 발생 가능",
+      "타 도료와의 혼합 사용 금지. 일반도료 기도장면은 당사 문의 후 추천 도장시스템 적용",
+      "비오는 날 · 습도 85% 이상 · 기온 -5℃ 이하 도장 금지",
+      "구도막 위 보수도장 시 적합성 확인 후 사용 (대리점 또는 소비자상담실)",
+      "밀폐된 장소에서 절대 도장 금지 — 부득이한 경우 송풍기로 옥외 강제배기 + 방독면 등 안전보호장구 착용",
+      "화기 근처 보관·도장 금지 (화재 위험). 상온(5~35℃) 건냉암소에 밀폐·직립 보관",
+      "유기용제 함유 — 방독마스크·보호안경·보호장갑 착용. 어린이 손이 닿지 않는 곳에 보관",
+      "유효기간(제조일로부터 12개월) 내 사용. 폐도료는 환경부 지정 폐기물처리업체를 통해 폐기",
+      "동일 제품·색상이라도 희석비·도장기구·방법에 따라 이색현상 발생 — 동일 LOT·동일 도구로 작업",
+      "상도 도장 완료 후 파손부위는 보수·유지관리 필요"
+    ],
+    filters: "법규관련 해당없음 · 관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)",
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3150212.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3150212.pdf" }
+    ]
+  },
+  "슈퍼폭시 370": {
+    category: "상도 · 2액형 변성 에폭시 (실외 수영장용)",
+    desc: "특수 변성 에폭시(Polyamide modified epoxy) 도료로서 기존 에폭시 도료보다 월등한 내후성을 나타내며 내수성이 우수하고 미려한 광택의 도막을 얻을 수 있어 실외 수영장용으로 설계된 도료입니다.",
+    uses: "콘크리트 실외 수영장 등 외부에 폭로되는 시설물",
+    spec: "피도면: 콘크리트 · 마감 유광 · 색상 청색 및 기타색\n조성 2액형 · 주제:경화제 = 1.8 : 1 (부피비)\n부피고형분: 약 61%\n추천 건조도막두께: 100㎛ · 도장횟수 1회\n이론도포면적: 6.1 ㎡/L (건조도막두께 100㎛ 시)\n가사시간(20℃): 6시간\n건조시간(20℃): 경화건조 24시간\n침적가능건조(20℃): 7일\n재도장간격(20℃): 자체 재도장 불가\n희석제: 슈퍼신나123(S) · 희석률 최대 5% 이내(부피비)\n도장기구: 동력교반기 · 로라 · 붓 (에어리스 스프레이 비추천)\n도장조건: 5℃ 이상 · 상대습도 85% 미만 · 소지면 온도는 이슬점보다 3℃ 이상\n포장[주제/경화제]: 18L[11.57/6.43] · 16L[10.29/5.71] · 4L[2.57/1.43]\n저장기간: 1년 (5~35℃ 실내보관)\n\n[도장시스템]\n하도: 에포코트 하도 투명 50㎛\n중도: 슈퍼폭시 1000 100㎛\n상도: 슈퍼폭시 370 100㎛\n\n[도장사양서 일위대가]\n상도 슈퍼폭시370 100㎛ 1회 0.164 L/㎡ · 희석제 슈퍼신나123(S)",
+    packaging: "18L[11.57L/6.43L] · 16L[10.29L/5.71L] · 4L[2.57L/1.43L] (주제/경화제)",
+    cautions: [
+      "도장 후 20℃ 기준 7일 이상 건조한 뒤 침적(담수)하십시오 — 침적가능건조시간 전 침적 시 백악화·탈색·부풀음 발생",
+      "자체 재도장 불가 — 도료 특성상 슈퍼폭시370 위 겹도장을 추천하지 않습니다",
+      "에어리스 스프레이 도장 비추천 — 도막 자체에 핀홀·버블이 많이 발생",
+      "지시된 혼합비율(1.8:1 부피비) 준수, 혼합 도료는 가사시간(20℃ 6시간) 이내 사용 완료",
+      "비오는 날 · 습도 85% 이상 · 기온 5℃ 이하 도장 금지 (건조 및 부착 불량)",
+      "콘크리트면에 방수처리가 끝난 침수설비에 도장 시 층간 박리 우려 — 당사 제품과 부착관계 확인 후 시공",
+      "보수도장 시 샌드페이퍼로 전면 표면처리 후 슈퍼폭시1000을 하도로 적용한 뒤 슈퍼폭시370 도장",
+      "수영장 개장 종료 후 물을 뺀 경우 도막을 검은 비닐 등으로 보호하면 도막 수명 연장",
+      "동일 제품·색상·LOT라도 희석비·도장기구·방법에 따라 이색현상 발생 — 조건 통일 후 작업",
+      "상온(5~35℃) 건냉암소에 밀폐·직립 보관 · 저장기간 내 사용",
+      "폐도료는 환경부에서 지정된 폐기물처리업체를 통해 폐기"
+    ],
+    filters: "대기환경보전법 용도분류 내 VOC 규제 만족",
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3211181.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3211181.pdf" }
+    ]
+  }
 });
+
+/* 플레임체크 SS-190 · 슈퍼폭시 370 표기 변형 이름 연결 */
+(function(){
+  var db = window.PRODUCT_DB;
+  var f = db["플레임체크SS190보용기둥용"];
+  if (f) [
+    "플레임체크 SS190 보용기둥용",
+    "플레임체크SS190 보용기둥용",
+    "플레임체크 SS-190",
+    "플레임체크 SS-190(보용)(기둥용)",
+    "플레임체크 SS-190 보용",
+    "플레임체크 SS-190 기둥용",
+    "플레임체크SS190",
+    "플레임체크 SS190",
+    "플레임체크"
+  ].forEach(function(n){ if (!db[n]) db[n] = f; });
+  var s = db["슈퍼폭시 370"];
+  if (s) ["슈퍼폭시370", "슈퍼폭시 370 실외수영장", "SUPER EPOXY 370"]
+    .forEach(function(n){ if (!db[n]) db[n] = s; });
+})();
 
 /* 결로스탑 규조토 · 표기 변형 이름을 같은 데이터로 연결 */
 (function(){
