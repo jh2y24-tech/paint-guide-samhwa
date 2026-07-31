@@ -9,7 +9,8 @@
     "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
     "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보",
     "spec.coverage_variants": "이론소요량이 도막두께·색상(유색/투명)에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. 항목은 coverage_m2_per_l 또는 coverage_kg_per_m2 중 하나를 가진다. source: catalog=기술자료 / spec_sheet=도장사양서 일위대가 / derived=비례 환산",
-    "images": "상품 상세 이미지. dir + files[].src 로 경로 조립. 파일명·폴더명은 반드시 ASCII (한글 파일명은 GitHub Pages에서 NFC/NFD 불일치로 404)"
+    "images": "상품 상세 이미지. dir + files[].src 로 경로 조립. 파일명·폴더명은 반드시 ASCII (한글 파일명은 GitHub Pages에서 NFC/NFD 불일치로 404)",
+    "spec.coverage_basis": "diluted = 이론도포면적이 희석액 기준(희석해서 쓰는 제품). 미표기면 원액 기준"
   },
   "categories": [
     {
@@ -3283,7 +3284,9 @@
         "storage_temp_c": [
           5,
           35
-        ]
+        ],
+        "coverage_basis": "diluted",
+        "coverage_note": "이론도포면적 30㎡/L 은 물과 1:3으로 희석한 희석액 기준. 원액 1L → 희석액 4L → 약 120㎡"
       },
       "conditions": {
         "air_temp_c": [
@@ -3299,7 +3302,7 @@
         "topcoat_self": false
       },
       "estimate": {
-        "basis": "하도 1회 (1:3 희석) · 스며듦",
+        "basis": "하도 1회 (물 1:3 희석) · 스며듦 · 희석액 기준",
         "note": "부가세·시공비 별도"
       },
       "cautions": {

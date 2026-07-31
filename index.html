@@ -68,7 +68,7 @@ a{color:var(--brand);text-decoration:none}
 
 .mat-section{margin-bottom:24px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;position:relative}
 .mat-section::before{content:"";display:block;height:5px;background:var(--brand)}
-#concrete::before,#silk::before,#coated::before,#iron::before,#wood::before,#mold::before,#tile::before,#roof::before,#road::before,#wp::before,#floor::before{display:none}
+#concrete::before,#silk::before,#coated::before,#iron::before,#wood::before,#mold::before,#tile::before,#roof::before,#road::before,#fire::before,#pool::before,#wp::before,#floor::before{display:none}
 .mat-concrete{--mat:var(--concrete);--mat-bg:var(--concrete-bg)}
 .mat-silk{--mat:var(--silk);--mat-bg:var(--silk-bg)}
 .mat-coated{--mat:var(--coated);--mat-bg:var(--coated-bg)}
@@ -597,8 +597,6 @@ a{color:var(--brand);text-decoration:none}
 /* ── 내화도료(화염) ── */
 #fire .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
   url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 90'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23FFF3E0'/%3E%3Cstop offset='.45' stop-color='%23FFB74D'/%3E%3Cstop offset='1' stop-color='%23B3261E'/%3E%3C/linearGradient%3E%3ClinearGradient id='f1' x1='0' y1='1' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%23B3261E'/%3E%3Cstop offset='.55' stop-color='%23F4511E'/%3E%3Cstop offset='1' stop-color='%23FFC107'/%3E%3C/linearGradient%3E%3ClinearGradient id='f2' x1='0' y1='1' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%23F4511E'/%3E%3Cstop offset='1' stop-color='%23FFE082'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='280' height='90' fill='url(%23bg)'/%3E%3Cg opacity='.92'%3E%3Cpath d='M186 88c-16 0-28-12-28-27 0-16 11-24 16-38 2-6 2-13 0-19 12 5 22 16 25 29 4-4 6-10 6-16 11 10 17 25 17 42 0 16-13 29-29 29z' fill='url(%23f1)'/%3E%3Cpath d='M186 88c-8 0-15-7-15-16 0-9 6-13 9-21 1-4 1-7 0-11 7 3 12 9 14 17 2-3 3-6 3-10 6 6 9 15 9 25 0 9-7 16-15 16z' fill='url(%23f2)'/%3E%3Cpath d='M232 88c-11 0-19-8-19-18 0-11 8-17 11-26 1-5 1-9 0-13 8 4 15 11 17 20 3-3 4-7 4-11 8 7 12 17 12 29 0 11-9 19-20 19z' fill='url(%23f1)' opacity='.85'/%3E%3Cpath d='M144 88c-9 0-16-7-16-15 0-9 6-14 9-21 1-4 1-7 0-11 6 3 12 9 13 16 2-3 3-6 3-9 6 6 10 14 10 23 0 9-8 17-19 17z' fill='url(%23f1)' opacity='.7'/%3E%3C/g%3E%3C/svg%3E")}
-.mat-fire::before{display:block;height:5px;background:linear-gradient(to right,#FFC107,#F4511E 45%,#B3261E)}
-#fire .mat-title .sub{color:#fff;background:linear-gradient(135deg,#F4511E,#B3261E);border-color:transparent}
 #fire .step-badge.badge-fire{color:#fff;background:linear-gradient(135deg,#F4511E,#B3261E)}
 #fire .product-chip.chip-fire{color:#fff;background:linear-gradient(135deg,#F4511E,#B3261E);border-color:transparent}
 #fire .step-num{background:linear-gradient(135deg,#F4511E,#B3261E);color:#fff;border-color:transparent}
@@ -606,8 +604,6 @@ a{color:var(--brand);text-decoration:none}
 /* ── 실외 수영장(블루) ── */
 #pool .mat-title{background-size:auto,280px auto;background-position:0 0,right center;background-repeat:no-repeat,no-repeat;--mat-tex:
   url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 90'%3E%3Cdefs%3E%3ClinearGradient id='pb' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E0F7FA'/%3E%3Cstop offset='.4' stop-color='%234FC3F7'/%3E%3Cstop offset='1' stop-color='%23015E86'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='280' height='90' fill='url(%23pb)'/%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='.55' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M120 26c10-8 20-8 30 0s20 8 30 0 20-8 30 0 20 8 30 0 20-8 30 0'/%3E%3Cpath d='M120 44c10-8 20-8 30 0s20 8 30 0 20-8 30 0 20 8 30 0 20-8 30 0'/%3E%3Cpath d='M120 62c10-8 20-8 30 0s20 8 30 0 20-8 30 0 20 8 30 0 20-8 30 0'/%3E%3Cpath d='M120 80c10-8 20-8 30 0s20 8 30 0 20-8 30 0 20 8 30 0 20-8 30 0'/%3E%3C/g%3E%3Cg fill='%23FFFFFF' fill-opacity='.28'%3E%3Ccircle cx='150' cy='16' r='5'/%3E%3Ccircle cx='205' cy='12' r='3.5'/%3E%3Ccircle cx='255' cy='18' r='4.5'/%3E%3C/g%3E%3C/svg%3E")}
-.mat-pool::before{display:block;height:5px;background:linear-gradient(to right,#4FC3F7,#0E7C99 55%,#015E86)}
-#pool .mat-title .sub{color:#fff;background:linear-gradient(135deg,#0E9BC4,#015E86);border-color:transparent}
 #pool .step-badge{color:#fff;background:linear-gradient(135deg,#0E9BC4,#015E86)}
 #pool .product-chip{color:#fff;background:linear-gradient(135deg,#0E9BC4,#015E86);border-color:transparent}
 #pool .step-num{background:linear-gradient(135deg,#0E9BC4,#015E86);color:#fff;border-color:transparent}
@@ -619,21 +615,39 @@ a{color:var(--brand);text-decoration:none}
 .sec-hero .sh-ico{font-size:19px;line-height:1}
 .sec-hero .sh-main{font-size:15px}
 .sec-hero .sh-sub{margin-left:auto;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.03em;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);padding:4px 10px;border-radius:999px;white-space:nowrap}
-.sh-fire{background:linear-gradient(115deg,#FFB300 0%,#F4511E 42%,#B3261E 100%)}
-.sh-pool{background:linear-gradient(115deg,#4FC3F7 0%,#0E9BC4 45%,#015E86 100%)}
+.sh-fire{background:linear-gradient(135deg,#F9C089 0%,#EE7A3E 50%,#C0392B 100%)}
+.sh-pool{background:linear-gradient(135deg,#8FD7EE 0%,#2E9EC4 50%,#0B6C91 100%)}
 
-/* ── 빠른이동 필: 내화 / 수영장 그라데이션 ── */
-.mat-nav a.nav-fire{color:#fff;border-color:transparent;background:linear-gradient(115deg,#FFB300,#F4511E 45%,#B3261E)}
-.mat-nav a.nav-fire:hover{color:#fff;background:linear-gradient(115deg,#FFA000,#E64A19 45%,#8E1B15)}
-.mat-nav a.nav-pool{color:#fff;border-color:transparent;background:linear-gradient(115deg,#4FC3F7,#0E9BC4 45%,#015E86)}
-.mat-nav a.nav-pool:hover{color:#fff;background:linear-gradient(115deg,#29B6F6,#0B87AB 45%,#014A6B)}
+
+
+/* ── 빠른이동 필 ──────────────────────────────────────────
+   기본은 흰 배경 + 부위색 글씨 + 왼쪽 색 막대.
+   색을 꽉 채우는 건 hover / 현재 보고 있는 섹션일 때만 — 색이 '정보'로 남게. */
+.mat-nav a[class*='nav-']{position:relative;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;background:var(--card);color:var(--pc);border:1px solid var(--border);border-radius:999px;font-weight:700;text-shadow:none;box-shadow:0 1px 2px rgba(20,38,42,.05);transition:background .16s,color .16s,box-shadow .16s,transform .16s}
+.mat-nav a[class*='nav-']:hover,.mat-nav a[class*='nav-'].is-active{background:var(--pc);color:#fff;border-color:var(--pc);box-shadow:0 3px 9px rgba(20,38,42,.16);transform:translateY(-1px)}
+.mat-nav a[class*='nav-'].is-active{font-weight:800}
+.mat-nav a.nav-concrete{--pc:#1279B4}
+.mat-nav a.nav-silk{--pc:#7E5C42}
+.mat-nav a.nav-coated{--pc:#645A73}
+.mat-nav a.nav-iron{--pc:#A8402A}
+.mat-nav a.nav-wood{--pc:#8A5A12}
+.mat-nav a.nav-mold{--pc:#0E876A}
+.mat-nav a.nav-tile{--pc:#177E85}
+.mat-nav a.nav-roof{--pc:#C4560F}
+.mat-nav a.nav-road{--pc:#4A4E52}
+.mat-nav a.nav-fire{--pc:#C0392B}
+.mat-nav a.nav-pool{--pc:#0B6C91}
+.mat-nav a.nav-wp{--pc:#0E8FB0}
+.mat-nav a.nav-floor{--pc:#7C43C0}
 
 /* ── PDF 자료 버튼(팝업 전용) ── */
+.calc-row .calc-sel{padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;background:var(--card);color:var(--text)}
+.calc-conv{color:var(--brand);font-weight:700;white-space:nowrap}
 .pdf-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
 .pdf-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:0;border-radius:10px;font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 10px rgba(20,38,42,.16);transition:transform .14s,filter .14s}
 .pdf-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
-.pdf-btn.pb-fire{background:linear-gradient(115deg,#FFB300,#F4511E 45%,#B3261E)}
-.pdf-btn.pb-pool{background:linear-gradient(115deg,#4FC3F7,#0E9BC4 45%,#015E86)}
+.pdf-btn.pb-fire{background:linear-gradient(135deg,#F9C089,#EE7A3E 50%,#C0392B)}
+.pdf-btn.pb-pool{background:linear-gradient(135deg,#8FD7EE,#2E9EC4 50%,#0B6C91)}
 
 @media (max-width:479px){
   .mat-title{background-image:none !important}
@@ -685,19 +699,19 @@ a{color:var(--brand);text-decoration:none}
 
 <!-- 빠른 이동 -->
 <div class="mat-nav">
-  <a onclick="goTo('concrete')">🧱 콘크리트·석고보드</a>
-  <a onclick="goTo('silk')">🖼 합지·실크벽지</a>
-  <a onclick="goTo('coated')">🧩 철·비철·목재·시트지·유성페인트 위</a>
-  <a onclick="goTo('iron')">⚙️ 철재·비철재</a>
-  <a onclick="goTo('wood')">🪑 목재</a>
-  <a onclick="goTo('mold')">🦠 곰팡이·결로</a>
-  <a onclick="goTo('tile')">🚿 타일·줄눈</a>
-  <a onclick="goTo('roof')">🏠 기와·슬레이트</a>
-  <a onclick="goTo('road')">🛣 노면표지(차선)</a>
+  <a href="javascript:void(0)" onclick="goTo('concrete')" class="nav-concrete">🧱 콘크리트·석고보드</a>
+  <a href="javascript:void(0)" onclick="goTo('silk')" class="nav-silk">🖼 합지·실크벽지</a>
+  <a href="javascript:void(0)" onclick="goTo('coated')" class="nav-coated">🧩 철·비철·목재·시트지·유성페인트 위</a>
+  <a href="javascript:void(0)" onclick="goTo('iron')" class="nav-iron">⚙️ 철재·비철재</a>
+  <a href="javascript:void(0)" onclick="goTo('wood')" class="nav-wood">🪑 목재</a>
+  <a href="javascript:void(0)" onclick="goTo('mold')" class="nav-mold">🦠 곰팡이·결로</a>
+  <a href="javascript:void(0)" onclick="goTo('tile')" class="nav-tile">🚿 타일·줄눈</a>
+  <a href="javascript:void(0)" onclick="goTo('roof')" class="nav-roof">🏠 기와·슬레이트</a>
+  <a href="javascript:void(0)" onclick="goTo('road')" class="nav-road">🛣 노면표지(차선)</a>
   <a href="javascript:void(0)" onclick="goTo('fire')" class="nav-fire">🔥 내화도료(철골 보·기둥)</a>
   <a href="javascript:void(0)" onclick="goTo('pool')" class="nav-pool">🏊 실외 수영장</a>
-  <a onclick="goTo('wp')">💧 옥상방수(우레탄)</a>
-  <a onclick="goTo('floor')">🏭 실내방진(에폭시)</a>
+  <a href="javascript:void(0)" onclick="goTo('wp')" class="nav-wp">💧 옥상방수(우레탄)</a>
+  <a href="javascript:void(0)" onclick="goTo('floor')" class="nav-floor">🏭 실내방진(에폭시)</a>
 </div>
 
 <!-- 증상・소재 검색 -->
@@ -2929,12 +2943,23 @@ function closeMat(sec){
   sec.classList.remove('open');
   var t = sec.querySelector('.mat-hint-txt');
   if (t) t.textContent = '자세히 보기';
+  if (typeof syncNavActive === 'function') setTimeout(syncNavActive, 0);
 }
 function openMat(sec){
   document.querySelectorAll('.mat-section.open').forEach(function(s){ if (s !== sec) closeMat(s); });
   sec.classList.add('open');
   var t = sec.querySelector('.mat-hint-txt');
   if (t) t.textContent = '접기';
+  syncNavActive();
+}
+/* 열려 있는 섹션의 빠른이동 필만 색을 채운다 */
+function syncNavActive(){
+  var open = document.querySelector('.mat-section.open');
+  var id = open ? open.id : null;
+  document.querySelectorAll('.mat-nav a[class*="nav-"]').forEach(function(a){
+    var m = (a.className.match(/nav-([a-z]+)/) || [])[1];
+    a.classList.toggle('is-active', !!id && m === id);
+  });
 }
 function toggleMat(sec){
   if (sec.classList.contains('open')) { closeMat(sec); }
@@ -4505,6 +4530,11 @@ function calcVarDft(v){
   return (v.dft_um >= 1000) ? (v.dft_um/1000) + '㎜' : v.dft_um + '㎛';
 }
 
+/* ── 면적 단위 ── 현장은 평, 사양서는 ㎡. 둘 다 보여준다. (1평 = 3.3058㎡) */
+var PY_M2 = 3.3058;
+function m2ToPy(m2){ return m2 / PY_M2; }
+function areaBoth(m2){ return _r(m2,2) + '㎡ (' + _r(m2ToPy(m2),2) + '평)'; }
+
 /* ── 희석제(신나) 소요량 ──────────────────────────────────────
    도료 소요량이 정해지면 신나량을 자동 산출한다.
    우선순위 : 희석비(1:3 등) > 희석률 구간(20~40%) > 최대 희석률(%)
@@ -4524,12 +4554,22 @@ function calcThinner(s, e, need, unit){
   var isWater = /^물/.test(name);
   var label = isWater ? '희석수(물)' : '희석제(신나)';
 
-  /* (1) 희석비 표기 — 예) 제품 : 물 = 1 : 3 */
+  /* (1) 희석비 표기 — 예) 제품 : 물 = 1 : 3
+     coverage_basis === 'diluted' 이면 이론도포면적이 "희석액" 기준이므로
+     필요량(need)을 원액과 희석수로 쪼갠다. 원액 기준으로 곱하면 4배가 튄다. */
   if (s.thinning_ratio){
     var mr = String(s.thinning_ratio).match(/([\d.]+)\s*:\s*([\d.]+)\s*$/);
     if (mr){
       var a = parseFloat(mr[1]), b = parseFloat(mr[2]);
       if (a > 0){
+        if (s.coverage_basis === 'diluted'){
+          var base = need * a / (a + b), water = need - base;
+          return { label: label, diluted: true, base: base, water: water,
+            html: f(water) + ' ' + u + ' · ' + name +
+            '<br><span style="font-size:12px;">희석비 ' + s.thinning_ratio +
+            ' — 위 필요량은 <b>희석액</b> 기준입니다. 제품 원액 ' + f(base) + ' ' + u +
+            ' + ' + name + ' ' + f(water) + ' ' + u + ' = 희석액 ' + f(need) + ' ' + u + '</span>' + tail() };
+        }
         return { label: label, html: f(need * b / a) + ' ' + u + ' · ' + name +
           ' (희석비 ' + s.thinning_ratio + ')' + tail() };
       }
@@ -4587,7 +4627,16 @@ function calcCompute(p, area, coats, loss, vid){
   var need = area * basePerM2 * (1 + loss/100);
 
   var packs = (s.pack_sizes || []).map(calcParsePack).filter(function(x){ return x && x.u === unit; });
-  var pk = calcPacks(need, packs);
+  /* 희석액 기준 제품은 "통"을 원액으로 사니까 원액량으로 통 수를 잡는다 */
+  var packBase = need;
+  if (s.coverage_basis === 'diluted' && s.thinning_ratio){
+    var mrp = String(s.thinning_ratio).match(/([\d.]+)\s*:\s*([\d.]+)\s*$/);
+    if (mrp){
+      var pa = parseFloat(mrp[1]), pb = parseFloat(mrp[2]);
+      if (pa > 0) packBase = need * pa / (pa + pb);
+    }
+  }
+  var pk = calcPacks(packBase, packs);
 
   var thinner = calcThinner(s, e, need, unit);
 
@@ -4655,20 +4704,32 @@ function calcRenderShell(uid, p){
   }
   return '' + varRow +
   '<div class="calc-row"><label for="'+uid+'-area">도장면적</label>' +
-    '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">㎡</span></div>' +
+    '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')">' +
+    '<select class="calc-sel" id="'+uid+'-aunit" onchange="calcUpdate(\''+uid+'\')" aria-label="면적 단위">' +
+      '<option value="m2" selected>㎡</option><option value="py">평</option></select>' +
+    '<span class="calc-unit calc-conv" id="'+uid+'-aconv"></span></div>' +
   '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
     '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+ct.min+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||1)+'회</span></div>' +
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
     '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="15" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">15%</span></div>' +
   '<div class="calc-out" id="'+uid+'-out"></div>' +
-  '<div class="calc-note" id="'+uid+'-basis">기준값 — 이론도포면적 '+cov+ (s.dft_um ? ' (건조도막두께 '+s.dft_um+'㎛ 기준)' : '') +'</div>';
+  '<div class="calc-note" id="'+uid+'-basis">기준값 — 이론도포면적 '+cov+
+    (s.coverage_m2_per_l != null ? ' (약 '+_r(m2ToPy(s.coverage_m2_per_l),2)+'평/L)' : '') +
+    (s.dft_um ? ' · 건조도막두께 '+s.dft_um+'㎛ 기준' : '') +'</div>';
 }
 
 function calcUpdate(uid){
   var st = CALC_STATE[uid];
   if (!st) return;
   var p = st.product;
-  var area  = parseFloat((document.getElementById(uid+'-area')||{}).value) || 0;
+  var areaIn = parseFloat((document.getElementById(uid+'-area')||{}).value) || 0;
+  var aUnitEl = document.getElementById(uid+'-aunit');
+  var aUnit = aUnitEl ? aUnitEl.value : 'm2';
+  var area = (aUnit === 'py') ? areaIn * PY_M2 : areaIn;
+  var ac = document.getElementById(uid+'-aconv');
+  if (ac) ac.textContent = areaIn > 0
+    ? ((aUnit === 'py') ? '= ' + _r(area,2) + '㎡' : '= ' + _r(m2ToPy(area),2) + '평')
+    : '';
   var coats = parseInt((document.getElementById(uid+'-coats')||{}).value, 10) || 1;
   var loss  = parseFloat((document.getElementById(uid+'-loss')||{}).value) || 0;
   var lv = document.getElementById(uid+'-lossv'); if (lv) lv.textContent = loss + '%';
@@ -4681,6 +4742,7 @@ function calcUpdate(uid){
   if (bs){
     var vv = calcPickVariant(p, vid);
     if (vv) bs.innerHTML = '기준값 — ' + vv.label + ' 이론소요량 ' + calcVarCov(vv) +
+      (vv.coverage_m2_per_l != null ? ' (약 ' + _r(m2ToPy(vv.coverage_m2_per_l),2) + '평/L)' : '') +
       (vv.dft_um ? ' (건조도막두께 ' + calcVarDft(vv) + ' 기준)' : '') +
       (vv.source === 'derived' ? '<br>※ ' + (vv.note || '카탈로그 미표기 환산값') : '');
   }
@@ -4695,11 +4757,15 @@ function calcUpdate(uid){
   }
 
   var u = r.unit;
-  var h = '<div class="calc-hero"><div class="ch-lab">필요 도료량</div>' +
+  var dil = r.thinner && r.thinner.diluted;
+  var h = '<div class="calc-hero"><div class="ch-lab">' + (dil ? '필요 희석액량' : '필요 도료량') + '</div>' +
           '<div class="ch-val">' + _r(r.need, 2) + ' ' + u + '</div>' +
-          '<div class="ch-sub">' + area + '㎡ × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '% · ' + coats + '회 도장</div></div>';
+          '<div class="ch-sub">' + areaBoth(area) + ' × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '% · ' + coats + '회 도장</div></div>';
 
   h += '<div class="calc-list">';
+  if (dil){
+    h += '<div class="calc-item"><b>제품 원액</b><span>' + _r(r.thinner.base,2) + ' ' + u + '</span></div>';
+  }
   if (r.packs){
     h += '<div class="calc-item"><b>최소 통 수</b><span>' + r.packs.min.text + ' = ' + _r(r.packs.min.total,2) + u + ' (여유 ' + _r(r.packs.min.waste,2) + u + ')</span></div>';
     if (!r.packs.same)
