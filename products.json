@@ -3700,6 +3700,120 @@
         "spec_sheet": "1pntg3212229.pdf",
         "tech_dated": "2024-05-13"
       }
+    },
+    {
+      "id": "super-epoxy-370",
+      "status": "documented",
+      "name": "슈퍼폭시 370",
+      "name_en": "SUPER EPOXY 370",
+      "brand": "삼화페인트",
+      "categories": [
+        "pool",
+        "concrete"
+      ],
+      "role": "topcoat",
+      "aliases": [
+        "슈퍼폭시370",
+        "슈퍼폭시 370 실외수영장",
+        "SUPER EPOXY 370"
+      ],
+      "summary": "특수 변성 에폭시(Polyamide modified epoxy) 도료로서 기존 에폭시 도료보다 월등한 내후성을 나타내며 내수성이 우수하고 미려한 광택의 도막을 얻을 수 있어 실외 수영장용으로 설계된 도료.",
+      "uses": "콘크리트 실외 수영장 등 외부에 폭로되는 시설물",
+      "substrates": [
+        "콘크리트",
+        "시멘트몰탈"
+      ],
+      "spec": {
+        "composition": "2액형",
+        "mixing_ratio_volume": "1.8:1",
+        "mixing_ratio_note": "주제:경화제 = 1.8 : 1 (부피비)",
+        "finish": "유광",
+        "colors": [
+          "청색",
+          "기타색"
+        ],
+        "volume_solids_pct": 61,
+        "dft_um": 100,
+        "coats": "1",
+        "coverage_m2_per_l": 6.1,
+        "coverage_note": "6.1㎡/L (건조도막두께 100㎛ 시)",
+        "pot_life_min": 360,
+        "dry_hard_min": 1440,
+        "immersion_dry_days": 7,
+        "immersion_dry_note": "침적가능건조 20℃ 기준 7일 — 이전 침적 시 백악화·탈색·부풀음",
+        "recoat_hours": null,
+        "recoat_note": "자체 재도장 불가 — 슈퍼폭시370 위 겹도장 비추천",
+        "thinner": "슈퍼신나123(S)",
+        "thinning_pct_max": 5,
+        "pack_sizes": [
+          "18L",
+          "16L",
+          "4L"
+        ],
+        "pack_sizes_note": "주제/경화제 — 18L[11.57/6.43] · 16L[10.29/5.71] · 4L[2.57/1.43]",
+        "shelf_life_months": 12,
+        "storage_temp_c": [
+          5,
+          35
+        ],
+        "tools": [
+          "동력교반기",
+          "로라",
+          "붓"
+        ]
+      },
+      "conditions": {
+        "air_temp_c": [
+          5,
+          35
+        ],
+        "humidity_pct_max": 85,
+        "dew_point_margin_c": 3,
+        "tools": [
+          "동력교반기",
+          "로라",
+          "붓"
+        ],
+        "tools_note": "에어리스 스프레이 비추천 — 핀홀·버블 다발"
+      },
+      "system": {
+        "primer": "에포코트 하도 투명",
+        "primer_note": "하도 50㎛",
+        "midcoat": "슈퍼폭시 1000",
+        "midcoat_note": "중도 100㎛",
+        "topcoat_self": false
+      },
+      "estimate": {
+        "basis": "도장사양서 일위대가 · 상도 1회 100㎛",
+        "topcoat_l_per_m2": 0.164,
+        "note": "일위대가는 상도만 기재. 하도·중도는 각 제품 기준 별도 산출. 부가세·시공비 별도"
+      },
+      "cautions": {
+        "danger": [
+          "도장 후 20℃ 기준 7일 이상 건조한 뒤 침적(담수) — 이전 침적 시 백악화·탈색·부풀음 발생"
+        ],
+        "warn": [
+          "자체 재도장 불가 — 슈퍼폭시370 위 겹도장 비추천",
+          "에어리스 스프레이 비추천 — 도막에 핀홀·버블 다발",
+          "혼합비(1.8:1 부피비) 준수, 혼합 도료는 가사시간(20℃ 6시간) 이내 사용 완료",
+          "비오는 날·습도 85% 이상·기온 5℃ 이하 도장 금지",
+          "방수처리가 끝난 침수설비 도장 시 층간 박리 우려 — 부착관계 확인 후 시공",
+          "보수도장은 샌드페이퍼 전면 처리 후 슈퍼폭시1000을 하도로 적용한 뒤 도장",
+          "동일 제품·색상·LOT라도 조건이 다르면 이색현상 발생"
+        ],
+        "info": [
+          "수영장 개장 종료 후 물을 뺀 경우 도막을 검은 비닐 등으로 덮어 보호하면 도막 수명 연장",
+          "상온(5~35℃) 건냉암소에 밀폐·직립 보관",
+          "폐도료는 환경부 지정 폐기물처리업체를 통해 폐기"
+        ]
+      },
+      "compliance": {
+        "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+      },
+      "docs": {
+        "tech": "1tech3211181.pdf",
+        "spec_sheet": "1pntg3211181.pdf"
+      }
     }
   ]
 }
