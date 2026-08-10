@@ -327,6 +327,8 @@ a{color:var(--brand);text-decoration:none}
 .vcard.open .vcard-detail{display:block}
 .vcard.open .vcard-more .vc-chev{transform:rotate(180deg)}
 .vcard-more .vc-chev{display:inline-block;transition:transform .18s}
+.mat-concrete .vcard-title{cursor:pointer}
+.mat-concrete .vcard-title:hover{color:var(--brand-2)}
 .vcard-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13px;line-height:1.55}
 .vcard-dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
 .vcard-dl dd{margin:0;color:var(--text);font-weight:600}
@@ -477,33 +479,14 @@ a{color:var(--brand);text-decoration:none}
 .prod-link{cursor:pointer; position:relative;}
 .prod-link::after{content:"";}
 .product-chip.prod-link{text-decoration:none;}
-.branch-card li.prod-link{list-style:none; padding:7px 12px 8px; position:relative; display:inline-flex; flex-direction:column; align-items:flex-start; gap:2px; background:var(--brand-tint); border:1px solid transparent; border-radius:4px; line-height:1.3; white-space:nowrap; color:var(--brand); font-weight:600; cursor:pointer;}
+.branch-card li.prod-link{list-style:none; padding:6px 12px; position:relative; display:inline-flex; align-items:center; gap:5px; background:var(--brand-tint); border:1px solid transparent; border-radius:4px; line-height:1.3; white-space:nowrap; color:var(--brand); font-weight:600; cursor:pointer;}
 .branch-card li.prod-link::before{content:none;}
 .branch-card li.prod-link:hover{background:#DCEAE7;}
 .branch-card li.prod-link:active{background:#CFE1DD;}
 .rtable-name.prod-link:hover{filter:brightness(.96);}
 .prod-link:hover{filter:brightness(0.97);}
 .prod-link:active{transform:translateY(1px);}
-.prod-tap{display:inline-block; font-size:10.5px; font-weight:700; color:#2a7; border:1px solid #b6e3c9; background:#eafaf1; border-radius:5px; padding:0 6px; line-height:17px; vertical-align:middle; white-space:nowrap; cursor:pointer;}
-.prod-link:hover > .prod-tap{background:#dff5e8; border-color:#93d6b0;}
-
-/* ── '상세보기' 안내 배지 : 기본은 제품명 아래 줄 ── */
-.prod-link > .prod-tap{margin-top:3px;}
-.branch-card li.prod-link > .prod-tap{margin-top:1px;}
-.rtable-name.prod-link{display:block;}
-.rtable-name.prod-link > .prod-tap{display:block; width:-moz-max-content; width:max-content; margin-top:4px;}
-/* 문장 속에 섞여 있는 칩(예: 슈퍼폭시360 알루미늄)은 아래로 내리지 않고 옆에 붙인다 */
-.prod-tap-inline{display:inline-block !important; margin:0 0 0 6px !important; vertical-align:middle;}
-.prod-tap-block{display:block !important; width:-moz-max-content; width:max-content; margin:4px 0 0 !important;}
-.product-chip.prod-link:has(> .prod-tap-block){padding-bottom:7px;}
-
-/* ── 페이지 상단 이용 안내 ── */
-.usage-tip{margin:14px 0 2px; padding:13px 15px; border:1px solid #b6e3c9; background:linear-gradient(180deg,#f4fcf8,#eafaf1); border-radius:12px; display:flex; gap:11px; align-items:flex-start;}
-.usage-tip .ut-ico{font-size:19px; line-height:1.35; flex:none;}
-.usage-tip .ut-txt{font-size:13.5px; line-height:1.65; color:#1f4f3c; font-weight:600;}
-.usage-tip .ut-txt b{color:#0d3a2a;}
-.usage-tip .ut-sub{display:block; margin-top:4px; font-size:12.5px; font-weight:500; color:#3d6b58;}
-.usage-tip .prod-tap{margin:0 2px;}
+.prod-tap{display:inline-block; font-size:10.5px; font-weight:700; color:#2a7; border:1px solid #b6e3c9; background:#eafaf1; border-radius:5px; padding:0 5px; line-height:16px; vertical-align:middle;}
 
 /* ── 제품 상세 팝업(모달) ── */
 #prodModal{position:fixed; inset:0; z-index:1000; display:none;}
@@ -719,15 +702,6 @@ a{color:var(--brand);text-decoration:none}
   <a href="javascript:void(0)" onclick="goTo('floor')" class="nav-floor">🏭 실내방진(에폭시)</a>
 </div>
 
-<!-- 이용 안내 : 제품명 클릭 = 상세 -->
-<div class="usage-tip">
-  <span class="ut-ico">👆</span>
-  <span class="ut-txt">
-    <b>제품명 또는 <span class="prod-tap">상세보기 ›</span> 를 누르면</b> 상세 사양 · 기술자료 · 도장사양서를 볼 수 있습니다.
-    <span class="ut-sub">소요량 계산기, 상세 이미지, 시공 영상, PDF 자료도 같은 창에서 확인하실 수 있습니다.</span>
-  </span>
-</div>
-
 <!-- 증상・소재 검색 -->
 <div class="search-box">
   <div class="search-box-title">🔎 증상・소재 검색</div>
@@ -905,6 +879,9 @@ a{color:var(--brand);text-decoration:none}
           재도장 간격: 25℃ 기준 <b>3시간 이후</b><br>
           이론도포면적: 약 7~10㎡/ℓ (소지 상태에 따라 상이)
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('수성바인다200')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
 
         <span class="product-chip chip-primer" style="margin-top:6px; display:inline-block;">아이생각 고점도 믹싱</span>
         <div style="margin:7px 0; font-size:13.5px; color:var(--muted);">
@@ -912,6 +889,9 @@ a{color:var(--brand);text-decoration:none}
           <span class="hi-blue">물 3 : 고점도믹싱 1</span> 비율로 희석 후 사용<br>
           재도장 간격: 25℃ 기준 <b>3시간 이후</b><br>
           이론도포면적: 약 5~8㎡/ℓ (희석 후 기준)
+        </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('아이생각 고점도 믹싱')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
       </div>
     </div>
@@ -932,10 +912,8 @@ a{color:var(--brand);text-decoration:none}
           건조(25℃): 지촉 1시간 · 상도가능 1일 · 완전건조 7일<br>
           쵸킹이 심하면 <b>수성바인다200</b> 하도 후 충전
         </div>
-
-        <div class="doc-list" style="margin-top:11px;">
-          <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3051579.pdf','아이생각 수성탄성씰 제품안내서')">📄 기술자료</button>
-          <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3051579.pdf','아이생각 수성탄성씰 도장사양서')">📐 도장사양서</button>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('아이생각 수성탄성씰')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
       </div>
     </div>
@@ -1085,17 +1063,6 @@ a{color:var(--brand);text-decoration:none}
           </div>
         </div>
 
-        <div style="margin:14px 0 6px; font-size:12.5px; font-weight:800; color:var(--muted);">📋 유광 요약표</div>
-        <table class="recoat-table">
-          <tr><th>항목</th><th>수성크리어PLUS 유광 (실내)</th><th>외부용 유광</th></tr>
-          <tr><td>적용 소지</td><td>다채무늬 도료 · 수성 내부도료</td><td>드라이비트 · 스톤계 도료 · 외부벽화</td></tr>
-          <tr><td>이론도포면적</td><td>16.5㎡/L</td><td>13.79㎡/L</td></tr>
-          <tr><td>도장횟수 · 도막두께</td><td>1~2회 · 20㎛</td><td>1~2회 · 20㎛</td></tr>
-          <tr><td>희석</td><td>물 10% 이내</td><td>물 10% 이내</td></tr>
-          <tr><td>재도장간격 (25℃)</td><td>3시간 이후</td><td>3시간 이후</td></tr>
-          <tr><td>포장단위</td><td>18L · 4L</td><td>18L · 4L</td></tr>
-        </table>
-
         <!-- ── 무광 계열 ── -->
         <div style="margin:20px 0 8px; font-size:13px; font-weight:800; color:var(--water);">🌫 무광 계열</div>
         <div class="vcard-list">
@@ -1176,17 +1143,6 @@ a{color:var(--brand);text-decoration:none}
           </div>
         </div>
 
-        <div style="margin:14px 0 6px; font-size:12.5px; font-weight:800; color:var(--muted);">📋 무광 요약표</div>
-        <table class="recoat-table">
-          <tr><th>항목</th><th>수성크리어PLUS 무광 (실내)</th><th>외부용 무광</th></tr>
-          <tr><td>적용 소지</td><td>다채무늬 · 일반수성 내부도료</td><td>드라이비트 · 스톤계 도료 · 외부벽화</td></tr>
-          <tr><td>이론도포면적</td><td>15㎡/L</td><td>12.21㎡/L</td></tr>
-          <tr><td>도장횟수 · 도막두께</td><td>1~2회 · 20㎛</td><td>1~2회 · 20㎛</td></tr>
-          <tr><td>희석</td><td>물 10% 이내</td><td>물 10% 이내</td></tr>
-          <tr><td>재도장간격 (25℃)</td><td>3시간 이후</td><td>3시간 이후</td></tr>
-          <tr><td>포장단위</td><td>18L · 4L</td><td>18L · 4L</td></tr>
-        </table>
-
         <div class="info-box">
           💡 <b>유광 vs 무광 선택 기준</b><br>
           유광 — 광택감을 살려 깔끔하고 입체감 있는 마감을 원할 때<br>
@@ -1233,6 +1189,9 @@ a{color:var(--brand);text-decoration:none}
           희석: 물 10% 이내<br>
           재도장 간격: 25℃ 기준 <b>3시간 이후</b> 상도 도장 가능<br>
           이론도포면적: 12.05㎡/L (건조도막두께 30㎛ 기준)
+        </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('파워젯소')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
       </div>
     </div>
@@ -1301,6 +1260,9 @@ a{color:var(--brand);text-decoration:none}
           재도장 간격: 25℃ 기준 <b>3시간 이후</b> 상도 도장 가능<br>
           이론도포면적: 12.05㎡/L (건조도막두께 30㎛ 기준)
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('파워젯소')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
       </div>
     </div>
 
@@ -1368,6 +1330,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">에나멜신나 30% 이내</span></div>
               <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">20℃ 기준 12시간 이후</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('방청프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">에나멜속건프라이머</div>
@@ -1375,6 +1340,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">외부 철재 시설·기구 (속건 방청)</span></div>
               <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">EN신나3000 10% 이내</span></div>
               <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">25℃ 기준 6시간 이후</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('에나멜속건프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
           <div class="rtable-row">
@@ -1384,6 +1352,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">신나395 15% 이내</span></div>
               <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">25℃ 기준 16시간 이후</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('워시프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">스피폭시FD 프라이머</div>
@@ -1391,6 +1362,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">철재 · 비철재 · 스텐 · FRP 범용</span></div>
               <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">신나395 10% 이내</span></div>
               <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">25℃ 기준 6시간~3일 이내</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('스피폭시FD 프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
         </div>
@@ -1429,7 +1403,7 @@ a{color:var(--brand);text-decoration:none}
 
         <div class="star-box">
           ★ 에나멜 도장 위에 우레탄 도장을 원하는 경우<br>
-          → <span class="product-chip chip-acc" data-notap="1">슈퍼폭시360 알루미늄</span>을 실러로 도장 후 우레탄 도장 가능 <span class="prod-tap prod-tap-inline" role="button" tabindex="0" onclick="event.stopPropagation();openProduct('슈퍼폭시360 알루미늄')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProduct('슈퍼폭시360 알루미늄');}">상세보기 ›</span>
+          → <span class="product-chip chip-acc">슈퍼폭시360 알루미늄</span>을 실러로 도장 후 우레탄 도장 가능 <button type="button" class="vcard-more" style="margin-left:6px; vertical-align:middle;" onclick="openProduct('슈퍼폭시360 알루미늄')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
         <div class="danger-box">
           ★ 약한 페인트 위에 강한 신나를 사용하는 페인트 도장 시<br>
@@ -1451,6 +1425,9 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>재도장 (25℃)</strong><span class="val">9시간 이후</span></div>
           <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 7㎡/ℓ</span></div>
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('777에나멜')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
 
         <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">매직탄</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수</span></div>
         <div class="spec-grid">
@@ -1460,6 +1437,9 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>희석</strong><span class="val">유니올신나 30% 이내</span></div>
           <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 7~8㎡/ℓ (소지 상태에 따라 상이)</span></div>
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('매직탄')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
 
         <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">스피롤탄</span><span class="product-chip chip-acc">스피롤탄 S형</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수 (S형은 스프레이 전용)</span></div>
         <div class="spec-grid">
@@ -1468,6 +1448,10 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>재도장 (25℃)</strong><span class="val">6시간 이상</span></div>
           <div class="spec-item"><strong>희석</strong><span class="val">유니올신나 20% 이내</span></div>
           <div class="spec-item full"><strong>이론도포면적</strong><span class="val">약 6~9㎡/ℓ (소지 상태에 따라 상이)</span></div>
+        </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('스피롤탄')">스피롤탄 상세 보기 <span class="vc-chev">▾</span></button>
+          <button type="button" class="vcard-more" onclick="openProduct('스피롤탄 S형')">스피롤탄 S형 상세 보기 <span class="vc-chev">▾</span></button>
         </div>
 
         <div class="warn-box" style="margin-top:10px;">
@@ -1480,6 +1464,9 @@ a{color:var(--brand);text-decoration:none}
           <div style="margin-top:7px; font-size:13.5px; color:var(--muted);">
             수성 제품이나 유성 도막 위 도장이 가능하게 설계된 친환경 수성페인트<br>
             <span style="color:var(--warn); font-weight:600;">(단 부착성 이상 유무 사전점검 필요)</span>
+          </div>
+          <div class="vcard-actions" style="margin-top:8px;">
+            <button type="button" class="vcard-more" onclick="openProduct('아이럭스 올코팅')">상세 보기 <span class="vc-chev">▾</span></button>
           </div>
         </div>
 
@@ -1529,6 +1516,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">13.11㎡/L (20㎛ · 투명 기준)</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">3.5L · 0.4L</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('아이생각수성스테인')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">월드스테인마스터</div>
@@ -1538,6 +1528,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">3시간 이상</span></div>
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">8.92㎡/L (40㎛ 기준)</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">3.5L · 16L</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('월드스테인마스터')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
           </div>
@@ -1556,6 +1549,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">6.89~7.5㎡/L (60㎛ 기준)</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L · 18L</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('777에나멜')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">LOV HS락카</div>
@@ -1565,6 +1561,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">1~2시간</span></div>
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">11.83㎡/L (30㎛ 기준)</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('LOV HS락카')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
           </div>
@@ -1582,6 +1581,9 @@ a{color:var(--brand);text-decoration:none}
                 <div class="rtable-field full"><span class="rf-label">이론도포면적</span><span class="rf-val">8.78㎡/L</span></div>
                 <div class="rtable-field full"><span class="rf-label">포장단위</span><span class="rf-val">18L(16L) · 4L(3.5L) · 0.9L(0.9L)</span></div>
               </div>
+              <div class="vcard-actions" style="margin-top:10px;">
+                <button type="button" class="vcard-more" onclick="openProduct('아이생각 수성우드바니시')">상세 보기 <span class="vc-chev">▾</span></button>
+              </div>
             </div>
           </div>
           <div style="margin-top:10px;">
@@ -1596,6 +1598,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">유광 13.0㎡/L · 무광 18.0㎡/L</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('40바루스파')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">우레탄바니시</div>
@@ -1606,6 +1611,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">14.3㎡/L</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 4L</span></div>
             </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('우레탄바니시')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
           </div>
           <div class="rtable-row">
             <div class="rtable-name">우레탄멕기스 3000</div>
@@ -1615,6 +1623,9 @@ a{color:var(--brand);text-decoration:none}
               <div class="rtable-field"><span class="rf-label">재도장 (25℃)</span><span class="rf-val time">6시간 이후</span></div>
               <div class="rtable-field"><span class="rf-label">이론도포면적</span><span class="rf-val">12.3㎡/L</span></div>
               <div class="rtable-field"><span class="rf-label">포장단위</span><span class="rf-val">1L · 2L</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('우레탄멕기스 3000')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
           </div>
@@ -1744,6 +1755,9 @@ a{color:var(--brand);text-decoration:none}
         </div>
 
         <div data-product="ilux-condensation-stop-diatomite-white" data-render="spec"></div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('아이럭스결로스탑 규조토 백색')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
       </div>
     </div>
 </div>
@@ -1999,6 +2013,9 @@ a{color:var(--brand);text-decoration:none}
           타 도료와 혼합 사용 금지. 동일 LOT·동일 도장용구로 작업해야 이색현상을 줄일 수 있습니다.
         </div>
         <div data-product="ksm6020-type4-acrylic" data-render="docs"></div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('KSM 6020 4종 아크릴도료')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
       </div>
     </div>
 
@@ -2072,6 +2089,9 @@ a{color:var(--brand);text-decoration:none}
           아크릴 수지를 전색제로 한 1액형. 아스팔트면·시멘트 노면에 부착력이 뛰어나고 내마모성이 우수하며 내후성·내충격성·내수성·내알칼리성이 좋습니다.<br>
           <b>별도의 하도가 필요 없습니다.</b> 도구는 붓·로라·스프레이 모두 가능.
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('KSM6080 1종 상온건조형 노면표지용도료')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
         <div data-product="ksm6080-type1-air-drying-traffic-paint" data-render="spec"></div>
         <div class="info-box">
           💡 건조가 빨라 도장 후 차량 통과 대기시간이 짧은 것이 이 제품의 가장 큰 장점입니다. 25℃ 기준 20분이면 손에 묻지 않습니다.
@@ -2104,80 +2124,7 @@ a{color:var(--brand);text-decoration:none}
       </div>
     </div>
 
-    <div class="step-arrow">↓ 현장 주의사항</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">6</span><span class="step-label">이건 꼭 확인하세요</span><span class="step-badge badge-prep">체크</span></div>
-      <div class="step-content">
-        <div class="danger-box">
-          ⚠️ <b>실내 시멘트면의 바닥재용으로 사용 금지</b><br>
-          차선·표시선 전용입니다. 실내 바닥 전면 도장에는 사용하지 마십시오.<br>
-          → 실내 바닥 전면은 <b>에포코트(에폭시)</b> 계열로 안내하세요.
-        </div>
-        <div class="danger-box">
-          ⚠️ <b>밀폐된 장소에서 절대 도장 금지</b><br>
-          인화성 제품입니다. 환기가 부족하면 질식·화재 위험이 있으므로 강제 배기하거나 충분히 환기하며 작업해야 합니다.<br>
-          피도면 온도가 높거나 습도가 낮은 날은 붓·로라 작업 시 정전기·스파크로 화재 위험이 있으니, 기온이 낮은 아침이나 늦은 오후에 작업하고 화재 위험성이 낮은 재질의 도장기구를 사용하십시오.
-        </div>
-        <div class="warn-box">
-          ⚠ <b>후도막 도장 금지</b> — 한 번에 두껍게 올리면 도막 내부 용제가 휘발되지 못해 물성이 저하되고 <b>바퀴자국·발자국</b>이 남습니다.<br>
-          ⚠ <b>과도한 희석 금지</b> — 5%를 넘기면 은폐력·살오름성·도막강도가 모두 떨어집니다.<br>
-          ⚠ <b>심한 균열이 있는 노면에는 도장하지 마십시오.</b><br>
-          ⚠ <b>에폭시계 도료에 비해 내마모성이 떨어집니다.</b> 하중·마모가 심한 구간은 사전에 안내가 필요합니다.<br>
-          ⚠ <b>구도막 위 보수 도장</b>은 사전에 시험도장 후 부착력 등 이상이 없을 때만 진행하십시오.<br>
-          ⚠ <b>타 도료와 혼합 금지 · 가열 금지.</b><br>
-          ⚠ 마스킹 테이프로 도장 이외 지역의 오염을 방지하십시오.<br>
-          ⚠ <b>작업 후 모든 도장기구는 지정 세척제로 세척</b>하십시오.<br>
-          ⚠ <b>개봉 후 남은 잔량은 건조피막·굳음 현상이 발생</b>하므로 즉시 전량 사용하십시오.
-        </div>
-        <div class="info-box">
-          💡 <b>신축·거친 콘크리트 소지면이나 기포꽈리 우려가 있는 곳</b>은 <b>아크릴 플로아코트</b>를 1회 도장해 기공을 막은 뒤, 재도장 간격을 지켜 도장하십시오.
-        </div>
-        <div class="info-box">
-          💡 동일 제품·동일 색상·동일 Lot라도 희석비·도장기구·도장방법이 다르면 이색현상이 발생합니다. 같은 현장은 조건을 통일해서 작업하세요.
-        </div>
       </div>
-    </div>
-
-    <div class="step-arrow">↓ 안전 · 보관</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">7</span><span class="step-label">취급 · 보관 · 폐기</span><span class="step-badge badge-prep">안전</span></div>
-      <div class="step-content">
-        <div class="danger-box">
-          ⚠️ <b>보호장비 착용</b><br>
-          작업 중에는 방독마스크·보호장갑·보호안경을 착용해 도료의 피부 접촉과 냄새 흡입을 피하십시오.<br>
-          · 눈·피부에 접촉된 경우 흐르는 물에 충분히 씻어내고 전문의의 진료를 받으십시오.<br>
-          · 흡입·섭취한 경우 용기 측면의 산업안전보건법 경고표기에 따라 응급조치 후 즉시 전문의의 진료를 받으십시오.
-        </div>
-        <div class="danger-box">
-          ⚠️ <b>자연발화 위험</b><br>
-          도료가 묻은 헝겊 등을 가연성 물질과 함께 보관하면 자연발화 위험이 있습니다.<br>
-          → 반드시 <b>불연성 용기</b>에 담아 폐기하십시오.
-        </div>
-        <div class="warn-box">
-          ⚠ <b>보관</b> — 인화성 물질입니다. 직사광선과 화기를 피해 상온(5~35℃)의 건냉암소에 보관하고, 용기는 반드시 밀폐하여 <b>주입구가 상단을 향하도록 세워서</b> 보관하십시오.<br>
-          ⚠ <b>유아·어린이의 손이 닿지 않는 곳</b>에 보관하고, 유아·아동용 용구나 식품저장용기 등에는 절대 도장하지 마십시오.<br>
-          ⚠ <b>용도 이외의 사용을 금합니다.</b><br>
-          ⚠ <b>폐도료</b>는 환경부에서 지정한 폐기물처리업체를 통해 폐기하십시오.<br>
-          ⚠ 화학제품이므로 장기간 보관 시 변질될 수 있습니다. <b>유효기간(12개월) 내에 사용</b>하고, 경과한 제품은 고객센터 확인 후 사용하십시오.
-        </div>
-        <div class="info-box">
-          💡 기타 문의는 삼화페인트 고객센터 또는 홈페이지의 물질안전보건자료(GHS-MSDS)·기술자료·도장사양서를 참조하세요.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 자료</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">8</span><span class="step-label">공식 자료</span><span class="step-badge badge-ep">PDF</span></div>
-      <div class="step-content">
-        <div data-product="ksm6080-type1-air-drying-traffic-paint" data-render="docs"></div>
-      </div>
-    </div>
-
-  </div>
 </div>
 
 <!-- ══ 11. 내화도료 (철골 보·기둥) ══ -->
@@ -4690,41 +4637,6 @@ function toggleVCard(btn){
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
-/* 제품명 옆/아래에 '상세보기 ›' 안내 배지를 자동으로 붙인다.
-   - 기본: 제품명 아래 줄에 표시
-   - 문장 속에 섞여 있는 칩(INLINE_TAP_NAMES): 같은 줄 오른쪽에 표시 */
-var INLINE_TAP_NAMES = ['슈퍼폭시360 알루미늄', '슈퍼폭시360알루미늄'];
-
-/* 요소 바로 옆에 (공백·화살표 기호를 뺀) 실제 글자가 붙어 있는지 */
-function hasAdjacentText(node, dir){
-  while (node && node.nodeType === 3){
-    var t = (node.nodeValue || '').replace(/[\s·→▶★⚠💡]/g, '');
-    if (t.length > 0) return true;
-    node = (dir < 0) ? node.previousSibling : node.nextSibling;
-  }
-  return false;
-}
-
-function addTapBadge(el){
-  if (!el || el.querySelector('.prod-tap')) return;             // 이미 있음
-  if (el.getAttribute('data-notap') !== null) return;           // 문장 끝에 따로 배지를 둔 경우
-  var name = el.getAttribute('data-prod') || '';
-  var b = document.createElement('span');
-  b.className = 'prod-tap';
-  b.textContent = '상세보기 ›';
-  b.setAttribute('aria-hidden', 'true');
-  var inline = INLINE_TAP_NAMES.indexOf(name) !== -1;
-
-  /* 칩이 문장 한가운데에 있으면(앞뒤에 바로 붙은 글자가 있으면) 같은 줄에,
-     그 외에는 제품명 아래 줄에 배지를 붙인다 */
-  if (!inline && el.classList.contains('product-chip')){
-    inline = hasAdjacentText(el.previousSibling, -1) || hasAdjacentText(el.nextSibling, 1);
-    if (!inline) b.classList.add('prod-tap-block');
-  }
-  if (inline) b.classList.add('prod-tap-inline');
-  el.appendChild(b);
-}
-
 function enhanceProductLinks(){
   var sels = ['.product-chip', '.branch-card li', '.rtable-name'];
   sels.forEach(function(sel){
@@ -4737,8 +4649,6 @@ function enhanceProductLinks(){
       el.classList.add('prod-link');
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
-      el.setAttribute('aria-label', name + ' 상세보기');
-      addTapBadge(el);
     });
   });
 }
@@ -4747,6 +4657,15 @@ function enhanceProductLinks(){
 document.addEventListener('click', function(e){
   var el = e.target.closest ? e.target.closest('.prod-link') : null;
   if (el){ e.preventDefault(); openProduct(el.getAttribute('data-prod')); }
+});
+/* 콘크리트 섹션 vcard: 제품명 터치로도 상세 열기 */
+document.addEventListener('click', function(e){
+  if (!e.target.closest) return;
+  var title = e.target.closest('.vcard-title');
+  if (!title || !title.closest('.mat-concrete')) return;
+  var card = title.closest('.vcard'); if (!card) return;
+  var btn = card.querySelector('.vcard-more');
+  if (btn) toggleVCard(btn);
 });
 document.addEventListener('keydown', function(e){
   if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('prod-link')){
