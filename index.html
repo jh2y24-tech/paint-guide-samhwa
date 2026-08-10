@@ -327,6 +327,8 @@ a{color:var(--brand);text-decoration:none}
 .vcard.open .vcard-detail{display:block}
 .vcard.open .vcard-more .vc-chev{transform:rotate(180deg)}
 .vcard-more .vc-chev{display:inline-block;transition:transform .18s}
+.mat-concrete .vcard-title{cursor:pointer}
+.mat-concrete .vcard-title:hover{color:var(--brand-2)}
 .vcard-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13px;line-height:1.55}
 .vcard-dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
 .vcard-dl dd{margin:0;color:var(--text);font-weight:600}
@@ -877,6 +879,9 @@ a{color:var(--brand);text-decoration:none}
           재도장 간격: 25℃ 기준 <b>3시간 이후</b><br>
           이론도포면적: 약 7~10㎡/ℓ (소지 상태에 따라 상이)
         </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('수성바인다200')">상세 보기 <span class="vc-chev">▾</span></button>
+        </div>
 
         <span class="product-chip chip-primer" style="margin-top:6px; display:inline-block;">아이생각 고점도 믹싱</span>
         <div style="margin:7px 0; font-size:13.5px; color:var(--muted);">
@@ -884,6 +889,9 @@ a{color:var(--brand);text-decoration:none}
           <span class="hi-blue">물 3 : 고점도믹싱 1</span> 비율로 희석 후 사용<br>
           재도장 간격: 25℃ 기준 <b>3시간 이후</b><br>
           이론도포면적: 약 5~8㎡/ℓ (희석 후 기준)
+        </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('아이생각 고점도 믹싱')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
       </div>
     </div>
@@ -903,6 +911,9 @@ a{color:var(--brand);text-decoration:none}
           포장단위: 20kg · 5kg<br>
           건조(25℃): 지촉 1시간 · 상도가능 1일 · 완전건조 7일<br>
           쵸킹이 심하면 <b>수성바인다200</b> 하도 후 충전
+        </div>
+        <div class="vcard-actions" style="margin-top:8px;">
+          <button type="button" class="vcard-more" onclick="openProduct('아이생각 수성탄성씰')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
       </div>
     </div>
@@ -4655,6 +4666,15 @@ function enhanceProductLinks(){
 document.addEventListener('click', function(e){
   var el = e.target.closest ? e.target.closest('.prod-link') : null;
   if (el){ e.preventDefault(); openProduct(el.getAttribute('data-prod')); }
+});
+/* 콘크리트 섹션 vcard: 제품명 터치로도 상세 열기 */
+document.addEventListener('click', function(e){
+  if (!e.target.closest) return;
+  var title = e.target.closest('.vcard-title');
+  if (!title || !title.closest('.mat-concrete')) return;
+  var card = title.closest('.vcard'); if (!card) return;
+  var btn = card.querySelector('.vcard-more');
+  if (btn) toggleVCard(btn);
 });
 document.addEventListener('keydown', function(e){
   if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('prod-link')){
