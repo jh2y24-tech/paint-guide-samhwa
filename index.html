@@ -4609,20 +4609,6 @@ function openProduct(name){
    전부 실패하면 갤러리 블록 자체를 안내문으로 대체 — 파일명·경로 오류를 조용히 넘기지 않기 위해
    콘솔에 실패한 src 를 남긴다. */
 function pgImgFail(el){
-  /* 확장자·대소문자 차이는 자동으로 재시도한다 (jpg/JPG/jpeg/png/PNG/gif) */
-  var exts = ['.jpg','.JPG','.jpeg','.JPEG','.png','.PNG','.gif','.GIF'];
-  var tried = parseInt(el.getAttribute('data-try') || '0', 10);
-  var base  = el.getAttribute('data-base');
-  if (base === null){
-    var cur = el.getAttribute('src') || '';
-    base = cur.replace(/\.[a-z]+$/i, '');
-    el.setAttribute('data-base', base);
-  }
-  if (tried < exts.length){
-    el.setAttribute('data-try', tried + 1);
-    el.src = base + exts[tried];
-    return;
-  }
   var fig = el.closest ? el.closest('figure') : null;
   if (fig) fig.style.display = 'none';
   try { console.warn('[상세이미지 로드 실패] ' + el.getAttribute('src')); } catch(e){}
@@ -4768,7 +4754,7 @@ var CALC_STATE = {};
 function calcEnsureCatalog(){
   if (window.PRODUCTS_CATALOG) return Promise.resolve(window.PRODUCTS_CATALOG);
   if (window.__calcCatalogPromise) return window.__calcCatalogPromise;
-  window.__calcCatalogPromise = fetch('products.json?v=' + Date.now(), { cache:'no-store' })
+  window.__calcCatalogPromise = fetch('products.json?v=4', { cache:'no-cache' })
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(db){ window.PRODUCTS_CATALOG = db; return db; });
   return window.__calcCatalogPromise;

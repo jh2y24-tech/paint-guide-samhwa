@@ -954,8 +954,8 @@
       },
       "aliases": [],
       "images": {
-        "dir": "img/onecoat/",
-        "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 페이지 순서대로 나열.",
+        "dir": "img/",
+        "note": "상품 상세 이미지. 이미지는 img/ 폴더에 평면 배치(하위 폴더 없음). 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 페이지 순서대로 나열.",
         "files": [
           {
             "src": "onecoat_01.jpg",
