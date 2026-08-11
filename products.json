@@ -1063,6 +1063,15 @@
         ]
       },
       "compliance": {},
+      "images": {
+        "dir": "",
+        "note": "상세 이미지(긴 이미지 1장). 파일명 ASCII·소문자 유지. 깃허브 루트에 그대로 업로드 (폴더 없음).",
+        "files": [
+          {
+            "src": "homestar-pastel-01.jpg"
+          }
+        ]
+      },
       "docs": {
         "tech": null,
         "spec_sheet": "1pntg3050921.pdf",
