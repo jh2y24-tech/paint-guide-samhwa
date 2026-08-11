@@ -680,6 +680,13 @@ a{color:var(--brand);text-decoration:none}
 @media (max-width:479px){
   .mat-title{background-image:none !important}
 }
+
+  .pm-gallery{margin:14px 0;border:1px solid #e3e6ea;border-radius:12px;overflow:hidden;background:#fff}
+  .pm-gallery>summary{cursor:pointer;list-style:none;padding:12px 14px;font-weight:700;font-size:14px;background:#f4f6f9}
+  .pm-gallery>summary::-webkit-details-marker{display:none}
+  .pm-gallery[open]>summary{border-bottom:1px solid #e3e6ea}
+  .pm-gallery-body{display:flex;flex-direction:column;padding:0}
+  .pm-gallery-body img{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
@@ -3959,6 +3966,21 @@ Object.assign(window.PRODUCT_DB, {
       { src: "video/vid3052141_1.mp4", caption: "일반 페인트 1회칠" },
       { src: "video/vid3052141_2.mp4", caption: "아이생각 원코트 1회 도장 — 은폐율 99%" }
     ],
+    gallery: [
+      "img/onecoat/onecoat_01.jpg",
+      "img/onecoat/onecoat_02.jpg",
+      "img/onecoat/onecoat_03.jpg",
+      "img/onecoat/onecoat_04.jpg",
+      "img/onecoat/onecoat_05.jpg",
+      "img/onecoat/onecoat_06.jpg",
+      "img/onecoat/onecoat_07.jpg",
+      "img/onecoat/onecoat_08.jpg",
+      "img/onecoat/onecoat_09.jpg",
+      "img/onecoat/onecoat_10.jpg",
+      "img/onecoat/onecoat_11.jpg",
+      "img/onecoat/onecoat_12.jpg",
+      "img/onecoat/onecoat_13.jpg"
+    ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3052141.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3052141.pdf" }
@@ -4582,6 +4604,15 @@ function openProduct(name){
       });
       html += '</div></div>';
     }
+    if (Array.isArray(p.gallery) && p.gallery.length){
+      html += '<details class="pm-gallery"><summary>🖼️ 제품 상세 이미지 ('+p.gallery.length+'장) — 펼쳐보기</summary><div class="pm-gallery-body">';
+      p.gallery.forEach(function(u){
+        var src = (typeof u === 'string') ? u : (u.src || '');
+        if (!src) return;
+        html += '<img src="'+src+'" alt="'+name+' 상세 이미지" loading="lazy" onerror="this.style.display=\'none\'">';
+      });
+      html += '</div></details>';
+    }
     if (Array.isArray(p.pdfs) && p.pdfs.length){
       html += '<div class="pm-field"><div class="pm-label">첨부 자료</div><div class="pm-pdfs">';
       p.pdfs.forEach(function(f){
@@ -4648,12 +4679,7 @@ function fillProductGallery(name){
     });
     h += '</div></div></div>';
     var empty = body.querySelector('.pm-empty');
-    if (empty) { body.innerHTML = h; return; }
-    /* 기술자료(첨부 자료) 블록 위에 삽입 — 없으면 맨 끝에 */
-    var anchor = null, labels = body.querySelectorAll('.pm-field .pm-label');
-    for (var i=0;i<labels.length;i++){ if (labels[i].textContent.indexOf('첨부 자료') > -1){ anchor = labels[i].closest('.pm-field'); break; } }
-    if (anchor) anchor.insertAdjacentHTML('beforebegin', h);
-    else body.insertAdjacentHTML('beforeend', h);
+    if (empty) body.innerHTML = h; else body.insertAdjacentHTML('beforeend', h);
   }).catch(function(){});
 }
 
