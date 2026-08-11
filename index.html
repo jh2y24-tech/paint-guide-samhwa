@@ -4648,7 +4648,12 @@ function fillProductGallery(name){
     });
     h += '</div></div></div>';
     var empty = body.querySelector('.pm-empty');
-    if (empty) body.innerHTML = h; else body.insertAdjacentHTML('beforeend', h);
+    if (empty) { body.innerHTML = h; return; }
+    /* 기술자료(첨부 자료) 블록 위에 삽입 — 없으면 맨 끝에 */
+    var anchor = null, labels = body.querySelectorAll('.pm-field .pm-label');
+    for (var i=0;i<labels.length;i++){ if (labels[i].textContent.indexOf('첨부 자료') > -1){ anchor = labels[i].closest('.pm-field'); break; } }
+    if (anchor) anchor.insertAdjacentHTML('beforebegin', h);
+    else body.insertAdjacentHTML('beforeend', h);
   }).catch(function(){});
 }
 

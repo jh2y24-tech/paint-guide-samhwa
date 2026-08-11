@@ -291,6 +291,13 @@
         "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소",
         "public_works_note": "관급은 견본 제출 후 감독관 승인 필요 (삼화페인트 또는 동등 이상)"
       },
+      "images": {
+        "dir": "img/ilux-condensation-stop-diatomite-white/",
+        "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 원본 그대로 업로드.",
+        "files": [
+          { "src": "01-detail.jpg", "caption": "아이럭스 결로스탑 규조토 · 제품 상세" }
+        ]
+      },
       "docs": {
         "tech": "1tech3052309.pdf",
         "spec_sheet": "1pntg3052309.pdf",
