@@ -259,6 +259,15 @@ a{color:var(--brand);text-decoration:none}
 .info-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--water) 0%,transparent 88%);pointer-events:none}
 .danger-box{position:relative;overflow:hidden;background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#A62A22;font-weight:600;margin-top:10px;line-height:1.7}
 .danger-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--danger) 0%,transparent 88%);pointer-events:none}
+.term-box{position:relative;overflow:hidden;background:var(--coated-bg);border:1px solid var(--border-2);border-top:3px solid transparent;border-radius:10px;padding:11px 14px 12px;font-size:13.5px;color:var(--text);font-weight:500;margin-top:10px;line-height:1.7}
+.term-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--coated) 0%,transparent 88%);pointer-events:none}
+.term-box .tb-head{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coated);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.term-box .tb-term{font-weight:800;color:var(--text)}
+.term-box .tb-term .tb-en{font-weight:600;color:var(--muted);font-size:12px;margin-left:4px}
+.term-box .tb-def{margin-top:4px}
+.term-box ol{margin:6px 0 0;padding-left:18px}
+.term-box ol li{margin:2px 0}
+.term-box .tb-src{display:inline-block;margin-top:9px;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--coated);text-decoration:none;border-bottom:1px solid var(--border-2)}
 /* ── 외벽 도장 안내 섹션 ── */
 .why-wrap{margin:0 0 22px}
 .why-grid{display:grid;grid-template-columns:1fr;gap:0}
@@ -2968,13 +2977,37 @@ a{color:var(--brand);text-decoration:none}
         <div class="warn-box">
           ⚠️ <b>저장기간이 6개월</b>로 짧습니다 — 재고 회전 관리 필요.<br>
           ⚠️ 도막두께 <b>1㎜ 이하</b> 시공은 평활성·소포성이 떨어집니다 — RAKE 대신 흙손을 사용하고 크래터링에 주의하세요.<br>
-          ⚠️ 물·알코올 노출 시 광택저하·변색, 저온에서는 아민브러싱·백화 동반 — <b>물청소 금지</b> (필요시 에포코트상도로 후속도장).
+          ⚠️ 물·알코올 노출 시 광택저하·변색, 저온에서는 아민블러싱·백화 동반 — <b>물청소 금지</b> (필요시 에포코트상도로 후속도장).
         </div>
         <div class="danger-box">
           ⚠️ <b>겔화 주의</b>: 혼합 후 가사시간(20℃ 25분) 내 도장 완료. 필요한 양만 혼합하세요.<br>
-          ⚠️ 비오는 날 · 습도 80% 이상 · 기온 10℃ 이하에는 도장 금지 — 건조지연·균열·부착불량·아민브러싱·백화 발생.
+          ⚠️ 비오는 날 · 습도 80% 이상 · 기온 10℃ 이하에는 도장 금지 — 건조지연·균열·부착불량·아민블러싱·백화 발생.
         </div>
         <div class="info-box">💡 기공 기포를 줄이려면 0.5~0.8㎜ 선행도장(스크랩핑) 후 20℃ 24시간 경과 뒤 잔량으로 총 두께를 맞춥니다. 하도는 에포코트하도 50㎛ 1회(0.167 L/㎡).</div>
+        <div class="term-box">
+          <div class="tb-head">📖 용어 설명</div>
+          <div class="tb-term">아민블러싱<span class="tb-en">Amine brushing</span></div>
+          <div class="tb-def">에폭시 도료에서 주로 발생하며, 도장 후 건조 시 <b>경화제(아민)가 대기 중 습기와 먼저 반응</b>하여 도막 광택이 저하되고 표면이 끈적이는 현상입니다.</div>
+          <ol>
+            <li>밤낮 기온차가 심하거나 건조가 느린 <b>겨울철</b>에 주로 발생</li>
+            <li>겨울철 <b>연료식 열풍기</b> 사용 시 발생 가능성이 높음</li>
+          </ol>
+          <a class="tb-src" href="https://spsamhwa.com/spec/dictionary/%ec%95%84%eb%af%bc%eb%b8%94%eb%9f%ac%ec%8b%b1-amine-brushing/1938" target="_blank" rel="noopener">삼화페인트 도료 용어 사전 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="yt-section">
+      <div class="yt-section-label">에포코트 하자예방법 영상</div>
+      <div class="yt-list">
+        <a class="yt-item" href="https://www.youtube.com/watch?v=SXPrFsu18sQ" target="_blank">
+          <img class="yt-thumb" src="https://img.youtube.com/vi/SXPrFsu18sQ/mqdefault.jpg" alt="에포코트 하자예방법 1" loading="lazy">
+          <div class="yt-play"><div class="yt-play-btn"></div></div>
+        </a>
+        <a class="yt-item" href="https://www.youtube.com/watch?v=PTQcbaKZMt4" target="_blank">
+          <img class="yt-thumb" src="https://img.youtube.com/vi/PTQcbaKZMt4/mqdefault.jpg" alt="에포코트 하자예방법 2" loading="lazy">
+          <div class="yt-play"><div class="yt-play-btn"></div></div>
+        </a>
       </div>
     </div>
 
@@ -3087,21 +3120,6 @@ a{color:var(--brand);text-decoration:none}
             </a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- 에폭시 영상 -->
-    <div class="yt-section">
-      <div class="yt-section-label">에폭시바닥 시공 참고영상</div>
-      <div class="yt-list">
-        <a class="yt-item" href="https://www.youtube.com/watch?v=SXPrFsu18sQ" target="_blank">
-          <img class="yt-thumb" src="https://img.youtube.com/vi/SXPrFsu18sQ/mqdefault.jpg" alt="에폭시바닥 참고영상 1" loading="lazy">
-          <div class="yt-play"><div class="yt-play-btn"></div></div>
-        </a>
-        <a class="yt-item" href="https://www.youtube.com/watch?v=PTQcbaKZMt4" target="_blank">
-          <img class="yt-thumb" src="https://img.youtube.com/vi/PTQcbaKZMt4/mqdefault.jpg" alt="에폭시바닥 참고영상 2" loading="lazy">
-          <div class="yt-play"><div class="yt-play-btn"></div></div>
-        </a>
       </div>
     </div>
 
@@ -3653,9 +3671,9 @@ Object.assign(window.PRODUCT_DB, {
     spec: "마감 유광 · 색상 투명 · 피도면 콘크리트·시멘트 몰탈 · 조성 2액형(무용제)\n부피고형분 약 97±3% · 추천 건조도막두께 1~2㎜ · 도장횟수 1회\n주제:경화제 혼합비(부피비) 3:1 · 희석제 사용하지 않음 · 세척제 에포코트1000신나\n추천소요량 약 2 L/㎡ (2.17kg/㎡, 2㎜시) — 1㎜ 1.00 L/㎡ · 1.5㎜ 1.50 L/㎡\n포장단위(실포장량) 16L(주제12L+경화제4L) · 3.5L(주제2.63L+경화제0.88L)\n저장기간 12개월 (5~38℃ 실내보관)\n경화 특성(10℃/20℃/30℃): 지촉건조 12h/8h/6h · 경화건조 48h/24h/20h · 완전건조 9일/5일/4일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일\n도장시스템 — 하도: 에포코트하도 / 에포코트 고점도 하도 / 에포코트아쿠아하도",
     cautions: [
       "1회 도장 시 도막두께 2㎜ 이하 — 초과 시 도막 내 기포 잔존 및 도료 몰림에 의한 주름 발생",
-      "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민브러싱·주름 발생 (동절기 작업성 목적 3% 내외만 허용)",
+      "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민블러싱·주름 발생 (동절기 작업성 목적 3% 내외만 허용)",
       "B부(경화제)는 투입만으로도 반응이 진행되어 겔화 — A부에 혼합 후 즉시 사용, 혼합 후 20℃ 20분 내외 온도 급상승 주의",
-      "물·알코올 노출 시 광택저하·변색 — 저온에서는 아민브러싱·백화 동반되므로 물청소 금지",
+      "물·알코올 노출 시 광택저하·변색 — 저온에서는 아민블러싱·백화 동반되므로 물청소 금지",
       "외부 적용 시 백화·황변 발생 · 내부라도 채광창이 있으면 황변 발생",
       "보일러 등 열이 가해지는 조건에서 시공 금지 — 황변 촉진 및 도막 강도 저하",
       "동절기 저온 작업 후 아민블러싱 발생 시 반드시 에포코트 상도 투명을 도장",
@@ -3673,12 +3691,12 @@ Object.assign(window.PRODUCT_DB, {
     uses: "주차장, 사무실, 식당, 병원, 무진실, 실험실 등 내부 실내 방진 바닥용 · 기계실·전기실·화학공장·제약공장·육가공공장·냉장창고 바닥",
     spec: "마감 유광 · 색상 각 색 · 피도면 콘크리트·시멘트 몰탈 · 조성 2액형(무용제)\n부피고형분 95±3% · 추천 도막두께 약 1~3㎜ · 도장횟수 1~2회\nA부:B부 혼합비(무게비) 5:1 · 세척제 에포코트1000신나\n추천소요량 1.58kg/㎡ (1㎜ 기준) — 2㎜ 3.16kg/㎡ · 3㎜ 4.74kg/㎡(사양서 일위대가)\n포장단위 16L용 (실포장량 24kg) · 저장기간 6개월 (5~35℃ 실내보관)\n경화 특성(10℃/20℃/30℃): 지촉건조 8h/5h/4h · 경화건조 48h/18h/12h · 완전건조 9일/4일/3일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일\n도장시스템 — 하도: 에포코트하도 / 에포코트 고점도 하도 / 에포코트아쿠아하도 · 상도(선택): 에포코트상도 / 에포코트아쿠아상도",
     cautions: [
-      "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민브러싱·주름 발생",
+      "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민블러싱·주름 발생",
       "저장기간이 6개월로 짧음 — 재고 관리 주의",
       "가사시간(20℃ 25분) 경과 시 겔화 — 필요한 양만 혼합",
-      "물·알코올 노출 시 광택저하·변색 — 저온에서는 아민브러싱·백화 동반되므로 물청소 금지 (필요시 에포코트상도 후속도장)",
+      "물·알코올 노출 시 광택저하·변색 — 저온에서는 아민블러싱·백화 동반되므로 물청소 금지 (필요시 에포코트상도 후속도장)",
       "외부 적용 시 백화·황변 발생 · 내부라도 채광창이 있으면 황변 발생",
-      "비오는 날·습도 80% 이상·기온 10℃ 이하 도장 금지 — 건조지연·균열·부착불량·아민브러싱·백화",
+      "비오는 날·습도 80% 이상·기온 10℃ 이하 도장 금지 — 건조지연·균열·부착불량·아민블러싱·백화",
       "도막두께 1㎜ 이하 시공은 평활성·소포성 저하 — RAKE 대신 흙손 사용, 크래터링 주의",
       "고강도 콘크리트(260 kgf/㎠ 이상)는 그라인딩 시 부착 불량 — 블라스팅 후 부착성능 확인",
       "기공 기포를 줄이기 위해 0.5~0.8㎜ 선행도장(스크랩핑) 후 20℃ 24시간 경과 뒤 잔량으로 총 3㎜ 시공"
@@ -3717,10 +3735,10 @@ Object.assign(window.PRODUCT_DB, {
       "B부 투입 후 혼합하지 않아도 반응이 진행되어 겔화 — A부에 B부 혼합 후 즉시 사용",
       "혼합 후 40분 이내(25℃) 도장 완료 — 작업가능시간 경과 시 이색·광택 소실",
       "작업 시 내부 용제인 물이 원활히 빠져나가도록 충분히 환기 — 환기 불량 시 도막결함",
-      "물·알코올 노출 시 광택저하·변색. 저온·고습에서는 아민브러싱·백화 동반",
-      "도막 완전건조 전 또는 아민브러싱 발생 구역(광택 차·끈적임·백화)에서는 물청소 자제 — 소구역 확인 후 진행",
+      "물·알코올 노출 시 광택저하·변색. 저온·고습에서는 아민블러싱·백화 동반",
+      "도막 완전건조 전 또는 아민블러싱 발생 구역(광택 차·끈적임·백화)에서는 물청소 자제 — 소구역 확인 후 진행",
       "유성로라로 도장하고 1회에 두껍게 도장 금지 (도막 Hazy · 부착력·도막강도 저하)",
-      "과희석(10% 초과) 시 색분리·경화지연·경도 저하·아민브러싱·주름·도막크랙 발생",
+      "과희석(10% 초과) 시 색분리·경화지연·경도 저하·아민블러싱·주름·도막크랙 발생",
       "동일 제품·색상·LOT라도 희석비·도장기구·도장방법이 다르면 이색현상 발생",
       "마모환경이 심한 장소는 에포코트상도 투명을 추가 도장"
     ],
