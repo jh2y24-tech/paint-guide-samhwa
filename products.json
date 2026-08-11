@@ -3447,12 +3447,30 @@
       "compliance": {
         "voc_regulation": "수도권대기환경개선 특별법 규제 만족 (수도권 사용 가능)"
       },
+      "images": {
+        "dir": "img/",
+        "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 원본 그대로 업로드. 페이지 순서대로 나열.",
+        "files": [
+          { "src": "acron-01-01.jpg", "caption": "오염 걱정 없이 공간을 깨끗하게 · 아이생각 수성아크론" },
+          { "src": "acron-01-03.jpg", "caption": "이런 공간에 추천" },
+          { "src": "acron-01-04.jpg", "caption": "오염·낙서 방지 · 주요 특징" },
+          { "src": "acron-01-05.jpg", "caption": "내·외부 현장 · 콘크리트/석고보드/시멘트몰탈" },
+          { "src": "acron-01-06.jpg", "caption": "3가지 광택 (무광·반광·유광)" },
+          { "src": "acron-01-07.jpg", "caption": "POINT 1 · 낙서 방지용 도료" },
+          { "src": "acron-01-08.jpg", "caption": "POINT 2 · 합리적인 페인트" },
+          { "src": "acron-02-01.jpg", "caption": "POINT 3 · 친환경 페인트" },
+          { "src": "acron-02-02.jpg", "caption": "시공 사례" },
+          { "src": "acron-02-03.jpg", "caption": "자주 묻는 질문 (Q&A)" },
+          { "src": "acron-02-04.jpg", "caption": "상품 상세 정보 (물성표)" },
+          { "src": "acron-02-05.jpg", "caption": "주의 사항" }
+        ]
+      },
       "docs": {
         "tech": "1tech3051788.pdf",
         "spec_sheet": "1pntg3051788.pdf",
         "tech_dated": "2023-04-18"
       },
-      "aliases": []
+      "aliases": ["수성아크론"]
     },
     {
       "id": "aisaengkag-water-borne-pro-exterior",
