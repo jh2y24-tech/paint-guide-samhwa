@@ -26,6 +26,7 @@
   --iron:#A8402A;--iron-bg:rgba(168,64,42,.08);
   --coated:#6B6076;--coated-bg:rgba(107,96,118,.08);
   --accent:#00474F;--accent-bg:rgba(0,71,79,.07);
+  --spirol:#0B66BC;--spirol-deep:#004F8C;--spirol-bg:rgba(11,102,188,.08);--spirol-bd:rgba(11,102,188,.34);
   --warn:#8A6410;--warn-bg:rgba(138,100,16,.07);
   --danger:#CB2A20;--mold:#0E876A;--mold-bg:rgba(14,135,106,.07);
   --sky:#12ABD1;--sky-bg:rgba(18,171,209,.10);--sky-deep:#0E8FB0;
@@ -181,6 +182,7 @@ a{color:var(--brand);text-decoration:none}
 .chip-primer{background:var(--primer-w-bg);color:var(--primer-w);border-color:rgba(27,126,78,.28)}
 .chip-primer-o{background:var(--primer-o-bg);color:var(--primer-o);border-color:rgba(187,73,21,.28)}
 .chip-acc{background:var(--accent-bg);color:var(--accent);border-color:rgba(0,71,79,.28)}
+.chip-spirol{background:var(--spirol-bg);color:var(--spirol-deep);border-color:var(--spirol-bd)}
 .chip-mold{background:var(--mold-bg);color:var(--mold);border-color:rgba(14,135,106,.28)}
 .chip-wp{background:var(--sky-bg);color:var(--sky);border-color:rgba(23,179,217,.32)}
 /* 방수에이스 — 제품 깡통 라벨 메인 컬러 */
@@ -352,6 +354,15 @@ a{color:var(--brand);text-decoration:none}
 .spec-item strong{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:600;margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
 .spec-item .val{font-weight:700;color:var(--text)}
 .spec-item.full{grid-column:1/-1}
+.tc-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:13px 14px;margin-bottom:10px}
+.tc-card>div:first-child{margin-top:0!important}
+.tc-card .spec-grid{margin-top:9px}
+.tc-card .spec-item{background:var(--card2);border-color:var(--border-2)}
+.tc-card .vcard-actions{margin-top:9px!important}
+.band{position:relative;overflow:hidden;border-top:3px solid transparent}
+.band::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--band,var(--accent)) 0%,transparent 88%);pointer-events:none}
+.tc-card.sp{border-color:var(--spirol-bd)}
+.tc-card.sp .vcard-more{color:var(--spirol-deep);background:var(--spirol-bg);border-color:var(--spirol-bd)}
 
 .paint-compat{background:var(--card);border-radius:11px;border:1px solid var(--border);overflow:hidden;margin-top:10px}
 .compat-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--border-2)}
@@ -1352,7 +1363,7 @@ a{color:var(--brand);text-decoration:none}
       <div class="step-header"><span class="step-num">2</span><span class="step-label">소지 유형별 프라이머 선택</span><span class="step-badge badge-primer-o">유성 프라이머</span></div>
       <div class="step-content">
         <div class="rtable">
-          <div class="rtable-row">
+          <div class="rtable-row band" style="--band:var(--primer-o);">
             <div class="rtable-name">방청프라이머</div>
             <div class="rtable-fields">
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">일반 철재</span></div>
@@ -1363,7 +1374,7 @@ a{color:var(--brand);text-decoration:none}
               <button type="button" class="vcard-more" onclick="openProduct('방청프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
-          <div class="rtable-row">
+          <div class="rtable-row band" style="--band:var(--primer-o);">
             <div class="rtable-name">에나멜속건프라이머</div>
             <div class="rtable-fields">
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">외부 철재 시설·기구 (속건 방청)</span></div>
@@ -1374,7 +1385,7 @@ a{color:var(--brand);text-decoration:none}
               <button type="button" class="vcard-more" onclick="openProduct('에나멜속건프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
-          <div class="rtable-row">
+          <div class="rtable-row band" style="--band:var(--primer-o);">
             <div class="rtable-name">워시프라이머</div>
             <div class="rtable-fields">
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">아연도금 · 비철재</span></div>
@@ -1385,7 +1396,7 @@ a{color:var(--brand);text-decoration:none}
               <button type="button" class="vcard-more" onclick="openProduct('워시프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
-          <div class="rtable-row">
+          <div class="rtable-row band" style="--band:var(--primer-o);">
             <div class="rtable-name">스피폭시FD 프라이머</div>
             <div class="rtable-fields">
               <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">철재 · 비철재 · 스텐 · FRP 범용</span></div>
@@ -1448,6 +1459,7 @@ a{color:var(--brand);text-decoration:none}
       <div class="step-header"><span class="step-num">4</span><span class="step-label">상도 선택</span><span class="step-badge badge-paint-o">상도</span></div>
       <div class="step-content">
 
+        <div class="tc-card band" style="--band:var(--oil);">
         <div style="margin-bottom:8px;"><span class="product-chip chip-oil">777에나멜</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>희석</strong><span class="val">에나멜신나 50% 이내</span></div>
@@ -1457,7 +1469,9 @@ a{color:var(--brand);text-decoration:none}
         <div class="vcard-actions" style="margin-top:8px;">
           <button type="button" class="vcard-more" onclick="openProduct('777에나멜')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
+        </div>
 
+        <div class="tc-card band" style="--band:var(--accent);">
         <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">매직탄</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제</strong><span class="val">3 : 1</span></div>
@@ -1469,8 +1483,10 @@ a{color:var(--brand);text-decoration:none}
         <div class="vcard-actions" style="margin-top:8px;">
           <button type="button" class="vcard-more" onclick="openProduct('매직탄')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
+        </div>
 
-        <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-acc">스피롤탄</span><span class="product-chip chip-acc">스피롤탄 S형</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수 (S형은 스프레이 전용)</span></div>
+        <div class="tc-card band sp" style="--band:var(--spirol); border-color:var(--spirol-bd);">
+        <div style="margin:14px 0 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span class="product-chip chip-spirol">스피롤탄</span><span class="product-chip chip-spirol">스피롤탄 S형</span><span style="font-size:12px; color:var(--muted); font-weight:600;">우레탄 · 내구성 우수 (S형은 스프레이 전용)</span></div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제</strong><span class="val">5 : 1</span></div>
           <div class="spec-item"><strong>가사시간 (25℃)</strong><span class="val">6시간</span></div>
@@ -1482,14 +1498,15 @@ a{color:var(--brand);text-decoration:none}
           <button type="button" class="vcard-more" onclick="openProduct('스피롤탄')">스피롤탄 상세 보기 <span class="vc-chev">▾</span></button>
           <button type="button" class="vcard-more" onclick="openProduct('스피롤탄 S형')">스피롤탄 S형 상세 보기 <span class="vc-chev">▾</span></button>
         </div>
+        </div>
 
         <div class="warn-box" style="margin-top:10px;">
           ⚠️ 2액형 우레탄(매직탄·스피롤탄)은 주제·경화제 혼합 비율 반드시 준수.<br>
           잘못된 신나(락카신나·에폭시신나 등) 사용 시 경화 불량 발생.
         </div>
 
-        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">
-          <span class="product-chip chip-water">아이럭스 올코팅</span>
+        <div class="tc-card band" style="--band:var(--water); margin-top:12px;">
+          <div style="margin-bottom:0;"><span class="product-chip chip-water">아이럭스 올코팅</span></div>
           <div style="margin-top:7px; font-size:13.5px; color:var(--muted);">
             수성 제품이나 유성 도막 위 도장이 가능하게 설계된 친환경 수성페인트<br>
             <span style="color:var(--warn); font-weight:600;">(단 부착성 이상 유무 사전점검 필요)</span>
