@@ -295,7 +295,10 @@
         "dir": "img/",
         "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 원본 그대로 업로드.",
         "files": [
-          { "src": "ilux-condensation-stop-diatomite-detail.jpg", "caption": "아이럭스 결로스탑 규조토 · 제품 상세" }
+          {
+            "src": "ilux-condensation-stop-diatomite-detail.jpg",
+            "caption": "아이럭스 결로스탑 규조토 · 제품 상세"
+          }
         ]
       },
       "docs": {
@@ -949,7 +952,66 @@
         "spec_sheet": "1pntg3052141.pdf",
         "tech_dated": "2025-05-12"
       },
-      "aliases": []
+      "aliases": [],
+      "images": {
+        "dir": "img/onecoat/",
+        "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 페이지 순서대로 나열.",
+        "files": [
+          {
+            "src": "onecoat_01.jpg",
+            "caption": "단 한 번의 페인팅 · 99% 높은 은폐력"
+          },
+          {
+            "src": "onecoat_02.jpg",
+            "caption": "1회만 도장해도 OK · 내·외부도 한 번에"
+          },
+          {
+            "src": "onecoat_03.jpg",
+            "caption": "높은 효율성·비용 절약 · 6가지 특징"
+          },
+          {
+            "src": "onecoat_04.jpg",
+            "caption": "내·외부 겸용 수성도료 — 석고보드·콘크리트·시멘트 몰탈"
+          },
+          {
+            "src": "onecoat_05.jpg",
+            "caption": "POINT 1 · 강력한 은폐력 (은폐율 99% · KTR)"
+          },
+          {
+            "src": "onecoat_06.jpg",
+            "caption": "POINT 2 · 가성비 페인트 (1회 도장으로 공정 간소화)"
+          },
+          {
+            "src": "onecoat_07.jpg",
+            "caption": "POINT 3 · 곰팡이 방지 효과 (FITI 시험연구원)"
+          },
+          {
+            "src": "onecoat_08.jpg",
+            "caption": "POINT 4 · 친환경 페인트 (4대 중금속 불검출 · 환경표지 인증)"
+          },
+          {
+            "src": "onecoat_09.jpg",
+            "caption": "시공사례"
+          },
+          {
+            "src": "onecoat_10.jpg",
+            "caption": "Q&A · 자주 묻는 질문"
+          },
+          {
+            "src": "onecoat_11.jpg",
+            "caption": "상품 상세 정보 (물성표)"
+          },
+          {
+            "src": "onecoat_12.jpg",
+            "caption": "주의 사항"
+          },
+          {
+            "src": "onecoat_13.jpg",
+            "caption": "POINT 5 · BEST 컬러 추천"
+          }
+        ],
+        "source": "제품 상세페이지"
+      }
     },
     {
       "id": "homestar-pastel-ok-plus",
@@ -3451,18 +3513,54 @@
         "dir": "img/",
         "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 원본 그대로 업로드. 페이지 순서대로 나열.",
         "files": [
-          { "src": "acron-01-01.jpg", "caption": "오염 걱정 없이 공간을 깨끗하게 · 아이생각 수성아크론" },
-          { "src": "acron-01-03.jpg", "caption": "이런 공간에 추천" },
-          { "src": "acron-01-04.jpg", "caption": "오염·낙서 방지 · 주요 특징" },
-          { "src": "acron-01-05.jpg", "caption": "내·외부 현장 · 콘크리트/석고보드/시멘트몰탈" },
-          { "src": "acron-01-06.jpg", "caption": "3가지 광택 (무광·반광·유광)" },
-          { "src": "acron-01-07.jpg", "caption": "POINT 1 · 낙서 방지용 도료" },
-          { "src": "acron-01-08.jpg", "caption": "POINT 2 · 합리적인 페인트" },
-          { "src": "acron-02-01.jpg", "caption": "POINT 3 · 친환경 페인트" },
-          { "src": "acron-02-02.jpg", "caption": "시공 사례" },
-          { "src": "acron-02-03.jpg", "caption": "자주 묻는 질문 (Q&A)" },
-          { "src": "acron-02-04.jpg", "caption": "상품 상세 정보 (물성표)" },
-          { "src": "acron-02-05.jpg", "caption": "주의 사항" }
+          {
+            "src": "acron-01-01.jpg",
+            "caption": "오염 걱정 없이 공간을 깨끗하게 · 아이생각 수성아크론"
+          },
+          {
+            "src": "acron-01-03.jpg",
+            "caption": "이런 공간에 추천"
+          },
+          {
+            "src": "acron-01-04.jpg",
+            "caption": "오염·낙서 방지 · 주요 특징"
+          },
+          {
+            "src": "acron-01-05.jpg",
+            "caption": "내·외부 현장 · 콘크리트/석고보드/시멘트몰탈"
+          },
+          {
+            "src": "acron-01-06.jpg",
+            "caption": "3가지 광택 (무광·반광·유광)"
+          },
+          {
+            "src": "acron-01-07.jpg",
+            "caption": "POINT 1 · 낙서 방지용 도료"
+          },
+          {
+            "src": "acron-01-08.jpg",
+            "caption": "POINT 2 · 합리적인 페인트"
+          },
+          {
+            "src": "acron-02-01.jpg",
+            "caption": "POINT 3 · 친환경 페인트"
+          },
+          {
+            "src": "acron-02-02.jpg",
+            "caption": "시공 사례"
+          },
+          {
+            "src": "acron-02-03.jpg",
+            "caption": "자주 묻는 질문 (Q&A)"
+          },
+          {
+            "src": "acron-02-04.jpg",
+            "caption": "상품 상세 정보 (물성표)"
+          },
+          {
+            "src": "acron-02-05.jpg",
+            "caption": "주의 사항"
+          }
         ]
       },
       "docs": {
@@ -3470,7 +3568,9 @@
         "spec_sheet": "1pntg3051788.pdf",
         "tech_dated": "2023-04-18"
       },
-      "aliases": ["수성아크론"]
+      "aliases": [
+        "수성아크론"
+      ]
     },
     {
       "id": "aisaengkag-water-borne-pro-exterior",
