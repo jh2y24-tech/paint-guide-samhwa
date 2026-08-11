@@ -680,13 +680,6 @@ a{color:var(--brand);text-decoration:none}
 @media (max-width:479px){
   .mat-title{background-image:none !important}
 }
-
-  .pm-gallery{margin:14px 0;border:1px solid #e3e6ea;border-radius:12px;overflow:hidden;background:#fff}
-  .pm-gallery>summary{cursor:pointer;list-style:none;padding:12px 14px;font-weight:700;font-size:14px;background:#f4f6f9}
-  .pm-gallery>summary::-webkit-details-marker{display:none}
-  .pm-gallery[open]>summary{border-bottom:1px solid #e3e6ea}
-  .pm-gallery-body{display:flex;flex-direction:column;padding:0}
-  .pm-gallery-body img{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
@@ -3966,21 +3959,6 @@ Object.assign(window.PRODUCT_DB, {
       { src: "video/vid3052141_1.mp4", caption: "일반 페인트 1회칠" },
       { src: "video/vid3052141_2.mp4", caption: "아이생각 원코트 1회 도장 — 은폐율 99%" }
     ],
-    gallery: [
-      "img/onecoat/onecoat_01.jpg",
-      "img/onecoat/onecoat_02.jpg",
-      "img/onecoat/onecoat_03.jpg",
-      "img/onecoat/onecoat_04.jpg",
-      "img/onecoat/onecoat_05.jpg",
-      "img/onecoat/onecoat_06.jpg",
-      "img/onecoat/onecoat_07.jpg",
-      "img/onecoat/onecoat_08.jpg",
-      "img/onecoat/onecoat_09.jpg",
-      "img/onecoat/onecoat_10.jpg",
-      "img/onecoat/onecoat_11.jpg",
-      "img/onecoat/onecoat_12.jpg",
-      "img/onecoat/onecoat_13.jpg"
-    ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3052141.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3052141.pdf" }
@@ -4604,15 +4582,6 @@ function openProduct(name){
       });
       html += '</div></div>';
     }
-    if (Array.isArray(p.gallery) && p.gallery.length){
-      html += '<details class="pm-gallery"><summary>🖼️ 제품 상세 이미지 ('+p.gallery.length+'장) — 펼쳐보기</summary><div class="pm-gallery-body">';
-      p.gallery.forEach(function(u){
-        var src = (typeof u === 'string') ? u : (u.src || '');
-        if (!src) return;
-        html += '<img src="'+src+'" alt="'+name+' 상세 이미지" loading="lazy" onerror="this.style.display=\'none\'">';
-      });
-      html += '</div></details>';
-    }
     if (Array.isArray(p.pdfs) && p.pdfs.length){
       html += '<div class="pm-field"><div class="pm-label">첨부 자료</div><div class="pm-pdfs">';
       p.pdfs.forEach(function(f){
@@ -4640,6 +4609,20 @@ function openProduct(name){
    전부 실패하면 갤러리 블록 자체를 안내문으로 대체 — 파일명·경로 오류를 조용히 넘기지 않기 위해
    콘솔에 실패한 src 를 남긴다. */
 function pgImgFail(el){
+  /* 확장자·대소문자 차이는 자동으로 재시도한다 (jpg/JPG/jpeg/png/PNG/gif) */
+  var exts = ['.jpg','.JPG','.jpeg','.JPEG','.png','.PNG','.gif','.GIF'];
+  var tried = parseInt(el.getAttribute('data-try') || '0', 10);
+  var base  = el.getAttribute('data-base');
+  if (base === null){
+    var cur = el.getAttribute('src') || '';
+    base = cur.replace(/\.[a-z]+$/i, '');
+    el.setAttribute('data-base', base);
+  }
+  if (tried < exts.length){
+    el.setAttribute('data-try', tried + 1);
+    el.src = base + exts[tried];
+    return;
+  }
   var fig = el.closest ? el.closest('figure') : null;
   if (fig) fig.style.display = 'none';
   try { console.warn('[상세이미지 로드 실패] ' + el.getAttribute('src')); } catch(e){}
@@ -4785,7 +4768,7 @@ var CALC_STATE = {};
 function calcEnsureCatalog(){
   if (window.PRODUCTS_CATALOG) return Promise.resolve(window.PRODUCTS_CATALOG);
   if (window.__calcCatalogPromise) return window.__calcCatalogPromise;
-  window.__calcCatalogPromise = fetch('products.json?v=3', { cache:'no-cache' })
+  window.__calcCatalogPromise = fetch('products.json?v=' + Date.now(), { cache:'no-store' })
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(db){ window.PRODUCTS_CATALOG = db; return db; });
   return window.__calcCatalogPromise;
