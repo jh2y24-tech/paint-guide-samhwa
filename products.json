@@ -3776,12 +3776,59 @@
         "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
         "eco_label": true
       },
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지 13컷(사진 12 + 영상 1). 전부 img/ 폴더 업로드. 파일명 ASCII·소문자. 배열=상세페이지 위→아래 순서. exterior-pro-09.mp4는 갤러리 내 인라인 자동재생.",
+        "files": [
+          {
+            "src": "exterior-pro-01.jpg"
+          },
+          {
+            "src": "exterior-pro-02.jpg"
+          },
+          {
+            "src": "exterior-pro-03.jpg"
+          },
+          {
+            "src": "exterior-pro-04.jpg"
+          },
+          {
+            "src": "exterior-pro-05.jpg"
+          },
+          {
+            "src": "exterior-pro-06.jpg"
+          },
+          {
+            "src": "exterior-pro-07.jpg"
+          },
+          {
+            "src": "exterior-pro-08.jpg"
+          },
+          {
+            "src": "exterior-pro-09.mp4"
+          },
+          {
+            "src": "exterior-pro-10.jpg"
+          },
+          {
+            "src": "exterior-pro-11.jpg"
+          },
+          {
+            "src": "exterior-pro-12.jpg"
+          },
+          {
+            "src": "exterior-pro-13.jpg"
+          }
+        ]
+      },
       "docs": {
         "tech": "1tech3051945.pdf",
         "spec_sheet": "1pntg3051945.pdf",
         "tech_dated": "2024-12-17"
       },
-      "aliases": []
+      "aliases": [
+        "수성외부"
+      ]
     },
     {
       "id": "aisaengkag-acron-exterior",
