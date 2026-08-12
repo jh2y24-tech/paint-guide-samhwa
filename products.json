@@ -878,6 +878,54 @@
       "compliance": {
         "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
       },
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지 14컷(사진 13 + 영상 1). 전부 img/ 폴더 업로드. 파일명 ASCII·소문자. 배열=상세페이지 위→아래 순서. allcoating-10.mp4는 갤러리 내 인라인 자동재생.",
+        "files": [
+          {
+            "src": "allcoating-01.jpg"
+          },
+          {
+            "src": "allcoating-02.jpg"
+          },
+          {
+            "src": "allcoating-03.jpg"
+          },
+          {
+            "src": "allcoating-04.jpg"
+          },
+          {
+            "src": "allcoating-05.jpg"
+          },
+          {
+            "src": "allcoating-06.jpg"
+          },
+          {
+            "src": "allcoating-07.jpg"
+          },
+          {
+            "src": "allcoating-08.jpg"
+          },
+          {
+            "src": "allcoating-09.jpg"
+          },
+          {
+            "src": "allcoating-10.mp4"
+          },
+          {
+            "src": "allcoating-11.jpg"
+          },
+          {
+            "src": "allcoating-12.jpg"
+          },
+          {
+            "src": "allcoating-13.jpg"
+          },
+          {
+            "src": "allcoating-14.jpg"
+          }
+        ]
+      },
       "docs": {
         "tech": "1tech3051969.pdf",
         "spec_sheet": "1pntg3051969.pdf",

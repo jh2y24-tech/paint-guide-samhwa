@@ -313,7 +313,7 @@ a{color:var(--brand);text-decoration:none}
 .pm-gal.open .pm-gal-body{display:block}
 .pm-gal figure{margin:0 0 12px}
 .pm-gal figure:last-child{margin-bottom:0}
-.pm-gal img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);background:#fff}
+.pm-gal img,.pm-gal video{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);background:#fff}
 .pm-gal figcaption{margin-top:5px;font-size:12.5px;color:var(--muted);font-weight:600}
 .pm-videos{display:flex;flex-direction:column;gap:10px}
 .pm-vid{margin:0}
@@ -4647,8 +4647,13 @@ function fillProductGallery(name){
       /* 절대경로(http/https)면 dir 을 붙이지 않는다 */
       var src = /^(https?:)?\/\//i.test(s) ? s : dir + s;
       var cap = f.caption || '';
-      h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy" onerror="pgImgFail(this)">' +
-           (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
+      if (/\.(mp4|webm|mov|m4v)$/i.test(s)){
+        h += '<figure><video src="' + src + '" autoplay muted loop playsinline controls preload="metadata" onerror="pgImgFail(this)"></video>' +
+             (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
+      } else {
+        h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy" onerror="pgImgFail(this)">' +
+             (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
+      }
     });
     h += '</div></div></div>';
     var empty = body.querySelector('.pm-empty');
