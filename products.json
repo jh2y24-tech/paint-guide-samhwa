@@ -544,6 +544,15 @@
         "wood"
       ],
       "role": "primer",
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지(긴 이미지 1장, fullpage). img/ 폴더 업로드. 파일명 ASCII·소문자 유지.",
+        "files": [
+          {
+            "src": "power-jesso-01.jpg"
+          }
+        ]
+      },
       "aliases": []
     },
     {
