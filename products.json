@@ -306,7 +306,9 @@
         "spec_sheet": "1pntg3052309.pdf",
         "tech_dated": "2025-09-09"
       },
-      "aliases": []
+      "aliases": [
+        "아이럭스 결로스탑규조토"
+      ]
     },
     {
       "id": "watersoluble-binder-200",
@@ -3509,12 +3511,59 @@
         "eco_label": true,
         "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
       },
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지 13컷(사진 12 + 영상 1). 전부 img/ 폴더 업로드. 파일명 ASCII·소문자. 배열=상세페이지 위→아래 순서. interior-pro-09.mp4는 갤러리 내 인라인 자동재생.",
+        "files": [
+          {
+            "src": "interior-pro-01.jpg"
+          },
+          {
+            "src": "interior-pro-02.jpg"
+          },
+          {
+            "src": "interior-pro-03.jpg"
+          },
+          {
+            "src": "interior-pro-04.jpg"
+          },
+          {
+            "src": "interior-pro-05.jpg"
+          },
+          {
+            "src": "interior-pro-06.jpg"
+          },
+          {
+            "src": "interior-pro-07.jpg"
+          },
+          {
+            "src": "interior-pro-08.jpg"
+          },
+          {
+            "src": "interior-pro-09.mp4"
+          },
+          {
+            "src": "interior-pro-10.jpg"
+          },
+          {
+            "src": "interior-pro-11.jpg"
+          },
+          {
+            "src": "interior-pro-12.jpg"
+          },
+          {
+            "src": "interior-pro-13.jpg"
+          }
+        ]
+      },
       "docs": {
         "tech": "1tech3051753.pdf",
         "spec_sheet": "1pntg3051753.pdf",
         "tech_dated": "2025-09-04"
       },
-      "aliases": []
+      "aliases": [
+        "수성내부"
+      ]
     },
     {
       "id": "aisaengkag-water-borne-acron",
