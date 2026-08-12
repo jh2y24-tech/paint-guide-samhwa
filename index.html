@@ -1407,6 +1407,17 @@ a{color:var(--brand);text-decoration:none}
               <button type="button" class="vcard-more" onclick="openProduct('스피폭시FD 프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
           </div>
+          <div class="rtable-row band" style="--band:var(--primer-o);">
+            <div class="rtable-name">녹스탑</div>
+            <div class="rtable-fields">
+              <div class="rtable-field full"><span class="rf-label">적용 소지</span><span class="rf-val">녹 발생 철재 · 일반 철재 (녹전환 방청)</span></div>
+              <div class="rtable-field"><span class="rf-label">희석</span><span class="rf-val">물(청수) 5% 이내</span></div>
+              <div class="rtable-field"><span class="rf-label">재도장 가능 시점</span><span class="rf-val time">25℃ 기준 24시간 이후</span></div>
+            </div>
+            <div class="vcard-actions" style="margin-top:10px;">
+              <button type="button" class="vcard-more" onclick="openProduct('녹스탑')">상세 보기 <span class="vc-chev">▾</span></button>
+            </div>
+          </div>
         </div>
         <div class="note-small">※ 스피폭시FD는 재도장 가능 시간 범위 엄수 (3일 초과 시 재샌딩 필요)</div>
       </div>
@@ -4113,6 +4124,28 @@ Object.assign(window.PRODUCT_DB, {
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3070109.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3070109.pdf" }
+    ]
+  },
+  "녹스탑": {
+    category: "하도 · 수성 방청 프라이머 (녹전환)",
+    desc: "녹 발생 철재 부위를 제거 없이 도장하여 녹을 안정한 상태로 변환하고 추가 발청을 억제하는 녹전환 수성 방청 프라이머. 상도 도장 시 제한이 거의 없어 작업효율 증가·비용절감 효과가 있습니다. (KNOK-STOP)",
+    uses: "녹 발생 철재 및 일반 철재 구조물 (하도) · 상도: 알키드 · 우레탄 · 에폭시계 상도 도료",
+    spec: "피도면: 녹 발생 철재 · 일반 철재 · 조성 1액형(수성)\n마감 반무광 · 색상 유백색 (건조 후 흑색/갈색미)\n부피고형분: 29.85%\n추천 건조도막두께: 45㎛ · 도장횟수 1회\n이론도포면적: 6.63㎡/L (45㎛ 기준)\n건조시간(25℃): 고화건조 2시간 이내\n재도장간격(25℃): 24시간 이후\n희석: 물(청수) 5% 이내(도료 무게비)\n저장기간: 12개월 (5~35℃ 실내보관)",
+    packaging: "4kg (3.48L)",
+    cautions: [
+      "수용성 — 타 도료와 혼합 사용 금지, 얼지 않게 보관",
+      "충분히 교반 후 도장하고 도장 중에도 주기적으로 교반",
+      "녹전환 시 유백색→흑색(갈색미)로 변환 · 갈색이면 미완전 변환이므로 추가 도장",
+      "하도 건조 후 흑색으로 상도 은폐 불량 가능 — 상도 추가 도장 권장",
+      "하도 건조 후 수분 노출 시 오염 우려 — 수분 접촉 회피 (상도 완료 후엔 양호)",
+      "비오는 날·습도 85% 이상·기온 5℃ 이하 작업 금지 (균열·부착불량 우려)",
+      "기존 구도막이 있으면 시험도장 후 이상 없음을 확인한 뒤 사용"
+    ],
+    filters: "수도권대기환경개선 특별법 VOC 규제 만족",
+    detailImages: [ "img/knok-stop-01.jpg" ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3070121.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3070121.pdf" }
     ]
   },
   "워시프라이머": {
