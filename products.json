@@ -4301,6 +4301,37 @@
         "tech": "1tech3211181.pdf",
         "spec_sheet": "1pntg3211181.pdf"
       }
+    },
+    {
+      "id": "knok-stop",
+      "status": "documented",
+      "name": "녹스탑",
+      "name_en": "KNOK-STOP",
+      "brand": "삼화페인트",
+      "categories": [
+        "iron"
+      ],
+      "role": "primer",
+      "aliases": [],
+      "summary": "녹 발생 철재를 제거 없이 도장해 녹을 안정한 상태로 변환하는 녹전환 수성 방청 프라이머",
+      "spec": {
+        "coverage_m2_per_l": 6.63,
+        "coats": "1",
+        "dft_um": 45,
+        "finish": "반무광",
+        "pack_sizes": [
+          "4kg"
+        ]
+      },
+      "estimate": {
+        "basis": "하도 1회 · 45㎛ · 이론도포면적 6.63㎡/L",
+        "note": "부가세·시공비 별도. 실제 소요량은 소지상태·작업조건에 따라 가감"
+      },
+      "docs": {
+        "tech": "1tech3070121.pdf",
+        "spec_sheet": "1pntg3070121.pdf",
+        "tech_dated": "2024-12-05"
+      }
     }
   ]
 }
