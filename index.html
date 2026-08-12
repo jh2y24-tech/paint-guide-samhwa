@@ -4023,7 +4023,7 @@ Object.assign(window.PRODUCT_DB, {
       "과도한 희석은 도막 성능·작업성 저하"
     ],
     videos: [
-      { src: "ilux-eggshell-waterproof-test.mp4", caption: "24시간 방수 테스트 — 일반 수성페인트를 바른 종이박스는 물이 금방 스며들었지만, 아이럭스 멀티 에그쉘을 바른 박스는 젖지 않고 유지되었습니다." }
+      { src: "video/ilux-eggshell-waterproof-test.mp4", caption: "24시간 방수 테스트 — 일반 수성페인트를 바른 종이박스는 물이 금방 스며들었지만, 아이럭스 멀티 에그쉘을 바른 박스는 젖지 않고 유지되었습니다." }
     ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3051831.pdf" },
@@ -4567,7 +4567,7 @@ function openProduct(name){
         var cap = (typeof v === 'object' && v.caption) ? v.caption : '';
         if (!src) return;
         html += '<figure class="pm-vid">' +
-                '<video src="' + src + '" autoplay muted loop playsinline preload="metadata"></video>' +
+                '<video src="' + src + '" autoplay muted loop playsinline controls preload="auto"></video>' +
                 (cap ? '<figcaption>' + cap + '</figcaption>' : '') +
                 '</figure>';
       });

@@ -611,6 +611,15 @@
         "eco_label": true,
         "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
       },
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지(긴 이미지 1장). img/ 폴더 업로드. 파일명 ASCII·소문자 유지.",
+        "files": [
+          {
+            "src": "ilux-multiflat-01.jpg"
+          }
+        ]
+      },
       "docs": {
         "tech": "1tech3051826.pdf",
         "spec_sheet": "1pntg3051826.pdf",
@@ -697,6 +706,18 @@
         "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
         "eco_label": true,
         "eco_label_reason": "지역 환경오염 감소, 유해물질 감소, 생활 환경오염 감소"
+      },
+      "images": {
+        "dir": "img/",
+        "note": "상세 이미지(긴 이미지 2장). img/ 폴더 업로드. 파일명 ASCII·소문자 유지.",
+        "files": [
+          {
+            "src": "ilux-eggshell-01.jpg"
+          },
+          {
+            "src": "ilux-eggshell-02.jpg"
+          }
+        ]
       },
       "docs": {
         "tech": "1tech3051831.pdf",
@@ -1064,8 +1085,8 @@
       },
       "compliance": {},
       "images": {
-        "dir": "",
-        "note": "상세 이미지(긴 이미지 1장). 파일명 ASCII·소문자 유지. 깃허브 루트에 그대로 업로드 (폴더 없음).",
+        "dir": "img/",
+        "note": "상세 이미지(긴 이미지 1장). img/ 폴더 업로드. 파일명 ASCII·소문자 유지.",
         "files": [
           {
             "src": "homestar-pastel-01.jpg"
