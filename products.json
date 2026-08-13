@@ -1698,6 +1698,39 @@
       "aliases": []
     },
     {
+      "id": "aisaengkag-water-stain",
+      "status": "listed",
+      "name": "아이생각수성스테인",
+      "name_en": "Aisaengkag Water-Borne Stain",
+      "brand": "삼화페인트",
+      "categories": [
+        "wood"
+      ],
+      "role": "stain",
+      "note": "수성 · 실내/실외 목재 · 페인트 미도장 목재 전용",
+      "images": {
+        "dir": "img/",
+        "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404). 원본 그대로 업로드. 페이지 순서대로 나열.",
+        "files": [
+          {
+            "src": "stain-01.png",
+            "caption": "고급스러운 목재 질감 표현 · 아이생각 수성스테인 (사용처 · 소비자 평점 4.7 · 컬러 비교 · POINT 1~4 · 시공사례)"
+          },
+          {
+            "src": "stain-02.png",
+            "caption": "Q&A · 상품 상세 정보(물성표) · 취급 시 주의사항"
+          },
+          {
+            "src": "stain-03.jpg",
+            "caption": "다양한 컬러 — 목재 스테인 색상 스와치"
+          }
+        ]
+      },
+      "aliases": [
+        "아이생각 수성스테인"
+      ]
+    },
+    {
       "id": "ksm6020-type4-acrylic",
       "status": "documented",
       "name": "KSM 6020 4종 아크릴도료",
