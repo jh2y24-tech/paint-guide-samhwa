@@ -559,26 +559,26 @@ a{color:var(--brand);text-decoration:none}
 #prodModal .pm-caution{background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:10px 12px; font-size:13px; color:#9a3412; line-height:1.6;}
 #prodModal .pm-caution ul{margin:0;}
 
-/* ── 제품 팝업 : 가로형 와이드 화면 대응 ──
-   좁은 화면(모바일·태블릿)은 기존 560px 단일열을 그대로 유지한다.
-   넓은 화면에서는 카드 폭을 키우고 본문 텍스트 필드를 2열로 흘려 세로 길이를 줄여
-   와이드 모니터에서 스크롤 없이 읽히도록 한다.
-   이미지·계산기·시공영상·상세이미지 갤러리는 전체폭(span:all)으로 유지한다. */
+/* ── 제품 팝업 : 가로형 와이드 화면 대응 (좌/우 2단 배치) ──
+   좁은 화면(모바일·태블릿)은 pm-cols 가 단일열로 쌓여 기존과 동일하게 보인다.
+   넓은 화면에서는 좌측(대표이미지·소요량 계산기·시공영상·첨부자료)과
+   우측(설명·용도·규격·포장·주의 등 텍스트 스펙)을 2단으로 나눠 가로를 채운다. */
+.pm-cols{ display:block; }
+.pm-cols > .pm-col-main > *:first-child,
+.pm-cols > .pm-col-side > *:first-child{ margin-top:0; }
 @media (min-width:1000px){
-  #prodModal .pm-card{ width:min(1060px, calc(100vw - 64px)); }
-  #prodModal .pm-body{ column-count:2; column-gap:34px; }
-  #prodModal .pm-body > *{ break-inside:avoid; }
-  #prodModal .pm-img{ max-width:460px; }
-  #prodModal .pm-img,
-  #prodModal .calc-wrap,
-  #prodModal .pm-field:has(.pm-gal),
-  #prodModal .pm-field:has(.pm-videos),
-  #prodModal .pm-field:has(.pm-yt),
-  #prodModal .pm-field:has(video),
-  #prodModal .pm-field:has(iframe){ -webkit-column-span:all; column-span:all; }
+  #prodModal .pm-card{ width:min(1080px, calc(100vw - 64px)); }
+  #prodModal .pm-cols{ display:grid; grid-template-columns:minmax(0,430px) minmax(0,1fr);
+    gap:32px; align-items:start; }
+  #prodModal .pm-col-main{ min-width:0; }
+  #prodModal .pm-col-side{ min-width:0; }
+  /* 첨부 자료(기술자료·도장사양서) 버튼 — 넓은 화면에서 키워 가독성 확보 */
+  #prodModal .pm-pdf-btn{ font-size:14.5px; padding:14px 16px; }
+  #prodModal .pm-pdf-btn::after{ font-size:11.5px; }
 }
 @media (min-width:1440px){
-  #prodModal .pm-card{ width:min(1200px, calc(100vw - 96px)); }
+  #prodModal .pm-card{ width:min(1260px, calc(100vw - 96px)); }
+  #prodModal .pm-cols{ grid-template-columns:minmax(0,500px) minmax(0,1fr); gap:38px; }
 }
 .pm-pdf-btn{position:relative; overflow:hidden; flex:1 1 100%; width:100%; display:flex; align-items:center; gap:9px; font-family:inherit; font-size:13px; font-weight:600; text-align:left; color:var(--text); background:var(--card2); border:1px solid var(--border-2); border-top:3px solid transparent; border-radius:10px; padding:10px 12px; cursor:pointer; transition:background .15s, transform .15s;}
 .pm-pdf-btn::before{content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right,var(--brand) 0%,transparent 88%); pointer-events:none;}
@@ -695,6 +695,11 @@ a{color:var(--brand);text-decoration:none}
 /* ── PDF 자료 버튼(팝업 전용) ── */
 .calc-row .calc-sel{padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;background:var(--card);color:var(--text)}
 .calc-conv{color:var(--brand);font-weight:700;white-space:nowrap}
+/* 도장면적 : 입력칸·단위(㎡/평)·환산값을 한 줄에 묶어 가독성 향상 */
+.calc-row--area .calc-areawrap{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:0}
+.calc-row--area .calc-areawrap input[type=number]{flex:1 1 auto;min-width:0}
+.calc-row--area .calc-aunit{flex:none;width:auto;min-width:52px;padding:9px 8px;font-size:13px}
+.calc-row--area .calc-conv{flex:none;font-size:12.5px;color:var(--brand);font-weight:700;white-space:nowrap;font-family:var(--mono)}
 .pdf-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
 .pdf-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:0;border-radius:10px;font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 10px rgba(20,38,42,.16);transition:transform .14s,filter .14s}
 .pdf-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
@@ -4622,56 +4627,65 @@ function openProduct(name){
       '<b>' + name + '</b><br>상세 자료 준비 중입니다.<br>' +
       '<span style="font-size:13px;">자료가 등록되면 이 화면에 표시됩니다.</span></div>';
   } else {
-    var html = '';
-    if (p.image){ html += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" onerror="this.style.display=\'none\'">'; }
-    html += renderField('설명', p.desc);
-    html += renderField('용도', p.uses);
-    html += renderField('규격 · 시공', p.spec);
     var _cuid = 'pmcalc';
-    html += calcBlockFor(name, _cuid);
-    html += renderField('포장', p.packaging);
-    html += renderField('호환 · 관련', p.filters);
-    if (p.cautions){
-      var c = Array.isArray(p.cautions) ? '<ul>'+p.cautions.map(function(v){return '<li>'+v+'</li>';}).join('')+'</ul>' : p.cautions;
-      html += '<div class="pm-field"><div class="pm-label">주의사항</div><div class="pm-caution">'+c+'</div></div>';
-    }
+    /* ── 좌측 컬럼 — 대표이미지 · 소요량 계산기 · 시공영상 · 첨부자료 (미디어/도구) ── */
+    var mainHtml = '';
+    if (p.image){ mainHtml += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" onerror="this.style.display=\'none\'">'; }
+    mainHtml += calcBlockFor(name, _cuid);
     if (Array.isArray(p.videos) && p.videos.length){
-      html += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
+      mainHtml += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
       p.videos.forEach(function(v){
         var src = (typeof v === 'string') ? v : (v.src || '');
         var cap = (typeof v === 'object' && v.caption) ? v.caption : '';
         if (!src) return;
-        html += '<figure class="pm-vid">' +
+        mainHtml += '<figure class="pm-vid">' +
                 '<video src="' + src + '" autoplay muted loop playsinline controls preload="auto"></video>' +
                 (cap ? '<figcaption>' + cap + '</figcaption>' : '') +
                 '</figure>';
       });
-      html += '</div></div>';
+      mainHtml += '</div></div>';
     }
     if (Array.isArray(p.youtube) && p.youtube.length){
-      html += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
+      mainHtml += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
       p.youtube.forEach(function(v){
         var id = (typeof v === 'string') ? v : (v.id || '');
         var cap = (typeof v === 'object' && v.caption) ? v.caption : '';
         if (!id) return;
-        html += '<figure class="pm-vid">' +
+        mainHtml += '<figure class="pm-vid">' +
                 '<div class="pm-yt"><iframe src="https://www.youtube.com/embed/' + id + '" title="시공 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>' +
                 (cap ? '<figcaption>' + cap + '</figcaption>' : '') +
                 '</figure>';
       });
-      html += '</div></div>';
+      mainHtml += '</div></div>';
     }
     if (Array.isArray(p.pdfs) && p.pdfs.length){
-      html += '<div class="pm-field"><div class="pm-label">첨부 자료</div><div class="pm-pdfs">';
+      mainHtml += '<div class="pm-field"><div class="pm-label">첨부 자료</div><div class="pm-pdfs">';
       p.pdfs.forEach(function(f){
         var url = (f.url||'').replace(/'/g,"\\'");
         var lab = (f.label||'PDF 문서');
-        html += '<button type="button" class="pm-pdf-btn" onclick="openPdf(\''+url+'\',\''+lab.replace(/'/g,"\\'")+'\')">'+lab+'</button>';
+        mainHtml += '<button type="button" class="pm-pdf-btn" onclick="openPdf(\''+url+'\',\''+lab.replace(/'/g,"\\'")+'\')">'+lab+'</button>';
       });
-      html += '</div></div>';
+      mainHtml += '</div></div>';
     }
-    if (!html) html = '<div class="pm-empty"><span class="pm-emoji">📝</span>상세 자료 준비 중입니다.</div>';
-    body.innerHTML = html;
+    /* ── 우측 컬럼 — 설명 · 용도 · 규격 · 포장 · 주의 (텍스트 스펙) ── */
+    var sideHtml = '';
+    sideHtml += renderField('설명', p.desc);
+    sideHtml += renderField('용도', p.uses);
+    sideHtml += renderField('규격 · 시공', p.spec);
+    sideHtml += renderField('포장', p.packaging);
+    sideHtml += renderField('호환 · 관련', p.filters);
+    if (p.cautions){
+      var c = Array.isArray(p.cautions) ? '<ul>'+p.cautions.map(function(v){return '<li>'+v+'</li>';}).join('')+'</ul>' : p.cautions;
+      sideHtml += '<div class="pm-field"><div class="pm-label">주의사항</div><div class="pm-caution">'+c+'</div></div>';
+    }
+    if (!mainHtml && !sideHtml){
+      body.innerHTML = '<div class="pm-empty"><span class="pm-emoji">📝</span>상세 자료 준비 중입니다.</div>';
+    } else {
+      body.innerHTML = '<div class="pm-cols">' +
+        '<div class="pm-col-main" id="pmColMain">' + mainHtml + '</div>' +
+        '<div class="pm-col-side">' + sideHtml + '</div>' +
+        '</div>';
+    }
   }
 
   var m = document.getElementById('prodModal');
@@ -4732,7 +4746,8 @@ function fillProductGallery(name){
     });
     h += '</div></div></div>';
     var empty = body.querySelector('.pm-empty');
-    if (empty) body.innerHTML = h; else body.insertAdjacentHTML('beforeend', h);
+    var host = document.getElementById('pmColMain') || body;
+    if (empty) body.innerHTML = h; else host.insertAdjacentHTML('beforeend', h);
   }).catch(function(){});
 }
 
@@ -5128,11 +5143,13 @@ function calcRenderShell(uid, p){
       '</select></div>';
   }
   return '' + varRow +
-  '<div class="calc-row"><label for="'+uid+'-area">도장면적</label>' +
-    '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')">' +
-    '<select class="calc-sel" id="'+uid+'-aunit" onchange="calcUpdate(\''+uid+'\')" aria-label="면적 단위">' +
-      '<option value="m2" selected>㎡</option><option value="py">평</option></select>' +
-    '<span class="calc-unit calc-conv" id="'+uid+'-aconv"></span></div>' +
+  '<div class="calc-row calc-row--area"><label for="'+uid+'-area">도장면적</label>' +
+    '<span class="calc-areawrap">' +
+      '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')">' +
+      '<select class="calc-sel calc-aunit" id="'+uid+'-aunit" onchange="calcUpdate(\''+uid+'\')" aria-label="면적 단위">' +
+        '<option value="m2" selected>㎡</option><option value="py">평</option></select>' +
+      '<span class="calc-conv" id="'+uid+'-aconv"></span>' +
+    '</span></div>' +
   '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
     '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+ct.min+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||1)+'회</span></div>' +
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
