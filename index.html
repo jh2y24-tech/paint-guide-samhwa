@@ -27,6 +27,7 @@
   --coated:#6B6076;--coated-bg:rgba(107,96,118,.08);
   --accent:#00474F;--accent-bg:rgba(0,71,79,.07);
   --spirol:#0B66BC;--spirol-deep:#004F8C;--spirol-bg:rgba(11,102,188,.08);--spirol-bd:rgba(11,102,188,.34);
+  --alum:#6E7681;--alum-deep:#3D434B;--alum-bg:rgba(110,118,129,.10);--alum-bd:#B4BAC2;
   --warn:#8A6410;--warn-bg:rgba(138,100,16,.07);
   --danger:#CB2A20;--mold:#0E876A;--mold-bg:rgba(14,135,106,.07);
   --sky:#12ABD1;--sky-bg:rgba(18,171,209,.10);--sky-deep:#0E8FB0;
@@ -183,6 +184,7 @@ a{color:var(--brand);text-decoration:none}
 .chip-primer-o{background:var(--primer-o-bg);color:var(--primer-o);border-color:rgba(187,73,21,.28)}
 .chip-acc{background:var(--accent-bg);color:var(--accent);border-color:rgba(0,71,79,.28)}
 .chip-spirol{background:var(--spirol-bg);color:var(--spirol-deep);border-color:var(--spirol-bd)}
+.chip-alum{background:linear-gradient(135deg,#F2F3F5 0%,#D9DDE2 50%,#C3C8CF 100%);color:var(--alum-deep);border-color:var(--alum-bd)}
 .chip-mold{background:var(--mold-bg);color:var(--mold);border-color:rgba(14,135,106,.28)}
 .chip-wp{background:var(--sky-bg);color:var(--sky);border-color:rgba(23,179,217,.32)}
 /* 방수에이스 — 제품 깡통 라벨 메인 컬러 */
@@ -1461,7 +1463,7 @@ a{color:var(--brand);text-decoration:none}
 
         <div class="star-box">
           ★ 에나멜 도장 위에 우레탄 도장을 원하는 경우<br>
-          → <span class="product-chip chip-acc">슈퍼폭시360 알루미늄</span>을 실러로 도장 후 우레탄 도장 가능 <button type="button" class="vcard-more" style="margin-left:6px; vertical-align:middle;" onclick="openProduct('슈퍼폭시360 알루미늄')">상세 보기 <span class="vc-chev">▾</span></button>
+          → <span class="product-chip chip-alum">슈퍼폭시360 알루미늄</span>을 실러로 도장 후 우레탄 도장 가능 <button type="button" class="vcard-more" style="margin-left:6px; vertical-align:middle;" onclick="openProduct('슈퍼폭시360 알루미늄')">상세 보기 <span class="vc-chev">▾</span></button>
         </div>
         <div class="danger-box">
           ★ 약한 페인트 위에 강한 신나를 사용하는 페인트 도장 시<br>
@@ -4366,6 +4368,7 @@ Object.assign(window.PRODUCT_DB, {
       "비오는 날·습도 85% 이상·기온 -5℃ 이하에는 작업 금지"
     ],
     filters: "대기환경보전법 VOC 규제 만족",
+    youtube: [ "T9oTZD4-SOM", "j2O8u_AHwdU" ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3210235.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3210235.pdf" }
