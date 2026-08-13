@@ -3380,7 +3380,6 @@ function searchSymptom() {
        uses       : 용도 — 문자열 또는 배열(여러 줄)
        cautions   : 주의사항 — 문자열 또는 배열
        filters    : 호환/관련 정보 (문자열)
-       detailImages : 상세 이미지 URL 배열 (세로로 나열)
    ========================================================================= */
 window.PRODUCT_DB = window.PRODUCT_DB || {};
 Object.assign(window.PRODUCT_DB, {
@@ -4158,7 +4157,6 @@ Object.assign(window.PRODUCT_DB, {
       "기존 구도막이 있으면 시험도장 후 이상 없음을 확인한 뒤 사용"
     ],
     filters: "수도권대기환경개선 특별법 VOC 규제 만족",
-    detailImages: [ "img/knok-stop-01.jpg" ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3070121.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3070121.pdf" }
@@ -4608,9 +4606,6 @@ function openProduct(name){
     if (p.cautions){
       var c = Array.isArray(p.cautions) ? '<ul>'+p.cautions.map(function(v){return '<li>'+v+'</li>';}).join('')+'</ul>' : p.cautions;
       html += '<div class="pm-field"><div class="pm-label">주의사항</div><div class="pm-caution">'+c+'</div></div>';
-    }
-    if (Array.isArray(p.detailImages)){
-      p.detailImages.forEach(function(u){ html += '<img class="pm-detimg" src="'+u+'" alt="'+name+' 상세" onerror="this.style.display=\'none\'">'; });
     }
     if (Array.isArray(p.videos) && p.videos.length){
       html += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
