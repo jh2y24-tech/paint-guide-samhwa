@@ -558,6 +558,28 @@ a{color:var(--brand);text-decoration:none}
 #prodModal .pm-empty b{color:var(--text,#333);}
 #prodModal .pm-caution{background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:10px 12px; font-size:13px; color:#9a3412; line-height:1.6;}
 #prodModal .pm-caution ul{margin:0;}
+
+/* ── 제품 팝업 : 가로형 와이드 화면 대응 ──
+   좁은 화면(모바일·태블릿)은 기존 560px 단일열을 그대로 유지한다.
+   넓은 화면에서는 카드 폭을 키우고 본문 텍스트 필드를 2열로 흘려 세로 길이를 줄여
+   와이드 모니터에서 스크롤 없이 읽히도록 한다.
+   이미지·계산기·시공영상·상세이미지 갤러리는 전체폭(span:all)으로 유지한다. */
+@media (min-width:1000px){
+  #prodModal .pm-card{ width:min(1060px, calc(100vw - 64px)); }
+  #prodModal .pm-body{ column-count:2; column-gap:34px; }
+  #prodModal .pm-body > *{ break-inside:avoid; }
+  #prodModal .pm-img{ max-width:460px; }
+  #prodModal .pm-img,
+  #prodModal .calc-wrap,
+  #prodModal .pm-field:has(.pm-gal),
+  #prodModal .pm-field:has(.pm-videos),
+  #prodModal .pm-field:has(.pm-yt),
+  #prodModal .pm-field:has(video),
+  #prodModal .pm-field:has(iframe){ -webkit-column-span:all; column-span:all; }
+}
+@media (min-width:1440px){
+  #prodModal .pm-card{ width:min(1200px, calc(100vw - 96px)); }
+}
 .pm-pdf-btn{position:relative; overflow:hidden; flex:1 1 100%; width:100%; display:flex; align-items:center; gap:9px; font-family:inherit; font-size:13px; font-weight:600; text-align:left; color:var(--text); background:var(--card2); border:1px solid var(--border-2); border-top:3px solid transparent; border-radius:10px; padding:10px 12px; cursor:pointer; transition:background .15s, transform .15s;}
 .pm-pdf-btn::before{content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right,var(--brand) 0%,transparent 88%); pointer-events:none;}
 .pm-pdf-btn::after{content:"PDF"; margin-left:auto; font-family:var(--mono); font-size:10.5px; color:var(--faint); font-weight:700;}
@@ -3458,6 +3480,7 @@ Object.assign(window.PRODUCT_DB, {
       "유성도료로 냄새가 발생 — 환기 필요",
       "후속 도장이 필요하면 충분히 건조·연마 후 40바루스파 유광 추천 (우레탄·락카는 내후성이 떨어져 비권장)"
     ],
+    youtube: [ "RknWU_gJwIU" ],
     pdfs: [
       { label: "📄 기술자료", url: "pdf/1tech3010286.pdf" },
       { label: "📐 도장사양서", url: "pdf/1pntg3010286.pdf" }
