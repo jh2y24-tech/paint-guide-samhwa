@@ -543,6 +543,14 @@ a{color:var(--brand);text-decoration:none}
 #prodModal .pm-cat{display:inline-block; font-size:11.5px; font-weight:700; color:#2a7; background:#eafaf1; border:1px solid #b6e3c9; border-radius:6px; padding:2px 8px; margin-bottom:6px;}
 #prodModal .pm-close{flex:none; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-2,#e5e7eb); background:var(--card,#fff); font-size:18px; line-height:1; cursor:pointer; color:var(--muted,#667);}
 #prodModal .pm-close:hover{background:#f4f5f6;}
+/* ── 팝업 내 제품명 클릭 버튼 (도장시스템 등) ── */
+.pm-prod-link{
+  display:inline; background:none; border:none; padding:0;
+  color:var(--brand); font:inherit; font-weight:700;
+  cursor:pointer; text-decoration:underline dotted;
+  text-underline-offset:2px;
+}
+.pm-prod-link:hover{ color:var(--brand-2); text-decoration:underline; }
 /* ── 팝업 내 위로 스크롤 버튼 ── */
 #pmScrollTop{
   position:sticky; bottom:18px; float:right; margin-right:6px;
@@ -4602,13 +4610,48 @@ function cleanProdName(el){
   return t;
 }
 
+/* ── spec 텍스트 안 제품명 → 클릭 버튼 변환 ──
+   PRODUCT_DB 키를 공백·괄호 제거 정규화 후 텍스트에서 찾아
+   onclick="openProduct('...')" 인라인 버튼으로 교체한다.
+   단어 경계가 아닌 한글 특성상 양쪽 앞뒤가 단어 구성 문자가 아닐 때만 치환. */
+function linkifyProductNames(text){
+  var db = window.PRODUCT_DB || {};
+  var keys = Object.keys(db);
+  if (!keys.length) return text;
+  /* 길이 내림차순 — 긴 이름이 짧은 이름보다 먼저 매칭 */
+  keys.sort(function(a,b){ return b.length - a.length; });
+  keys.forEach(function(key){
+    if (!key || key.length < 2) return;
+    /* 이미 링크화된 부분 안에 있으면 스킵 */
+    if (text.indexOf('pm-prod-link') !== -1 &&
+        text.indexOf(key) === -1) return;
+    /* 각 문자 사이에 \s* 삽입 → '에포코트아쿠아 하도' 가 '에포코트 아쿠아 하도' 와도 매칭 */
+    var pat = key.split('').map(function(c){
+      return c.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    }).join('\\s*');
+    try {
+      var re = new RegExp(pat, 'g');
+      var safe = key.replace(/'/g,"\\'");
+      text = text.replace(re, function(m){
+        return '<button type="button" class="pm-prod-link" onclick="openProduct(\'' + safe + '\')">' + m + '</button>';
+      });
+    } catch(e){}
+  });
+  return text;
+}
+
 function renderField(label, val){
   if (val === undefined || val === null || val === '') return '';
   var html = '';
   if (Array.isArray(val)){
     html = '<ul>' + val.map(function(v){ return '<li>' + String(v) + '</li>'; }).join('') + '</ul>';
   } else {
-    html = String(val);
+    var txt = String(val);
+    /* 도장시스템·일위대가 블록([...] 헤더 이후)에서만 제품명 링크 활성화 */
+    if (label === '규격 · 시공' || label === '시공 시스템'){
+      txt = linkifyProductNames(txt);
+    }
+    html = txt;
   }
   return '<div class="pm-field"><div class="pm-label">' + label + '</div><div class="pm-value">' + html + '</div></div>';
 }
