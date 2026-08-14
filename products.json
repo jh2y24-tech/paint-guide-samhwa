@@ -2521,6 +2521,38 @@
    "docs": {
     "tech": "1tech3052422.pdf",
     "spec_sheet": "1pntg3052422.pdf"
+   },
+   "images": {
+    "dir": "img",
+    "files": [
+     {
+      "src": "onetouch_waterproof_img1.png"
+     },
+     {
+      "src": "onetouch_waterproof_img2.png"
+     },
+     {
+      "src": "onetouch_waterproof_img3.png"
+     },
+     {
+      "src": "onetouch_waterproof_feature.jpg"
+     },
+     {
+      "src": "onetouch_waterproof_detail2.jpg"
+     },
+     {
+      "src": "onetouch_waterproof_detail3.jpg"
+     },
+     {
+      "src": "onetouch_waterproof_step1.mp4"
+     },
+     {
+      "src": "onetouch_waterproof_step2.mp4"
+     },
+     {
+      "src": "onetouch_waterproof_step3_2.mp4"
+     }
+    ]
    }
   },
   {
