@@ -4329,6 +4329,26 @@
     "tech": "1tech3212229.pdf",
     "spec_sheet": "1pntg3212229.pdf",
     "tech_dated": "2024-05-13"
+   },
+   "images": {
+    "dir": "img",
+    "files": [
+     {
+      "src": "watersafe300-01.png"
+     },
+     {
+      "src": "watersafe300-02.png"
+     },
+     {
+      "src": "watersafe300-03.png"
+     },
+     {
+      "src": "watersafe300-04.png"
+     },
+     {
+      "src": "watersafe300-05.png"
+     }
+    ]
    }
   },
   {
