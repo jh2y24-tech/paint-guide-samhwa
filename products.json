@@ -1482,6 +1482,26 @@
     "tech": "11tech3100925.pdf",
     "spec_sheet": "1pntg3100925.pdf",
     "tech_dated": "2026-04-15"
+   },
+   "images": {
+    "dir": "img",
+    "files": [
+     {
+      "src": "epocoat_lining_01.jpg"
+     },
+     {
+      "src": "epocoat_lining_02.jpg"
+     },
+     {
+      "src": "epocoat_lining_03.jpg"
+     },
+     {
+      "src": "epocoat_lining_04.jpg"
+     },
+     {
+      "src": "epocoat_lining_06.jpg"
+     }
+    ]
    }
   },
   {
@@ -2812,7 +2832,24 @@
      "LINE MARKING은 상도 후 20℃ 24시간 경과 뒤 백색 또는 황색으로 시공하고 주변에 MASKING TAPE 처리"
     ]
    },
-   "aliases": []
+   "aliases": [],
+   "images": {
+    "dir": "img",
+    "files": [
+     {
+      "src": "epocoat_top_01.jpg"
+     },
+     {
+      "src": "epocoat_top_02.jpg"
+     },
+     {
+      "src": "epocoat_top_03.jpg"
+     },
+     {
+      "src": "epocoat_top_05.jpg"
+     }
+    ]
+   }
   },
   {
    "id": "epocoat-aqua-primer",
