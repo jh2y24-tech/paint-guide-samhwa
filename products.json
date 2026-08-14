@@ -2715,7 +2715,18 @@
     "recoat_hours": 6,
     "cure_note": "10℃/20℃/30℃ — 지촉건조 1h/30분/15분 · 경화건조 18h/6h/4h · 가사시간 24h/20h/12h · 재도장간격 18~72h/6~72h/4~72h"
    },
-   "aliases": []
+   "aliases": [],
+   "images": {
+    "dir": "img",
+    "files": [
+     {
+      "src": "epocoat_primer_01.jpg"
+     },
+     {
+      "src": "epocoat_primer_02.jpg"
+     }
+    ]
+   }
   },
   {
    "id": "epocoat-topcoat",
