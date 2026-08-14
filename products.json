@@ -1937,7 +1937,16 @@
    ],
    "role": "clear",
    "note": "유성 · 2액형 방수 코팅",
-   "aliases": []
+   "aliases": [],
+   "images": {
+    "dir": "img",
+    "files": [
+     "magictan_wallcoat_01.jpg",
+     "magictan_wallcoat_02.jpg",
+     "magictan_wallcoat_03.jpg",
+     "magictan_wallcoat_04.jpg"
+    ]
+   }
   },
   {
    "id": "homestar-tile-paint",
@@ -1949,7 +1958,13 @@
    ],
    "role": "topcoat",
    "note": "수성 · 실내 벽면 색상 변경",
-   "aliases": []
+   "aliases": [],
+   "images": {
+    "dir": "img",
+    "files": [
+     "tile_paint_01.jpg"
+    ]
+   }
   },
   {
    "id": "ansim-nusu",
