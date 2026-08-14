@@ -1575,18 +1575,42 @@
    "images": {
     "dir": "img",
     "files": [
-     "wood_01_01.jpg",
-     "wood_01_03.jpg",
-     "wood_01_04.jpg",
-     "wood_01_05.jpg",
-     "wood_01_06.jpg",
-     "wood_01_07.jpg",
-     "wood_02_01.jpg",
-     "wood_02_02.jpg",
-     "wood_02_03.jpg",
-     "wood_02_04.jpg",
-     "wood_02_05.jpg",
-     "wood_02_06.jpg"
+     {
+      "src": "wood_01_01.jpg"
+     },
+     {
+      "src": "wood_01_03.jpg"
+     },
+     {
+      "src": "wood_01_04.jpg"
+     },
+     {
+      "src": "wood_01_05.jpg"
+     },
+     {
+      "src": "wood_01_06.jpg"
+     },
+     {
+      "src": "wood_01_07.jpg"
+     },
+     {
+      "src": "wood_02_01.jpg"
+     },
+     {
+      "src": "wood_02_02.jpg"
+     },
+     {
+      "src": "wood_02_03.jpg"
+     },
+     {
+      "src": "wood_02_04.jpg"
+     },
+     {
+      "src": "wood_02_05.jpg"
+     },
+     {
+      "src": "wood_02_06.jpg"
+     }
     ]
    },
    "docs": {
@@ -1941,10 +1965,18 @@
    "images": {
     "dir": "img",
     "files": [
-     "magictan_wallcoat_01.jpg",
-     "magictan_wallcoat_02.jpg",
-     "magictan_wallcoat_03.jpg",
-     "magictan_wallcoat_04.jpg"
+     {
+      "src": "magictan_wallcoat_01.jpg"
+     },
+     {
+      "src": "magictan_wallcoat_02.jpg"
+     },
+     {
+      "src": "magictan_wallcoat_03.jpg"
+     },
+     {
+      "src": "magictan_wallcoat_04.jpg"
+     }
     ]
    }
   },
@@ -1962,7 +1994,9 @@
    "images": {
     "dir": "img",
     "files": [
-     "tile_paint_01.jpg"
+     {
+      "src": "tile_paint_01.jpg"
+     }
     ]
    }
   },
@@ -4523,7 +4557,9 @@
    "images": {
     "dir": "img",
     "files": [
-     "world_stain_master_main.jpg"
+     {
+      "src": "world_stain_master_main.jpg"
+     }
     ]
    }
   },
