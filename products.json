@@ -1573,55 +1573,21 @@
     "heavy_metal_test": "8대 중금속 불검출 (한국건설생활환경시험연구원 시험성적서)"
    },
    "images": {
-    "dir": "img/iseanggak-wood-varnish/",
-    "note": "상품 상세 이미지. 파일명은 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404 발생). 확장자 혼재(gif/jpg) — 원본이 gif인 항목이 있으므로 일괄 .jpg 로 바꾸지 말 것.",
+    "dir": "img",
     "files": [
-     {
-      "src": "01-hero.gif",
-      "caption": "아이생각 수성 우드바니시"
-     },
-     {
-      "src": "02-use-case.gif",
-      "caption": "이럴 때 사용하세요"
-     },
-     {
-      "src": "03-point1-adhesion.gif",
-      "caption": "POINT 1 · 우수한 부착성"
-     },
-     {
-      "src": "04-point2-self.jpg",
-      "caption": "POINT 2 · 간편한 셀프 시공"
-     },
-     {
-      "src": "05-point3-gloss.gif",
-      "caption": "POINT 3 · 다양한 광택 표현 (무광·반광·유광)"
-     },
-     {
-      "src": "06-point4-eco.jpg",
-      "caption": "POINT 4 · 친환경 페인트 · 8대 중금속 불검출"
-     },
-     {
-      "src": "07-pack-size.jpg",
-      "caption": "포장 용량 — 0.9L · 3.5L · 16L"
-     },
-     {
-      "src": "08-spec.jpg",
-      "caption": "상품 상세 정보 (물성표)"
-     },
-     {
-      "src": "08b-caution.jpg",
-      "caption": "취급시 주의사항"
-     },
-     {
-      "src": "09-cases.jpg",
-      "caption": "시공사례"
-     },
-     {
-      "src": "10-qna.jpg",
-      "caption": "자주 묻는 질문"
-     }
-    ],
-    "source": "삼화페인트 공식 제품 리포트 (spsamhwa.com/report/…/16275, 2024-07-17 게시) 상세 이미지"
+     "wood_01_01.jpg",
+     "wood_01_03.jpg",
+     "wood_01_04.jpg",
+     "wood_01_05.jpg",
+     "wood_01_06.jpg",
+     "wood_01_07.jpg",
+     "wood_02_01.jpg",
+     "wood_02_02.jpg",
+     "wood_02_03.jpg",
+     "wood_02_04.jpg",
+     "wood_02_05.jpg",
+     "wood_02_06.jpg"
+    ]
    },
    "docs": {
     "tech": "1tech3051292.pdf",
@@ -4538,7 +4504,13 @@
     "tech": "1tech3010286.pdf",
     "spec_sheet": "1pntg3010286.pdf"
    },
-   "aliases": []
+   "aliases": [],
+   "images": {
+    "dir": "img",
+    "files": [
+     "world_stain_master_main.jpg"
+    ]
+   }
   },
   {
    "id": "onestop-anti-rust-primer",
