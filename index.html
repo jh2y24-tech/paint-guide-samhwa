@@ -5063,7 +5063,19 @@ function calcCompute(p, area, coats, loss, vid){
     unit = 'kg'; perCoat = s.coverage_kg_per_m2;
   } else return null;
 
-  var basePerM2 = perCoat * coats;
+  /* ── 이론도포면적 기준 판정 ──
+     TDS(기술자료)에 이론도포면적이 "2회 완성 기준"으로 기재된 제품은
+     도장횟수를 곱하지 않는다 (이미 그 횟수가 면적에 반영돼 있음).
+     예: 수성외부프로 5.8㎡/L = 4L로 23.2㎡(7평)을 2회 완성 기준.
+         실제 필요량 = 23.2 ÷ 5.8 = 4.0L  (×2 하면 8L로 두 배가 됨)
+     도장횟수 최솟값이 2 이상("2", "2~3")인 제품 → 완성기준으로 판정.
+     도장횟수 최솟값이 1("1", "1~2")인 제품 → 1회당 기준, 횟수를 곱함.
+     spec.spread_basis 필드로 개별 오버라이드 가능('per_coat'|'system'). */
+  var _ctmin = calcCoats(s.coats).min;
+  var systemBasis = (s.spread_basis === 'system') ||
+                    (s.spread_basis !== 'per_coat' && _ctmin >= 2);
+  var effCoats = systemBasis ? 1 : coats;
+  var basePerM2 = perCoat * effCoats;
   var need = area * basePerM2 * (1 + loss/100);
 
   var packs = (s.pack_sizes || []).map(calcParsePack).filter(function(x){ return x && x.u === unit; });
@@ -5119,6 +5131,7 @@ function calcCompute(p, area, coats, loss, vid){
 
   return {
     unit: unit, need: need, perM2: basePerM2, coats: coats, loss: loss,
+    systemBasis: systemBasis, recoats: (s.coats != null ? String(s.coats) : ''),
     dft: s.dft_um, cov: s.coverage_m2_per_l, variant: calcPickVariant(p, vid),
     packs: pk, thinner: thinner, mix: mix, mixNote: mixNote, cross: cross,
     noPacks: !pk, packNote: s.pack_sizes_note || '',
@@ -5150,10 +5163,16 @@ function calcRenderShell(uid, p){
         '<option value="m2" selected>㎡</option><option value="py">평</option></select>' +
       '<span class="calc-conv" id="'+uid+'-aconv"></span>' +
     '</span></div>' +
-  '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
-    '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+ct.min+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||1)+'회</span></div>' +
+  ( ((s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2))
+    /* 완성기준 제품: 횟수를 바꿔도 계산에 반영 안 됨을 명시. 단 3회 선택 가능하게 표시 */
+    ? '<div class="calc-row"><label>도장 횟수</label>' +
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+Math.max(2,ct.min)+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+s.coats+'회 완성 기준</b> — 이론도포면적에 반영됨</span></div>'
+    /* 1회당 기준 제품: 기본값 2회로, 횟수 조절 가능 */
+    : '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+Math.max(2,ct.min)+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||'2')+'회</span></div>'
+  ) +
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
-    '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="15" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">15%</span></div>' +
+    '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="5" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">5%</span></div>' +
   '<div class="calc-out" id="'+uid+'-out"></div>' +
   '<div class="calc-note" id="'+uid+'-basis">기준값 — 이론도포면적 '+cov+
     (s.coverage_m2_per_l != null ? ' (약 '+_r(m2ToPy(s.coverage_m2_per_l),2)+'평/L)' : '') +
@@ -5202,7 +5221,8 @@ function calcUpdate(uid){
   var dil = r.thinner && r.thinner.diluted;
   var h = '<div class="calc-hero"><div class="ch-lab">' + (dil ? '필요 희석액량' : '필요 도료량') + '</div>' +
           '<div class="ch-val">' + _r(r.need, 2) + ' ' + u + '</div>' +
-          '<div class="ch-sub">' + areaBoth(area) + ' × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '% · ' + coats + '회 도장</div></div>';
+          '<div class="ch-sub">' + areaBoth(area) + ' × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '%' +
+          (r.systemBasis ? ' · TDS ' + (r.recoats||'2') + '회 완성 기준' : ' · ' + coats + '회 도장') + '</div></div>';
 
   h += '<div class="calc-list">';
   if (dil){
