@@ -543,6 +543,19 @@ a{color:var(--brand);text-decoration:none}
 #prodModal .pm-cat{display:inline-block; font-size:11.5px; font-weight:700; color:#2a7; background:#eafaf1; border:1px solid #b6e3c9; border-radius:6px; padding:2px 8px; margin-bottom:6px;}
 #prodModal .pm-close{flex:none; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-2,#e5e7eb); background:var(--card,#fff); font-size:18px; line-height:1; cursor:pointer; color:var(--muted,#667);}
 #prodModal .pm-close:hover{background:#f4f5f6;}
+/* ── 팝업 내 위로 스크롤 버튼 ── */
+#pmScrollTop{
+  position:sticky; bottom:18px; float:right; margin-right:6px;
+  width:38px; height:38px; border-radius:50%;
+  background:var(--brand,#0a8); color:#fff;
+  border:none; cursor:pointer; font-size:18px; line-height:1;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  display:none; align-items:center; justify-content:center;
+  transition:opacity .18s, transform .18s;
+  z-index:10;
+}
+#pmScrollTop.visible{ display:flex; }
+#pmScrollTop:hover{ transform:translateY(-2px); }
 #prodModal .pm-body{padding:16px 20px 22px;}
 #prodModal .pm-img{width:100%; border-radius:12px; border:1px solid var(--border-2,#eee); margin-bottom:14px; display:block;}
 #prodModal .pm-detimg{width:100%; border-radius:10px; border:1px solid var(--border-2,#eee); margin-top:10px; display:block;}
@@ -3374,6 +3387,7 @@ function searchSymptom() {
       <button class="pm-close" onclick="closeProduct()" aria-label="닫기">×</button>
     </div>
     <div id="pmBody" class="pm-body"></div>
+    <button id="pmScrollTop" onclick="document.querySelector('#prodModal .pm-card').scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로">↑</button>
   </div>
 </div>
 
@@ -4691,7 +4705,16 @@ function openProduct(name){
   var m = document.getElementById('prodModal');
   m.classList.add('open');
   document.body.style.overflow = 'hidden';
-  m.querySelector('.pm-card').scrollTop = 0;
+  var pmCard = m.querySelector('.pm-card');
+  pmCard.scrollTop = 0;
+  /* 위로 스크롤 버튼 — 200px 이상 내려가면 표시 */
+  var pmST = document.getElementById('pmScrollTop');
+  if (pmST){
+    pmST.classList.remove('visible');
+    pmCard._stHandler && pmCard.removeEventListener('scroll', pmCard._stHandler);
+    pmCard._stHandler = function(){ pmST.classList.toggle('visible', pmCard.scrollTop > 200); };
+    pmCard.addEventListener('scroll', pmCard._stHandler, {passive:true});
+  }
   if (document.getElementById('pmcalc-panel')) calcFill(name, 'pmcalc');
   fillProductGallery(name);
 }
@@ -4752,8 +4775,16 @@ function fillProductGallery(name){
 }
 
 function closeProduct(){
-  document.getElementById('prodModal').classList.remove('open');
+  var m = document.getElementById('prodModal');
+  m.classList.remove('open');
   document.body.style.overflow = '';
+  var pmCard = m.querySelector('.pm-card');
+  if (pmCard && pmCard._stHandler){
+    pmCard.removeEventListener('scroll', pmCard._stHandler);
+    pmCard._stHandler = null;
+  }
+  var pmST = document.getElementById('pmScrollTop');
+  if (pmST) pmST.classList.remove('visible');
 }
 
 function isMobileUA(){
