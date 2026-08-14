@@ -4331,28 +4331,11 @@
     "tech_dated": "2024-05-13"
    },
    "images": {
-    "dir": "img/",
-    "note": "상품 상세 이미지. 이미지는 img/ 폴더에 평면 배치(하위 폴더 없음). 파일명은 ASCII 유지 (한글 파일명 금지 — NFC/NFD 불일치로 404 발생).",
+    "dir": "img",
     "files": [
      {
-      "src": "watersafe300-01.png",
-      "caption": "누구나 손쉽게 수영장 보수 · 제품 소개"
-     },
-     {
-      "src": "watersafe300-02.png",
-      "caption": "주요 특장점 — 소형 수영장 전용 · 실내외 적용 · 우수한 작업성 · 뛰어난 내구성"
-     },
-     {
-      "src": "watersafe300-03.png",
-      "caption": "도장 시스템(하도 에포코트 아쿠아 50㎛ + 상도 100㎛) · 위생안전기준·환경표지 인증"
-     },
-     {
-      "src": "watersafe300-04.png",
-      "caption": "도장 방법(도장 조건·도장 기구) 및 물성자료"
-     },
-     {
-      "src": "watersafe300-05.png",
-      "caption": "워터세이프 300 시공현장 — 워터파크 물놀이장 · 유아풀"
+      "src": "watersafe300_thumb.jpg",
+      "caption": "소규모 수영장 시공 — 워터세이프 300"
      }
     ]
    }
