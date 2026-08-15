@@ -731,12 +731,16 @@ a{color:var(--brand);text-decoration:none}
 
 /* ── PDF 자료 버튼(팝업 전용) ── */
 .calc-row .calc-sel{padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;background:var(--card);color:var(--text)}
-.calc-conv{color:var(--brand);font-weight:700;white-space:nowrap}
-/* 도장면적 : 입력칸·단위(㎡/평)·환산값을 한 줄에 묶어 가독성 향상 */
-.calc-row--area .calc-areawrap{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:0}
-.calc-row--area .calc-areawrap input[type=number]{flex:1 1 auto;min-width:0}
-.calc-row--area .calc-aunit{flex:none;width:auto;min-width:52px;padding:9px 8px;font-size:13px}
-.calc-row--area .calc-conv{flex:none;font-size:12.5px;color:var(--brand);font-weight:700;white-space:nowrap;font-family:var(--mono)}
+/* 도장면적 : ㎡·평 두 칸을 나란히, 서로 실시간 연동 */
+.calc-row--area{align-items:flex-start}
+.calc-row--area .calc-areawrap2{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.calc-afield{display:flex;align-items:center;gap:6px;min-width:0}
+.calc-afield input[type=number]{width:88px;min-width:0}
+.calc-aunitlabel{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.calc-aeq{color:var(--muted);font-size:13px;font-weight:600}
+@media(max-width:480px){
+  .calc-afield input[type=number]{width:76px}
+}
 .pdf-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
 .pdf-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:0;border-radius:10px;font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 10px rgba(20,38,42,.16);transition:transform .14s,filter .14s}
 .pdf-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
@@ -3013,7 +3017,8 @@ a{color:var(--brand);text-decoration:none}
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">공장, 사무실, 전시실, 매장 등의 실내 방진 바닥용. 에포코트보다 내구성이 우수하며, 신나를 사용하지 않는 무용제 자체평활형 제품.</div>
         <div class="spec-grid">
           <div class="spec-item"><strong>주제 : 경화제</strong><span class="val">3 : 1 (부피비)</span></div>
-          <div class="spec-item"><strong>추천 도막두께</strong><span class="val">1~2㎜ · 1회 도장</span></div>
+          <div class="spec-item"><strong>추천 도막두께</strong><span class="val">1~2㎜ · 2회 도장(선행 0.5~0.8㎜ + 잔량)</span></div>
+          <div class="spec-item"><strong>추천 소요량</strong><span class="val">2㎜ 완성 기준 약 2 L/㎡</span></div>
           <div class="spec-item"><strong>가사시간 (20℃)</strong><span class="val">25분</span></div>
           <div class="spec-item"><strong>가사시간 (30℃)</strong><span class="val">20분</span></div>
           <div class="spec-item"><strong>희석</strong><span class="val">무용제 (신나 사용 불가)</span></div>
@@ -3761,7 +3766,7 @@ Object.assign(window.PRODUCT_DB, {
     category: "상도 · 무용제 에폭시 자체평활 바닥재 (실내 방진)",
     desc: "에폭시 수지를 주성분으로 하는 무용제형 자체평활 바닥용 도료. 내약품성·내마모성·내충격성이 우수하고 도막두께를 자유롭게 조절할 수 있으며 이음새가 없습니다.",
     uses: "공장, 무진실, 사무실, 전시실, 매장(인테리어) 등의 실내 방진 바닥용",
-    spec: "마감 유광 · 색상 투명 · 피도면 콘크리트·시멘트 몰탈 · 조성 2액형(무용제)\n부피고형분 약 97±3% · 추천 건조도막두께 1~2㎜ · 도장횟수 1회\n주제:경화제 혼합비(부피비) 3:1 · 희석제 사용하지 않음 · 세척제 에포코트1000신나\n추천소요량 약 2 L/㎡ (2.17kg/㎡, 2㎜시) — 1㎜ 1.00 L/㎡ · 1.5㎜ 1.50 L/㎡\n포장단위(실포장량) 16L(주제12L+경화제4L) · 3.5L(주제2.63L+경화제0.88L)\n저장기간 12개월 (5~38℃ 실내보관)\n경화 특성(10℃/20℃/30℃): 지촉건조 12h/8h/6h · 경화건조 48h/24h/20h · 완전건조 9일/5일/4일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일\n도장시스템 — 하도: 에포코트하도 / 에포코트 고점도 하도 / 에포코트아쿠아하도",
+    spec: "마감 유광 · 색상 투명 · 피도면 콘크리트·시멘트 몰탈 · 조성 2액형(무용제)\n부피고형분 약 97±3% · 추천 건조도막두께 1~2㎜ · 도장횟수 2회(선행도장 0.5~0.8㎜ + 잔량 마감)\n주제:경화제 혼합비(부피비) 3:1 · 희석제 사용하지 않음 · 세척제 에포코트1000신나\n추천소요량 약 2 L/㎡ (2.17kg/㎡, 2㎜ 완성 기준) — 1㎜ 1.00 L/㎡ · 1.5㎜ 1.50 L/㎡\n포장단위(실포장량) 16L(주제12L+경화제4L) · 3.5L(주제2.63L+경화제0.88L)\n저장기간 12개월 (5~38℃ 실내보관)\n경화 특성(10℃/20℃/30℃): 지촉건조 12h/8h/6h · 경화건조 48h/24h/20h · 완전건조 9일/5일/4일 · 가사시간 40분/25분/20분 · 재도장간격 2~9일/1~4일/1~3일\n도장시스템 — 하도: 에포코트하도 / 에포코트 고점도 하도 / 에포코트아쿠아하도",
     cautions: [
       "1회 도장 시 도막두께 2㎜ 이하 — 초과 시 도막 내 기포 잔존 및 도료 몰림에 의한 주름 발생",
       "희석 금지 — 경화지연·강도저하·색분리·CRACK·아민블러싱·주름 발생 (동절기 작업성 목적 3% 내외만 허용)",
@@ -5268,12 +5273,11 @@ function calcRenderShell(uid, p){
       '</select></div>';
   }
   return '' + varRow +
-  '<div class="calc-row calc-row--area"><label for="'+uid+'-area">도장면적</label>' +
-    '<span class="calc-areawrap">' +
-      '<input type="number" id="'+uid+'-area" min="0" step="1" value="10" inputmode="decimal" oninput="calcUpdate(\''+uid+'\')">' +
-      '<select class="calc-sel calc-aunit" id="'+uid+'-aunit" onchange="calcUpdate(\''+uid+'\')" aria-label="면적 단위">' +
-        '<option value="m2" selected>㎡</option><option value="py">평</option></select>' +
-      '<span class="calc-conv" id="'+uid+'-aconv"></span>' +
+  '<div class="calc-row calc-row--area"><label>도장면적</label>' +
+    '<span class="calc-areawrap2">' +
+      '<span class="calc-afield"><input type="number" id="'+uid+'-aream2" min="0" step="0.1" value="10" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'m2\')" aria-label="면적(제곱미터)"><span class="calc-aunitlabel">㎡</span></span>' +
+      '<span class="calc-aeq">=</span>' +
+      '<span class="calc-afield"><input type="number" id="'+uid+'-areapy" min="0" step="0.1" value="'+_r(m2ToPy(10),2)+'" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'py\')" aria-label="면적(평)"><span class="calc-aunitlabel">평</span></span>' +
     '</span></div>' +
   ( ((s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2))
     /* 완성기준 제품: 횟수를 바꿔도 계산에 반영 안 됨을 명시. 단 3회 선택 가능하게 표시 */
@@ -5291,18 +5295,27 @@ function calcRenderShell(uid, p){
     (s.dft_um ? ' · 건조도막두께 '+s.dft_um+'㎛ 기준' : '') +'</div>';
 }
 
+/* ㎡ ↔ 평 두 입력칸을 서로 실시간 연동 */
+function calcAreaSync(uid, from){
+  var m2El = document.getElementById(uid+'-aream2');
+  var pyEl = document.getElementById(uid+'-areapy');
+  if (!m2El || !pyEl) return;
+  if (from === 'py'){
+    var pyv = parseFloat(pyEl.value);
+    m2El.value = (pyv > 0) ? _r(pyv * PY_M2, 2) : '';
+  } else {
+    var m2v = parseFloat(m2El.value);
+    pyEl.value = (m2v > 0) ? _r(m2ToPy(m2v), 2) : '';
+  }
+  calcUpdate(uid);
+}
+
 function calcUpdate(uid){
   var st = CALC_STATE[uid];
   if (!st) return;
   var p = st.product;
-  var areaIn = parseFloat((document.getElementById(uid+'-area')||{}).value) || 0;
-  var aUnitEl = document.getElementById(uid+'-aunit');
-  var aUnit = aUnitEl ? aUnitEl.value : 'm2';
-  var area = (aUnit === 'py') ? areaIn * PY_M2 : areaIn;
-  var ac = document.getElementById(uid+'-aconv');
-  if (ac) ac.textContent = areaIn > 0
-    ? ((aUnit === 'py') ? '= ' + _r(area,2) + '㎡' : '= ' + _r(m2ToPy(area),2) + '평')
-    : '';
+  var areaIn = parseFloat((document.getElementById(uid+'-aream2')||{}).value) || 0;
+  var area = areaIn;
   var coats = parseInt((document.getElementById(uid+'-coats')||{}).value, 10) || 1;
   var loss  = parseFloat((document.getElementById(uid+'-loss')||{}).value) || 0;
   var lv = document.getElementById(uid+'-lossv'); if (lv) lv.textContent = loss + '%';

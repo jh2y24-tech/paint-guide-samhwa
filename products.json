@@ -1207,8 +1207,9 @@
     ],
     "volume_solids_pct": 97,
     "dft_um": 2000,
-    "dft_note": "추천 건조도막두께 1~2㎜",
-    "coats": "1",
+    "dft_note": "추천 건조도막두께 1~2㎜ (기공·기포 저감을 위해 0.5~0.8㎜ 선행도장 후 잔량으로 마감 — 실질 2회 시공)",
+    "coats": "2",
+    "spread_basis": "system",
     "coverage_m2_per_l": 0.5,
     "coverage_variants": [
      {
