@@ -2672,6 +2672,16 @@
     "indoor_air_quality_note": "실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내 사용 가능",
     "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족",
     "eco_label": false
+   },
+   "images": {
+    "dir": "img/",
+    "note": "색상(연회색) 이미지. img/ 폴더 업로드. 파일명 ASCII·소문자 유지.",
+    "files": [
+     {
+      "src": "super-epoxy-seal-color.jpg",
+      "caption": "슈퍼에폭씰 색상 (연회색)"
+     }
+    ]
    }
   },
   {
