@@ -317,6 +317,22 @@ a{color:var(--brand);text-decoration:none}
 .pm-gal figure:last-child{margin-bottom:0}
 .pm-gal img,.pm-gal video{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);background:#fff}
 .pm-gal figcaption{margin-top:5px;font-size:12.5px;color:var(--muted);font-weight:600}
+.pm-gal figure img{cursor:zoom-in}
+
+/* ── 이미지 확대 보기(라이트박스) ── */
+#imgLightbox{position:fixed;inset:0;z-index:1200;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,10,10,.94);padding:20px;box-sizing:border-box}
+#imgLightbox.open{display:flex}
+.ilb-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.14);color:#fff;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}
+.ilb-close:hover{background:rgba(255,255,255,.28)}
+.ilb-stage{max-width:100%;max-height:calc(100vh - 110px);overflow:auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;-webkit-overflow-scrolling:touch;touch-action:pinch-zoom}
+.ilb-stage img{max-width:100%;max-height:calc(100vh - 110px);width:auto;height:auto;object-fit:contain;border-radius:6px;transition:max-width .15s ease,max-height .15s ease,transform .15s ease;touch-action:pinch-zoom}
+.ilb-stage.zoomed{align-items:flex-start;justify-content:flex-start;cursor:zoom-out}
+.ilb-stage.zoomed img{max-width:none;max-height:none;width:auto;height:auto;transform:scale(2.2);transform-origin:top left}
+.ilb-caption{color:#fff;font-size:13px;font-weight:600;margin-top:12px;text-align:center;max-width:90%}
+.ilb-hint{color:rgba(255,255,255,.55);font-size:11.5px;margin-top:4px}
+@media (max-width:640px){
+  .ilb-stage.zoomed img{transform:scale(1.8)}
+}
 .pm-videos{display:flex;flex-direction:column;gap:10px}
 .pm-vid{margin:0}
 .pm-vid video{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--border);background:#000}
@@ -3367,6 +3383,16 @@ function searchSymptom() {
   </div>
 </div>
 
+<!-- ══ 이미지 확대 보기(라이트박스) ══ -->
+<div id="imgLightbox" role="dialog" aria-modal="true">
+  <button class="ilb-close" onclick="closeImgLightbox()" aria-label="닫기">×</button>
+  <div id="imgLightboxStage" class="ilb-stage" onclick="toggleImgLightboxZoom()">
+    <img id="imgLightboxImg" src="" alt="">
+  </div>
+  <div id="imgLightboxCaption" class="ilb-caption"></div>
+  <div class="ilb-hint">이미지를 눌러 확대·축소</div>
+</div>
+
 <!-- ══ PDF 뷰어(화면 내 팝업) ══ -->
 <div id="pdfViewer" role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
   <div class="pv-backdrop" onclick="closePdf()"></div>
@@ -4666,7 +4692,7 @@ function openProduct(name){
     var _cuid = 'pmcalc';
     /* ── 좌측 컬럼 — 대표이미지 · 소요량 계산기 · 시공영상 · 첨부자료 (미디어/도구) ── */
     var mainHtml = '';
-    if (p.image){ mainHtml += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" onerror="this.style.display=\'none\'">'; }
+    if (p.image){ mainHtml += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" style="cursor:zoom-in" onerror="this.style.display=\'none\'" onclick="openImgLightbox(\'' + p.image.replace(/'/g,"\\'") + '\',\'' + name.replace(/'/g,"\\'") + '\')">'; }
     mainHtml += calcBlockFor(name, _cuid);
     if (Array.isArray(p.videos) && p.videos.length){
       mainHtml += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
@@ -4785,7 +4811,7 @@ function fillProductGallery(name){
         h += '<figure><video src="' + src + '" autoplay muted loop playsinline controls preload="metadata" onerror="pgImgFail(this)"></video>' +
              (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
       } else {
-        h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy" onerror="pgImgFail(this)">' +
+        h += '<figure><img src="' + src + '" alt="' + cap.replace(/"/g,'&quot;') + '" loading="lazy" onerror="pgImgFail(this)" onclick="openImgLightbox(\'' + src.replace(/'/g,"\\'") + '\',\'' + cap.replace(/'/g,"\\'").replace(/"/g,'&quot;') + '\')">' +
              (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
       }
     });
@@ -4835,9 +4861,40 @@ function closePdf(){
   if (!document.getElementById('prodModal').classList.contains('open')) document.body.style.overflow = '';
 }
 
+function openImgLightbox(src, caption){
+  var lb = document.getElementById('imgLightbox');
+  if (!lb || !src) return;
+  var img = document.getElementById('imgLightboxImg');
+  var cap = document.getElementById('imgLightboxCaption');
+  var stage = document.getElementById('imgLightboxStage');
+  img.src = src;
+  img.alt = caption || '';
+  cap.textContent = caption || '';
+  cap.style.display = caption ? '' : 'none';
+  stage.classList.remove('zoomed');
+  stage.scrollLeft = 0; stage.scrollTop = 0;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImgLightbox(){
+  var lb = document.getElementById('imgLightbox');
+  if (!lb) return;
+  lb.classList.remove('open');
+  document.getElementById('imgLightboxImg').src = '';
+  var prodOpen = document.getElementById('prodModal').classList.contains('open');
+  document.body.style.overflow = prodOpen ? 'hidden' : '';
+}
+function toggleImgLightboxZoom(){
+  var stage = document.getElementById('imgLightboxStage');
+  if (!stage) return;
+  stage.classList.toggle('zoomed');
+  if (!stage.classList.contains('zoomed')){ stage.scrollLeft = 0; stage.scrollTop = 0; }
+}
+
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape'){
-    if (document.getElementById('pdfViewer').classList.contains('open')) closePdf();
+    if (document.getElementById('imgLightbox').classList.contains('open')) closeImgLightbox();
+    else if (document.getElementById('pdfViewer').classList.contains('open')) closePdf();
     else if (document.getElementById('calcModal').classList.contains('open')) closeCalc();
     else closeProduct();
   }
