@@ -155,6 +155,7 @@ a{color:var(--brand);text-decoration:none}
 .calc-item b{flex:none;font-size:11.5px;font-weight:700;color:var(--muted);width:74px}
 .calc-item span{flex:1;font-family:var(--mono);font-weight:600;color:var(--text)}
 .calc-note{margin-top:10px;background:rgba(0,71,79,.05);border:1px solid rgba(0,71,79,.16);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--brand);line-height:1.6}
+.calc-loss-hint{margin:-5px 0 11px 98px;font-size:11.5px;color:var(--muted);line-height:1.5}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
 .calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
 .calc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 15px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.4}
@@ -5285,8 +5286,26 @@ function calcCoatsLabel(v){
   var str = String(v);
   return /회\s*$/.test(str) ? str : str + '회';
 }
+/* ── 로스율 기본값 ──
+   시공방식에 따라 실제 손실 규모가 크게 다르다.
+   · 자체평활형(셀프레벨링) 바닥재: 배합통에 붓고 흙손·레기·RAKE로 전체를 밀어 펴는 방식.
+     혼합 전량이 바닥에 투입되므로 손실은 배합통·도구에 남는 잔여물 정도에 그친다
+     (예: 24kg 제품에 5%=1.2kg을 적용하면 실제보다 과대 산정됨) → 기본 2%, 최대 10%.
+   · 붓·로라 등 일반 도장: 트레이·로라 함침분, 바탕면 요철 흡수, 커팅인·비산 등으로
+     실손실이 발생하므로 통상 로스율 5%를 기본으로 유지 (현장 여건에 따라 최대 40%까지 조정 가능). */
+function calcLossProfile(s){
+  var tools = (s.tools || []).join(',');
+  var isPourSpread = (s.spread_basis === 'system') && /흙손|레기|RAKE|주걱|스퀴지|스크레이퍼/.test(tools);
+  if (isPourSpread){
+    return { def: 2, max: 10, step: 1,
+      hint: '부어붓기·흙손/레기 시공 — 혼합 전량이 바닥에 투입되어 손실이 적음(배합통·도구 잔여분 위주) · 필요 시 조정' };
+  }
+  return { def: 5, max: 40, step: 5,
+    hint: '붓·로라 등 일반 도장 — 트레이·로라 함침분, 바탕면 요철 흡수 등을 반영한 표준값 · 현장 여건에 따라 조정' };
+}
 function calcRenderShell(uid, p){
   var s = p.spec || {}, ct = calcCoats(s.coats);
+  var lp = calcLossProfile(s);
   /* TDS에 도장횟수가 범위(예: "1~2","2~3")가 아니라 고정값(예: "1", "1회", 1)으로
      명시된 제품은 그 값이 곧 제조사 권장 완성 횟수이므로, 기본 2회로 임의 상향하지 않고
      TDS 지정 횟수를 그대로 기본값·고정값으로 사용한다. (예: A플로어투명 = 1회 고정) */
@@ -5327,7 +5346,8 @@ function calcRenderShell(uid, p){
         '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+calcCoatsLabel(s.coats||'2')+'</span></div>'
   ) +
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
-    '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="5" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">5%</span></div>' +
+    '<input type="range" id="'+uid+'-loss" min="0" max="'+lp.max+'" step="'+lp.step+'" value="'+lp.def+'" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">'+lp.def+'%</span></div>' +
+  '<div class="calc-loss-hint">'+lp.hint+'</div>' +
   '<div class="calc-out" id="'+uid+'-out"></div>' +
   '<div class="calc-note" id="'+uid+'-basis">기준값 — 이론도포면적 '+cov+
     (s.coverage_m2_per_l != null ? ' (약 '+_r(m2ToPy(s.coverage_m2_per_l),2)+'평/L)' : '') +
