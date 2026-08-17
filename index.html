@@ -5280,10 +5280,20 @@ function calcCompute(p, area, coats, loss, vid){
 }
 
 /* ── UI ── */
+/* "1회"/"1"/1 처럼 이미 '회'가 붙어있으면 중복 표기하지 않음 */
+function calcCoatsLabel(v){
+  var str = String(v);
+  return /회\s*$/.test(str) ? str : str + '회';
+}
 function calcRenderShell(uid, p){
   var s = p.spec || {}, ct = calcCoats(s.coats);
-  /* 기본 도장 횟수: 프라이머(role=primer)는 1회, 그 외는 2회 */
-  var defCoats = (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
+  /* TDS에 도장횟수가 범위(예: "1~2","2~3")가 아니라 고정값(예: "1", "1회", 1)으로
+     명시된 제품은 그 값이 곧 제조사 권장 완성 횟수이므로, 기본 2회로 임의 상향하지 않고
+     TDS 지정 횟수를 그대로 기본값·고정값으로 사용한다. (예: A플로어투명 = 1회 고정) */
+  var isFixedCoats = (ct.min === ct.max);
+  /* 기본 도장 횟수: 고정값 제품은 그 값 그대로 · 프라이머(role=primer)는 1회 · 그 외는 2회 */
+  var defCoats = isFixedCoats ? ct.min
+               : (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
   var cov = (s.coverage_m2_per_l != null)
         ? s.coverage_m2_per_l + '㎡/L'
         : (s.coverage_kg_per_m2 != null ? s.coverage_kg_per_m2 + 'kg/㎡' : '-');
@@ -5307,10 +5317,14 @@ function calcRenderShell(uid, p){
   ( ((s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2))
     /* 완성기준 제품: 횟수를 바꿔도 계산에 반영 안 됨을 명시. 단 3회 선택 가능하게 표시 */
     ? '<div class="calc-row"><label>도장 횟수</label>' +
-        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+s.coats+'회 완성 기준</b> — 이론도포면적에 반영됨</span></div>'
-    /* 1회당 기준 제품: role=primer면 1회, 나머지 2회 기본 */
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+calcCoatsLabel(s.coats)+' 완성 기준</b> — 이론도포면적에 반영됨</span></div>'
+    : isFixedCoats
+    /* 1회당 기준이지만 TDS에 고정값으로 명시된 제품(예: A플로어투명 1회): 임의 변경 불가하도록 잠금 */
+    ? '<div class="calc-row"><label>도장 횟수</label>' +
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+calcCoatsLabel(s.coats)+' 고정</b></span></div>'
+    /* 범위 기준 제품(예: "1~2","2~3"): role=primer면 1회, 나머지 2회 기본, 사용자가 조정 가능 */
     : '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
-        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+(s.coats||'2')+'회</span></div>'
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+calcCoatsLabel(s.coats||'2')+'</span></div>'
   ) +
   '<div class="calc-row"><label for="'+uid+'-loss">로스율</label>' +
     '<input type="range" id="'+uid+'-loss" min="0" max="40" step="5" value="5" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit" id="'+uid+'-lossv">5%</span></div>' +
