@@ -1363,8 +1363,9 @@
     ],
     "volume_solids_pct": 95,
     "dft_um": 3000,
-    "dft_note": "추천 도막두께 약 1~3㎜",
+    "dft_note": "추천 도막두께 약 1~3㎜ (콘크리트 소지 기공에 의한 기포 저감을 위해 0.5~0.8㎜로 선행도장(스크랩핑) 후 잔량으로 마감 — 실질 2회 시공이나 소요량은 완성 두께 기준)",
     "coats": "1~2",
+    "spread_basis": "system",
     "coverage_kg_per_m2": 4.74,
     "coverage_variants": [
      {
