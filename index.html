@@ -167,6 +167,9 @@ a{color:var(--brand);text-decoration:none}
 .cyc-eq{font-size:12px;color:var(--muted)}
 .cyc-area{font-weight:800;color:var(--brand);font-size:19px;font-family:var(--mono)}
 .cyc-py{font-size:12.5px;color:var(--muted)}
+.cyh-group{margin-top:4px}
+.cyh-group+.cyh-group{margin-top:11px;padding-top:11px;border-top:1px dashed rgba(0,71,79,.2)}
+.cyh-group-label{font-size:12.5px;font-weight:700;color:var(--brand);margin-bottom:7px}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
 .calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
 .calc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 15px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.4}
@@ -5133,18 +5136,15 @@ function calcParsePackAmount(str){
   var lm  = s.match(/([\d.]+)\s*L\b/i);
   return { kg: kgm ? parseFloat(kgm[1]) : null, l: lm ? parseFloat(lm[1]) : null, label: s };
 }
-function calcYieldHighlight(p){
+/* 포장 목록 → 통당 시공가능면적 산출 (공용 헬퍼) */
+function calcYieldRows(p, covKg, covL, coatsOverride){
   var s = p.spec || {};
-  var covKg = s.coverage_kg_per_m2, covL = s.coverage_m2_per_l;
-  if (covKg == null && covL == null) return '';
   var packs = Array.isArray(s.pack_sizes) ? s.pack_sizes : [];
-  if (!packs.length) return '';
+  if (!packs.length || (covKg == null && covL == null)) return [];
   var isSystem = (s.spread_basis === 'system');
   var ct = calcCoats(s.coats), isFixedCoats = (ct.min === ct.max);
-  /* 완성두께(system) 기준 제품은 1회 환산, 그 외 붓·로라 등은 계산기 본체(calcRenderShell)와
-     동일한 기본 도장횟수 — 고정값 제품은 그 값, 프라이머는 1회, 나머지는 2회 — 로 나눠
-     "포장 1통으로 전체 시스템을 완성할 수 있는 면적"을 보여준다 (계산기 기본값과 반드시 일치시킬 것) */
-  var coatsForYield = isSystem ? 1
+  var coatsForYield = coatsOverride != null ? coatsOverride
+                    : isSystem ? 1
                     : isFixedCoats ? ct.min
                     : (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
   var dens = s.specific_gravity;
@@ -5160,19 +5160,63 @@ function calcYieldHighlight(p){
     area = area / coatsForYield;
     rows.push({ label: raw, area: area, py: area / PY_M2 });
   });
-  if (!rows.length) return '';
-  var dftTxt = s.dft_um ? calcVarDft({dft_um: parseFloat(s.dft_um)}) : '';
-  var rateTxt = covKg != null ? (covKg + 'kg/㎡') : (covL + '㎡/L');
-  var basisTxt = isSystem ? '완성두께 기준' : (coatsForYield > 1 ? '표준 ' + coatsForYield + '회 시공 기준' : '1회 기준');
-  var chips = rows.map(function(r){
+  return rows;
+}
+function calcYieldChipsHtml(rows){
+  return rows.map(function(r){
     return '<div class="calc-yield-chip"><span class="cyc-pack">'+r.label+'</span>' +
       '<span class="cyc-eq">1통 ≒</span><span class="cyc-area">'+_r(r.area,1)+'㎡</span>' +
       '<span class="cyc-py">(약 '+_r(r.py,1)+'평)</span></div>';
   }).join('');
+}
+function calcYieldHighlight(p){
+  var s = p.spec || {};
+  var isSystem = (s.spread_basis === 'system');
+  var ct = calcCoats(s.coats), isFixedCoats = (ct.min === ct.max);
+  var coatsForYield = isSystem ? 1
+                    : isFixedCoats ? ct.min
+                    : (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
+  var basisTxt = isSystem ? '완성두께 기준' : (coatsForYield > 1 ? '표준 ' + coatsForYield + '회 시공 기준' : '1회 기준');
+
+  var variants = Array.isArray(s.coverage_variants) ? s.coverage_variants : null;
+  var defVariant = variants ? (variants.filter(function(v){ return v.id === s.coverage_variants_default; })[0] || variants[0]) : null;
+
+  /* 유색/투명처럼 색상 계열에 따라 소요량이 달라지는 제품은, 대표(default)와 같은 두께의
+     계열들을 모두 나란히 보여준다 — 계열 표기가 없으면 "유색 기준"으로만 알고 투명에도
+     같은 양을 바른다고 오인할 수 있으므로 반드시 병기 */
+  var colorGroups = null;
+  if (variants && defVariant){
+    var sameDft = variants.filter(function(v){ return v.dft_um === defVariant.dft_um && /유색|투명/.test(v.label||''); });
+    if (sameDft.length > 1) colorGroups = sameDft;
+  }
+
+  var dftTxt = defVariant ? calcVarDft(defVariant) : (s.dft_um ? calcVarDft({dft_um: parseFloat(s.dft_um)}) : '');
+
+  if (colorGroups){
+    var blocks = colorGroups.map(function(v){
+      var rows = calcYieldRows(p, v.coverage_kg_per_m2, v.coverage_m2_per_l, coatsForYield);
+      if (!rows.length) return '';
+      var rateTxt = v.coverage_kg_per_m2 != null ? (v.coverage_kg_per_m2 + 'kg/㎡') : (v.coverage_m2_per_l + '㎡/L');
+      return '<div class="cyh-group"><div class="cyh-group-label">' + (v.label || '') + ' · ' + rateTxt + '</div>' +
+        '<div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
+    }).join('');
+    if (!blocks) return '';
+    return '<div class="calc-yield-hero"><div class="cyh-top">' +
+      '<span class="cyh-badge">📐 추천소요량</span>' +
+      '<span class="cyh-rate">색상 계열별 소요량 상이 · ' + dftTxt + (dftTxt?' · ':'') + basisTxt + '</span>' +
+    '</div>' + blocks + '</div>';
+  }
+
+  var covKg = defVariant ? defVariant.coverage_kg_per_m2 : s.coverage_kg_per_m2;
+  var covL  = defVariant ? defVariant.coverage_m2_per_l  : s.coverage_m2_per_l;
+  var rows = calcYieldRows(p, covKg, covL, coatsForYield);
+  if (!rows.length) return '';
+  var rateTxt = covKg != null ? (covKg + 'kg/㎡') : (covL + '㎡/L');
+  var labelTxt = defVariant && defVariant.label ? defVariant.label + ' · ' : '';
   return '<div class="calc-yield-hero"><div class="cyh-top">' +
     '<span class="cyh-badge">📐 추천소요량</span>' +
-    '<span class="cyh-rate">'+rateTxt+(dftTxt?' · '+dftTxt:'')+' · '+basisTxt+'</span>' +
-  '</div><div class="cyh-chips">'+chips+'</div></div>';
+    '<span class="cyh-rate">'+labelTxt+rateTxt+(dftTxt?' · '+dftTxt:'')+' · '+basisTxt+'</span>' +
+  '</div><div class="cyh-chips">'+calcYieldChipsHtml(rows)+'</div></div>';
 }
 
 /* ── 면적 단위 ── 현장은 평, 사양서는 ㎡. 둘 다 보여준다. (1평 = 3.3058㎡) */
