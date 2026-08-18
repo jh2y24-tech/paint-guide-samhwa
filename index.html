@@ -4008,7 +4008,7 @@ Object.assign(window.PRODUCT_DB, {
     category: "중도 · 고탄성 수성 메꿈제 (실내공기질관리법 적합 · 환경마크)",
     desc: "특수 아크릴에멀젼 및 수용성 아크릴우레탄 에멀젼과 내후성이 좋은 안료를 주성분으로 메꿈성·탄성·내후성·방수성이 좋도록 설계된 1액형 수성 메꿈제. 접착력과 내구력이 강해 시멘트 기재 건축물의 균열부·이음새·창문틀·벽체 사이 틈을 메꾸는 데 적합하며, 상도 도막을 오염시키지 않고 작업성이 우수합니다.",
     uses: "일반건축물 균열부분 · 조립식 건축물 이음부분 · 각종 틈의 메꿈 (고탄성 메꿈제) · 시멘트 · 콘크리트면",
-    spec: "도장기구: 헤라(주걱) · 조성 1액형 · 마감 무광\n색상: 백색 · 아이보리색 · 점도 PASTE상 · 고형분 70%\n이론소요량: 1.15㎏/㎡ (건조도막두께 500㎛ 시)\n건조(25℃ · 500㎛): 지촉 1시간 · 상도작업가능 1일 · 완전건조 7일\n작업 기상조건: 대기온도 5~35℃ · 상대습도 85% 이하\n1회 도장 시 1mm 이내로 도장 가능\n표면처리: 시멘트 소지 28일 이상 양생(25℃), 평형함수율 85% 이하 · pH 9 이하, 레이턴스·먼지·수분·유분 제거 후 얇은 틈새·홈은 V컷팅하여 충진\n2회 시공 시: 1차 백색 250㎛ → 최소 10시간 경과 후 2차 아이보리색 250㎛\n도장시스템: 하도 수성바인다200(필요시) / 중도 아이생각수성탄성씰 / 상도 아이생각수성외부1급 · 인플러스 수성 실리콘(RS)",
+    spec: "도장기구: 헤라(주걱) · 조성 1액형 · 마감 무광\n색상: 백색 · 아이보리색 · 점도 PASTE상 · 고형분 70%\n이론소요량: 1.15㎏/㎡ (건조도막두께 500㎛ 시)\n건조(25℃ · 500㎛): 지촉 1시간 · 상도작업가능 1일 · 완전건조 7일\n작업 기상조건: 대기온도 5~35℃ · 상대습도 85% 이하\n1회 도장 시 1mm 이내로 도장 가능\n표면처리: 시멘트 소지 28일 이상 양생(25℃), 평형함수율 85% 이하 · pH 9 이하, 레이턴스·먼지·수분·유분 제거 후 얇은 틈새·홈은 V컷팅하여 충진\n2회 시공 시: 1차 백색 250㎛ → 최소 10시간 경과 후 2차 아이보리색 250㎛\n도장시스템: 하도 수성바인다200(필요시) · 상도 아이생각수성외부1급 · 인플러스 수성 실리콘(RS)",
     packaging: "20㎏ · 5㎏ (저장 1년 / 5~35℃ 실내 보관)",
     cautions: [
       "상도로 안료분이 높은 페인트를 도장할 경우 크랙이 발생할 수 있으므로 상도적합성(크랙·부착·이색)을 미리 확인",
@@ -5232,6 +5232,8 @@ function calcThinner(s, e, need, unit){
   s = s || {}; e = e || {};
   var name = s.thinner;
   if (!name) return null;
+  /* 페이스트(비액상) 메꿈제는 신나·희석 개념이 없으므로, 무희석이면 희석 항목 자체를 표시하지 않는다 */
+  if ((s.thinning_pct_max === 0 || name === '무희석') && /paste|페이스트/i.test(String(s.viscosity||''))) return null;
   var u = unit || 'L';
   var note = s.thinning_note || '';
   var basis = s.thinning_pct_max != null ? (s.thinning_basis || '도료 부피비') : (s.thinning_basis || '');
@@ -5295,7 +5297,7 @@ function calcThinner(s, e, need, unit){
 
   /* (5) 원액 사용 / 무희석 */
   if (s.thinning_pct_max === 0 || name === '\uBB34\uD76C\uC11D'){
-    return { label: label, html: (name === '\uBB34\uD76C\uC11D' ? '희석 없이 원액 사용' : '원액 사용 · ' + name) + tail() };
+    return { label: label, html: (name === '\uBB34\uD76C\uC11D' ? '희석 없이 사용' : '희석 없이 사용 · ' + name) + tail() };
   }
 
   /* (6) 희석률 미등록 */
@@ -5456,9 +5458,9 @@ function calcRenderShell(uid, p){
       '<span class="calc-afield"><input type="number" id="'+uid+'-areapy" min="0" step="0.1" value="'+_r(m2ToPy(10),2)+'" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'py\')" aria-label="면적(평)"><span class="calc-aunitlabel">평</span></span>' +
     '</span></div>' +
   ( ((s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2))
-    /* 완성기준 제품: 횟수를 바꿔도 계산에 반영 안 됨을 명시. 단 3회 선택 가능하게 표시 */
-    ? '<div class="calc-row"><label>도장 횟수</label>' +
-        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+calcCoatsLabel(s.coats)+' 완성 기준</b> — 이론도포면적에 반영됨</span></div>'
+    /* 완성두께(system) 기준 제품: 소요량이 도장횟수와 무관하므로 도장 횟수 입력칸을 아예 표시하지 않는다.
+       (완성 기준 안내는 결과의 계산식 줄 'TDS N회 완성 기준'에 그대로 남는다) */
+    ? ''
     : isFixedCoats
     /* 1회당 기준이지만 TDS에 고정값으로 명시된 제품(예: A플로어투명 1회): 임의 변경 불가하도록 잠금 */
     ? '<div class="calc-row"><label>도장 횟수</label>' +
@@ -5573,7 +5575,7 @@ function calcUpdate(uid){
     h += '<div class="calc-item"><b>배합비</b><span>' + r.mixNote.ratio +
          (r.mixNote.note ? '<br><span style="font-size:12px;">' + r.mixNote.note + '</span>' : '') + '</span></div>';
   }
-  if (r.thinner){
+  if (r.thinner && !primerInc){
     h += '<div class="calc-item"><b>' + r.thinner.label + '</b><span>' + r.thinner.html + '</span></div>';
   }
   if (r.primer && !r.primer.included){
@@ -5593,7 +5595,7 @@ function calcUpdate(uid){
       h += '<div class="calc-note">도장사양서 일위대가 기준 ' + _r(r.cross.need,2) + ' ' + u + ' — 위 값과 일치합니다.</div>';
     }
   }
-  h += '<div class="calc-note">이론값입니다. 소지 흡수·표면 거칠기·도장기구에 따라 실제 소요량은 달라집니다. 부가세·시공비 별도.</div>';
+  h += '<div class="calc-note">이론값입니다. 소지 흡수·표면 거칠기·도장기구에 따라 실제 소요량은 달라집니다.</div>';
   out.innerHTML = h;
 }
 
