@@ -156,6 +156,17 @@ a{color:var(--brand);text-decoration:none}
 .calc-item span{flex:1;font-family:var(--mono);font-weight:600;color:var(--text)}
 .calc-note{margin-top:10px;background:rgba(0,71,79,.05);border:1px solid rgba(0,71,79,.16);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--brand);line-height:1.6}
 .calc-loss-hint{margin:-5px 0 11px 98px;font-size:11.5px;color:var(--muted);line-height:1.5}
+/* 추천소요량 하이라이트 — 상세팝업 최상단, 통(포장단위)당 시공 가능 면적을 즉시 확인 */
+.calc-yield-hero{margin:0 0 14px;padding:14px 16px 15px;border-radius:14px;background:var(--brand-tint);border:1.5px solid rgba(0,71,79,.25)}
+.cyh-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.cyh-badge{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--brand);text-transform:uppercase;background:#fff;border:1px solid rgba(0,71,79,.25);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.cyh-rate{font-size:12.5px;color:var(--muted);font-weight:600}
+.cyh-chips{display:flex;flex-wrap:wrap;gap:8px}
+.calc-yield-chip{display:flex;align-items:baseline;gap:5px;background:#fff;border:1px solid rgba(0,71,79,.18);border-radius:10px;padding:8px 12px}
+.cyc-pack{font-weight:700;color:var(--text);font-size:13.5px}
+.cyc-eq{font-size:12px;color:var(--muted)}
+.cyc-area{font-weight:800;color:var(--brand);font-size:19px;font-family:var(--mono)}
+.cyc-py{font-size:12.5px;color:var(--muted)}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
 .calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
 .calc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 15px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.4}
@@ -4719,6 +4730,7 @@ function openProduct(name){
     /* ── 좌측 컬럼 — 대표이미지 · 소요량 계산기 · 시공영상 · 첨부자료 (미디어/도구) ── */
     var mainHtml = '';
     if (p.image){ mainHtml += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" style="cursor:zoom-in" onerror="this.style.display=\'none\'" onclick="openImgLightbox(\'' + p.image.replace(/'/g,"\\'") + '\',\'' + name.replace(/'/g,"\\'") + '\')">'; }
+    mainHtml += '<div id="' + _cuid + '-yield"></div>';
     mainHtml += calcBlockFor(name, _cuid);
     if (Array.isArray(p.videos) && p.videos.length){
       mainHtml += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
@@ -5111,6 +5123,58 @@ function calcVarDft(v){
   return (v.dft_um >= 1000) ? (v.dft_um/1000) + '㎜' : v.dft_um + '㎛';
 }
 
+/* ── 추천소요량 하이라이트 ──
+   상세팝업 최상단에 "포장단위 1통(1L)으로 시공 가능한 면적"을 큰 글씨로 바로 보여준다.
+   products.json 의 coverage_kg_per_m2 / coverage_m2_per_l · pack_sizes 로부터 전 제품
+   공통으로 자동 산출하므로, 개별 제품마다 손으로 강조 문구를 다시 써 넣을 필요가 없다. */
+function calcParsePackAmount(str){
+  var s = String(str);
+  var kgm = s.match(/([\d.]+)\s*kg/i);
+  var lm  = s.match(/([\d.]+)\s*L\b/i);
+  return { kg: kgm ? parseFloat(kgm[1]) : null, l: lm ? parseFloat(lm[1]) : null, label: s };
+}
+function calcYieldHighlight(p){
+  var s = p.spec || {};
+  var covKg = s.coverage_kg_per_m2, covL = s.coverage_m2_per_l;
+  if (covKg == null && covL == null) return '';
+  var packs = Array.isArray(s.pack_sizes) ? s.pack_sizes : [];
+  if (!packs.length) return '';
+  var isSystem = (s.spread_basis === 'system');
+  var ct = calcCoats(s.coats), isFixedCoats = (ct.min === ct.max);
+  /* 완성두께(system) 기준 제품은 1회 환산, 그 외 붓·로라 등은 계산기 본체(calcRenderShell)와
+     동일한 기본 도장횟수 — 고정값 제품은 그 값, 프라이머는 1회, 나머지는 2회 — 로 나눠
+     "포장 1통으로 전체 시스템을 완성할 수 있는 면적"을 보여준다 (계산기 기본값과 반드시 일치시킬 것) */
+  var coatsForYield = isSystem ? 1
+                    : isFixedCoats ? ct.min
+                    : (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
+  var dens = s.specific_gravity;
+  var rows = [];
+  packs.forEach(function(raw){
+    var pk = calcParsePackAmount(raw), kg = pk.kg, l = pk.l;
+    if (kg == null && l != null && dens) kg = l * dens;
+    if (l == null && kg != null && dens) l = kg / dens;
+    var area = null;
+    if (covKg != null && kg != null) area = kg / covKg;
+    else if (covL != null && l != null) area = l * covL;
+    if (area == null) return;
+    area = area / coatsForYield;
+    rows.push({ label: raw, area: area, py: area / PY_M2 });
+  });
+  if (!rows.length) return '';
+  var dftTxt = s.dft_um ? calcVarDft({dft_um: parseFloat(s.dft_um)}) : '';
+  var rateTxt = covKg != null ? (covKg + 'kg/㎡') : (covL + '㎡/L');
+  var basisTxt = isSystem ? '완성두께 기준' : (coatsForYield > 1 ? '표준 ' + coatsForYield + '회 시공 기준' : '1회 기준');
+  var chips = rows.map(function(r){
+    return '<div class="calc-yield-chip"><span class="cyc-pack">'+r.label+'</span>' +
+      '<span class="cyc-eq">1통 ≒</span><span class="cyc-area">'+_r(r.area,1)+'㎡</span>' +
+      '<span class="cyc-py">(약 '+_r(r.py,1)+'평)</span></div>';
+  }).join('');
+  return '<div class="calc-yield-hero"><div class="cyh-top">' +
+    '<span class="cyh-badge">📐 추천소요량</span>' +
+    '<span class="cyh-rate">'+rateTxt+(dftTxt?' · '+dftTxt:'')+' · '+basisTxt+'</span>' +
+  '</div><div class="cyh-chips">'+chips+'</div></div>';
+}
+
 /* ── 면적 단위 ── 현장은 평, 사양서는 ㎡. 둘 다 보여준다. (1평 = 3.3058㎡) */
 var PY_M2 = 3.3058;
 function m2ToPy(m2){ return m2 / PY_M2; }
@@ -5487,8 +5551,10 @@ function calcBlockFor(name, uid){
 function calcFill(name, uid){
   calcEnsureCatalog().then(function(db){
     var panel = document.getElementById(uid + '-panel');
+    var yieldEl = document.getElementById(uid + '-yield');
     if (!panel) return;
     var p = calcFindProduct(db, name);
+    if (yieldEl) yieldEl.innerHTML = p ? calcYieldHighlight(p) : '';
     if (!p || !p.spec || (p.spec.coverage_m2_per_l == null && p.spec.coverage_kg_per_m2 == null)){
       panel.innerHTML = '<div class="calc-na">이 제품은 이론도포면적이 아직 등록되지 않아<br>소요량을 계산할 수 없습니다.<br><span style="font-size:12px;">기술자료(TDS)가 확보되면 계산기가 활성화됩니다.</span></div>';
       return;
