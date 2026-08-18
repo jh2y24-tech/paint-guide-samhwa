@@ -5327,9 +5327,23 @@ function calcCompute(p, area, coats, loss, vid){
   var basePerM2 = perCoat * effCoats;
   var need = area * basePerM2 * (1 + loss/100);
 
+  /* ── 하도(프라이머) 소요량 ──
+     estimate.primer_kg_per_m2 / primer_l_per_m2 로 하도량을 산출한다(kg·L 모두 지원).
+     하도가 본 제품과 동일 제품인 자가하도 제품(예: 삼화 원터치 방수 = 하도·중도·상도 겸용)은
+     spec.primer_include:true 로 지정하면, 하도량을 중도 도장횟수와 무관하게 1회분으로
+     항상 기본 포함해 통 계산에 합산한다. 그 외(하도가 다른 제품)는 종전처럼 "참고"로만 표시. */
+  var _pKg = (e.primer_kg_per_m2 != null), _pL = (e.primer_l_per_m2 != null);
+  var primerUnit = _pKg ? 'kg' : (_pL ? 'L' : null);
+  var primerPerM2 = _pKg ? e.primer_kg_per_m2 : (_pL ? e.primer_l_per_m2 : null);
+  var primerNeed = (primerPerM2 != null) ? area * primerPerM2 * (1 + loss/100) : null;
+  var primerName = (p.system && p.system.primer) || '하도';
+  var primerIncluded = (s.primer_include === true && primerNeed != null && primerUnit === unit);
+  var needTotal = need + (primerIncluded ? primerNeed : 0);
+
   var packs = (s.pack_sizes || []).map(calcParsePack).filter(function(x){ return x && x.u === unit; });
-  /* 희석액 기준 제품은 "통"을 원액으로 사니까 원액량으로 통 수를 잡는다 */
-  var packBase = need;
+  /* 희석액 기준 제품은 "통"을 원액으로 사니까 원액량으로 통 수를 잡는다.
+     자가하도 포함 제품은 하도+중도 합계로 통 수를 잡는다. */
+  var packBase = needTotal;
   if (s.coverage_basis === 'diluted' && s.thinning_ratio){
     var mrp = String(s.thinning_ratio).match(/([\d.]+)\s*:\s*([\d.]+)\s*$/);
     if (mrp){
@@ -5379,12 +5393,12 @@ function calcCompute(p, area, coats, loss, vid){
   }
 
   return {
-    unit: unit, need: need, perM2: basePerM2, coats: coats, loss: loss,
+    unit: unit, need: need, needTotal: needTotal, midcoatNeed: need, perM2: basePerM2, coats: coats, loss: loss,
     systemBasis: systemBasis, recoats: (s.coats != null ? String(s.coats) : ''),
     dft: s.dft_um, cov: s.coverage_m2_per_l, variant: calcPickVariant(p, vid),
     packs: pk, thinner: thinner, mix: mix, mixNote: mixNote, cross: cross,
     noPacks: !pk, packNote: s.pack_sizes_note || '',
-    primer: (e.primer_l_per_m2 != null) ? { perM2: e.primer_l_per_m2, need: area * e.primer_l_per_m2 * (1+loss/100), name: (p.system && p.system.primer) || '하도' } : null
+    primer: (primerNeed != null) ? { perM2: primerPerM2, need: primerNeed, unit: primerUnit, name: primerName, included: primerIncluded } : null
   };
 }
 
@@ -5514,6 +5528,10 @@ function calcUpdate(uid){
   var qtyLabel = dil ? '필요 희석액량' : '필요 도료량';
   var formula = areaBoth(area) + ' × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '%' +
       (r.systemBasis ? ' · TDS ' + (r.recoats||'2') + '회 완성 기준' : ' · ' + coats + '회 도장');
+  var primerInc = r.primer && r.primer.included;
+  if (primerInc){
+    formula += ' + 하도 ' + _r(r.primer.perM2,3) + ' ' + r.primer.unit + '/㎡(1회·기본 포함)';
+  }
 
   var h;
   if (r.packs){
@@ -5522,15 +5540,22 @@ function calcUpdate(uid){
     var mn = r.packs.min;
     h = '<div class="calc-hero"><div class="ch-lab">구매해야 할 통 수</div>' +
         '<div class="ch-val">' + mn.text + '</div>' +
-        '<div class="ch-sub">총 ' + _r(mn.total,2) + u + ' 구매 → ' + qtyLabel.replace('필요 ','') + ' ' + _r(r.need,2) + u + ' 사용하고 약 ' + _r(mn.waste,2) + u + ' 남음</div>' +
+        '<div class="ch-sub">총 ' + _r(mn.total,2) + u + ' 구매 → ' + qtyLabel.replace('필요 ','') + ' ' + _r(r.needTotal,2) + u + ' 사용하고 약 ' + _r(mn.waste,2) + u + ' 남음</div>' +
         '<div class="ch-sub">' + formula + '</div></div>';
   } else {
     h = '<div class="calc-hero"><div class="ch-lab">' + qtyLabel + '</div>' +
-        '<div class="ch-val">' + _r(r.need, 2) + ' ' + u + '</div>' +
+        '<div class="ch-val">' + _r(r.needTotal, 2) + ' ' + u + '</div>' +
         '<div class="ch-sub">' + formula + '</div></div>';
   }
 
   h += '<div class="calc-list">';
+  if (primerInc){
+    /* 자가하도 제품: 시공 순서대로 하도(1회·기본 포함) → 중상도(선택 횟수) → 합계 로 보여준다.
+       '중도'는 상도를 따로 사야 하는 것으로 오해될 수 있어, 중도·상도를 겸하는 본도장은 '중상도'로 표기 */
+    h += '<div class="calc-item"><b>① 하도 (1회 · 기본 포함)</b><span>' + _r(r.primer.need,2) + ' ' + u + ' · 원액:물 1:1</span></div>' +
+         '<div class="calc-item"><b>② 중상도 (' + coats + '회)</b><span>' + _r(r.midcoatNeed,2) + ' ' + u + ' · 가급적 원액 도장(희석 시 물 5% 미만)</span></div>' +
+         '<div class="calc-item"><b>합계 (하도+중상도)</b><span>' + _r(r.needTotal,2) + ' ' + u + '</span></div>';
+  }
   if (dil){
     h += '<div class="calc-item"><b>제품 원액</b><span>' + _r(r.thinner.base,2) + ' ' + u + '</span></div>';
   }
@@ -5551,8 +5576,9 @@ function calcUpdate(uid){
   if (r.thinner){
     h += '<div class="calc-item"><b>' + r.thinner.label + '</b><span>' + r.thinner.html + '</span></div>';
   }
-  if (r.primer){
-    h += '<div class="calc-item"><b>하도 참고</b><span>' + _r(r.primer.need,2) + ' L · ' + r.primer.name + ' (' + r.primer.perM2 + ' L/㎡)</span></div>';
+  if (r.primer && !r.primer.included){
+    var pu = r.primer.unit || 'L';
+    h += '<div class="calc-item"><b>하도 참고</b><span>' + _r(r.primer.need,2) + ' ' + pu + ' · ' + r.primer.name + ' (' + r.primer.perM2 + ' ' + pu + '/㎡)</span></div>';
   }
   h += '</div>';
 
