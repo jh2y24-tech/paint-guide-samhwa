@@ -695,14 +695,11 @@
    "system": {
     "primer": "수성바인다200, 아이럭스파워젯소",
     "primer_conditional": true,
-    "midcoat": "아이생각데코텍스VP",
-    "midcoat_note": "인테리어 도장 시 필요에 한함",
     "primer_note_extra": "철재·목재 상도 도장 시 샌딩처리 및 젯소 도장 후 적용"
    },
    "estimate": {
-    "basis": "하도 1회 + 중도(필요시) 1회 30㎛ + 상도 2회 60㎛",
+    "basis": "상도 2회 · 60㎛",
     "primer_l_per_m2": 0.1,
-    "midcoat_l_per_m2": 0.08,
     "topcoat_l_per_m2": 0.15
    },
    "cautions": {
