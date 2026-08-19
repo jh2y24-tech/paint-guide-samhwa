@@ -1129,7 +1129,7 @@
    "spec": {
     "composition": "1액형",
     "dft_um": 60,
-    "coats": "1~2",
+    "coats": "2",
     "coverage_m2_per_l": 5.88,
     "recoat_hours": 2,
     "thinner": "물",
@@ -2174,7 +2174,10 @@
     "spread_basis": "system",
     "coverage_kg_per_m2": 4.86,
     "coverage_note": "건조도막두께 3㎜ 완성 기준(스크래핑+본도장 합산). 20kg 1통 ≒ 4.1㎡(약 1.2평). 도장 시 손실량·표면상태 고려",
-    "tools": ["흙손", "전용레기"],
+    "tools": [
+     "흙손",
+     "전용레기"
+    ],
     "shore_hardness": "45~65 (Shore A)",
     "elongation_pct_min": 550,
     "tensile_strength_mpa_min": 2.0,
@@ -3521,7 +3524,10 @@
      }
     ],
     "coverage_variants_default": "std3mm",
-    "tools": ["흙손", "전용레기"],
+    "tools": [
+     "흙손",
+     "전용레기"
+    ],
     "shore_hardness": "45~65 (Shore A)",
     "elongation_pct_min": 550,
     "tensile_strength_mpa_min": 2.0,
@@ -3785,7 +3791,7 @@
     ],
     "volume_solids_pct": 37.6,
     "dft_um": 60,
-    "coats": "1~2",
+    "coats": "2",
     "coverage_m2_per_l": 6.0,
     "dry_hard_min": 60,
     "recoat_hours": 3,
