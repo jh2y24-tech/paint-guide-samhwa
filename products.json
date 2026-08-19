@@ -4952,7 +4952,8 @@
     "spread_basis": "system"
    },
    "docs": {
-    "tech": "1tech3230725.pdf"
+    "tech": "1tech3230725.pdf",
+    "spec_sheet": "1pntg3230725.pdf"
    },
    "aliases": []
   },
@@ -4998,7 +4999,8 @@
     "spread_basis": "system"
    },
    "docs": {
-    "tech": "1tech3230908.pdf"
+    "tech": "1tech3230908.pdf",
+    "spec_sheet": "1pntg3230908.pdf"
    },
    "aliases": [
     "스피롤탄S형"
