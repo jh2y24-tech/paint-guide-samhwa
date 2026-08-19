@@ -1734,7 +1734,8 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3020787.pdf",
@@ -1967,7 +1968,8 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3231446.pdf"
@@ -2754,7 +2756,8 @@
     "dry_touch_min": 30,
     "pot_life_hours": 20,
     "recoat_hours": 6,
-    "cure_note": "10℃/20℃/30℃ — 지촉건조 1h/30분/15분 · 경화건조 18h/6h/4h · 가사시간 24h/20h/12h · 재도장간격 18~72h/6~72h/4~72h"
+    "cure_note": "10℃/20℃/30℃ — 지촉건조 1h/30분/15분 · 경화건조 18h/6h/4h · 가사시간 24h/20h/12h · 재도장간격 18~72h/6~72h/4~72h",
+    "spread_basis": "system"
    },
    "aliases": [],
    "images": {
@@ -4757,7 +4760,8 @@
      "1L",
      "4L",
      "18L"
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3070109.pdf",
@@ -4803,7 +4807,8 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3790954.pdf",
@@ -4943,7 +4948,8 @@
     "pack_sizes": [
      "4L",
      "16L"
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3230725.pdf"
@@ -4988,7 +4994,8 @@
     "pack_sizes": [
      "4L",
      "16L"
-    ]
+    ],
+    "spread_basis": "system"
    },
    "docs": {
     "tech": "1tech3230908.pdf"
