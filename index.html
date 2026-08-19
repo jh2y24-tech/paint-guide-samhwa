@@ -4430,8 +4430,7 @@ Object.assign(window.PRODUCT_DB, {
       "옥외·넓은 범위(2m×2m 이상) 및 메탈릭 색상 광얼룩 주의"
     ],
     pdfs: [
-      { label: "📄 기술자료", url: "pdf/1tech3230725.pdf" },
-      { label: "📐 도장사양서", url: "pdf/1pntg3230725.pdf" }
+      { label: "📄 기술자료", url: "pdf/1tech3230725.pdf" }
     ]
   },
   "스피롤탄 S형": {
@@ -4447,8 +4446,7 @@ Object.assign(window.PRODUCT_DB, {
       "옥외·넓은 범위(2m×2m 이상) 및 메탈릭 색상 광얼룩 주의"
     ],
     pdfs: [
-      { label: "📄 기술자료", url: "pdf/1tech3230908.pdf" },
-      { label: "📐 도장사양서", url: "pdf/1pntg3230908.pdf" }
+      { label: "📄 기술자료", url: "pdf/1tech3230908.pdf" }
     ]
   },
   "슈퍼폭시360 알루미늄": {
@@ -5429,6 +5427,14 @@ function calcLossProfile(s){
   return { def: 5, max: 40, step: 5,
     hint: '붓·로라 등 일반 도장 — 트레이·로라 함침분, 바탕면 요철 흡수 등을 반영한 표준값 · 현장 여건에 따라 조정' };
 }
+/* 완성두께(system) 기준 제품의 계산식 안내를 '도장횟수'가 아니라 '도막두께'로 표기하기 위한 라벨.
+   dft_um 이 숫자면 1000㎛ 미만은 ㎛, 이상은 ㎜로 환산. 문자열·미기재면 null 반환(기존 횟수 문구로 폴백). */
+function calcDftLabel(dft){
+  if (typeof dft !== 'number' || !(dft > 0)) return null;
+  if (dft < 1000) return dft + '㎛';
+  var mm = dft / 1000;
+  return (mm % 1 === 0 ? mm : _r(mm, 2)) + '㎜';
+}
 function calcRenderShell(uid, p){
   var s = p.spec || {}, ct = calcCoats(s.coats);
   var lp = calcLossProfile(s);
@@ -5530,8 +5536,14 @@ function calcUpdate(uid){
   var u = r.unit;
   var dil = r.thinner && r.thinner.diluted;
   var qtyLabel = dil ? '필요 희석액량' : '필요 도료량';
+  var _dftL = calcDftLabel(r.dft);
+  var _rc = String(r.recoats || '').replace(/회$/, '');   /* coats 값에 '회'가 이미 포함된 경우 중복 방지 */
   var formula = areaBoth(area) + ' × ' + _r(r.perM2, 4) + ' ' + u + '/㎡ × 로스 ' + loss + '%' +
-      (r.systemBasis ? ' · TDS ' + (r.recoats||'2') + '회 완성 기준' : ' · ' + coats + '회 도장');
+      (r.systemBasis
+        ? (_dftL
+            ? ' · ' + _dftL + ' 완성 기준' + (_rc ? ' (' + _rc + '회 걸쳐 도포)' : '')
+            : ' · TDS ' + (_rc || '2') + '회 완성 기준')
+        : ' · ' + coats + '회 도장');
   var primerInc = r.primer && r.primer.included;
   if (primerInc){
     formula += ' + 하도 ' + _r(r.primer.perM2,3) + ' ' + r.primer.unit + '/㎡(1회·기본 포함)';
