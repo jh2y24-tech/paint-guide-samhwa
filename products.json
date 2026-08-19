@@ -85,6 +85,8 @@
     "dft_um": 100,
     "coats": "1~2",
     "coverage_m2_per_l": 5.2,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 5.2㎡/L (건조도막두께 100㎛시). TDS 기준이 두께(100㎛)이므로 완성 기준 — 1~2회 나눠 도장해도 소요량 동일(횟수 곱하지 않음). 출처: 제조사 TDS.",
     "dry_touch_min": 20,
     "dry_hard_min": 30,
     "recoat_hours": 1,
@@ -2117,7 +2119,8 @@
     "dft_um": 45,
     "coats": "1~2",
     "coverage_m2_per_l": 11.3,
-    "coverage_note": "건조도막두께 45㎛ 기준 = 0.088 L/㎡ (1회분)",
+    "spread_basis": "system",
+    "coverage_note": "추천도포면적 11.3㎡/L (건조도막두께 45㎛시). TDS 기준이 두께(45㎛)이므로 완성 기준 — 1~2회 나눠 도장해도 소요량 동일(횟수 곱하지 않음). 출처: 제조사 TDS.",
     "pot_life_hours": 3,
     "recoat_hours": "24~48 (20℃)",
     "thinner": "우레탄1000신나",
@@ -2740,6 +2743,7 @@
     "dft_um": 50,
     "coats": "1~2",
     "coverage_m2_per_l": 6.6,
+    "coverage_note": "추천도포면적 6.6㎡/L (건조도막두께 50㎛). 주제:경화제 1:1. TDS 기준이 두께(50㎛)이므로 완성 기준 — 횟수 곱하지 않음. 출처: 제조사 TDS.",
     "mixing_ratio_volume": "1:1",
     "thinner": "에포코트1000 신나",
     "thinning_pct_max": 0,
@@ -2791,6 +2795,8 @@
     "coats": "1~2",
     "dft_um": 40,
     "coverage_m2_per_l": 13.3,
+    "spread_basis": "system",
+    "coverage_note": "TDS 기준이 두께 — 유색 40㎛ 13.3㎡/L / 80㎛ 6.6㎡/L, 투명 40㎛ 10.8㎡/L(모두 카탈로그 명시). 두께를 선택(variant)해 소요량 산출하며 횟수는 곱하지 않음. 유색·투명 모두 취급. 출처: 제조사 TDS.",
     "coverage_variants": [
      {
       "id": "color-40",
@@ -2927,7 +2933,8 @@
     "dft_um": 50,
     "coats": "1~2",
     "coverage_m2_per_l": 6.4,
-    "coverage_note": "추천도포면적 — 건조도막두께 50㎛ 기준 = 0.156 L/㎡",
+    "spread_basis": "system",
+    "coverage_note": "추천도포면적 약 6.4㎡/L (건조도막두께 50㎛ 기준 = 0.156 L/㎡). 주제:경화제 1:1. TDS 기준이 두께(50㎛)이므로 완성 기준 — 횟수 곱하지 않음. 출처: 제조사 TDS.",
     "mixing_ratio_volume": "1:1",
     "thinner": "물(청수)",
     "thinning_pct_max": 10,
@@ -3029,6 +3036,7 @@
     "dft_um": "40~80",
     "coats": "1~2",
     "coverage_m2_per_l": 9.5,
+    "spread_basis": "system",
     "coverage_variants": [
      {
       "id": "clear-40",
@@ -3036,10 +3044,18 @@
       "dft_um": 40,
       "coverage_m2_per_l": 9.5,
       "source": "catalog"
+     },
+     {
+      "id": "clear-80",
+      "label": "투명 · 80㎛ (환산)",
+      "dft_um": 80,
+      "coverage_m2_per_l": 4.75,
+      "source": "derived",
+      "note": "카탈로그 미표기 — 40㎛ 9.5㎡/L를 도막두께 반비례 환산. 확인 필요."
      }
     ],
     "coverage_variants_default": "clear-40",
-    "coverage_note": "건조도막두께 40㎛ 도장 시. 도장작업 손실량과 표면상태를 고려할 것",
+    "coverage_note": "TDS 건조도막두께 40~80㎛ 범위 명시(투명 40㎛시 약 9.5㎡/L). 두께를 선택(variant)해 소요량 산출하며 횟수는 곱하지 않음 — 80㎛는 40㎛의 2배 소요. 도장작업 손실량과 표면상태를 고려할 것. 출처: 제조사 TDS.",
     "mixing_ratio_volume": "1:1",
     "pot_life_note": "작업가능시간(25℃) 40분 이내 — 혼합 후 40분 내 도장 완료",
     "thinner": "물(청수)",
@@ -4952,8 +4968,7 @@
     "spread_basis": "system"
    },
    "docs": {
-    "tech": "1tech3230725.pdf",
-    "spec_sheet": "1pntg3230725.pdf"
+    "tech": "1tech3230725.pdf"
    },
    "aliases": []
   },
@@ -4999,8 +5014,7 @@
     "spread_basis": "system"
    },
    "docs": {
-    "tech": "1tech3230908.pdf",
-    "spec_sheet": "1pntg3230908.pdf"
+    "tech": "1tech3230908.pdf"
    },
    "aliases": [
     "스피롤탄S형"
