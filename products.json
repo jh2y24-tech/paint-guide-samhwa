@@ -1,15 +1,17 @@
 {
  "$schema_version": "1.0",
- "updated_at": "2026-08-14",
+ "updated_at": "2026-08-20",
  "note": "형제상사 제품 데이터 단일 소스. HTML·앱·API 모두 이 파일을 읽는다. 수정은 항상 여기서만.",
  "field_guide": {
   "id": "영문 소문자+하이픈. 절대 변경 금지 (DB 이관 시 PK로 사용)",
   "spec.coverage_m2_per_l": "이론도포면적. dft_um 기준값",
-  "spec.recoat_hours": "재도장 간격(시간). 25℃ 기준",
+  "spec.recoat_hours": "재도장 간격(시간·25℃ 단일값). 온도별 범위가 있으면 recoat_table 사용, 이 필드는 null.",
   "spec.thinning_pct_max": "최대 희석률(%). 도료 부피비",
   "status": "documented = 공식 PDF 확보 / listed = 제품명만 등록, 사양 미확보",
   "spec.coverage_variants": "이론소요량이 도막두께·색상(유색/투명)에 따라 여러 개인 제품. 계산기가 선택 UI를 띄운다. 항목은 coverage_m2_per_l 또는 coverage_kg_per_m2 중 하나를 가진다. source: catalog=기술자료 / spec_sheet=도장사양서 일위대가 / derived=비례 환산",
-  "images": "상품 상세 이미지. dir + files[].src 로 경로 조립. 파일명·폴더명은 반드시 ASCII (한글 파일명은 GitHub Pages에서 NFC/NFD 불일치로 404)"
+  "images": "상품 상세 이미지. dir + files[].src 로 경로 조립. 파일명·폴더명은 반드시 ASCII (한글 파일명은 GitHub Pages에서 NFC/NFD 불일치로 404)",
+  "spec.recoat_table": "온도별 재도장 간격. 항목 {temp_c,min_h,max_h}. 일(日) 자료는 시간 환산(1일=24h).",
+  "spec.recoat_impossible": "true = 자체 재도장 불가 제품. recoat_hours/table 대신 사용."
  },
  "categories": [
   {
@@ -55,6 +57,10 @@
   {
    "id": "pool",
    "label": "실내외 수영장"
+  },
+  {
+   "id": "fire",
+   "label": "내화"
   }
  ],
  "products": [
@@ -854,7 +860,33 @@
     "volume_solids_pct": 39.27,
     "dft_um": 50,
     "coats": "2~3",
-    "coverage_m2_per_l": 7.85,
+    "coverage_m2_per_l": 8.02,
+    "spread_basis": "system",
+    "coverage_variants": [
+     {
+      "id": "gloss-50",
+      "label": "유광 · 50㎛",
+      "dft_um": 50,
+      "coverage_m2_per_l": 8.02,
+      "source": "catalog"
+     },
+     {
+      "id": "semigloss-50",
+      "label": "반광 · 50㎛",
+      "dft_um": 50,
+      "coverage_m2_per_l": 7.82,
+      "source": "catalog"
+     },
+     {
+      "id": "matte-50",
+      "label": "무광 · 50㎛",
+      "dft_um": 50,
+      "coverage_m2_per_l": 7.72,
+      "source": "catalog"
+     }
+    ],
+    "coverage_variants_default": "gloss-50",
+    "coverage_note": "마감별 이론도포면적(건조도막두께 50㎛시) — 유광 8.02 / 반광 7.82 / 무광 7.72 ㎡/L. 마감을 선택(variant)해 산출하며, TDS 기준이 두께(50㎛)이므로 완성 기준 — 2~3회 나눠 도장해도 소요량 동일(횟수 곱하지 않음). 출처: 제조사 TDS.",
     "dry_touch_min": 60,
     "dry_hard_min": 120,
     "recoat_hours": 3,
@@ -2193,7 +2225,25 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "recoat_table": [
+     {
+      "temp_c": 5,
+      "min_h": 48,
+      "max_h": 96
+     },
+     {
+      "temp_c": 20,
+      "min_h": 24,
+      "max_h": 48
+     },
+     {
+      "temp_c": 30,
+      "min_h": 18,
+      "max_h": 48
+     }
+    ],
+    "recoat_hours": null
    },
    "cure_table": {
     "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
@@ -2370,7 +2420,25 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "recoat_table": [
+     {
+      "temp_c": 10,
+      "min_h": 48,
+      "max_h": 72
+     },
+     {
+      "temp_c": 20,
+      "min_h": 24,
+      "max_h": 48
+     },
+     {
+      "temp_c": 30,
+      "min_h": 24,
+      "max_h": 48
+     }
+    ],
+    "recoat_hours": null
    },
    "cure_table": {
     "unit_note": "1액형이지만 공기 중 수분과 반응해 경화하므로 개봉 후에는 즉시 전량 사용할 것",
@@ -2508,12 +2576,12 @@
      "녹색",
      "회색"
     ],
-    "dft_um": 500,
+    "dft_um": 1000,
     "coats": "2~3",
-    "spread_basis": "per_coat",
-    "coverage_kg_per_m2": 1.225,
+    "spread_basis": "system",
+    "coverage_kg_per_m2": 2.45,
     "primer_include": true,
-    "coverage_note": "중상도 1회(500㎛) 기준 1.225kg/㎡ (제조사 이론소요량 2.450kg/㎡ ÷ 2회). 시공순서 ① 하도 원액:물 1:1 1회(50㎛·0.123kg/㎡, 동일 제품이라 항상 기본 포함·합산) → ② 중상도는 가급적 원액으로 도장(희석 시 물 5% 미만), 기본 2회=2.45kg/㎡, 3회 선택 시 3.675kg/㎡. '중도'로 표기하면 상도를 따로 사야 하는 것으로 오해될 수 있어, 중도·상도를 겸하는 본도장은 '중상도'로 표기. 도장 시 손실량·표면상태 고려",
+    "coverage_note": "중상도 완성 기준 — 건조도막두께 1㎜(1000㎛)시 2.45kg/㎡. TDS 추천 건조도막두께 1㎜·도장횟수 2~3회, 추천소요량 2.45kg/㎡(1회 500㎛기준 1.23kg/㎡). 목표는 1㎜ 완성이므로 2회로 만들든 3회로 만들든 소요량 동일(횟수 곱하지 않음). ① 하도(동일 제품 원액:물 1:1, 50㎛ 1회, 0.123kg/㎡)는 무조건 포함·항상 합산(primer_include) → ② 중상도는 가급적 원액 도장(희석 시 물 5% 미만). '중도'로 표기하면 상도를 따로 사야 하는 것으로 오해될 수 있어, 중도·상도를 겸하는 본도장은 '중상도'로 표기. 도장 시 손실량·표면상태 고려. 출처: 제조사 TDS.",
     "thinner": "중상도 가급적 원액 도장(희석 시 물 5% 미만) · 하도는 원액:물 1:1 희석",
     "recoat_hours": "6 (20℃)",
     "pack_sizes": [
@@ -2625,7 +2693,7 @@
     "coats": "1~2",
     "mixing_ratio_weight": "2:1",
     "coverage_formula": "[조인트폭(mm) × 충진두께(mm)] / 1000 = 길이 1m당 씰링재 소요량(L)",
-    "coverage_note": "면적(㎡) 기준이 아니라 줄눈 길이(m) 기준. 예 — 폭 10㎜ × 깊이 10㎜ = 0.1 L/m → 12L 1통으로 약 120m",
+    "coverage_note": "줄눈 길이(m) 기준 제품. 폭10㎜×깊이10㎜ = 0.1 L/m (12L ≒ 120m). 면적(㎡) 계산 대상 아님.",
     "calc_na_note": "슈퍼에폭씰은 줄눈 충진재로, 소요량이 면적(㎡)이 아니라 <b>줄눈 길이(m)</b> 기준입니다.<br>[조인트폭(㎜) × 충진두께(㎜)] ÷ 1000 = 길이 1m당 소요량(L)<br>예) 폭 10㎜ × 깊이 10㎜ → 0.1 L/m · 12L 1통으로 약 120m",
     "thinner": "무희석",
     "thinning_pct_max": 0,
@@ -2650,7 +2718,9 @@
      "흙손",
      "레기",
      "주걱"
-    ]
+    ],
+    "coverage_basis_kind": "length",
+    "coverage_l_per_m": 0.1
    },
    "docs": {
     "tech": "1tech3100221.pdf",
@@ -3558,7 +3628,25 @@
     "storage_temp_c": [
      5,
      35
-    ]
+    ],
+    "recoat_table": [
+     {
+      "temp_c": 10,
+      "min_h": 48,
+      "max_h": 96
+     },
+     {
+      "temp_c": 20,
+      "min_h": 24,
+      "max_h": 72
+     },
+     {
+      "temp_c": 30,
+      "min_h": 24,
+      "max_h": 48
+     }
+    ],
+    "recoat_hours": null
    },
    "cure_table": {
     "unit_note": "지촉건조·경화건조·완전건조·가사시간·재도장간격은 기온에 따라 크게 달라짐",
@@ -4574,7 +4662,7 @@
     "immersion_dry_days": 7,
     "immersion_dry_note": "침적가능건조 20℃ 기준 7일 — 이전 침적 시 백악화·탈색·부풀음",
     "recoat_hours": null,
-    "recoat_note": "자체 재도장 불가 — 슈퍼폭시370 위 겹도장 비추천",
+    "recoat_note": "자체 재도장 불가 — 슈퍼폭시370 위 겹도장 금지",
     "thinner": "슈퍼신나123(S)",
     "thinning_pct_max": 5,
     "pack_sizes": [
@@ -4592,7 +4680,8 @@
      "동력교반기",
      "로라",
      "붓"
-    ]
+    ],
+    "recoat_impossible": true
    },
    "conditions": {
     "air_temp_c": [
@@ -4666,7 +4755,8 @@
     "finish": "반무광",
     "pack_sizes": [
      "4kg"
-    ]
+    ],
+    "recoat_hours": 24
    },
    "estimate": {
     "basis": "하도 1회 · 45㎛ · 이론도포면적 6.63㎡/L",
@@ -5022,7 +5112,7 @@
   },
   {
    "id": "flamechk-ss190",
-   "name": "플레임체크SS190보용기둥용",
+   "name": "플레임체크SS190 (보·기둥용)",
    "brand": "삼화페인트",
    "categories": [
     "fire"
@@ -5061,6 +5151,44 @@
      {
       "src": "flamechk_law2.png"
      }
+    ]
+   },
+   "status": "documented",
+   "summary": "철골 구조물용 수성 내화도료. 화재 시 도막이 발포·탄화층을 형성해 철골 온도 상승을 지연시켜 내화 성능(구조 붕괴 지연)을 확보한다.",
+   "spec": {
+    "composition": "1액형",
+    "finish": "무광",
+    "nonvolatile_pct": "66±4",
+    "dft_um": 650,
+    "coats": "1~2",
+    "coverage_m2_per_l": 1.0,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 1.00㎡/L (건조도막 650㎛ · 습도막 1,000㎛ 도장 기준). 650㎛ 완성 기준이므로 도장횟수 곱하지 않음. 출처: 제조사 기술자료.",
+    "recoat_table": [
+     {
+      "temp_c": 5,
+      "min_h": 24,
+      "max_h": 24
+     },
+     {
+      "temp_c": 20,
+      "min_h": 12,
+      "max_h": 12
+     }
+    ],
+    "recoat_hours": null,
+    "thinner": "불필요 (에어리스 스프레이 적합 설계)",
+    "thinning_pct_max": 0,
+    "tools": [
+     "에어리스 스프레이"
+    ],
+    "pack_sizes": [
+     "18L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
     ]
    }
   }
