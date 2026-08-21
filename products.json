@@ -1767,6 +1767,60 @@
    }
   },
   {
+   "id": "starmel-777",
+   "status": "documented",
+   "name": "777스타멜",
+   "name_en": "777STARMEL",
+   "brand": "삼화페인트",
+   "categories": [
+    "iron",
+    "wood"
+   ],
+   "role": "topcoat",
+   "note": "실내용 상도 (대기환경보전법 VOC 규제 대응 · 외부는 777에나멜)",
+   "images": {
+    "dir": "img/",
+    "note": "제품 상세 이미지 미확보 — 확인 필요 (파일명 ASCII 유지)",
+    "files": []
+   },
+   "aliases": [
+    "777STARMEL"
+   ],
+   "standard": "KS M 6020 2종",
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광/반광/무광",
+    "colors": [
+     "각색"
+    ],
+    "volume_solids_pct": 41.37,
+    "dft_um": 20,
+    "coats": "1~2",
+    "coverage_m2_per_l": 20.7,
+    "coverage_note": "20.7~22.5㎡/L (색상별 고형분 차이) · 보수값 20.7 적용 · 기술자료 도막두께 표기 19㎛ / 추천 건조도막두께 20㎛",
+    "dry_hard_min": 300,
+    "recoat_hours": 9,
+    "thinner": "EN신나3000",
+    "thinning_pct_max": 50,
+    "thinning_basis": "도료 무게비",
+    "pack_sizes": [
+     "18L",
+     "4L",
+     "1L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "spread_basis": "system"
+   },
+   "docs": {
+    "tech": "1tech3020758.pdf",
+    "spec_sheet": "1pntg3020758.pdf"
+   }
+  },
+  {
    "id": "aisaengkag-water-stain",
    "status": "documented",
    "name": "아이생각수성스테인",
