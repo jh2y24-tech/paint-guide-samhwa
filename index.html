@@ -375,7 +375,7 @@ a{color:var(--brand);text-decoration:none}
 .mat-concrete .vcard-title:hover{color:var(--brand-2)}
 .vcard-title.clickable{cursor:pointer}
 .vcard-title.clickable:hover{color:var(--brand-2);text-decoration:underline;text-underline-offset:3px}
-.vcard-head .vcard-more{margin-left:auto;align-self:center;padding:6px 11px;font-size:12.5px}
+.vcard-head .vcard-more{align-self:center;padding:6px 11px;font-size:12.5px}
 .vcard-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13px;line-height:1.55}
 .vcard-dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
 .vcard-dl dd{margin:0;color:var(--text);font-weight:600}
@@ -1792,13 +1792,13 @@ a{color:var(--brand);text-decoration:none}
     <div class="step">
       <div class="step-header"><span class="step-num">4</span><span class="step-label">상도 — 결로·곰팡이 억제 제품 선택</span><span class="step-badge badge-paint">상도</span></div>
       <div class="step-content">
-        <div class="product-list">
-          <span class="product-chip chip-water">아이럭스 결로스탑규조토</span>
-          <span class="product-chip chip-water">아이럭스 멀티플랫</span>
-          <span class="product-chip chip-water">아이생각 원코트</span>
-          <span class="product-chip chip-water">홈스타파스텔OK플러스</span>
-          <span class="product-chip chip-water">아이럭스 멀티에그쉘</span>
-          <span class="product-chip chip-water">아이럭스 듀로X</span>
+        <div class="product-list" style="flex-direction:column; align-items:flex-start; gap:8px;">
+          <div><span class="product-chip chip-water">아이럭스 결로스탑규조토</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스 결로스탑규조토')">상세 보기 <span class="vc-chev">▾</span></button></div>
+          <div><span class="product-chip chip-water">아이럭스 멀티플랫</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스 멀티플랫')">상세 보기 <span class="vc-chev">▾</span></button></div>
+          <div><span class="product-chip chip-water">아이생각 원코트</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이생각 원코트')">상세 보기 <span class="vc-chev">▾</span></button></div>
+          <div><span class="product-chip chip-water">홈스타파스텔OK플러스</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('홈스타파스텔OK플러스')">상세 보기 <span class="vc-chev">▾</span></button></div>
+          <div><span class="product-chip chip-water">아이럭스 멀티에그쉘</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스 멀티에그쉘')">상세 보기 <span class="vc-chev">▾</span></button></div>
+          <div><span class="product-chip chip-water">아이럭스 듀로X</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스 듀로X')">상세 보기 <span class="vc-chev">▾</span></button></div>
         </div>
         <div class="note-small">25℃ 기준 3시간 이후 재도장 가능</div>
         <div class="warn-box" style="margin-top:8px;">
@@ -2401,227 +2401,44 @@ a{color:var(--brand);text-decoration:none}
     <div class="step-arrow">↓ ① 실외 — 슈퍼폭시 370</div>
 
     <div class="step">
-      <div class="step-header"><span class="step-num">1</span><span class="step-label">슈퍼폭시 370은 이런 현장입니다 (실외)</span><span class="step-badge badge-pool">먼저 확인</span></div>
+      <div class="step-header"><span class="step-num">1</span><span class="step-label">실외 수영장 — 슈퍼폭시 370</span><span class="step-badge badge-pool">실외 전용</span></div>
       <div class="step-content">
-        <span class="product-chip chip-pool">슈퍼폭시 370</span>
+        <span class="product-chip chip-pool">슈퍼폭시 370</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('슈퍼폭시 370')">상세 보기 <span class="vc-chev">▾</span></button>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
-          특수 변성 에폭시(Polyamide modified epoxy)로 <b>기존 에폭시보다 월등한 내후성</b>과 <b>우수한 내수성</b>을 가지며, 미려한 <b>유광</b> 도막을 얻을 수 있어 <b>실외 수영장용</b>으로 설계된 도료입니다.
+          2액형 변성 에폭시 · 유광 · <b>실외 수영장 전용</b>. 내후성·내수성이 가장 강한 침적 사양으로 바닥·벽면 모두 적용합니다. 색상은 청색 및 기타색.
         </div>
-        <div class="info-box">
-          💡 용도 : <b>콘크리트 실외 수영장 등 외부에 폭로되는 시설물.</b> 색상은 청색 및 기타색.<br>
-          💡 <b>실외 전용 사양</b>입니다. 실내 수영장이거나 소규모 수영장이면 아래 <b>워터세이프 300</b> 사양을 보십시오.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">2</span><span class="step-label">표면처리 · 작업 기상조건</span><span class="step-badge badge-prep">필수</span></div>
-      <div class="step-content">
-        <div class="spec-grid">
-          <div class="spec-item full"><strong>콘크리트</strong><span class="val">충분히 양생된 상태에서 표면상태에 따라 <b>산처리 또는 연마제 분사처리</b></span></div>
-          <div class="spec-item"><strong>도장·경화 온도</strong><span class="val">5℃ 이상</span></div>
-          <div class="spec-item"><strong>상대습도</strong><span class="val">85% 미만</span></div>
-          <div class="spec-item full"><strong>소지면 온도</strong><span class="val">수분 응축 방지를 위해 이슬점보다 3℃ 이상 높을 것</span></div>
-        </div>
-        <div class="warn-box">
-          ⚠ <b>비오는 날 · 습도 85% 이상 · 기온 5℃ 이하에는 도장하지 마십시오.</b> 정상적인 물성이 발휘되지 않아 건조 불량·부착 불량이 발생합니다.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 도장 시스템</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">3</span><span class="step-label">도장 시스템 (총 250㎛)</span><span class="step-badge badge-primer">3층</span></div>
-      <div class="step-content">
         <div class="spec-grid">
           <div class="spec-item"><strong>하도</strong><span class="val">에포코트 하도 투명 · 50㎛</span></div>
           <div class="spec-item"><strong>중도</strong><span class="val"><span class="product-chip chip-pool">슈퍼폭시 1000</span> · 100㎛</span></div>
-          <div class="spec-item"><strong>상도</strong><span class="val">슈퍼폭시 370 · 100㎛</span></div>
+          <div class="spec-item"><strong>상도</strong><span class="val">슈퍼폭시 370 · 100㎛ (1회)</span></div>
         </div>
-        <div class="note-small" style="margin-top:12px;">💡 제품명을 누르면 상세 사양과 기술자료 · 도장사양서를 볼 수 있습니다.</div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 상도 100㎛</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">4</span><span class="step-label">상도 — 슈퍼폭시 370</span><span class="step-badge badge-pool">핵심</span></div>
-      <div class="step-content">
-        <span class="product-chip chip-pool">슈퍼폭시 370</span>
-        <div data-product="super-epoxy-370" data-render="spec"></div>
         <div class="danger-box">
-          ⚠️ <b>도장 후 7일(20℃) 이상 건조한 뒤에 물을 채우십시오.</b><br>
-          침적가능건조시간 전에 침적하면 <b>백악화·탈색·부풀음</b> 등 도막 부실 현상이 발생합니다.
+          ⚠️ <b>도장 후 7일(20℃) 이상 건조한 뒤에 물을 채우십시오.</b> 침적가능건조 전에 담수하면 백악화·탈색·부풀음이 발생합니다.
         </div>
-        <div class="warn-box">
-          ⚠ <b>자체 재도장 불가</b> — 도료 특성상 슈퍼폭시370 위에 슈퍼폭시370을 겹쳐 도장하지 않습니다.<br>
-          ⚠ <b>에어리스 스프레이 비추천</b> — 도막 자체에 핀홀·버블이 많이 발생합니다. <b>동력교반기·로라·붓</b>으로 시공하십시오.<br>
-          ⚠ <b>주제:경화제 = 1.8:1(부피비)</b> 준수, 혼합 도료는 <b>가사시간 6시간(20℃)</b> 이내에 사용 완료.<br>
-          ⚠ 희석은 <b>슈퍼신나123(S) 최대 5% 이내(부피비)</b>.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 소요량 산출</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">5</span><span class="step-label">일위대가 (상도 1회 · 100㎛)</span><span class="step-badge badge-ep">견적</span></div>
-      <div class="step-content">
-        <div data-product="super-epoxy-370" data-render="estimate"></div>
-        <div class="info-box">
-          💡 도장사양서 일위대가는 <b>상도(슈퍼폭시370 0.164 L/㎡)</b>만 기재되어 있습니다. 하도(에포코트 하도 투명)·중도(슈퍼폭시1000)는 각 제품 기준으로 별도 산출하세요.
-        </div>
-        <button type="button" class="calc-pill" onclick="openCalcByName('슈퍼폭시 370')">🧮 슈퍼폭시370 소요량 계산하기</button>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 현장 주의사항 · 자료</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">6</span><span class="step-label">이건 꼭 확인하세요 · 공식 자료</span><span class="step-badge badge-prep">체크</span></div>
-      <div class="step-content">
-        <div class="warn-box">
-          ⚠ <b>방수처리가 끝난 침수설비</b>에 도장할 경우 <b>층간 박리</b> 문제가 발생할 수 있습니다. 당사 제품과의 부착관계를 확인한 후 시공하십시오.<br>
-          ⚠ <b>보수도장</b>은 샌드페이퍼로 표면을 전체 처리한 후 부착력이 우수한 <b>슈퍼폭시1000</b>을 하도로 적용하고 그 위에 슈퍼폭시370을 도장하십시오.<br>
-          ⚠ 동일 제품·색상·LOT라도 희석비·도장기구·방법에 따라 <b>이색현상</b>이 발생합니다. 같은 현장은 조건을 통일하세요.<br>
-          ⚠ 상온(5~35℃) 건냉암소에 밀폐·직립 보관 · <b>저장기간 1년</b> · 폐도료는 환경부 지정 폐기물처리업체를 통해 폐기.
-        </div>
-        <div class="info-box">
-          💡 <b>수영장 개장이 끝나고 물을 뺀 경우</b>, 도막을 <b>검은 비닐 등으로 덮어 보호</b>하면 도막 수명을 연장할 수 있습니다.<br>
-          💡 <b>더 자세한 내용은 상세 팝업과 아래 공식 자료를 참고하세요.</b> 기술자료·도장사양서 PDF에서 물성표와 일위대가를 확인할 수 있습니다.
-        </div>
-        <div class="pdf-btns">
-          <button type="button" class="pdf-btn pb-pool" onclick="openPdf('pdf/1tech3211181.pdf','슈퍼폭시 370 기술자료')">📄 기술자료</button>
-          <button type="button" class="pdf-btn pb-pool" onclick="openPdf('pdf/1pntg3211181.pdf','슈퍼폭시 370 도장사양서')">📐 도장사양서</button>
-        </div>
+        <div class="note-small" style="margin-top:10px;">💡 상세 사양 · 소요량 계산 · 주의사항 · 기술자료는 <b>상세 보기</b>에서 확인하세요.</div>
       </div>
     </div>
 
     <div class="step-arrow">↓ ② 실내·외 겸용 — 워터세이프 300</div>
 
-    <div class="sec-hero sh-pool">
-      <span class="sh-ico">🛟</span>
-      <span class="sh-main">실내·외 소규모 수영장 &nbsp;|&nbsp; 수성</span>
-      <span class="sh-sub">WATERSAFE 300</span>
-    </div>
-
     <div class="step">
-      <div class="step-header"><span class="step-num">7</span><span class="step-label">워터세이프 300은 이런 현장입니다</span><span class="step-badge badge-pool">먼저 확인</span></div>
+      <div class="step-header"><span class="step-num">2</span><span class="step-label">실내·외 소규모 수영장 — 워터세이프 300</span><span class="step-badge badge-pool">실내·외 겸용</span></div>
       <div class="step-content">
-        <span class="product-chip chip-pool">워터세이프 300</span>
+        <span class="product-chip chip-pool">워터세이프 300</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('워터세이프 300')">상세 보기 <span class="vc-chev">▾</span></button>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
-          특수 변성 아크릴 에멀젼 도료로 <b>내수성 · 부착력 · 내후성</b>이 우수하며, 유성 도료와 달리 <b>인체에 유해한 용제성분이 없는</b> 수용성 <b>실내·외 수영장용</b> 마감 도료입니다. 마감은 <b>반광</b>, 색상은 백색 및 기타색.
+          1액형 수성 아크릴 에멀젼 · 반광 · <b>실내·외 소규모 수영장</b>의 바닥·벽면. 유해 용제성분이 없어 주택·호텔·펜션 수영장, 자쿠지, 유아풀·물놀이 시설에 적합합니다. 친환경(환경표지)·위생안전기준(KC) 인증.
         </div>
-        <div class="info-box">
-          💡 용도 : <b>콘크리트 실내·외 수영장 등 외부에 폭로되는 시설물.</b> 주택 실내·외 수영장, 호텔·펜션 수영장, 실내외 자쿠지, 물놀이 시설.<br>
-          💡 <b>친환경(환경표지) 인증 · 위생안전기준(KC) 인증</b> 수용성 도료로, 실내공기질관리법에 따른 다중이용시설 및 100(이상)~500(미만)세대 공동주택 실내에 사용 가능합니다.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">8</span><span class="step-label">표면처리 · 작업 기상조건</span><span class="step-badge badge-prep">필수</span></div>
-      <div class="step-content">
-        <div class="spec-grid">
-          <div class="spec-item full"><strong>콘크리트</strong><span class="val">충분히 양생된 상태에서 표면상태에 따라 <b>산처리 또는 연마제 분사처리</b></span></div>
-          <div class="spec-item"><strong>도장·경화 온도</strong><span class="val">10℃ 이상</span></div>
-          <div class="spec-item"><strong>상대습도</strong><span class="val">85% 미만</span></div>
-          <div class="spec-item"><strong>콘크리트 수분함량</strong><span class="val">6% 이하</span></div>
-          <div class="spec-item"><strong>소지면 온도</strong><span class="val">이슬점보다 3℃ 이상 높을 것</span></div>
-        </div>
-        <div class="warn-box">
-          ⚠ <b>비오는 날 · 습도 80% 이상 · 기온 10℃ 이하에는 도장하지 마십시오.</b> 건조 불량 · 크랙 · 부착 불량이 발생합니다.<br>
-          ⚠ <b>실내 밀폐공간 작업 시 반드시 흡상식 환기</b> — 포화증기압으로 수분이 증발하지 못해 건조 불량이 발생합니다.
-        </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 도장 시스템</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">9</span><span class="step-label">도장 시스템 (총 150㎛)</span><span class="step-badge badge-primer">2층</span></div>
-      <div class="step-content">
         <div class="spec-grid">
           <div class="spec-item"><strong>하도</strong><span class="val">에포코트 아쿠아 하도 · 50㎛</span></div>
           <div class="spec-item"><strong>상도</strong><span class="val">워터세이프 300 · 100㎛ (2회)</span></div>
         </div>
-        <div class="note-small" style="margin-top:12px;">💡 제품명을 누르면 상세 사양과 기술자료 · 도장사양서를 볼 수 있습니다.</div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 상도 100㎛ · 2회</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">10</span><span class="step-label">상도 — 워터세이프 300</span><span class="step-badge badge-pool">핵심</span></div>
-      <div class="step-content">
-        <span class="product-chip chip-pool">워터세이프 300</span>
-        <div class="spec-grid">
-          <div class="spec-item"><strong>조성 · 마감</strong><span class="val">1액형 수성 · 반광</span></div>
-          <div class="spec-item"><strong>색상</strong><span class="val">백색 및 기타색</span></div>
-          <div class="spec-item"><strong>부피고형분</strong><span class="val">약 43%</span></div>
-          <div class="spec-item"><strong>추천 건조도막두께</strong><span class="val">100㎛ · 2회</span></div>
-          <div class="spec-item full"><strong>이론도포면적</strong><span class="val">4.3 ㎡/L (건조도막두께 100㎛ 시) — 손실량·표면상태 고려</span></div>
-          <div class="spec-item"><strong>건조(20℃)</strong><span class="val">지촉 15분 · 고화 3시간</span></div>
-          <div class="spec-item"><strong>재도장간격(20℃)</strong><span class="val">3시간(최소)</span></div>
-          <div class="spec-item"><strong>침적가능건조(20℃)</strong><span class="val">5일</span></div>
-          <div class="spec-item"><strong>희석제</strong><span class="val">상수도물 · 최대 10%(부피비)</span></div>
-          <div class="spec-item full"><strong>도장기구</strong><span class="val">로라 · 붓 · 스프레이 · 동력교반기</span></div>
-          <div class="spec-item"><strong>포장단위</strong><span class="val">16L · 3L</span></div>
-          <div class="spec-item"><strong>저장기간</strong><span class="val">1년 (5~35℃ 실내보관)</span></div>
-        </div>
         <div class="danger-box">
-          ⚠️ <b>도장 후 20℃ 기준 5일 이상 건조한 뒤에 물을 채우십시오.</b><br>
-          침적가능건조시간 전에 담수하면 도막 부실 현상이 발생합니다.
+          ⚠️ <b>도장 후 5일(20℃) 이상 건조한 뒤에 물을 채우십시오.</b> 침적가능건조 전에 담수하면 도막 부실이 발생합니다.
         </div>
         <div class="warn-box">
-          ⚠ <b>일반 보행 바닥재용(공장·주차장 등)으로는 추천하지 않습니다.</b> 수영장 바닥·벽면 도장은 정상 용도입니다.<br>
-          ⚠ <b>과량희석 금지</b> — 도막 물성이 저하됩니다. 희석은 청수(상수도물)로 최대 10%(부피비) 이내.<br>
-          ⚠ 동일 제품·색상·LOT라도 희석비·도장기구·방법에 따라 <b>이색현상</b>이 발생하므로 조건을 통일하고 색상 확인 후 작업하십시오.
+          ⚠ <b>일반 보행 바닥재용(공장·주차장 등)으로는 추천하지 않습니다.</b> 수영장 바닥·벽면 도장이 정상 용도입니다.
         </div>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 소요량 산출</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">11</span><span class="step-label">일위대가 (상도 2회 · 100㎛)</span><span class="step-badge badge-ep">견적</span></div>
-      <div class="step-content">
-        <div class="spec-grid">
-          <div class="spec-item full"><strong>상도 — 워터세이프300</strong><span class="val">2회 · 100㎛ · <b>0.233 L/㎡</b> (희석제 : 물)</span></div>
-          <div class="spec-item full"><strong>합계</strong><span class="val">2회 · 100㎛ · <b>0.233 L/㎡</b></span></div>
-        </div>
-        <div class="info-box">
-          💡 도장사양서 일위대가는 <b>상도(워터세이프300 0.233 L/㎡)</b>만 기재되어 있습니다. 하도(에포코트 아쿠아 하도 50㎛)는 해당 제품 기준으로 별도 산출하세요.<br>
-          💡 실제 소요량은 작업조건 · 작업방법에 따라 가감될 수 있습니다. 부가세 · 시공비 별도.
-        </div>
-        <button type="button" class="calc-pill" onclick="openCalcByName('워터세이프300')">🧮 워터세이프300 소요량 계산하기</button>
-      </div>
-    </div>
-
-    <div class="step-arrow">↓ 현장 주의사항 · 자료</div>
-
-    <div class="step">
-      <div class="step-header"><span class="step-num">12</span><span class="step-label">이건 꼭 확인하세요 · 공식 자료</span><span class="step-badge badge-prep">체크</span></div>
-      <div class="step-content">
-        <div class="warn-box">
-          ⚠ <b>콘크리트면에 방수처리가 끝난 침수설비</b>에 도장할 경우 <b>층간 박리</b>가 발생할 수 있습니다. 당사 제품과의 부착관계를 확인한 후 시공하십시오.<br>
-          ⚠ <b>구도막 위 보수도장</b>은 구도막과의 적합성을 확인한 후 사용하십시오.<br>
-          ⚠ <b>제조일로부터 12개월 이내</b>에 사용하십시오.<br>
-          ⚠ 상온(5~35℃) 건냉암소에 밀폐·직립 보관 · 폐도료는 환경부 지정 폐기물처리업체를 통해 폐기.
-        </div>
-        <div class="info-box">
-          💡 <b>수영장 사용이 끝나고 물을 뺀 경우</b>, 도막을 덮어 보호하면 도막 수명을 연장할 수 있습니다.<br>
-          💡 <b>더 자세한 내용은 상세 팝업과 아래 공식 자료를 참고하세요.</b> 기술자료 · 도장사양서 PDF에서 물성표와 일위대가를 확인할 수 있습니다.
-        </div>
-        <div class="pdf-btns">
-          <button type="button" class="pdf-btn pb-pool" onclick="openPdf('pdf/1tech3212229.pdf','워터세이프 300 기술자료')">📄 기술자료</button>
-          <button type="button" class="pdf-btn pb-pool" onclick="openPdf('pdf/1pntg3212229.pdf','워터세이프 300 도장사양서')">📐 도장사양서</button>
-        </div>
+        <div class="note-small" style="margin-top:10px;">💡 상세 사양 · 소요량 계산 · 주의사항 · 기술자료는 <b>상세 보기</b>에서 확인하세요.</div>
       </div>
     </div>
 
@@ -5781,7 +5598,7 @@ Object.assign(TERM_DB, {
   "기포꽈리": { cat: "도막이 부풀어 오름", title: "기포꽈리", html: "<div class=\"pm-term\"><p>도막 표면이 <b>물집처럼 볼록하게 부풀어 오르는 현상</b>입니다.</p><p>한 번에 너무 두껍게 칠했을 때 속의 용제가 빠져나가지 못하고 갇혀서 생깁니다. 바탕에 기공이 많거나 습기가 있을 때도 나타납니다. 규정 두께를 지켜 나눠 칠하는 것이 답입니다.</p></div>" },
   "은폐력": { cat: "밑색을 덮는 힘", title: "은폐력", html: "<div class=\"pm-term\"><p><b>바탕의 색이나 무늬를 덮어 가리는 힘</b>입니다. 커버력이라고도 합니다.</p><p>은폐력이 좋으면 적은 횟수로 원래 색이 가려집니다. 진한 색 벽지 위나 낙서가 있는 면은 은폐력만으로 부족해서 젯소로 한 번 눌러주고 칠합니다.</p></div>" },
   "에그쉘": { cat: "광택 단계", title: "광택 단계 (무광 · 에그쉘 · 반광 · 유광)", html: "<div class=\"pm-term\"><p>도막이 빛을 얼마나 반사하는지에 따라 나눈 단계입니다.<br><b>무광</b> — 거의 반사가 없어 차분하고 벽면의 요철이 덜 보입니다.<br><b>에그쉘</b> — 달걀 껍질 정도의 은은한 광. 무광보다 닦기 쉽습니다.<br><b>반광</b> — 중간 정도.<br><b>유광</b> — 매끈하고 반짝이며 오염에 가장 강합니다.</p><p>광택이 높을수록 때가 덜 타고 닦기 쉽지만, 벽면의 울퉁불퉁함이 그대로 드러납니다.</p></div>" },
-  "일위대가": { cat: "단위 작업 견적표", title: "일위대가", html: "<div class=\"pm-term\"><p><b>단위 작업 하나에 재료·품이 얼마나 드는지 정리한 견적 기준표</b>입니다. 관급 공사 견적의 기본 자료입니다.</p><p>이 사이트의 일위대가는 도장사양서 기준이며 <b>부가세와 시공비는 별도</b>입니다. 실제 소요량은 현장 조건에 따라 달라집니다.</p></div>" },
+  "일위대가": { cat: "단위 작업 견적표", title: "일위대가", html: "<div class=\"pm-term\"><p><b>단위 작업 하나에 재료·품이 얼마나 드는지 정리한 견적 기준표</b>입니다. 관급 공사 견적의 기본 자료입니다.</p><p>이 사이트의 일위대가는 도장사양서 기준이며, 실제 소요량은 현장 조건에 따라 달라집니다.</p></div>" },
   "VOC": { cat: "휘발성유기화합물", title: "VOC", html: "<div class=\"pm-term\"><p>Volatile Organic Compounds, <b>휘발성유기화합물</b>입니다. 페인트가 마르면서 공기 중으로 날아가는 성분으로, 냄새와 실내공기 오염의 원인입니다.</p><p>대기환경보전법과 수도권 특별법으로 함량이 규제됩니다. \"VOC 규제 만족\"은 그 기준을 통과했다는 뜻입니다. 수성이 유성보다 대체로 낮습니다.</p></div>" },
   "침적": { cat: "물에 잠기는 환경", title: "침적", html: "<div class=\"pm-term\"><p><b>물에 계속 잠겨 있는 상태</b>를 말합니다. 수영장 안쪽, 물탱크 내부처럼 늘 물에 담겨 있는 부위입니다.</p><p>비를 맞는 것과는 조건이 완전히 다릅니다. 침적용으로 나온 제품이 아니면 물속에서 부풀거나 벗겨집니다.</p></div>" },
   "규조토": { cat: "습기 조절 광물", title: "규조토", html: "<div class=\"pm-term\"><p>미세한 <b>구멍이 아주 많은 천연 광물</b>입니다. 이 구멍이 습기를 빨아들였다 다시 내보냅니다.</p><p>표면 결로를 흡수했다 서서히 방출해 결로를 <b>덜어주는</b> 역할을 합니다. 다만 결로 자체를 없애는 것은 아니라서, 심한 곳은 단열 공사를 먼저 해야 합니다.</p></div>" },
