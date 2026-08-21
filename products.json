@@ -1191,10 +1191,9 @@
     ]
    },
    "docs": {
-    "tech": null,
+    "tech": "1tech3050921.pdf",
     "spec_sheet": "1pntg3050921.pdf",
-    "tech_dated": null,
-    "note": "기술자료(TDS) 미확보 — 도장사양서만 존재"
+    "tech_dated": null
    },
    "system": {},
    "aliases": []
