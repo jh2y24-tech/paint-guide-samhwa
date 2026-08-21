@@ -373,6 +373,9 @@ a{color:var(--brand);text-decoration:none}
 .vcard-more .vc-chev{display:inline-block;transition:transform .18s}
 .mat-concrete .vcard-title{cursor:pointer}
 .mat-concrete .vcard-title:hover{color:var(--brand-2)}
+.vcard-title.clickable{cursor:pointer}
+.vcard-title.clickable:hover{color:var(--brand-2);text-decoration:underline;text-underline-offset:3px}
+.vcard-head .vcard-more{margin-left:auto;align-self:center;padding:6px 11px;font-size:12.5px}
 .vcard-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13px;line-height:1.55}
 .vcard-dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
 .vcard-dl dd{margin:0;color:var(--text);font-weight:600}
@@ -1116,10 +1119,11 @@ a{color:var(--brand);text-decoration:none}
           <!-- 수성크리어PLUS 유광 (실내) -->
           <div class="vcard">
             <div class="vcard-head">
-              <span class="vcard-title">수성크리어PLUS 유광</span>
+              <span class="vcard-title clickable" onclick="openProduct('수성크리어PLUS 유광')">수성크리어PLUS 유광</span>
               <span class="vcard-tag">수성 · 투명</span>
               <span class="vcard-tag">실내용</span>
               <span class="vcard-tag">18L · 4L</span>
+              <button type="button" class="vcard-more" onclick="openProduct('수성크리어PLUS 유광')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
             <div style="margin:2px 0 8px; font-size:13.5px; color:var(--muted);">투명 유광 마감 — 다채무늬 도료·수성 내부도료 오염방지 상도용</div>
             <dl class="vcard-dl">
@@ -1127,36 +1131,16 @@ a{color:var(--brand);text-decoration:none}
               <dt>재도장간격</dt><dd>25℃ 기준 3시간 이후</dd>
               <dt>이론도포면적</dt><dd>16.5㎡/L (20㎛ 기준)</dd>
             </dl>
-            <div class="vcard-actions">
-              <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-            </div>
-            <div class="vcard-detail">
-              <dl class="vcard-dl">
-                <dt>마감 · 색상</dt><dd>유광 · 투명</dd>
-                <dt>피도면</dt><dd>다채무늬 도료 및 수성 내부도료</dd>
-                <dt>조성</dt><dd>1액형 (수용성 아크릴)</dd>
-                <dt>도장횟수</dt><dd>1~2회</dd>
-                <dt>추천 건조도막두께</dt><dd>20㎛</dd>
-                <dt>건조시간</dt><dd>고화건조 2시간 이내 (25℃)</dd>
-                <dt>희석제</dt><dd>물</dd>
-                <dt>저장기간</dt><dd>12개월</dd>
-                <dt>용도</dt><dd>유치원·병원·학교 등 친환경이 요구되는 곳의 수성 내부도료 상도용</dd>
-              </dl>
-              <div class="warn-box">콘크리트 소지 불량·쵸킹·흡수차가 심한 면은 <b>수성바인다200</b>을 하도로 먼저 도장해야 합니다.<br>목재·철재·플라스틱에 <b>유성도료가 도장된 부위는 부착 불량</b>이므로 도장을 금합니다.<br>스프레이 도장 시 연속 작업이 끊기면 광택 차이로 이색현상이 생길 수 있습니다.<br>개봉 후에는 외부 오염으로 변질 우려가 있으니 즉시 사용하세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3050975.pdf','수성크리어PLUS 유광 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3050975.pdf','수성크리어PLUS 유광 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
           </div>
 
           <!-- 수성크리어PLUS 외부용 유광 -->
           <div class="vcard">
             <div class="vcard-head">
-              <span class="vcard-title">수성크리어PLUS 외부용 유광</span>
+              <span class="vcard-title clickable" onclick="openProduct('수성크리어PLUS 외부용 유광')">수성크리어PLUS 외부용 유광</span>
               <span class="vcard-tag">수성 · 투명</span>
               <span class="vcard-tag">외부용</span>
               <span class="vcard-tag">18L · 4L</span>
+              <button type="button" class="vcard-more" onclick="openProduct('수성크리어PLUS 외부용 유광')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
             <div style="margin:2px 0 8px; font-size:13.5px; color:var(--muted);">외부 투명 유광 마감 — 드라이비트·스톤계 도료·외부벽화 상도용</div>
             <dl class="vcard-dl">
@@ -1164,27 +1148,6 @@ a{color:var(--brand);text-decoration:none}
               <dt>재도장간격</dt><dd>25℃ 기준 3시간 이후</dd>
               <dt>이론도포면적</dt><dd>13.79㎡/L (20㎛ 기준)</dd>
             </dl>
-            <div class="vcard-actions">
-              <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-            </div>
-            <div class="vcard-detail">
-              <dl class="vcard-dl">
-                <dt>마감 · 색상</dt><dd>유광 · 투명</dd>
-                <dt>피도면</dt><dd>드라이비트 · 스톤계 도료 · 외부벽화</dd>
-                <dt>조성</dt><dd>1액형 (수용성 아크릴)</dd>
-                <dt>도장횟수</dt><dd>1~2회</dd>
-                <dt>추천 건조도막두께</dt><dd>20㎛</dd>
-                <dt>건조시간</dt><dd>고화건조 2시간 이내 (25℃)</dd>
-                <dt>희석제</dt><dd>물</dd>
-                <dt>저장기간</dt><dd>12개월</dd>
-                <dt>용도</dt><dd>드라이비트, 스톤계 도료, 외부벽화 상도용</dd>
-              </dl>
-              <div class="warn-box">신축 시멘트 소지는 <b>28일 이상 양생</b> 후, 함수율 10% 이하·pH 7~9에서 도장합니다.<br>소지 불량·쵸킹·흡수차가 심한 면은 <b>수성바인다200</b>을 하도로 먼저 도장하세요.<br>과도한 희석은 도막 성능 저하 및 작업성 불량을 초래합니다.<br>유성도료가 도장된 목재·철재·플라스틱 부위에는 부착이 불량하므로 도장을 금합니다.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3051494.pdf','수성크리어PLUS 외부용 유광 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3051494.pdf','수성크리어PLUS 외부용 유광 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1195,11 +1158,12 @@ a{color:var(--brand);text-decoration:none}
           <!-- 수성크리어PLUS 무광 (실내) -->
           <div class="vcard">
             <div class="vcard-head">
-              <span class="vcard-title">수성크리어PLUS 무광</span>
+              <span class="vcard-title clickable" onclick="openProduct('수성크리어PLUS 무광')">수성크리어PLUS 무광</span>
               <span class="vcard-tag">수성 · 투명</span>
               <span class="vcard-tag">실내용</span>
               <span class="vcard-tag">친환경 인증</span>
               <span class="vcard-tag">18L · 4L</span>
+              <button type="button" class="vcard-more" onclick="openProduct('수성크리어PLUS 무광')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
             <div style="margin:2px 0 8px; font-size:13.5px; color:var(--muted);">투명 무광 마감 — 원래 도장면의 무광 질감을 살리며 보호</div>
             <dl class="vcard-dl">
@@ -1207,36 +1171,16 @@ a{color:var(--brand);text-decoration:none}
               <dt>재도장간격</dt><dd>25℃ 기준 3시간 이후</dd>
               <dt>이론도포면적</dt><dd>15㎡/L (20㎛ 기준)</dd>
             </dl>
-            <div class="vcard-actions">
-              <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-            </div>
-            <div class="vcard-detail">
-              <dl class="vcard-dl">
-                <dt>마감 · 색상</dt><dd>무광 · 투명</dd>
-                <dt>피도면</dt><dd>다채무늬 및 일반수성 내부도료</dd>
-                <dt>조성</dt><dd>1액형 (수용성 아크릴)</dd>
-                <dt>도장횟수</dt><dd>1~2회</dd>
-                <dt>추천 건조도막두께</dt><dd>20㎛</dd>
-                <dt>건조시간</dt><dd>고화건조 2시간 이내 (25℃)</dd>
-                <dt>희석제</dt><dd>물</dd>
-                <dt>저장기간</dt><dd>12개월 (5~35℃ 실내보관)</dd>
-                <dt>인증</dt><dd>환경마크 — 지역 환경오염 감소 · 유해물질 감소 · 생활 환경오염 감소</dd>
-              </dl>
-              <div class="warn-box">과도막 형성 시 <b>백탁 현상</b>이 생길 수 있으니 추천 도막두께를 지키고 가급적 <b>단모 로울러</b>로 도장하세요.<br>과도한 희석 시 얼룩이 생기고 도막이 제대로 형성되지 않습니다.<br>가소제가 포함된 발포벽지·가죽소파 등에 묻지 않도록 주의하세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3050976.pdf','수성크리어PLUS 무광 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3050976.pdf','수성크리어PLUS 무광 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
           </div>
 
           <!-- 수성크리어PLUS 외부용 무광 -->
           <div class="vcard">
             <div class="vcard-head">
-              <span class="vcard-title">수성크리어PLUS 외부용 무광</span>
+              <span class="vcard-title clickable" onclick="openProduct('수성크리어PLUS 외부용 무광')">수성크리어PLUS 외부용 무광</span>
               <span class="vcard-tag">수성 · 투명</span>
               <span class="vcard-tag">외부용</span>
               <span class="vcard-tag">18L · 4L</span>
+              <button type="button" class="vcard-more" onclick="openProduct('수성크리어PLUS 외부용 무광')">상세 보기 <span class="vc-chev">▾</span></button>
             </div>
             <div style="margin:2px 0 8px; font-size:13.5px; color:var(--muted);">외부 투명 무광 마감 — 드라이비트·스톤계 도료·외부벽화 상도용</div>
             <dl class="vcard-dl">
@@ -1244,27 +1188,6 @@ a{color:var(--brand);text-decoration:none}
               <dt>재도장간격</dt><dd>25℃ 기준 3시간 이후</dd>
               <dt>이론도포면적</dt><dd>12.21㎡/L (20㎛ 기준)</dd>
             </dl>
-            <div class="vcard-actions">
-              <button type="button" class="vcard-more" onclick="toggleVCard(this)">상세 보기 <span class="vc-chev">▾</span></button>
-            </div>
-            <div class="vcard-detail">
-              <dl class="vcard-dl">
-                <dt>마감 · 색상</dt><dd>무광 · 투명</dd>
-                <dt>피도면</dt><dd>드라이비트 · 스톤계 도료 · 외부벽화</dd>
-                <dt>조성</dt><dd>1액형 (수용성 아크릴)</dd>
-                <dt>도장횟수</dt><dd>1~2회</dd>
-                <dt>추천 건조도막두께</dt><dd>20㎛</dd>
-                <dt>건조시간</dt><dd>고화건조 2시간 이내 (25℃)</dd>
-                <dt>희석제</dt><dd>물</dd>
-                <dt>저장기간</dt><dd>12개월 (5~35℃ 실내보관)</dd>
-                <dt>용도</dt><dd>드라이비트, 스톤계 도료, 외부벽화 상도용</dd>
-              </dl>
-              <div class="warn-box">신축 시멘트 소지는 <b>28일 이상 양생</b> 후, 함수율 10% 이하·pH 7~9에서 도장합니다.<br>과도막 형성 시 <b>백탁 현상</b>이 생길 수 있으니 추천 도막두께를 지키고 단모 로울러 사용을 권장합니다.<br>소지 불량·쵸킹·흡수차가 심한 면은 <b>수성바인다200</b>을 하도로 먼저 도장하세요.</div>
-              <div class="doc-list" style="margin-top:11px;">
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1tech3051493.pdf','수성크리어PLUS 외부용 무광 제품안내서')">📄 기술자료</button>
-                <button type="button" class="pm-pdf-btn" onclick="openPdf('pdf/1pntg3051493.pdf','수성크리어PLUS 외부용 무광 시방서')">📐 도장사양서</button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -3434,6 +3357,68 @@ function searchSymptom() {
    ========================================================================= */
 window.PRODUCT_DB = window.PRODUCT_DB || {};
 Object.assign(window.PRODUCT_DB, {
+  "수성크리어PLUS 유광": {
+    category: "보호 상도 · 수성 투명 유광 (실내)",
+    desc: "수용성 아크릴 1액형 투명 보호코팅. 다채무늬 도료·수성 내부도료 위에 오염방지·광택 보강용으로 도장하는 투명 유광 마감재입니다.",
+    uses: "유치원·병원·학교 등 친환경이 요구되는 곳의 수성 내부도료 상도용 (다채무늬 도료 및 수성 내부도료 피도면)",
+    spec: "마감 유광 · 색상 투명 · 조성 1액형(수용성 아크릴)\n피도면 다채무늬 도료 및 수성 내부도료\n추천 건조도막두께 20㎛ · 도장횟수 1~2회\n이론도포면적 16.5㎡/L (20㎛ 기준)\n건조(25℃) 고화건조 2시간 이내 · 재도장 3시간 이후\n희석제 물 · 희석비 물 10% 이내\n포장단위 18L · 4L · 저장기간 12개월",
+    cautions: [
+      "콘크리트 소지 불량·쵸킹·흡수차가 심한 면은 수성바인다200을 하도로 먼저 도장",
+      "목재·철재·플라스틱에 유성도료가 도장된 부위는 부착 불량 — 도장 금지",
+      "스프레이 도장 시 연속 작업이 끊기면 광택 차이로 이색현상 발생 가능",
+      "개봉 후에는 외부 오염으로 변질 우려 — 즉시 사용"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3050975.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3050975.pdf" }
+    ]
+  },
+  "수성크리어PLUS 외부용 유광": {
+    category: "보호 상도 · 수성 투명 유광 (외부)",
+    desc: "수용성 아크릴 1액형 투명 보호코팅의 외부용. 드라이비트·스톤계 도료·외부벽화 위에 오염방지·광택 보강용으로 도장하는 외부 투명 유광 마감재입니다.",
+    uses: "드라이비트 · 스톤계 도료 · 외부벽화 상도용",
+    spec: "마감 유광 · 색상 투명 · 조성 1액형(수용성 아크릴)\n피도면 드라이비트 · 스톤계 도료 · 외부벽화\n추천 건조도막두께 20㎛ · 도장횟수 1~2회\n이론도포면적 13.79㎡/L (20㎛ 기준)\n건조(25℃) 고화건조 2시간 이내 · 재도장 3시간 이후\n희석제 물 · 희석비 물 10% 이내\n포장단위 18L · 4L · 저장기간 12개월",
+    cautions: [
+      "신축 시멘트 소지는 28일 이상 양생 후, 함수율 10% 이하·pH 7~9에서 도장",
+      "소지 불량·쵸킹·흡수차가 심한 면은 수성바인다200을 하도로 먼저 도장",
+      "과도한 희석은 도막 성능 저하 및 작업성 불량 초래",
+      "유성도료가 도장된 목재·철재·플라스틱 부위에는 부착 불량 — 도장 금지"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3051494.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3051494.pdf" }
+    ]
+  },
+  "수성크리어PLUS 무광": {
+    category: "보호 상도 · 수성 투명 무광 (실내)",
+    desc: "수용성 아크릴 1액형 투명 보호코팅. 원래 도장면의 무광 질감을 살리며 보호하는 투명 무광 마감재로, 다채무늬 및 일반수성 내부도료 위 오염방지·보호 상도용입니다. 환경마크 인증 제품입니다.",
+    uses: "다채무늬 및 일반수성 내부도료 오염방지·보호 상도용",
+    spec: "마감 무광 · 색상 투명 · 조성 1액형(수용성 아크릴)\n피도면 다채무늬 및 일반수성 내부도료\n추천 건조도막두께 20㎛ · 도장횟수 1~2회\n이론도포면적 15㎡/L (20㎛ 기준)\n건조(25℃) 고화건조 2시간 이내 · 재도장 3시간 이후\n희석제 물 · 희석비 물 10% 이내(도료 부피비)\n포장단위 18L · 4L · 저장기간 12개월 (5~35℃ 실내보관)\n인증 환경마크 — 지역 환경오염 감소 · 유해물질 감소 · 생활 환경오염 감소",
+    cautions: [
+      "과도막 형성 시 백탁 현상 발생 가능 — 추천 도막두께 준수, 가급적 단모 로울러 사용",
+      "과도한 희석 시 얼룩 발생·도막 미형성",
+      "가소제가 포함된 발포벽지·가죽소파 등에 묻지 않도록 주의"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3050976.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3050976.pdf" }
+    ]
+  },
+  "수성크리어PLUS 외부용 무광": {
+    category: "보호 상도 · 수성 투명 무광 (외부)",
+    desc: "수용성 아크릴 1액형 투명 보호코팅의 외부용. 드라이비트·스톤계 도료·외부벽화 위에 오염방지·보호용으로 도장하는 외부 투명 무광 마감재입니다.",
+    uses: "드라이비트 · 스톤계 도료 · 외부벽화 상도용",
+    spec: "마감 무광 · 색상 투명 · 조성 1액형(수용성 아크릴)\n피도면 드라이비트 · 스톤계 도료 · 외부벽화\n추천 건조도막두께 20㎛ · 도장횟수 1~2회\n이론도포면적 12.21㎡/L (20㎛ 기준)\n건조(25℃) 고화건조 2시간 이내 · 재도장 3시간 이후\n희석제 물 · 희석비 물 10% 이내(도료 부피비)\n포장단위 18L · 4L · 저장기간 12개월 (5~35℃ 실내보관)",
+    cautions: [
+      "신축 시멘트 소지는 28일 이상 양생 후, 함수율 10% 이하·pH 7~9에서 도장",
+      "과도막 형성 시 백탁 현상 발생 가능 — 추천 도막두께 준수, 단모 로울러 사용 권장",
+      "소지 불량·쵸킹·흡수차가 심한 면은 수성바인다200을 하도로 먼저 도장"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3051493.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3051493.pdf" }
+    ]
+  },
   "KSM6080 1종 상온건조형 노면표지용도료": {
     category: "상도 · 노면표지용 1액형",
     desc: "아크릴 수지를 전색제로 한 1액형 노면표지용도료. 아스팔트·시멘트 노면에 부착력이 뛰어나고 내마모성이 우수하며 내후성·내충격성·내수성·내알칼리성이 좋습니다. 별도의 하도가 필요 없습니다.",
