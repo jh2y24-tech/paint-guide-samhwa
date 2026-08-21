@@ -533,17 +533,6 @@
    }
   },
   {
-   "id": "ginger-mold-killing-primer",
-   "status": "listed",
-   "name": "진저 몰드킬링 프라이머",
-   "brand": "삼화페인트",
-   "categories": [
-    "mold"
-   ],
-   "role": "primer",
-   "aliases": []
-  },
-  {
    "id": "power-jesso",
    "status": "listed",
    "name": "파워젯소",
@@ -1710,7 +1699,9 @@
    ],
    "role": "topcoat",
    "note": "빠른 건조 · 환기 필수",
-   "aliases": []
+   "aliases": [
+    "LOV HS락카"
+   ]
   },
   {
    "id": "enamel-777",
@@ -3520,33 +3511,6 @@
    }
   },
   {
-   "id": "acryl-floorcoat",
-   "status": "listed",
-   "name": "아크릴 플로아코트",
-   "brand": "삼화페인트",
-   "categories": [
-    "road",
-    "floor"
-   ],
-   "role": "primer",
-   "note": "신축·거친 콘크리트 기공 메움용",
-   "aliases": []
-  },
-  {
-   "id": "green-waterproof-master-primer",
-   "status": "listed",
-   "name": "그린방수마스터하도",
-   "brand": "삼화페인트",
-   "categories": [
-    "wp"
-   ],
-   "role": "primer",
-   "aliases": [
-    "그린방수마스터속건형하도"
-   ],
-   "note": "원샷탄(그린방수마스터 시스템) 전용 하도. 신규 50㎛ 1회 도장, 구도막·2일 경과 후 재도장 시 얇게 추가. 비노출 방수에이스 2류(KSF3211)의 하도는 '방수에이스 하도'이므로 혼동 주의. 별도 기술자료 미확보 — 확보 시 spec 채울 것."
-  },
-  {
    "id": "non-exposed-tar-waterproofing-tan",
    "status": "documented",
    "name": "비노출 방수에이스 2류(KSF3211)",
@@ -3867,7 +3831,9 @@
     "spec_sheet": "1pntg3051618.pdf",
     "tech_dated": "2026-03-24"
    },
-   "aliases": []
+   "aliases": [
+    "아이생각 고점도 믹싱"
+   ]
   },
   {
    "id": "aisaengkag-water-borne-pro-interior",
@@ -4344,148 +4310,9 @@
     "spec_sheet": "1pntg3050013.pdf",
     "tech_dated": "2024-12-17"
    },
-   "aliases": []
-  },
-  {
-   "id": "chemical-cork-mini",
-   "status": "listed",
-   "name": "케미컬 코크 미니",
-   "name_en": "CHEMICAL CORK MINI",
    "aliases": [
-    "케미컬코크미니",
-    "케미컬코크",
-    "케미컬코크50g",
-    "마루보수 케미컬코크",
-    "컬러코크",
-    "마루보수제",
-    "만능보수제",
-    "타일보수",
-    "타일깨짐",
-    "걸레받이",
-    "마루흠집",
-    "마루틈",
-    "바닥보수",
-    "틈새보수",
-    "PVC바닥재",
-    "인테리어필름",
-    "가구흠집",
-    "창호틈",
-    "액자틈"
-   ],
-   "brand": "",
-   "categories": [
-    "wood"
-   ],
-   "role": "filler",
-   "standard": null,
-   "summary": "목재 바닥재·몰딩·데코타일·PVC 바닥재의 흠집과 틈새를 색을 맞춰 메우는 수성 아크릴형 컬러 충진제(코크). 점성이 있는 튜브 타입으로 흠집에 짜서 채워 넣으며, 마루·가구 색에 맞춰 15가지 색상 중 고를 수 있다. 2가지 색을 섞어 중간색도 낼 수 있고(굳기 전이 굳은 후보다 조금 밝음) 완전히 굳은 뒤 실제 색이 나타난다.",
-   "uses": "목재 바닥재 흠집 보수·틈, 실리콘 대용 마감, 데코타일·PVC 바닥재 틈, 각종 몰딩재 틈, 타카 자국 충진, 인테리어 필름 흠집 보수, 샤시 몰라 틈새 충진, 목질가구·창호·액자 등 틈새 충진",
-   "substrates": [
-    "목재",
-    "몰딩",
-    "데코타일",
-    "PVC 바닥재",
-    "샤시",
-    "인테리어 필름"
-   ],
-   "spec": {
-    "composition": "수성 아크릴류 (1액형, 점성 페이스트 튜브형)",
-    "colors": [
-     "화이트",
-     "화이트그레이",
-     "그레이",
-     "블랙",
-     "아이보리",
-     "라이트아이보리",
-     "베이지",
-     "월넛",
-     "티크",
-     "오크",
-     "낫츠브라운",
-     "다크브라운",
-     "워시오크",
-     "화이트오크"
-    ],
-    "colors_note": "총 15색 구성 (화이트오크 신규 추가). 2색 혼합으로 중간색 조색 가능 — 굳기 전 색이 굳은 후보다 조금 밝음",
-    "pack_sizes": [
-     "50g"
-    ],
-    "pack_sizes_note": "튜브 1개 50g · 사이즈 40×126×22mm",
-    "dry_hard_hours": 24,
-    "cure_note": "약 24시간 건조 후 마른 걸레로 마무리 · 건조 후 연마·도색 가능",
-    "tools": [
-     "튜브 직접 짜냄",
-     "스틱",
-     "헤라"
-    ]
-   },
-   "conditions": {
-    "tools": [
-     "스틱",
-     "헤라"
-    ],
-    "note": "튀어나오거나 들뜬 부위는 사포로 정리한 뒤 충진. 깊은 부위는 한 번에 채우지 말고 여러 번 나누어 충진·건조"
-   },
-   "system": {
-    "primer": null,
-    "topcoat_self": false,
-    "note": "충진 보수 전용. 완전 건조 후 상부 도장 가능"
-   },
-   "cautions": {
-    "warn": [
-     "용도 이외의 장소에는 사용하지 않는다",
-     "어린이 손이 닿지 않는 곳에 보관"
-    ],
-    "info": [
-     "간단한 사용방법으로 초보자도 손쉽게 사용 가능",
-     "2가지 색 혼합 시 스틱이나 헤라로 섞는다",
-     "완전히 굳은 후 실제 색상이 나타나며 촬영 색상과 약간 차이가 있을 수 있음",
-     "기존 마루보다 살짝 밝은 색을 고르면 자연스럽게 마감됨",
-     "미니 50g은 개봉 시 제품이 바로 노출되는 구조 — 투명캡 쪽으로 소량 흘러나옴은 사용 흔적이 아님"
-    ]
-   },
-   "compliance": {
-    "eco_label": false,
-    "safety_report_no": "제 GB21-11-0014호",
-    "safety_report_note": "안전확인대상 생활화학제품 표시사항 신고번호"
-   },
-   "staff_note": "타일 깨짐·금을 티 안 나게 보수하려는 고객에게 케미컬 코크 미니를 데코타일 틈/타일 깨짐 색맞춤 보수 용도로 안내 가능. 타일 전용 보수 사례는 related_links 참고.",
-   "related_links": [
-    {
-     "label": "타일 깨짐·금 보수 참고 (스마트스토어)",
-     "url": "https://smartstore.naver.com/ucus01/products/11991250063",
-     "context": "타일 깨짐 보수 직원 참고 사례 (케미컬 코크 미니를 이런 용도로도 사용 가능)"
-    }
-   ],
-   "video": "u-OKpCbsbV4",
-   "video_platform": "youtube",
-   "images": {
-    "dir": "img/chemical-cork-mini/",
-    "note": "상품 상세 이미지. 파일명 ASCII 유지 (한글 파일명 금지). 4장 모두 .jpg 포맷.",
-    "files": [
-     {
-      "src": "01-hero.jpg",
-      "caption": "케미컬 코크 미니 · 15색 컬러 보수제"
-     },
-     {
-      "src": "02-use-silicone.jpg",
-      "caption": "사용예시 · 벽 틈새 실리콘 대용 마감"
-     },
-     {
-      "src": "03-use-wood.jpg",
-      "caption": "사용예시 · 목재 바닥 흠집 충진"
-     },
-     {
-      "src": "04-detail.jpg",
-      "caption": "상품 상세 정보 (15색·용도·사용방법)"
-     }
-    ],
-    "source": "제품 상세페이지 대표·사용예시·상세 이미지"
-   },
-   "docs": {
-    "tech": null,
-    "spec_sheet": null
-   }
+    "아크로외부"
+   ]
   },
   {
    "id": "watersafe-300",
@@ -4730,6 +4557,24 @@
    },
    "compliance": {
     "voc_regulation": "대기환경보전법 용도분류 내 VOC 규제 만족"
+   },
+   "images": {
+    "dir": "img/",
+    "note": "외부 수영장용 슈퍼폭시370 결함 예방법 사진. 파일명 ASCII 유지 (한글 파일명 금지).",
+    "files": [
+     {
+      "src": "super-epoxy-370-defect-01.png",
+      "caption": "외부 수영장용 슈퍼폭시370 결함 예방 ① — 도막 주름·소포 불량 예시"
+     },
+     {
+      "src": "super-epoxy-370-defect-02.png",
+      "caption": "외부 수영장용 슈퍼폭시370 결함 예방 ② — 기포·핀홀 발생 예시"
+     },
+     {
+      "src": "super-epoxy-370-defect-03.png",
+      "caption": "외부 수영장용 슈퍼폭시370 결함 예방 ③ — 도막 박리(부착 불량) 예시"
+     }
+    ]
    },
    "docs": {
     "tech": "1tech3211181.pdf",
@@ -5191,6 +5036,274 @@
      5,
      35
     ]
+   }
+  },
+  {
+   "id": "baruspar-40",
+   "status": "documented",
+   "name": "40바루스파",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood"
+   ],
+   "role": "clear",
+   "aliases": [
+    "40바루스파"
+   ],
+   "summary": "실내·실외 목재용 유성 바니시(니스). A급 투명유광과 크리어 투명무광 2종. 투명 보호막을 형성하고 내후성이 좋아 스테인 위 후속 도장용으로도 적합.",
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광/무광",
+    "colors": [
+     "투명"
+    ],
+    "dft_um": 30,
+    "coats": "1~4",
+    "coverage_m2_per_l": 13.0,
+    "spread_basis": "system",
+    "coverage_variants": [
+     {
+      "id": "a-gloss-30",
+      "label": "A급 투명유광 · 30㎛",
+      "dft_um": 30,
+      "coverage_m2_per_l": 13.0,
+      "source": "catalog"
+     },
+     {
+      "id": "clear-matte-20",
+      "label": "크리어 투명무광 · 20㎛",
+      "dft_um": 20,
+      "coverage_m2_per_l": 18.0,
+      "source": "catalog"
+     }
+    ],
+    "coverage_variants_default": "a-gloss-30",
+    "coverage_note": "마감별 이론도포면적 — A급유광 13.0㎡/L(30㎛·3~4회) / 크리어무광 18.0㎡/L(20㎛·1~2회). 두께 완성 기준이라 도장횟수 곱하지 않음. 손실·표면상태 고려.",
+    "recoat_hours": 9,
+    "thinner": "EN신나3000",
+    "thinning_pct_max": 30,
+    "pack_sizes": [
+     "1L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   }
+  },
+  {
+   "id": "urethane-varnish",
+   "status": "documented",
+   "name": "우레탄바니시",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood"
+   ],
+   "role": "clear",
+   "aliases": [
+    "우레탄바니시"
+   ],
+   "summary": "실내 목재·한지장판용 유광 우레탄 바니시.",
+   "spec": {
+    "composition": "1액형",
+    "finish": "유광",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 43,
+    "dft_um": 30,
+    "coats": "2~3",
+    "coverage_m2_per_l": 14.3,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 14.3㎡/L (건조도막두께 30㎛시). 두께 완성 기준이라 도장횟수 곱하지 않음.",
+    "recoat_hours": 6,
+    "thinner": "에나멜신나",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "1L",
+     "4L"
+    ]
+   }
+  },
+  {
+   "id": "urethane-megixx-3000",
+   "status": "documented",
+   "name": "우레탄멕기스 3000",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood"
+   ],
+   "role": "clear",
+   "aliases": [
+    "우레탄멕기스 3000",
+    "우레탄멕기스3000"
+   ],
+   "summary": "한지장판·실내 목재시설물 보호용 고광택 투명 우레탄 상도. 광택과 살오름성이 우수.",
+   "spec": {
+    "composition": "1액형",
+    "finish": "고광택",
+    "colors": [
+     "투명"
+    ],
+    "volume_solids_pct": 36.8,
+    "dft_um": 30,
+    "coats": "2회 이상",
+    "coverage_m2_per_l": 12.3,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 12.3㎡/L (건조도막두께 30㎛시). 두께 완성 기준이라 도장횟수 곱하지 않음. 손실·표면상태 고려.",
+    "recoat_hours": 6,
+    "thinner": "없음(원액 사용)",
+    "thinning_pct_max": 0,
+    "pack_sizes": [
+     "1L",
+     "2L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   }
+  },
+  {
+   "id": "cement-deco-plus-floor",
+   "status": "documented",
+   "name": "시멘트데코플러스 바닥용",
+   "brand": "삼화페인트",
+   "categories": [
+    "floor",
+    "concrete"
+   ],
+   "role": "midcoat",
+   "aliases": [
+    "시멘트데코플러스 바닥용"
+   ],
+   "summary": "파우더+물 2액형 수용성 무기질 셀프레벨링 인테리어 바닥 마감재. 면처리에 따라 빈티지·자연스러운 갈라짐 등 시멘트 질감 연출.",
+   "spec": {
+    "composition": "2액형(파우더+물)",
+    "finish": "무광",
+    "colors": [
+     "그레이"
+    ],
+    "dft_um": 3000,
+    "coats": "1",
+    "coverage_kg_per_m2": 5.8,
+    "spread_basis": "system",
+    "powder_water_ratio_weight": "5.5:1",
+    "coverage_note": "이론소요량 5.8kg/㎡ (건조도막두께 3㎜ 기준, 물 포함). 파우더:물=5.5:1(무게비), 가사시간 5분—혼합 후 즉시 사용. 손실·표면상태 고려.",
+    "recoat_hours": 48,
+    "thinner": "물(청수) · 희석하지 않음",
+    "thinning_pct_max": 0,
+    "pack_sizes": [
+     "20L"
+    ],
+    "pack_sizes_note": "20L용(20kg) 실포장",
+    "shelf_life_months": 6,
+    "storage_temp_c": [
+     5,
+     35
+    ]
+   }
+  },
+  {
+   "id": "spiseal-oneshot-sealant",
+   "status": "documented",
+   "name": "스피실 원샷 실란트",
+   "brand": "삼화페인트",
+   "categories": [
+    "wp"
+   ],
+   "role": "sealer",
+   "aliases": [
+    "스피실 원샷 실란트"
+   ],
+   "summary": "습기경화형 1액형 폴리우레탄 실란트. 혼합 없이 사용, 탄성·내구·비오염·방수성과 접착력이 우수해 방수 크랙보수·줄눈 충진용.",
+   "spec": {
+    "composition": "1액형(습기경화형)",
+    "finish": "반광",
+    "colors": [
+     "백색",
+     "회색",
+     "녹색"
+    ],
+    "volume_solids_pct": "94±3",
+    "specific_gravity": 1.5,
+    "coats": "1~2",
+    "coverage_basis_kind": "length",
+    "coverage_kg_per_m": 0.15,
+    "coverage_note": "줄눈 길이(m) 기준 제품. 150g/m (깊이10㎜×폭10㎜ 기준). 면적(㎡) 계산 대상 아님.",
+    "recoat_table": [
+     {
+      "temp_c": 10,
+      "min_h": 48,
+      "max_h": 96
+     },
+     {
+      "temp_c": 20,
+      "min_h": 24,
+      "max_h": 72
+     },
+     {
+      "temp_c": 30,
+      "min_h": 24,
+      "max_h": 48
+     }
+    ],
+    "recoat_hours": null,
+    "thinner": "없음 — 알코올 성분 신나 금지",
+    "thinning_pct_max": 0,
+    "pack_sizes": [
+     "300㎖",
+     "500㎖"
+    ],
+    "shelf_life_months": 9,
+    "storage_temp_c": [
+     5,
+     25
+    ]
+   }
+  },
+  {
+   "id": "super-epoxy-360-aluminum",
+   "status": "documented",
+   "name": "슈퍼폭시360 알루미늄",
+   "brand": "삼화페인트",
+   "categories": [
+    "iron"
+   ],
+   "role": "topcoat",
+   "aliases": [
+    "슈퍼폭시360 알루미늄"
+   ],
+   "summary": "자체하도겸 상도 2액형 에폭시 방청도료. 연마 분사가 곤란한 신·구 철재의 녹·흑피만 제거 후 간단히 도장. 침투성·표면습착성 우수(은색).",
+   "spec": {
+    "composition": "2액형",
+    "finish": "반광",
+    "colors": [
+     "은색"
+    ],
+    "volume_solids_pct": 83,
+    "dft_um": 125,
+    "coats": "1~2",
+    "coverage_m2_per_l": 6.64,
+    "spread_basis": "system",
+    "mixing_ratio_volume": "1:1",
+    "coverage_note": "이론도포면적 6.64㎡/L (건조도막두께 125㎛시). 추천두께 125~200㎛ 완성 기준이라 도장횟수 곱하지 않음. 주제:경화제=1:1(부피비). 손실·표면상태 고려.",
+    "recoat_hours": 18,
+    "thinner": "신나395",
+    "thinning_pct_max": 10,
+    "pack_sizes": [
+     "18L",
+     "4L"
+    ],
+    "shelf_life_months": 12,
+    "storage_temp_c": [
+     5,
+     35
+    ],
+    "primer_include": true
    }
   }
  ]
