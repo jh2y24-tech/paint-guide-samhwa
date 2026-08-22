@@ -4857,8 +4857,8 @@ function calcYieldRows(p, covKg, covL, coatsOverride){
   var s = p.spec || {};
   var packs = Array.isArray(s.pack_sizes) ? s.pack_sizes : [];
   if (!packs.length || (covKg == null && covL == null)) return [];
-  var isSystem = (s.spread_basis === 'system');
   var ct = calcCoats(s.coats), isFixedCoats = (ct.min === ct.max);
+  var isSystem = (s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2);
   var coatsForYield = coatsOverride != null ? coatsOverride
                     : isSystem ? 1
                     : isFixedCoats ? ct.min
@@ -4887,8 +4887,8 @@ function calcYieldChipsHtml(rows){
 }
 function calcYieldHighlight(p){
   var s = p.spec || {};
-  var isSystem = (s.spread_basis === 'system');
   var ct = calcCoats(s.coats), isFixedCoats = (ct.min === ct.max);
+  var isSystem = (s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2);
   var coatsForYield = isSystem ? 1
                     : isFixedCoats ? ct.min
                     : (p.role === 'primer') ? Math.max(1, ct.min) : Math.max(2, ct.min);
