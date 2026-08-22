@@ -1747,7 +1747,7 @@ a{color:var(--brand);text-decoration:none}
     <div class="step">
       <div class="step-header"><span class="step-num">5</span><span class="step-label">아이럭스결로스탑 규조토 백색</span><span class="step-badge badge-paint">KSM6010 2종1급</span></div>
       <div class="step-content">
-        <span class="product-chip chip-water">아이럭스결로스탑 규조토 백색</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스결로스탑 규조토 백색')">상세 보기 <span class="vc-chev">▾</span></button>
+        <span class="product-chip chip-water">아이럭스결로스탑 규조토 백색</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('아이럭스 결로스탑규조토')">상세 보기 <span class="vc-chev">▾</span></button>
         <div style="margin:8px 0 10px; font-size:13.5px; color:var(--muted);">
           규조토의 <b>호흡성</b>으로 실내 표면의 결로를 흡수했다가 서서히 방출해 결로 현상을 보완하는 기능성 수성페인트입니다.
           수분 흡수에 따른 도막 위 곰팡이 생성도 억제합니다. <b>환경마크 인증</b> 제품.
@@ -4431,6 +4431,10 @@ function openProduct(name){
   if (!name) return;
   var db = window.PRODUCT_DB || {};
   var p = db[name] || db[name.replace(/\s+/g,'')] || null;
+  if (!p){
+    var _nn = name.replace(/\([^)]*\)/g,'').replace(/\uFF08[^\uFF09]*\uFF09/g,'').replace(/\s+/g,'');
+    for (var _k in db){ if (_k.replace(/\([^)]*\)/g,'').replace(/\uFF08[^\uFF09]*\uFF09/g,'').replace(/\s+/g,'') === _nn){ p = db[_k]; break; } }
+  }
   var titleEl = document.getElementById('pmTitle');
   var catEl = document.getElementById('pmCat');
   var body = document.getElementById('pmBody');

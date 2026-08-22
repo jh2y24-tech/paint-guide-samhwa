@@ -1671,7 +1671,7 @@
   },
   {
    "id": "water-clear-plus-matte",
-   "status": "listed",
+   "status": "documented",
    "name": "수성크리어PLUS 무광",
    "brand": "삼화페인트",
    "categories": [
@@ -1679,11 +1679,20 @@
     "silk"
    ],
    "role": "clear",
-   "aliases": []
+   "aliases": [],
+   "spec": {
+    "finish": "무광",
+    "volume_solids_pct": 29.2,
+    "dft_um": 20,
+    "coats": "1~2",
+    "coverage_m2_per_l": 15,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 15㎡/L (건조도막두께 20㎛ 기준) · 부피고형분 29.2%"
+   }
   },
   {
    "id": "water-clear-plus-gloss",
-   "status": "listed",
+   "status": "documented",
    "name": "수성크리어PLUS 유광",
    "brand": "삼화페인트",
    "categories": [
@@ -1691,7 +1700,58 @@
     "silk"
    ],
    "role": "clear",
-   "aliases": []
+   "aliases": [],
+   "spec": {
+    "finish": "유광",
+    "volume_solids_pct": 33,
+    "dft_um": 20,
+    "coats": "1~2",
+    "coverage_m2_per_l": 16.5,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 16.5㎡/L (건조도막두께 20㎛ 기준) · 부피고형분 33%"
+   }
+  },
+  {
+   "id": "water-clear-plus-ext-matte",
+   "status": "documented",
+   "name": "수성크리어PLUS 외부용 무광",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood",
+    "silk"
+   ],
+   "role": "clear",
+   "aliases": [],
+   "spec": {
+    "finish": "무광",
+    "volume_solids_pct": 24.42,
+    "dft_um": 20,
+    "coats": "1~2",
+    "coverage_m2_per_l": 12.21,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 12.21㎡/L (건조도막두께 20㎛ 기준) · 부피고형분 24.42%"
+   }
+  },
+  {
+   "id": "water-clear-plus-ext-gloss",
+   "status": "documented",
+   "name": "수성크리어PLUS 외부용 유광",
+   "brand": "삼화페인트",
+   "categories": [
+    "wood",
+    "silk"
+   ],
+   "role": "clear",
+   "aliases": [],
+   "spec": {
+    "finish": "유광",
+    "volume_solids_pct": 27.58,
+    "dft_um": 20,
+    "coats": "1~2",
+    "coverage_m2_per_l": 13.79,
+    "spread_basis": "system",
+    "coverage_note": "이론도포면적 13.79㎡/L (건조도막두께 20㎛ 기준) · 부피고형분 27.58%"
+   }
   },
   {
    "id": "lacquer",
