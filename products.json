@@ -1151,6 +1151,12 @@
     "dft_um": 60,
     "coats": "2",
     "coverage_m2_per_l": 5.88,
+    "pack_sizes": [
+     "0.4L",
+     "1L",
+     "4L",
+     "18L"
+    ],
     "recoat_hours": 2,
     "thinner": "물",
     "thinning_pct_max": 10,
@@ -4652,7 +4658,7 @@
     "dft_um": 45,
     "finish": "반무광",
     "pack_sizes": [
-     "4kg"
+     "4kg (3.48L)"
     ],
     "recoat_hours": 24
    },
@@ -4850,6 +4856,7 @@
     "thinning_pct_max": 15,
     "thinning_basis": "도료 부피비",
     "pack_sizes": [
+     "1L",
      "4L",
      "18L"
     ],
@@ -5253,7 +5260,7 @@
     "thinner": "물(청수) · 희석하지 않음",
     "thinning_pct_max": 0,
     "pack_sizes": [
-     "20L"
+     "20kg (20L용)"
     ],
     "pack_sizes_note": "20L용(20kg) 실포장",
     "shelf_life_months": 6,
