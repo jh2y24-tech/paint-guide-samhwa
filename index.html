@@ -4912,6 +4912,25 @@ function calcYieldHighlight(p){
 
   var dftTxt = defVariant ? calcVarDft(defVariant) : (s.dft_um ? calcVarDft({dft_um: parseFloat(s.dft_um)}) : '');
 
+  /* yield_scenarios — 한 제품으로 전 공정을 시공하는 자가하도 시스템(예: 원터치 방수)은
+     '한 통 시공면적'이 계산 기준(하도만/하도+중상도/중상도만)에 따라 답이 여러 개다.
+     색상 계열 그룹과 동일한 cyh-group 레이아웃으로 상황별 소요량을 나란히 보여준다.
+     rate 는 이미 완성두께 기준 kg/㎡ 이므로 도장횟수를 곱하지 않는다(coatsOverride=1). */
+  var scenarios = Array.isArray(s.yield_scenarios) ? s.yield_scenarios : null;
+  if (scenarios){
+    var scBlocks = scenarios.map(function(sc){
+      var rows = calcYieldRows(p, sc.kg_per_m2, null, 1);
+      if (!rows.length) return '';
+      return '<div class="cyh-group"><div class="cyh-group-label">' + (sc.label || '') + ' · ' + sc.kg_per_m2 + 'kg/㎡' +
+        (sc.note ? '<span style="display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px;">' + sc.note + '</span>' : '') +
+        '</div><div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
+    }).join('');
+    if (scBlocks) return '<div class="calc-yield-hero"><div class="cyh-top">' +
+      '<span class="cyh-badge">📐 추천소요량</span>' +
+      '<span class="cyh-rate">한 제품 전 공정 · 계산 기준별 소요량 상이' + (dftTxt ? ' · ' + dftTxt : '') + '</span>' +
+    '</div>' + scBlocks + '</div>';
+  }
+
   if (colorGroups){
     var blocks = colorGroups.map(function(v){
       var rows = calcYieldRows(p, v.coverage_kg_per_m2, v.coverage_m2_per_l, coatsForYield);
