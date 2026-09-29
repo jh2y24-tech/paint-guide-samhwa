@@ -3253,6 +3253,7 @@ Object.assign(window.PRODUCT_DB, {
   },
   "에포코트 하도": {
     category: "하도 · 에폭시 2액형 (실내 방진 바닥)",
+    image: ["img/epocoat-primer.jpg", "img/epocoat-repair.jpg"],
     desc: "에폭시 수지를 주전색제로 한 폴리아마이드 에폭시 도료. 부착력·내구력이 우수하고 내마모성·내약품성·내수성·내유성이 좋은 강인한 도막이 형성되어 콘크리트 시설물에 적합한 하도용 도료입니다.",
     uses: "화학공장, 사무실, 식당, 병원, 무진실, 실험실 등의 방진 바닥재용 하도",
     spec: "마감 유광 · 색상 투명 · 피도면 콘크리트·시멘트 몰탈 · 조성 2액형\n부피고형분 약 30±3% · 추천 건조도막두께 50㎛ · 도장횟수 1~2회\n주제:경화제 혼합비(부피비) 1:1 · 추천도포면적 6.6㎡/L\n세척제 에포코트1000신나 · 포장단위 14L, 3.5L · 저장기간 12개월 (5~35℃ 실내보관)\n경화 특성(10℃/20℃/30℃): 지촉건조 1시간/30분/15분 · 경화건조 18h/6h/4h · 가사시간 24h/20h/12h · 재도장간격 18~72h/6~72h/4~72h",
@@ -3262,6 +3263,9 @@ Object.assign(window.PRODUCT_DB, {
       "하도 도막이 수분(비·눈·이슬)에 노출되면 중도 접착력 저하 — 얇게 추가 도장 후 후속 도장",
       "제품을 가열하거나 타 도료와 혼합 금지",
       "밀폐된 장소에서 작업 금지 — 부득이한 경우 충분히 환기 후 작업"
+    ],
+    videos: [
+      { src: "video/epocoat-repair.mp4", caption: "에폭시 바닥 하자 유형별 예방법·복구 TIP 안내 영상 — 에포코트 하자보수" }
     ],
     youtube: [
       { id: "sPet2uItV-A", caption: "에포코트 하도 시공 참고" }
@@ -4463,7 +4467,7 @@ function openProduct(name){
     var _cuid = 'pmcalc';
     /* ── 좌측 컬럼 — 대표이미지 · 소요량 계산기 · 시공영상 · 첨부자료 (미디어/도구) ── */
     var mainHtml = '';
-    if (p.image){ mainHtml += '<img class="pm-img" src="' + p.image + '" alt="' + name + '" style="cursor:zoom-in" onerror="this.style.display=\'none\'" onclick="openImgLightbox(\'' + p.image.replace(/'/g,"\\'") + '\',\'' + name.replace(/'/g,"\\'") + '\')">'; }
+    (Array.isArray(p.image) ? p.image : (p.image ? [p.image] : [])).forEach(function(_src){ mainHtml += '<img class="pm-img" src="' + _src + '" alt="' + name + '" style="cursor:zoom-in" onerror="this.style.display=\'none\'" onclick="openImgLightbox(\'' + _src.replace(/'/g,"\\'") + '\',\'' + name.replace(/'/g,"\\'") + '\')">'; });
     mainHtml += '<div id="' + _cuid + '-yield"></div>';
     mainHtml += calcBlockFor(name, _cuid);
     if (Array.isArray(p.videos) && p.videos.length){
