@@ -449,6 +449,24 @@ a{color:var(--brand);text-decoration:none}
 .search-result.found b{color:var(--brand)}
 .search-result.notfound{background:rgba(203,42,32,.06);border:1px solid var(--border-2);border-top:3px solid transparent;color:var(--danger)}
 .search-result.notfound::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--danger) 0%,transparent 88%);pointer-events:none}
+.sp-list{display:none;margin-top:11px}
+.sp-list.show{display:block}
+.sp-head{font-size:13px;color:var(--muted);margin:2px 2px 8px;font-weight:600;line-height:1.5}
+.sp-card{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px 13px;margin-bottom:8px;cursor:pointer;font-family:var(--sans);color:var(--text)}
+.sp-card:hover,.sp-card:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(0,71,79,.1)}
+.sp-name{font-weight:700;font-size:14.5px;color:var(--brand);line-height:1.4}
+.sp-cat{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+.sp-desc{font-size:13px;line-height:1.55;margin-top:6px;color:var(--text)}
+.sp-warn{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:var(--danger);border:1px solid var(--danger);border-radius:6px;padding:0 5px;vertical-align:middle}
+.sp-secs{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.sp-go{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--brand);cursor:pointer;font-family:var(--sans)}
+.sp-go:hover{border-color:var(--brand)}
+.sp-more{font-size:12.5px;color:var(--muted);margin:2px 2px 4px}
+.sp-note{font-size:12.5px;color:var(--brand);margin:0 2px 8px;line-height:1.5;font-weight:600}
+.sp-chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px}
+.sp-chips-label{font-size:12.5px;color:var(--muted);font-weight:600;margin-right:2px}
+.sp-chip{border:1px dashed var(--brand);background:var(--card);border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--brand);cursor:pointer;font-family:var(--sans)}
+.sp-chip:hover{background:var(--card2)}
 
 .diag-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:22px;box-shadow:var(--shadow)}
 .diag-box-title{font-family:var(--display);font-size:14.5px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px;color:var(--text)}
@@ -840,6 +858,7 @@ a{color:var(--brand);text-decoration:none}
     <button class="search-btn" onclick="searchSymptom()">검색</button>
   </div>
   <div id="searchResult" class="search-result"></div>
+  <div id="searchProducts" class="sp-list"></div>
 </div>
 
 <!-- 증상별 빠른 진단 -->
@@ -2956,11 +2975,323 @@ function matchSymptom(raw) {
   return best;
 }
 
+/* ── 제품 단위 검색 ──
+   · 검색어와 관련된 "제품"을 카드로 보여줍니다. (제품명 · 검색태그 · 분류 · 용도 · 설명에서 찾음)
+   · 띄어쓰기 없이 이어 써도(예: 수성곰팡이) 낱말 단위로 나눠 모두 포함된 제품만 남깁니다.
+   · 오타는 자모 단위로 가장 가까운 낱말로 고쳐서 찾고, 어떻게 고쳤는지 알려줍니다.
+   · 결과가 많으면 「더 좁혀보기」 버튼으로 낱말을 이어 붙여 좁힐 수 있습니다. */
+
+/* 검색태그: 제품 설명에 그 단어가 직접 적혀 있지 않아도 같은 종류로 묶어 찾게 하는 목록 */
+var SP_TAGS = {
+  '수성페인트': ['수성내부','수성외부','아크로외부','수성아크론','아이생각 원코트','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 듀로X','홈스타파스텔OK플러스','아이럭스 결로스탑규조토','아이럭스 올코팅'],
+  '수성도료':   ['수성내부','수성외부','아크로외부','수성아크론','아이생각 원코트','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 듀로X','홈스타파스텔OK플러스','아이럭스 결로스탑규조토','아이럭스 올코팅'],
+  '듀로엑스': ['아이럭스 듀로X'],
+  '멀티에그쉘': ['아이럭스 멀티에그쉘']
+};
+
+var _spIndex = null, _spVocab = null;
+function _spNorm(x){ return String(x == null ? '' : x).replace(/\s+/g, '').toLowerCase(); }
+function _spText(v){ return Array.isArray(v) ? v.join(' ') : String(v == null ? '' : v); }
+function _spEsc(x){ return String(x).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function _spResolve(db, name){
+  var p = db[name] || db[name.replace(/\s+/g, '')] || null;
+  if (!p){
+    var nn = name.replace(/\([^)]*\)/g, '').replace(/\s+/g, '');
+    for (var k in db){
+      if (k.replace(/\([^)]*\)/g, '').replace(/\s+/g, '') === nn){ p = db[k]; break; }
+    }
+  }
+  return p;
+}
+
+/* 한글 → 자모 분해 (오타 비교용) */
+var _CHO = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+var _JUNG = ['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+var _JONG = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+function _spJamo(str){
+  var out = '';
+  for (var i = 0; i < str.length; i++){
+    var code = str.charCodeAt(i) - 0xAC00;
+    if (code >= 0 && code < 11172){
+      out += _CHO[Math.floor(code / 588)] + _JUNG[Math.floor((code % 588) / 28)] + _JONG[code % 28];
+    } else { out += str.charAt(i); }
+  }
+  return out;
+}
+function _spLev(a, b){
+  var m = a.length, n = b.length, i, j;
+  if (!m) return n; if (!n) return m;
+  var prev = [], cur = [];
+  for (j = 0; j <= n; j++) prev[j] = j;
+  for (i = 1; i <= m; i++){
+    cur = [i];
+    for (j = 1; j <= n; j++){
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+function _spBuildIndex(){
+  var db = window.PRODUCT_DB || {};
+  var objs = [], items = [];
+  Object.keys(db).forEach(function(k){
+    var p = db[k];
+    if (!p || typeof p !== 'object') return;
+    var idx = objs.indexOf(p);          /* 표기 변형 이름은 같은 제품으로 묶음 */
+    if (idx === -1){ objs.push(p); items.push({ p: p, name: k, names: [k], sections: [], tags: [] }); }
+    else { items[idx].names.push(k); }
+  });
+  function addSec(p, id){
+    var idx = p ? objs.indexOf(p) : -1;
+    if (idx !== -1 && items[idx].sections.indexOf(id) === -1) items[idx].sections.push(id);
+  }
+  document.querySelectorAll('.mat-section .product-chip').forEach(function(chip){
+    var sec = chip.closest('.mat-section');
+    if (sec && sec.id) addSec(_spResolve(db, cleanProdName(chip)), sec.id);
+  });
+  /* 칩 모양이 아닌 「상세 보기」 버튼(예: 녹스탑)도 섹션에 연결 */
+  document.querySelectorAll('.mat-section [onclick*="openProduct("]').forEach(function(el){
+    var sec = el.closest('.mat-section');
+    var m = /openProduct\('([^']+)'\)/.exec(el.getAttribute('onclick') || '');
+    if (sec && sec.id && m) addSec(_spResolve(db, m[1].replace(/\\'/g, "'")), sec.id);
+  });
+  Object.keys(SP_TAGS).forEach(function(tag){
+    SP_TAGS[tag].forEach(function(nm){
+      var p = _spResolve(db, nm), idx = p ? objs.indexOf(p) : -1;
+      if (idx !== -1 && items[idx].tags.indexOf(tag) === -1) items[idx].tags.push(tag);
+    });
+  });
+  var vocab = {};
+  function addWord(w){ w = _spNorm(w); if (w.length >= 2) vocab[w] = 1; }
+  items.forEach(function(it){
+    it.nName = _spNorm(it.names.join(' '));
+    it.nTag  = _spNorm(it.tags.join(' '));
+    it.nCat  = _spNorm(it.p.category);
+    it.nUse  = _spNorm(_spText(it.p.uses));
+    it.nDesc = _spNorm(it.p.desc);
+    it.names.forEach(addWord);
+    it.tags.forEach(addWord);
+    String(it.p.category || '').split(/[\s·()\/,+\-—~]+/).forEach(addWord);
+  });
+  Object.keys(SYMPTOM_MAP).forEach(function(k){ SYMPTOM_MAP[k].keywords.forEach(addWord); });
+  _spVocab = Object.keys(vocab);
+  _spIndex = items;
+  return items;
+}
+
+/* 한 낱말(붙여 쓴 것 포함)이 제품에 모두 들어 있는지 — 가장 적은 덩어리로 나눠서 확인 */
+function _spCover(it, tok){
+  var fields = [[it.nName, 100], [it.nTag, 60], [it.nCat, 40], [it.nUse, 15], [it.nDesc, 10]];
+  if (tok.length > 24) tok = tok.slice(0, 24);
+  var L = tok.length;
+  function chunkScore(sub){
+    var b = 0;
+    for (var f = 0; f < fields.length; f++){
+      if (fields[f][1] > b && fields[f][0].indexOf(sub) !== -1) b = fields[f][1];
+    }
+    return b;
+  }
+  var best = [{ c: 0, s: 0 }];
+  for (var i = 1; i <= L; i++){
+    var cur = null;
+    for (var j = 0; j <= i - 2; j++){
+      if (!best[j]) continue;
+      var sc = chunkScore(tok.substring(j, i));
+      if (!sc) continue;
+      var c = best[j].c + 1, s = best[j].s + sc;
+      if (!cur || c < cur.c || (c === cur.c && s > cur.s)) cur = { c: c, s: s };
+    }
+    best[i] = cur;
+  }
+  return best[L] || null;
+}
+function _spRun(items, tokens){
+  var out = [], minC = 1e9;
+  items.forEach(function(it, order){
+    var C = 0, S = 0, ok = true;
+    for (var i = 0; i < tokens.length; i++){
+      var r = _spCover(it, tokens[i]);
+      if (!r){ ok = false; break; }
+      C += r.c; S += r.s;
+    }
+    if (ok){ out.push({ it: it, score: S, chunks: C, order: order }); if (C < minC) minC = C; }
+  });
+  out = out.filter(function(x){ return x.chunks === minC; });   /* 가장 덜 쪼개져 맞는 제품만 */
+  out.sort(function(a, b){ return (b.score - a.score) || (a.order - b.order); });
+  return out;
+}
+/* 오타 보정: 자모 단위로 가장 가까운 낱말을 찾음 */
+function _spFix(tok){
+  if (!_spVocab) _spBuildIndex();
+  var tj = _spJamo(tok);
+  var th = tj.length <= 4 ? 0 : (tj.length <= 8 ? 1 : (tj.length <= 12 ? 2 : 3));
+  if (!th) return tok;
+  var best = null;
+  for (var k = 0; k < _spVocab.length; k++){
+    var w = _spVocab[k];
+    if (w === tok) return tok;
+    for (var len = Math.max(2, tok.length - 1); len <= tok.length + 1; len++){
+      for (var st = 0; st + len <= w.length; st++){
+        var win = w.substr(st, len);
+        var d = _spLev(tj, _spJamo(win));
+        if (d <= th && (!best || d < best.d || (d === best.d && win.length > best.w.length))) best = { d: d, w: win };
+      }
+    }
+  }
+  return best ? best.w : tok;
+}
+function _spSearch(raw){
+  var items = _spIndex || _spBuildIndex();
+  var tokens = String(raw || '').trim().split(/\s+/).map(_spNorm).filter(function(t){ return t.length >= 2; });
+  var none = { items: [], used: '', note: '', fixedQuery: '' };
+  if (!tokens.length) return none;
+  var res = _spRun(items, tokens);
+  if (res.length) return { items: res, used: tokens.join(' '), note: '', fixedQuery: '' };
+  /* 끝말(…제, …용, …이란)을 뗀 형태로 다시 찾기: 녹전환제 → 녹전환 */
+  var stripped = tokens.map(function(t){ var u = t.replace(/(이란|이라|란|제|용|재)$/, ''); return u.length >= 2 ? u : t; });
+  if (stripped.join(' ') !== tokens.join(' ')){
+    res = _spRun(items, stripped);
+    if (res.length) return { items: res, used: stripped.join(' '), note: '', fixedQuery: '' };
+  }
+  /* 오타 보정 */
+  var fixed = stripped.map(_spFix);
+  if (fixed.join(' ') !== stripped.join(' ')){
+    var fq = fixed.join(' ');
+    res = _spRun(items, fixed);
+    if (res.length) return { items: res, used: fq, note: tokens.join(' ') + ' → ' + fq, fixedQuery: fq };
+    return { items: [], used: '', note: '', fixedQuery: fq };
+  }
+  return none;
+}
+function renderProductResults(raw){
+  var box = document.getElementById('searchProducts');
+  var r = { items: [], used: '', note: '', fixedQuery: '' };
+  if (!box) return r;
+  r = _spSearch(raw);
+  box.innerHTML = '';
+  if (!r.items.length){ box.className = 'sp-list'; return r; }
+  box.className = 'sp-list show';
+  if (r.note){
+    var nt = document.createElement('div'); nt.className = 'sp-note';
+    nt.textContent = '✏️ 입력하신 “' + r.note.split(' → ')[0] + '”을(를) “' + r.note.split(' → ')[1] + '”(으)로 고쳐서 찾았어요';
+    box.appendChild(nt);
+  }
+  var head = document.createElement('div');
+  head.className = 'sp-head';
+  head.textContent = '🧴 “' + r.used + '” 관련 제품 ' + r.items.length + '개 — 제품을 누르면 상세 정보가 열립니다';
+  box.appendChild(head);
+
+  /* 더 좁혀보기: 결과 제품 분류에 자주 나오는 낱말을 버튼으로 제안 */
+  if (r.items.length >= 4){
+    var usedN = _spNorm(r.used), cnt = {};
+    r.items.forEach(function(x){
+      var seen = {};
+      String(x.it.p.category || '').split(/[\s·()\/,+\-—~]+/).forEach(function(w){
+        var n = _spNorm(w);
+        if (n.length < 2 || seen[n] || usedN.indexOf(n) !== -1 || n.indexOf(usedN) !== -1) return;
+        if (/\d/.test(n) && !/액형$/.test(n)) return;   /* 규격 코드(KSM6010, 1종2급 등)는 제안하지 않음 */
+        seen[n] = 1;
+        if (!cnt[n]) cnt[n] = { w: w, c: 0 };
+        cnt[n].c++;
+      });
+    });
+    var sug = Object.keys(cnt).map(function(k){ return cnt[k]; })
+      .filter(function(o){ return o.c >= 2 && o.c < r.items.length; })
+      .sort(function(a, b){ return b.c - a.c; }).slice(0, 6);
+    if (sug.length){
+      var cw = document.createElement('div'); cw.className = 'sp-chips';
+      var lb = document.createElement('span'); lb.className = 'sp-chips-label'; lb.textContent = '🔎 더 좁혀보기'; cw.appendChild(lb);
+      sug.forEach(function(o){
+        var bt = document.createElement('button');
+        bt.type = 'button'; bt.className = 'sp-chip'; bt.setAttribute('data-add', o.w);
+        bt.textContent = '+ ' + o.w; cw.appendChild(bt);
+      });
+      box.appendChild(cw);
+    }
+  }
+
+  var MAX = 12;
+  r.items.slice(0, MAX).forEach(function(x){
+    var it = x.it, p = it.p;
+    var card = document.createElement('div');
+    card.className = 'sp-card';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('data-pname', it.name);
+    var nm = document.createElement('div'); nm.className = 'sp-name'; nm.textContent = it.name;
+    if (/취급\s*품목\s*아님/.test(String(p.category || ''))){
+      var w = document.createElement('span'); w.className = 'sp-warn'; w.textContent = '취급 품목 아님'; nm.appendChild(w);
+    }
+    card.appendChild(nm);
+    if (p.category){ var ct = document.createElement('div'); ct.className = 'sp-cat'; ct.textContent = String(p.category).replace(/\s*\(?취급 품목 아님\)?/,''); card.appendChild(ct); }
+    var d = String(p.desc || '').replace(/\\n[\s\S]*$/, '').replace(/\n[\s\S]*$/, '');
+    if (d){ var ds = document.createElement('div'); ds.className = 'sp-desc'; ds.textContent = d.length > 80 ? d.slice(0, 80) + '…' : d; card.appendChild(ds); }
+    if (it.sections.length){
+      var sw = document.createElement('div'); sw.className = 'sp-secs';
+      it.sections.forEach(function(id){
+        if (!SYMPTOM_MAP[id]) return;
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'sp-go'; b.setAttribute('data-sec', id);
+        b.textContent = '📍 ' + SYMPTOM_MAP[id].label + ' 위치';
+        sw.appendChild(b);
+      });
+      if (sw.children.length) card.appendChild(sw);
+    }
+    box.appendChild(card);
+  });
+  if (r.items.length > MAX){
+    var more = document.createElement('div'); more.className = 'sp-more';
+    more.textContent = '외 ' + (r.items.length - MAX) + '개 — 위의 「더 좁혀보기」를 누르거나 검색어 뒤에 낱말을 더 입력하면 좁혀집니다';
+    box.appendChild(more);
+  }
+  return r;
+}
+(function(){
+  var box = document.getElementById('searchProducts');
+  if (!box) return;
+  box.addEventListener('click', function(e){
+    var add = e.target.closest('.sp-chip');
+    if (add){
+      var inp = document.getElementById('symptomSearch');
+      inp.value = inp.value.trim() + ' ' + add.getAttribute('data-add');
+      previewSymptom();
+      inp.focus();
+      return;
+    }
+    var go = e.target.closest('.sp-go');
+    if (go){ e.stopPropagation(); goTo(go.getAttribute('data-sec')); return; }
+    var card = e.target.closest('.sp-card');
+    if (card) openProduct(card.getAttribute('data-pname'));
+  });
+  box.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (e.target.classList && (e.target.classList.contains('sp-go') || e.target.classList.contains('sp-chip'))) return;
+    var card = e.target.closest && e.target.closest('.sp-card');
+    if (card){ e.preventDefault(); openProduct(card.getAttribute('data-pname')); }
+  });
+})();
+
+function _spMsg(r){
+  var pre = r.note ? '“' + _spEsc(r.note.split(' → ')[0]) + '” 대신 “' + _spEsc(r.used) + '”(으)로 찾았어요 · ' : '';
+  return '✅ ' + pre + '관련 제품 <b>' + r.items.length + '개</b>를 찾았습니다';
+}
+function _spSectionHit(raw, r){
+  return matchSymptom(raw) || (r.fixedQuery ? matchSymptom(r.fixedQuery) : null);
+}
+
 function previewSymptom() {
   var raw = document.getElementById('symptomSearch').value.trim();
   var box = document.getElementById('searchResult');
-  if (!raw) { box.className = 'search-result'; box.innerHTML = ''; return; }
-  var hit = matchSymptom(raw);
+  if (!raw) { box.className = 'search-result'; box.innerHTML = ''; renderProductResults(''); return; }
+  var r = renderProductResults(raw);
+  if (r.items.length) {
+    box.className = 'search-result show found';
+    box.innerHTML = _spMsg(r) + ' &nbsp;(아래 제품을 눌러 확인하세요)';
+    return;
+  }
+  var hit = _spSectionHit(raw, r);
   if (hit) {
     box.className = 'search-result show found';
     box.innerHTML = '✅ <b>"' + hit.keyword + '"</b> → ' + SYMPTOM_MAP[hit.section].label + ' &nbsp;(검색 또는 Enter를 누르면 이동합니다)';
@@ -2973,7 +3304,15 @@ function previewSymptom() {
 function searchSymptom() {
   var raw = document.getElementById('symptomSearch').value.trim();
   var box = document.getElementById('searchResult');
-  var hit = matchSymptom(raw);
+  var r = renderProductResults(raw);
+  if (r.items.length) {
+    box.className = 'search-result show found';
+    box.innerHTML = _spMsg(r) + ' &nbsp;(제품을 누르면 상세 정보, 「위치」 버튼을 누르면 가이드로 이동합니다)';
+    var lst = document.getElementById('searchProducts');
+    if (lst && lst.scrollIntoView) lst.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+  var hit = _spSectionHit(raw, r);
   if (hit) {
     box.className = 'search-result show found';
     box.innerHTML = '✅ <b>"' + hit.keyword + '"</b> → ' + SYMPTOM_MAP[hit.section].label + '로 이동합니다';
