@@ -467,6 +467,17 @@ a{color:var(--brand);text-decoration:none}
 .sp-chips-label{font-size:12.5px;color:var(--muted);font-weight:600;margin-right:2px}
 .sp-chip{border:1px dashed var(--brand);background:var(--card);border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--brand);cursor:pointer;font-family:var(--sans)}
 .sp-chip:hover{background:var(--card2)}
+.sp-intent{border-left:4px solid var(--brand);background:var(--card2);border-radius:10px;padding:11px 13px;margin:0 0 10px}
+.sp-intent-title{font-weight:700;font-size:14px;color:var(--brand);line-height:1.45}
+.sp-intent-note{font-size:13px;line-height:1.6;margin-top:5px;color:var(--text)}
+.sp-q{border:1px solid var(--brand);background:var(--brand);color:#fff;border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.sp-q:hover{opacity:.88}
+.sp-warnline{margin-top:7px;font-size:12.5px;line-height:1.5;color:var(--danger)}
+.sp-guides{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.sp-trow{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:9px 12px;margin-bottom:6px;cursor:pointer;font-family:var(--sans);color:var(--text)}
+.sp-trow:hover,.sp-trow:focus{border-color:var(--brand);outline:none}
+.sp-trow b{color:var(--brand);font-size:13.5px}
+.sp-trow span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5}
 
 .diag-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:22px;box-shadow:var(--shadow)}
 .diag-box-title{font-family:var(--display);font-size:14.5px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px;color:var(--text)}
@@ -2976,20 +2987,135 @@ function matchSymptom(raw) {
 }
 
 /* ── 제품 단위 검색 ──
-   · 검색어와 관련된 "제품"을 카드로 보여줍니다. (제품명 · 검색태그 · 분류 · 용도 · 설명에서 찾음)
-   · 띄어쓰기 없이 이어 써도(예: 수성곰팡이) 낱말 단위로 나눠 모두 포함된 제품만 남깁니다.
-   · 오타는 자모 단위로 가장 가까운 낱말로 고쳐서 찾고, 어떻게 고쳤는지 알려줍니다.
-   · 결과가 많으면 「더 좁혀보기」 버튼으로 낱말을 이어 붙여 좁힐 수 있습니다. */
+   ① 초보자 말(문장)을 알아듣는 「일상어 → 제품 안내」 규칙 (SP_INTENTS)
+   ② 제품명·검색태그·분류·용도·설명에서 찾는 일반 검색 (붙여 쓴 말·오타 보정·좁혀보기 포함)
+   카드를 누르면 제품 상세가 열리고, 「위치」 버튼을 누르면 가이드 섹션으로 이동합니다. */
 
 /* 검색태그: 제품 설명에 그 단어가 직접 적혀 있지 않아도 같은 종류로 묶어 찾게 하는 목록 */
 var SP_TAGS = {
   '수성페인트': ['수성내부','수성외부','아크로외부','수성아크론','아이생각 원코트','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 듀로X','홈스타파스텔OK플러스','아이럭스 결로스탑규조토','아이럭스 올코팅'],
   '수성도료':   ['수성내부','수성외부','아크로외부','수성아크론','아이생각 원코트','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 듀로X','홈스타파스텔OK플러스','아이럭스 결로스탑규조토','아이럭스 올코팅'],
+  '곰팡이': ['아이럭스 결로스탑규조토','홈스타파스텔OK플러스','아이럭스 듀로X','아이럭스 멀티플랫','아이럭스 멀티에그쉘'],
+  '곰팡이방지': ['아이럭스 결로스탑규조토','홈스타파스텔OK플러스','아이럭스 듀로X','아이럭스 멀티플랫','아이럭스 멀티에그쉘'],
+  '베란다결로': ['아이럭스 결로스탑규조토'],
   '듀로엑스': ['아이럭스 듀로X'],
   '멀티에그쉘': ['아이럭스 멀티에그쉘']
 };
 
-var _spIndex = null, _spVocab = null;
+/* 일상어 규칙: 문장에서 상황을 알아채 알맞은 제품을 보여줍니다.
+   - all: 모든 패턴이 들어 있어야 함 / re: 하나라도 맞으면 됨 (띄어쓰기·문장부호를 뺀 글자에서 찾음)
+   - pri: 여러 규칙이 맞으면 숫자가 큰 규칙 우선
+   - products: 제품 이름(제품 상세에 등록된 이름) / guide: 함께 안내할 가이드 섹션 / choices: 되묻기 버튼 */
+var SP_INTENTS = [
+ { id:'roof-crack', pri:10, re:/옥상.*(금이?(가|갔|갈)|갈라|균열|크랙|터졌|벌어)|(금이?(가|갔|갈)|갈라|균열|크랙).*옥상/,
+   title:'옥상 바닥 균열(금) 보수', note:'등록 자료에서 균열·조인트 보수용으로 확인되는 제품입니다. 보수 후 방수층 시공 순서는 옥상방수 가이드를 함께 보세요.',
+   products:['스피실 원샷 실란트'], guide:['wp'] },
+ { id:'bath-waterproof', pri:10, re:/(욕실|화장실|샤워).*(방수|누수|물이?새|새요)/,
+   title:'욕실·화장실 방수', note:'욕실·화장실 용도가 명시된 방수 제품입니다.',
+   products:['비노출 방수에이스 2류(KSF3211)','안심누수'], guide:['wp','tile'] },
+ { id:'ceiling-leak', pri:9, re:/(천장|지붕).*(물이?새|새요|새고|새서|샙니다|누수|샌다|젖|얼룩)/,
+   title:'천장 누수 → 옥상 방수', note:'천장에서 물이 샌다고 문의하는 고객은 옥상 방수가 필요한 경우가 많습니다. 옥상방수 제품으로 안내합니다.',
+   products:['방수에이스 하도','방수에이스 중도','방수에이스 상도','원샷탄','삼화 원터치 방수','비노출 방수에이스 2류(KSF3211)'], guide:['wp'] },
+ { id:'roof-waterproof', pri:8, always:true, re:/옥상.*(방수|누수|물이?새|물이?고|우레탄)/,
+   title:'옥상 방수', note:'옥상방수 가이드에 등록된 제품입니다. 노출·비노출, 하도·중도·상도 등 사용 위치가 각각 다르니 카드의 분류를 확인하세요.',
+   products:['방수에이스 하도','방수에이스 중도','방수에이스 상도','원샷탄','삼화 원터치 방수','비노출 방수에이스 2류(KSF3211)'], guide:['wp'] },
+ { id:'condensation-mold', pri:10, all:[/결로/,/곰팡/],
+   title:'결로 + 곰팡이 방지 도장', note:'결로가 원인이면 아이럭스 결로스탑규조토가 우선입니다(곰팡이 방지 기능 포함, 베란다 등 결로가 잘 생기는 구간에 강력 추천). 결로 없이 곰팡이 방지만 필요하면 아래 나머지 제품을 참고하세요.',
+   products:['아이럭스 결로스탑규조토','홈스타파스텔OK플러스','아이럭스 듀로X','아이럭스 멀티플랫','아이럭스 멀티에그쉘'], guide:['mold'] },
+ { id:'condensation', pri:9, re:/결로|이슬|물맺힘/,
+   title:'결로 방지 도장', note:'결로가 잘 생기는 구간(예: 베란다)에 적용하도록 안내합니다. 곰팡이 방지 기능도 있습니다.',
+   products:['아이럭스 결로스탑규조토'], guide:['mold'] },
+ { id:'mold-only', pri:9, re:/곰팡/,
+   title:'곰팡이 방지 도장', note:'곰팡이 방지 기능이 있는 실내용 수성페인트입니다. 결로가 원인인 곳(베란다 등)은 결로스탑규조토를 추천합니다.',
+   products:['홈스타파스텔OK플러스','아이럭스 듀로X','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 결로스탑규조토'], guide:['mold'] },
+ { id:'exterior-wall-waterproof', pri:9, re:/(외부|외벽|바깥).*방수|방수.*(외부|외벽)/,
+   title:'외부 벽체 방수 도장', note:'방수(침투방수)는 안심누수, 색·마감은 외부용 수성페인트입니다. 안심누수는 도장 후 수성페인트 후속 도장이 가능하다고 안내되어 있습니다.',
+   products:['안심누수','수성외부','아크로외부','아이생각 원코트','수성아크론'], guide:['tile','concrete'] },
+ { id:'galv', pri:10, re:/아연|도금|갈바|알루미늄|비철/,
+   title:'아연도금·비철금속 하도(프라이머)', note:'아연도금 소재·비철금속용으로 등록된 프라이머입니다.',
+   products:['스피폭시FD 프라이머','워시프라이머'], guide:['iron'] },
+ { id:'square-pipe', pri:9, re:/각관|사각관|각파이프|철관|파이프/,
+   title:'각관(철재) 도장', note:'하도(프라이머)는 워시프라이머·스피폭시FD 프라이머, 상도는 777에나멜·매직탄·스피롤탄으로 안내합니다.',
+   products:['워시프라이머','스피폭시FD 프라이머','777에나멜','매직탄','스피롤탄'], guide:['iron'] },
+ { id:'rust', pri:8, re:/녹(?!색)|방청|부식/,
+   title:'녹 · 방청 도장', note:'녹이 있는 철재는 녹전환 방청 프라이머(녹스탑)를 하도로 쓰고, 그 위에 알키드·우레탄·에폭시계 상도를 도장하도록 안내되어 있습니다.',
+   products:['녹스탑','방청프라이머','에나멜속건프라이머'], guide:['iron'] },
+ { id:'iron-paint', pri:6, always:true, re:/철재|철에|철문|철판|철제|철골|난간|대문/,
+   title:'철재 도장', note:'철재 가이드에 등록된 제품입니다. 녹이 있는지에 따라 하도가 달라집니다.',
+   products:['방청프라이머','에나멜속건프라이머','녹스탑','777에나멜','스피롤탄','매직탄'], guide:['iron'],
+   choices:[{label:'녹이 슬었어요',q:'철재 난간에 녹이 슬었어요'},{label:'아연도금·알루미늄이에요',q:'아연각관에 프라이머 뭐 써야 되요?'}] },
+ { id:'parking-line', pri:9, re:/(주차|차선|노면|구획).*(선|라인|표시|그리|그릴|긋|칠)|(선|라인).*(그리|그릴|긋)/,
+   title:'주차선·차선 도색', note:'아스팔트·콘크리트 노면의 차선·주차구획선용으로 등록된 제품입니다. 사용 금지 표시가 있으니 카드의 ⚠ 문구를 확인하세요.',
+   products:['KSM6080 1종 상온건조형 노면표지용도료'], guide:['road'] },
+ { id:'epoxy-floor', pri:8, re:/바닥.*에폭시|에폭시.*바닥/,
+   title:'에폭시 바닥', note:'바닥 도장 가이드의 에폭시 제품입니다. 냄새가 적은 수성 에폭시(에포코트아쿠아)도 있습니다.',
+   products:['에포코트 하도','에포코트 상도','에포코트라이닝','컬러데코라이닝','에포코트아쿠아 하도','에포코트아쿠아 상도'], guide:['floor'] },
+ { id:'wood-floor', pri:9, re:/마루|장판/,
+   title:'마루·장판 니스(바니시)', note:'“마루 바닥” 전용이라고 명시된 제품은 자료에 없어, 실내 목재용 바니시(니스)류를 보여드립니다. 한지장판은 우레탄바니시·우레탄멕기스에 명시되어 있습니다. (수성우드바니시는 가구용으로 많이 쓰여 제외했습니다.)',
+   products:['우레탄바니시','우레탄멕기스 3000','40바루스파'], guide:['wood'] },
+ { id:'deck-oil', pri:10, always:true, re:/데크|오일스테인/,
+   title:'외부 데크 오일스테인', note:'외부 데크는 월드스테인마스터(실외 전용 오일 스테인)로 안내합니다.',
+   products:['월드스테인마스터'], guide:['wood'] },
+ { id:'treated-wood', pri:10, always:true, re:/방부목/,
+   title:'외부 방부목 스테인', note:'외부 방부목은 월드스테인마스터(실외 전용 오일 스테인)로 안내합니다.',
+   products:['월드스테인마스터'], guide:['wood'] },
+ { id:'stain-water', pri:10, always:true, re:/수성스테인/,
+   title:'수성스테인', note:'실내 목재에는 수성스테인으로 안내합니다.',
+   products:['아이생각수성스테인'], guide:['wood'] },
+ { id:'stain-exterior', pri:10, always:true, all:[/스테인/,/(외부|실외|야외|바깥|데크|방부목)/],
+   title:'외부용 스테인', note:'외부용은 일반적으로 오일스테인(월드스테인마스터)으로 안내합니다.',
+   products:['월드스테인마스터'], guide:['wood'] },
+ { id:'stain-interior', pri:10, always:true, all:[/스테인/,/(실내|내부|집안|방안|인테리어|가구)/],
+   title:'실내 목재 스테인', note:'실내 목재는 수성스테인으로 안내합니다.',
+   products:['아이생각수성스테인'], guide:['wood'] },
+ { id:'stain', pri:8, always:true, re:/스테인/,
+   title:'스테인(목재 착색)', note:'스테인은 칠하는 곳에 따라 안내가 다릅니다. 외부용은 오일스테인, 실내 목재는 수성스테인입니다.',
+   groups:[
+     { label:'① 외부용(데크·방부목 등) — 오일스테인', products:['월드스테인마스터'] },
+     { label:'② 실내 목재 — 수성스테인', products:['아이생각수성스테인'] }
+   ], guide:['wood'] },,
+ { id:'exterior-wood-clear', pri:10, all:[/(외부|실외|야외|바깥)/,/(나무|목재|데크|원목|합판)/,/투명/],
+   title:'외부 목재 투명 마감', note:'투명(투명색) 마감이 가능한 외부용 목재 제품입니다.',
+   products:['월드스테인마스터','40바루스파'], guide:['wood'] },
+ { id:'exterior-wood', pri:9, re:/(외부|실외|야외|바깥).*(나무|목재|원목|테이블|벤치|울타리)|(나무|목재|원목|테이블|벤치|울타리).*(외부|실외|야외|바깥)/,
+   title:'외부 목재 도장', note:'목재의 결·색을 살리려면 스테인·바니시, 색으로 덮어 칠하려면 에나멜(외부 철재·목재 상도)입니다. 카드의 ⚠ 사용 금지 문구를 확인하세요.',
+   products:['월드스테인마스터','40바루스파','777에나멜'], guide:['wood'] },
+ { id:'wood-clear', pri:8, all:[/(나무문|목문|문짝|원목|가구|합판|목재|나무)/,/(투명|코팅|바니시|바니쉬|니스|광택)/],
+   title:'목재 투명 코팅(바니시)', note:'투명하게 마감하는 실내 목재용 제품입니다. 외부(실외)에 쓰실 경우에는 아래 버튼을 눌러 주세요.',
+   products:['아이생각 수성우드바니시','우레탄바니시','40바루스파','우레탄멕기스 3000'], guide:['wood'],
+   choices:[{label:'외부(실외)에 써요',q:'외부 목재에 투명색 찾는데요'}] },
+ { id:'plywood', pri:7, re:/합판|mdf|원목/,
+   title:'합판 도장', note:'합판은 목재 가이드에 포함되어 있습니다. 투명하게 마감할지, 색을 칠할지에 따라 제품이 달라집니다.', guide:['wood'],
+   choices:[{label:'투명하게 마감',q:'나무문에 투명 코팅'},{label:'색을 칠해요',q:'목재 수성페인트'}] },
+ { id:'tile', pri:9, all:[/(타일|욕실|화장실|주방)/,/(페인트|칠|도장|코팅|바르)/],
+   title:'타일 도장', note:'타일 도장에 등록된 제품입니다. 제품마다 쓸 수 있는 곳이 다릅니다(예: 바닥·외부 사용 금지). 카드의 ⚠ 문구를 확인하세요.',
+   products:['홈스타 타일페인트','매직탄','매직탄 월코트 투명','안심누수'], guide:['tile'] },
+ { id:'silk-wallpaper', pri:9, always:true, re:/실크/,
+   title:'실크벽지 위 도장', note:'실크벽지 위 도장은 제품에 따라 그대로 칠하는 경우와 젯소를 먼저 칠하는 경우로 나뉩니다.',
+   groups:[
+     { label:'① 그대로 도장하는 제품', products:['아이럭스 멀티플랫','아이럭스 결로스탑규조토'] },
+     { label:'② 젯소(파워젯소)를 먼저 칠한 뒤 도장하는 제품', products:['파워젯소','홈스타파스텔OK플러스','아이럭스 멀티에그쉘','아이럭스 듀로X'] }
+   ], guide:['silk','coated'] },
+ { id:'paper-wallpaper', pri:9, always:true, re:/종이벽지|합지/,
+   title:'종이(합지)벽지 위 도장', note:'종이(합지)벽지 위에 도장하는 제품입니다.',
+   products:['홈스타파스텔OK플러스','아이럭스 멀티플랫','아이럭스 멀티에그쉘','아이럭스 듀로X'], guide:['silk','coated'] },
+ { id:'wallpaper-ask', pri:7, always:true, re:/벽지/,
+   title:'벽지 위 도장', note:'벽지 종류에 따라 제품이 달라집니다. 어떤 벽지인가요?',
+   choices:[{label:'실크벽지',q:'실크벽지 위에 페인트칠 할거에요'},{label:'종이(합지)벽지',q:'종이벽지 위에 페인트칠 할거에요'}] },,
+ { id:'concrete-primer', pri:8, re:/(콘크리트|시멘트|몰탈|외벽|벽).*프라이머/,
+   title:'콘크리트·벽면 프라이머', note:'콘크리트·시멘트·몰탈용 수성 프라이머입니다.',
+   products:['수성바인다200','아이생각 고점도 믹싱'], guide:['concrete'] },
+ { id:'primer-question', pri:6, all:[/프라이머|밑칠|하도/,/(뭐|어떤|무엇|무슨|써야|추천|골라)/],
+   title:'프라이머 고르기', note:'프라이머는 칠할 소재에 따라 달라집니다. 어디에 칠하시나요?',
+   choices:[{label:'철재(녹 방지)',q:'철재 방청 프라이머'},{label:'아연도금·알루미늄',q:'아연각관에 프라이머 뭐 써야 되요?'},{label:'콘크리트·벽',q:'콘크리트 벽 프라이머'},{label:'벽지·시트지',q:'벽지 위에 칠하려고요'},{label:'바닥(에폭시)',q:'바닥에 에폭시 할려고 합니다'}] },
+ { id:'wall-paint', pri:5, all:[/벽/,/(칠하|칠을|칠해|페인트|도장|지저분|더러|얼룩)/],
+   title:'벽 도장', note:'벽은 실내인지 외부인지, 벽지 위인지 콘크리트인지에 따라 제품이 달라집니다. 해당하는 것을 골라 주세요.',
+   choices:[{label:'실내 벽',q:'실내 수성페인트'},{label:'벽지 위에 그대로',q:'벽지 위에 칠하려고요'},{label:'외부 벽',q:'외부 수성페인트'}] },
+ { id:'thinner', pri:9, always:true, re:/신나|희석/, type:'thinner',
+   title:'신나(희석제) 고르기', note:'신나는 쓰는 도료마다 정해져 있습니다. 제품 상세의 희석·세척 항목에 적힌 신나를 정리했습니다. 제품 이름과 함께 검색하면(예: “777에나멜 신나”) 그 제품만 보입니다.' }
+];
+
+var _spIndex = null, _spVocab = null, _spObjs = null;
 function _spNorm(x){ return String(x == null ? '' : x).replace(/\s+/g, '').toLowerCase(); }
 function _spText(v){ return Array.isArray(v) ? v.join(' ') : String(v == null ? '' : v); }
 function _spEsc(x){ return String(x).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -3002,6 +3128,12 @@ function _spResolve(db, name){
     }
   }
   return p;
+}
+function _spItemByName(name){
+  var items = _spIndex || _spBuildIndex();
+  var p = _spResolve(window.PRODUCT_DB || {}, name);
+  var idx = p ? _spObjs.indexOf(p) : -1;
+  return idx === -1 ? null : items[idx];
 }
 
 /* 한글 → 자모 분해 (오타 비교용) */
@@ -3043,6 +3175,7 @@ function _spBuildIndex(){
     if (idx === -1){ objs.push(p); items.push({ p: p, name: k, names: [k], sections: [], tags: [] }); }
     else { items[idx].names.push(k); }
   });
+  _spObjs = objs;
   function addSec(p, id){
     var idx = p ? objs.indexOf(p) : -1;
     if (idx !== -1 && items[idx].sections.indexOf(id) === -1) items[idx].sections.push(id);
@@ -3051,7 +3184,6 @@ function _spBuildIndex(){
     var sec = chip.closest('.mat-section');
     if (sec && sec.id) addSec(_spResolve(db, cleanProdName(chip)), sec.id);
   });
-  /* 칩 모양이 아닌 「상세 보기」 버튼(예: 녹스탑)도 섹션에 연결 */
   document.querySelectorAll('.mat-section [onclick*="openProduct("]').forEach(function(el){
     var sec = el.closest('.mat-section');
     var m = /openProduct\('([^']+)'\)/.exec(el.getAttribute('onclick') || '');
@@ -3118,11 +3250,10 @@ function _spRun(items, tokens){
     }
     if (ok){ out.push({ it: it, score: S, chunks: C, order: order }); if (C < minC) minC = C; }
   });
-  out = out.filter(function(x){ return x.chunks === minC; });   /* 가장 덜 쪼개져 맞는 제품만 */
+  out = out.filter(function(x){ return x.chunks === minC; });
   out.sort(function(a, b){ return (b.score - a.score) || (a.order - b.order); });
   return out;
 }
-/* 오타 보정: 자모 단위로 가장 가까운 낱말을 찾음 */
 function _spFix(tok){
   if (!_spVocab) _spBuildIndex();
   var tj = _spJamo(tok);
@@ -3142,20 +3273,48 @@ function _spFix(tok){
   }
   return best ? best.w : tok;
 }
+
+/* 문장 → 검색에 쓸 낱말 (문장부호·조사·말끝·"페인트/도료" 같은 흔한 말 제거) */
+var _SP_STOP = /^(페인트|도료|칠|도장|제품|추천|있어|있나|있죠|어떤|뭐|뭘|무슨|바로|그냥|좀|하고|싶|필요|물이|새서|새고)/;
+function _spTokens(raw, strip){
+  return String(raw || '').split(/[\s,./?!~·()]+/).map(function(t){
+    t = _spNorm(t);
+    if (strip && t.length >= 3) t = t.replace(/(에서|에게|으로|까지|부터|이나|랑|에|을|를|이|가|은|는|와|과|도|만|의|로)$/, '');
+    return t;
+  }).filter(function(t){
+    if (t.length < 2) return false;
+    if (_SP_STOP.test(t)) return false;
+    if (/(려고|는데요?|나요|니까|어요|아요|해요|세요|죠|요|다|까)$/.test(t) && t.length >= 2 && !/(에폭시|바니시)/.test(t)) return false;
+    return true;
+  });
+}
 function _spSearch(raw){
   var items = _spIndex || _spBuildIndex();
-  var tokens = String(raw || '').trim().split(/\s+/).map(_spNorm).filter(function(t){ return t.length >= 2; });
+  var tokens = _spTokens(raw, false);
   var none = { items: [], used: '', note: '', fixedQuery: '' };
   if (!tokens.length) return none;
   var res = _spRun(items, tokens);
   if (res.length) return { items: res, used: tokens.join(' '), note: '', fixedQuery: '' };
-  /* 끝말(…제, …용, …이란)을 뗀 형태로 다시 찾기: 녹전환제 → 녹전환 */
+  /* 조사(에·을·는…)를 뗀 형태로 다시 찾기 */
+  var t1 = _spTokens(raw, true);
+  if (t1.length && t1.join(' ') !== tokens.join(' ')){
+    res = _spRun(items, t1);
+    if (res.length) return { items: res, used: t1.join(' '), note: '', fixedQuery: '' };
+    tokens = t1;
+  }
   var stripped = tokens.map(function(t){ var u = t.replace(/(이란|이라|란|제|용|재)$/, ''); return u.length >= 2 ? u : t; });
   if (stripped.join(' ') !== tokens.join(' ')){
     res = _spRun(items, stripped);
     if (res.length) return { items: res, used: stripped.join(' '), note: '', fixedQuery: '' };
   }
-  /* 오타 보정 */
+  /* 제품 정보에 없는 낱말은 빼고 찾기 */
+  if (tokens.length > 1){
+    var known = tokens.filter(function(t){ return _spRun(items, [t]).length > 0; });
+    if (known.length && known.length < tokens.length){
+      res = _spRun(items, known);
+      if (res.length) return { items: res, used: known.join(' '), note: '', fixedQuery: '' };
+    }
+  }
   var fixed = stripped.map(_spFix);
   if (fixed.join(' ') !== stripped.join(' ')){
     var fq = fixed.join(' ');
@@ -3165,12 +3324,164 @@ function _spSearch(raw){
   }
   return none;
 }
+
+/* 일상어 규칙 찾기 */
+function _spSentence(raw){
+  var t = String(raw || '').trim();
+  return t.split(/\s+/).length >= 3 || /(요|다|까|죠|데|고|니다)[?!.]*$/.test(t);
+}
+function _spIntent(raw){
+  var t = String(raw || '').toLowerCase().replace(/[\s,.\-?!~·()\/]+/g, '');
+  if (t.length < 1) return null;
+  var best = null;
+  SP_INTENTS.forEach(function(r){
+    var ok = false;
+    if (r.all){ ok = r.all.every(function(re){ return re.test(t); }); }
+    else if (r.re){ ok = r.re.test(t); }
+    if (ok && (!best || r.pri > best.pri)) best = r;
+  });
+  return best;
+}
+
+function _spWarns(it){
+  /* 제품 상세에 적힌 「사용 금지·불가」 문구를 그대로 뽑아 카드에 표시 */
+  var out = [];
+  function push(w){
+    w = String(w).replace(/^[\s※]+|[\s※]+$/g, '').replace(/\s+/g, ' ');
+    if (w && out.indexOf(w) === -1) out.push(w);
+  }
+  var srcs = [_spText(it.p.uses), String(it.p.desc || ''), String(it.p.category || '')];
+  srcs.forEach(function(src){
+    if (out.length) return;
+    var re = /[(（]([^()（）]*(?:금지|불가|사용할 수 없)[^()（）]*)[)）]/g, m;
+    while ((m = re.exec(src))) push(m[1]);
+    if (!out.length){
+      src.split(/[.。\n]/).forEach(function(sn){ if (/(금지|불가|사용할 수 없)/.test(sn)) push(sn); });
+    }
+  });
+  return out.slice(0, 2);
+}
+function _spBuildCard(it, opts){
+  var p = it.p; opts = opts || {};
+  var card = document.createElement('div');
+  card.className = 'sp-card';
+  card.setAttribute('role', 'button');
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('data-pname', it.name);
+  var nm = document.createElement('div'); nm.className = 'sp-name'; nm.textContent = it.name;
+  if (/취급\s*품목\s*아님/.test(String(p.category || ''))){
+    var w = document.createElement('span'); w.className = 'sp-warn'; w.textContent = '취급 품목 아님'; nm.appendChild(w);
+  }
+  card.appendChild(nm);
+  if (p.category){ var ct = document.createElement('div'); ct.className = 'sp-cat'; ct.textContent = String(p.category).replace(/\s*\(?취급 품목 아님\)?/,''); card.appendChild(ct); }
+  var d = String(p.desc || '').replace(/\n[\s\S]*$/, '');
+  if (d){ var ds = document.createElement('div'); ds.className = 'sp-desc'; ds.textContent = d.length > 80 ? d.slice(0, 80) + '…' : d; card.appendChild(ds); }
+  if (opts.showUses){
+    var u = _spText(p.uses).replace(/["\s]+/g, ' ').trim();
+    if (u){ var us = document.createElement('div'); us.className = 'sp-desc'; us.textContent = '용도: ' + (u.length > 110 ? u.slice(0, 110) + '…' : u); card.appendChild(us); }
+  }
+  var warns = opts.showUses ? _spWarns(it) : [];
+  warns.forEach(function(wt){ var wl = document.createElement('div'); wl.className = 'sp-warnline'; wl.textContent = '⚠ ' + wt; card.appendChild(wl); });
+  if (it.sections.length){
+    var sw = document.createElement('div'); sw.className = 'sp-secs';
+    it.sections.forEach(function(id){
+      if (!SYMPTOM_MAP[id]) return;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'sp-go'; b.setAttribute('data-sec', id);
+      b.textContent = '📍 ' + SYMPTOM_MAP[id].label + ' 위치';
+      sw.appendChild(b);
+    });
+    if (sw.children.length) card.appendChild(sw);
+  }
+  return card;
+}
+function _spGuideButtons(ids){
+  var wrap = document.createElement('div'); wrap.className = 'sp-guides';
+  ids.forEach(function(id){
+    if (!SYMPTOM_MAP[id]) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'sp-go'; b.setAttribute('data-sec', id);
+    b.textContent = '📍 ' + SYMPTOM_MAP[id].label + ' 가이드로 이동';
+    wrap.appendChild(b);
+  });
+  return wrap.children.length ? wrap : null;
+}
+
+function _spRenderIntent(box, r, raw){
+  var head = document.createElement('div'); head.className = 'sp-intent';
+  var t = document.createElement('div'); t.className = 'sp-intent-title'; t.textContent = '💡 “' + r.title + '”(으)로 이해했어요'; head.appendChild(t);
+  if (r.note){ var n = document.createElement('div'); n.className = 'sp-intent-note'; n.textContent = r.note; head.appendChild(n); }
+  if (r.choices && r.choices.length){
+    var cw = document.createElement('div'); cw.className = 'sp-chips'; cw.style.marginTop = '9px'; cw.style.marginBottom = '0';
+    r.choices.forEach(function(c){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'sp-q';
+      b.setAttribute('data-q', c.q); b.textContent = c.label; cw.appendChild(b);
+    });
+    head.appendChild(cw);
+  }
+  box.appendChild(head);
+  var count = 0;
+  if (r.type === 'thinner'){
+    var items = _spIndex || _spBuildIndex();
+    var rest = String(raw || '').replace(/신나|희석/g, ' ');
+    var pick = _spSearch(rest).items.map(function(x){ return x.it; });
+    var pool = pick.length && pick.length < items.length ? pick : items;
+    var rows = [];
+    pool.forEach(function(it){
+      var spec = String(it.p.spec || '').split('\n');
+      for (var i = 0; i < spec.length; i++){
+        if (/신나/.test(spec[i]) && /(희석|세척)/.test(spec[i])){ rows.push({ it: it, line: spec[i].replace(/\s+/g, ' ').trim() }); break; }
+      }
+    });
+    rows.forEach(function(x){
+      var b = document.createElement('div'); b.className = 'sp-trow'; b.setAttribute('role', 'button'); b.setAttribute('tabindex', '0'); b.setAttribute('data-pname', x.it.name);
+      var nm = document.createElement('b'); nm.textContent = x.it.name; b.appendChild(nm);
+      var ln = document.createElement('span'); ln.textContent = x.line; b.appendChild(ln);
+      box.appendChild(b);
+    });
+    count = rows.length;
+    if (!rows.length){ var e = document.createElement('div'); e.className = 'sp-more'; e.textContent = '해당 제품의 신나 정보를 찾지 못했습니다. 제품 상세의 희석 항목을 확인해 주세요.'; box.appendChild(e); }
+  } else if (r.groups){
+    r.groups.forEach(function(g){
+      var lb = document.createElement('div'); lb.className = 'sp-head'; lb.style.marginTop = '4px'; lb.textContent = g.label; box.appendChild(lb);
+      g.products.forEach(function(nm){
+        var it = _spItemByName(nm);
+        if (it){ box.appendChild(_spBuildCard(it, { showUses: true })); count++; }
+      });
+    });
+  } else if (r.products){
+    r.products.forEach(function(nm){
+      var it = _spItemByName(nm);
+      if (it){ box.appendChild(_spBuildCard(it, { showUses: true })); count++; }
+    });
+  }
+  var gb = r.guide ? _spGuideButtons(r.guide) : null;
+  if (gb) box.appendChild(gb);
+  return count;
+}
+
 function renderProductResults(raw){
   var box = document.getElementById('searchProducts');
-  var r = { items: [], used: '', note: '', fixedQuery: '' };
+  var r = { items: [], used: '', note: '', fixedQuery: '', intent: null };
   if (!box) return r;
-  r = _spSearch(raw);
   box.innerHTML = '';
+  if (!String(raw || '').trim()){ box.className = 'sp-list'; return r; }
+
+  /* ① 문장으로 물어본 경우(또는 일반 검색으로 안 잡힐 때) 일상어 규칙 적용 */
+  var intent = _spIntent(raw);
+  if (intent){
+    var gen = _spSearch(raw);
+    if (_spSentence(raw) || !gen.items.length || intent.always){
+      box.className = 'sp-list show';
+      var cnt = _spRenderIntent(box, intent, raw);
+      r.intent = intent;
+      r.items = new Array(Math.max(cnt, intent.choices ? 1 : 0));
+      return r;
+    }
+  }
+
+  /* ② 일반 검색 */
+  r = _spSearch(raw); r.intent = null;
   if (!r.items.length){ box.className = 'sp-list'; return r; }
   box.className = 'sp-list show';
   if (r.note){
@@ -3183,21 +3494,20 @@ function renderProductResults(raw){
   head.textContent = '🧴 “' + r.used + '” 관련 제품 ' + r.items.length + '개 — 제품을 누르면 상세 정보가 열립니다';
   box.appendChild(head);
 
-  /* 더 좁혀보기: 결과 제품 분류에 자주 나오는 낱말을 버튼으로 제안 */
   if (r.items.length >= 4){
-    var usedN = _spNorm(r.used), cnt = {};
+    var usedN = _spNorm(r.used), cnt2 = {};
     r.items.forEach(function(x){
       var seen = {};
       String(x.it.p.category || '').split(/[\s·()\/,+\-—~]+/).forEach(function(w){
         var n = _spNorm(w);
         if (n.length < 2 || seen[n] || usedN.indexOf(n) !== -1 || n.indexOf(usedN) !== -1) return;
-        if (/\d/.test(n) && !/액형$/.test(n)) return;   /* 규격 코드(KSM6010, 1종2급 등)는 제안하지 않음 */
+        if (/\d/.test(n) && !/액형$/.test(n)) return;
         seen[n] = 1;
-        if (!cnt[n]) cnt[n] = { w: w, c: 0 };
-        cnt[n].c++;
+        if (!cnt2[n]) cnt2[n] = { w: w, c: 0 };
+        cnt2[n].c++;
       });
     });
-    var sug = Object.keys(cnt).map(function(k){ return cnt[k]; })
+    var sug = Object.keys(cnt2).map(function(k){ return cnt2[k]; })
       .filter(function(o){ return o.c >= 2 && o.c < r.items.length; })
       .sort(function(a, b){ return b.c - a.c; }).slice(0, 6);
     if (sug.length){
@@ -3211,36 +3521,8 @@ function renderProductResults(raw){
       box.appendChild(cw);
     }
   }
-
   var MAX = 12;
-  r.items.slice(0, MAX).forEach(function(x){
-    var it = x.it, p = it.p;
-    var card = document.createElement('div');
-    card.className = 'sp-card';
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('data-pname', it.name);
-    var nm = document.createElement('div'); nm.className = 'sp-name'; nm.textContent = it.name;
-    if (/취급\s*품목\s*아님/.test(String(p.category || ''))){
-      var w = document.createElement('span'); w.className = 'sp-warn'; w.textContent = '취급 품목 아님'; nm.appendChild(w);
-    }
-    card.appendChild(nm);
-    if (p.category){ var ct = document.createElement('div'); ct.className = 'sp-cat'; ct.textContent = String(p.category).replace(/\s*\(?취급 품목 아님\)?/,''); card.appendChild(ct); }
-    var d = String(p.desc || '').replace(/\\n[\s\S]*$/, '').replace(/\n[\s\S]*$/, '');
-    if (d){ var ds = document.createElement('div'); ds.className = 'sp-desc'; ds.textContent = d.length > 80 ? d.slice(0, 80) + '…' : d; card.appendChild(ds); }
-    if (it.sections.length){
-      var sw = document.createElement('div'); sw.className = 'sp-secs';
-      it.sections.forEach(function(id){
-        if (!SYMPTOM_MAP[id]) return;
-        var b = document.createElement('button');
-        b.type = 'button'; b.className = 'sp-go'; b.setAttribute('data-sec', id);
-        b.textContent = '📍 ' + SYMPTOM_MAP[id].label + ' 위치';
-        sw.appendChild(b);
-      });
-      if (sw.children.length) card.appendChild(sw);
-    }
-    box.appendChild(card);
-  });
+  r.items.slice(0, MAX).forEach(function(x){ box.appendChild(_spBuildCard(x.it)); });
   if (r.items.length > MAX){
     var more = document.createElement('div'); more.className = 'sp-more';
     more.textContent = '외 ' + (r.items.length - MAX) + '개 — 위의 「더 좁혀보기」를 누르거나 검색어 뒤에 낱말을 더 입력하면 좁혀집니다';
@@ -3252,6 +3534,14 @@ function renderProductResults(raw){
   var box = document.getElementById('searchProducts');
   if (!box) return;
   box.addEventListener('click', function(e){
+    var q = e.target.closest('.sp-q');
+    if (q){
+      var inp0 = document.getElementById('symptomSearch');
+      inp0.value = q.getAttribute('data-q');
+      previewSymptom();
+      inp0.focus();
+      return;
+    }
     var add = e.target.closest('.sp-chip');
     if (add){
       var inp = document.getElementById('symptomSearch');
@@ -3262,18 +3552,19 @@ function renderProductResults(raw){
     }
     var go = e.target.closest('.sp-go');
     if (go){ e.stopPropagation(); goTo(go.getAttribute('data-sec')); return; }
-    var card = e.target.closest('.sp-card');
+    var card = e.target.closest('.sp-card, .sp-trow');
     if (card) openProduct(card.getAttribute('data-pname'));
   });
   box.addEventListener('keydown', function(e){
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    if (e.target.classList && (e.target.classList.contains('sp-go') || e.target.classList.contains('sp-chip'))) return;
-    var card = e.target.closest && e.target.closest('.sp-card');
+    if (e.target.classList && (e.target.classList.contains('sp-go') || e.target.classList.contains('sp-chip') || e.target.classList.contains('sp-q'))) return;
+    var card = e.target.closest && e.target.closest('.sp-card, .sp-trow');
     if (card){ e.preventDefault(); openProduct(card.getAttribute('data-pname')); }
   });
 })();
 
 function _spMsg(r){
+  if (r.intent) return '💡 <b>“' + _spEsc(r.intent.title) + '”</b>(으)로 이해했어요';
   var pre = r.note ? '“' + _spEsc(r.note.split(' → ')[0]) + '” 대신 “' + _spEsc(r.used) + '”(으)로 찾았어요 · ' : '';
   return '✅ ' + pre + '관련 제품 <b>' + r.items.length + '개</b>를 찾았습니다';
 }
@@ -3288,7 +3579,7 @@ function previewSymptom() {
   var r = renderProductResults(raw);
   if (r.items.length) {
     box.className = 'search-result show found';
-    box.innerHTML = _spMsg(r) + ' &nbsp;(아래 제품을 눌러 확인하세요)';
+    box.innerHTML = _spMsg(r) + ' &nbsp;(아래를 확인하세요)';
     return;
   }
   var hit = _spSectionHit(raw, r);
