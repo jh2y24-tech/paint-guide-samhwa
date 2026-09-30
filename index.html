@@ -3407,6 +3407,54 @@ function _spGuideButtons(ids){
   return wrap.children.length ? wrap : null;
 }
 
+/* 용어 뜻풀이: "젯소란?", "방청이 뭐예요" 처럼 뜻을 묻는 검색이면 기존 용어풀이(TERM_DB)를 먼저 보여줌 */
+function _spTermFind(raw){
+  var t = String(raw || '').toLowerCase().replace(/[\s,.\-?!~·()\/]+/g, '');
+  if (!/(이란|란$|이라는|뭐예요|뭐에요|뭐야|뭐죠|뭔가요|뭔지|무엇|무슨뜻|뜻|의미|설명|같은거|같은건가|같은가요|차이)/.test(t)) return null;
+  if (typeof TERM_DB === 'undefined') return null;
+  var keys = Object.keys(TERM_DB).concat(typeof TERM_ALIAS !== 'undefined' ? Object.keys(TERM_ALIAS) : []);
+  var best = null, bl = 0;
+  keys.forEach(function(k){
+    var n = _spNorm(k);
+    if (n.length >= 2 && t.indexOf(n) !== -1 && n.length > bl){ bl = n.length; best = k; }
+  });
+  if (!best) return null;
+  var main = TERM_DB[best] ? best : (typeof TERM_ALIAS !== 'undefined' ? TERM_ALIAS[best] : null);
+  return (main && TERM_DB[main]) ? { key: main, hit: best } : null;
+}
+function _spRenderTerm(box, tm){
+  var T = TERM_DB[tm.key];
+  var wrap = document.createElement('div'); wrap.className = 'sp-intent';
+  var ti = document.createElement('div'); ti.className = 'sp-intent-title'; ti.textContent = '📖 ' + T.title + ' — 뜻풀이'; wrap.appendChild(ti);
+  if (T.cat){ var ct = document.createElement('div'); ct.className = 'sp-cat'; ct.textContent = T.cat; wrap.appendChild(ct); }
+  var tmp = document.createElement('div'); tmp.innerHTML = String(T.html || '').replace(/<br\s*\/?>/gi, ' ').replace(/<\/(p|div|li)>/gi, '$& ');
+  var ps = tmp.querySelectorAll('p'), txt = '';
+  for (var i = 0; i < ps.length && txt.length < 160; i++){ txt += (txt ? ' ' : '') + ps[i].textContent.trim(); }
+  if (!ps.length) txt = tmp.textContent.trim();
+  if (txt.length > 260) txt = txt.slice(0, 260) + '…';
+  var body = document.createElement('div'); body.className = 'sp-intent-note'; body.textContent = txt; wrap.appendChild(body);
+  var row = document.createElement('div'); row.className = 'sp-chips'; row.style.marginTop = '9px'; row.style.marginBottom = '0';
+  var more = document.createElement('button'); more.type = 'button'; more.className = 'sp-q sp-tm'; more.setAttribute('data-term', tm.key); more.textContent = '자세히 보기'; row.appendChild(more);
+  wrap.appendChild(row);
+  box.appendChild(wrap);
+
+  /* 이름·분류에 그 용어가 들어간 제품이 8개 이하면 바로 보여주고, 많으면 검색 버튼만 */
+  var items = _spIndex || _spBuildIndex(), kk = _spNorm(tm.key), kh = _spNorm(tm.hit);
+  var SP_REL_TERMS = ['방청','젯소','프라이머','실러','규조토','에그쉘','퍼티','바니시','발포성 내화도료'];
+  var rel = SP_REL_TERMS.indexOf(tm.key) === -1 ? [] : items.filter(function(it){
+    return it.nName.indexOf(kk) !== -1 || it.nTag.indexOf(kk) !== -1 || it.nCat.indexOf(kk) !== -1 ||
+           (kh !== kk && (it.nName.indexOf(kh) !== -1 || it.nCat.indexOf(kh) !== -1));
+  });
+  if (rel.length && rel.length <= 8){
+    var hd = document.createElement('div'); hd.className = 'sp-head'; hd.textContent = '🧴 관련 제품'; box.appendChild(hd);
+    rel.forEach(function(it){ box.appendChild(_spBuildCard(it)); });
+  } else {
+    var qb = document.createElement('div'); qb.className = 'sp-chips';
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'sp-chip'; b.setAttribute('data-q', tm.key);
+    b.textContent = '🧴 “' + tm.key + '” 관련 제품 검색'; qb.appendChild(b); box.appendChild(qb);
+  }
+}
+
 function _spRenderIntent(box, r, raw){
   var head = document.createElement('div'); head.className = 'sp-intent';
   var t = document.createElement('div'); t.className = 'sp-intent-title'; t.textContent = '💡 “' + r.title + '”(으)로 이해했어요'; head.appendChild(t);
@@ -3466,6 +3514,16 @@ function renderProductResults(raw){
   if (!box) return r;
   box.innerHTML = '';
   if (!String(raw || '').trim()){ box.className = 'sp-list'; return r; }
+
+  /* ⓪ 뜻을 묻는 검색이면 용어 뜻풀이 먼저 */
+  var tm = _spTermFind(raw);
+  if (tm){
+    box.className = 'sp-list show';
+    _spRenderTerm(box, tm);
+    r.term = TERM_DB[tm.key].title;
+    r.items = new Array(1);
+    return r;
+  }
 
   /* ① 문장으로 물어본 경우(또는 일반 검색으로 안 잡힐 때) 일상어 규칙 적용 */
   var intent = _spIntent(raw);
@@ -3534,6 +3592,16 @@ function renderProductResults(raw){
   var box = document.getElementById('searchProducts');
   if (!box) return;
   box.addEventListener('click', function(e){
+    var tmb = e.target.closest('.sp-tm');
+    if (tmb){ openTerm(tmb.getAttribute('data-term')); return; }
+    var dq = e.target.closest('.sp-chip[data-q]');
+    if (dq){
+      var inp1 = document.getElementById('symptomSearch');
+      inp1.value = dq.getAttribute('data-q');
+      previewSymptom();
+      inp1.focus();
+      return;
+    }
     var q = e.target.closest('.sp-q');
     if (q){
       var inp0 = document.getElementById('symptomSearch');
@@ -3564,6 +3632,7 @@ function renderProductResults(raw){
 })();
 
 function _spMsg(r){
+  if (r.term) return '📖 <b>“' + _spEsc(r.term) + '”</b> 뜻풀이';
   if (r.intent) return '💡 <b>“' + _spEsc(r.intent.title) + '”</b>(으)로 이해했어요';
   var pre = r.note ? '“' + _spEsc(r.note.split(' → ')[0]) + '” 대신 “' + _spEsc(r.used) + '”(으)로 찾았어요 · ' : '';
   return '✅ ' + pre + '관련 제품 <b>' + r.items.length + '개</b>를 찾았습니다';
@@ -6222,6 +6291,12 @@ var TERM_ALIAS = {
   "무광":"에그쉘", "반광":"에그쉘", "유광":"에그쉘"
 };
 function termResolve(k){ return TERM_ALIAS[k] || k; }
+
+/* ── 추가 용어: 바니시 = 니스 (같은 제품) ── */
+TERM_DB["바니시"] = { cat: "색 없는 투명 도료 (= 니스)", title: "바니시 (바니쉬 · 니스)",
+  html: "<div class=\"pm-term\"><p><b>바니시(바니쉬)</b>와 <b>니스</b>는 <b>같은 제품</b>을 부르는 두 가지 이름입니다. 색이 없는 <b>투명 도료</b>로, 칠하면 표면 위에 투명한 보호막이 생깁니다.</p><p>물로 묽게 하는 <b>수성 바니시</b>(예: 아이생각 수성우드바니시)와 신나로 묽게 하는 <b>유성 바니시(니스)</b>(예: 40바루스파, 우레탄바니시)가 있습니다.</p></div>" };
+TERM_ALIAS["니스"] = "바니시";
+TERM_ALIAS["바니쉬"] = "바니시";
 
 /* ── 본문 용어 자동 링크 ──
    각 가이드 섹션에서 용어가 처음 나오는 곳 한 번만 링크한다(도배 방지).
