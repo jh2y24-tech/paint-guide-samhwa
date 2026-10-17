@@ -173,10 +173,22 @@ a{color:var(--brand);text-decoration:none}
 .cyh-group-label{font-size:12.5px;font-weight:700;color:var(--brand);margin-bottom:7px}
 .cyh-sc-label{font-size:12.5px;font-weight:700;margin-bottom:8px}
 .cyh-sc-pill{display:inline-block;padding:5px 13px;border-radius:999px;color:#fff;font-size:14px;font-weight:800;letter-spacing:-.2px;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:0 2px 6px rgba(0,0,0,.18)}
-.cyh-sc-0 .cyh-sc-pill{background:linear-gradient(90deg,#00474f 0%,#0a8f7a 55%,#3ddc97 100%)}
-.cyh-sc-1 .cyh-sc-pill{background:linear-gradient(90deg,#ff6a00 0%,#ff3d54 60%,#e0218a 100%)}
-.cyh-sc-2 .cyh-sc-pill{background:linear-gradient(90deg,#3a47d5 0%,#7b3fe4 55%,#c04cfd 100%)}
-.cyh-sc-rate{margin-left:6px;font-weight:700;color:var(--brand)}
+.cyh-sc-0 .cyh-sc-pill{background:linear-gradient(100deg,#003a40 0%,#0a8f7a 45%,#3ddc97 80%,#c6ff6a 100%)}
+.cyh-sc-1 .cyh-sc-pill{background:linear-gradient(100deg,#ff9a00 0%,#ff4d3d 40%,#e0218a 75%,#8a2be2 100%)}
+.cyh-sc-2 .cyh-sc-pill{background:linear-gradient(100deg,#1f3fd0 0%,#6a3de8 45%,#c04cfd 78%,#ff7ad9 100%)}
+.cyh-sc-rate{margin-left:8px;font-weight:800;color:var(--ink,#222);font-size:13px}
+.cyh-sc-sub{margin-left:6px;font-size:12px;font-weight:700;color:var(--muted)}
+.calc-yield-hero .cyh-group[class*="cyh-sc-"]{border:2px solid var(--scc);border-left-width:7px;border-radius:12px;background:var(--scbg);padding:10px 12px 11px;margin-top:10px}
+.calc-yield-hero .cyh-group[class*="cyh-sc-"]+.cyh-group{border-top:2px solid var(--scc);padding-top:10px}
+.cyh-sc-0{--scc:#0a8f7a;--scbg:#effaf6}
+.cyh-sc-1{--scc:#ee3d60;--scbg:#fff1f3}
+.cyh-sc-2{--scc:#7b3fe4;--scbg:#f5f0ff}
+.cyh-sc-label .cyh-sc-pill{font-size:16px;padding:6px 22px 6px 16px}
+.cyh-sc-0{--scg:linear-gradient(90deg,#effaf6 0%,#d4f7e4 100%)}
+.cyh-sc-1{--scg:linear-gradient(90deg,#fff1f3 0%,#ffe0d0 100%)}
+.cyh-sc-2{--scg:linear-gradient(90deg,#f5f0ff 0%,#ffe3f6 100%)}
+.calc-yield-hero .cyh-group[class*="cyh-sc-"]{background:var(--scg)}
+.cyh-sc-label+.cyh-chips .cyc-area{font-size:1.25em;font-weight:800}
 .pm-yield-side{display:none}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
 .calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
@@ -664,6 +676,7 @@ a{color:var(--brand);text-decoration:none}
     gap:32px; align-items:start; }
   #prodModal .pm-col-main{ min-width:0; }
   #prodModal .pm-col-side{ min-width:0; }
+  #prodModal .pm-yield-main{ display:none; }
   #prodModal .pm-yield-side{ display:block; margin-top:14px; }
   #prodModal .pm-yield-side:empty{ display:none; }
   /* 첨부 자료(기술자료·도장사양서) 버튼 — 넓은 화면에서 키워 가독성 확보 */
@@ -5211,7 +5224,7 @@ function openProduct(name){
     /* ── 좌측 컬럼 — 대표이미지 · 소요량 계산기 · 시공영상 · 첨부자료 (미디어/도구) ── */
     var mainHtml = '';
     (Array.isArray(p.image) ? p.image : (p.image ? [p.image] : [])).forEach(function(_src){ mainHtml += '<img class="pm-img" src="' + _src + '" alt="' + name + '" style="cursor:zoom-in" onerror="this.style.display=\'none\'" onclick="openImgLightbox(\'' + _src.replace(/'/g,"\\'") + '\',\'' + name.replace(/'/g,"\\'") + '\')">'; });
-    mainHtml += '<div id="' + _cuid + '-yield"></div>';
+    mainHtml += '<div id="' + _cuid + '-yield" class="pm-yield-main"></div>';
     mainHtml += calcBlockFor(name, _cuid);
     if (Array.isArray(p.videos) && p.videos.length){
       mainHtml += '<div class="pm-field"><div class="pm-label">시공 영상</div><div class="pm-videos">';
@@ -5640,6 +5653,18 @@ function calcYieldRows(p, covKg, covL, coatsOverride){
   });
   return rows;
 }
+function calcScLabel(l){
+  l = l || '';
+  if (/하도/.test(l) && /(중상도|본도장)/.test(l) && /\+/.test(l)) return '하도+본도장';
+  if (/(중상도|본도장)/.test(l)) return '본도장';
+  if (/하도/.test(l)) return '하도만(참고)';
+  return l;
+}
+function calcScSub(l){
+  var m = /\(([^)]+)\)/.exec(l || '');
+  if (m && /참고/.test(m[1])) return '';
+  return m ? '<span class="cyh-sc-sub">(' + m[1] + ')</span>' : '';
+}
 function calcYieldChipsHtml(rows){
   return rows.map(function(r){
     return '<div class="calc-yield-chip"><span class="cyc-pack">'+r.label+'</span>' +
@@ -5679,7 +5704,7 @@ function calcYieldHighlight(p){
     var scBlocks = scenarios.map(function(sc, scIdx){
       var rows = calcYieldRows(p, sc.kg_per_m2, null, 1);
       if (!rows.length) return '';
-      return '<div class="cyh-group cyh-sc-' + (scIdx % 3) + '"><div class="cyh-group-label cyh-sc-label"><span class="cyh-sc-pill">' + (sc.label || '') + '</span><span class="cyh-sc-rate">' + sc.kg_per_m2 + 'kg/㎡</span>' +
+      return '<div class="cyh-group cyh-sc-' + (scIdx % 3) + '"><div class="cyh-group-label cyh-sc-label"><span class="cyh-sc-pill">' + calcScLabel(sc.label) + '</span><span class="cyh-sc-rate">' + sc.kg_per_m2 + 'kg/㎡ 기준</span>' + calcScSub(sc.label) +
         (sc.note ? '<span style="display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px;">' + sc.note + '</span>' : '') +
         '</div><div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
     }).join('');
