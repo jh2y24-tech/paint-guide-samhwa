@@ -171,6 +171,13 @@ a{color:var(--brand);text-decoration:none}
 .cyh-group{margin-top:4px}
 .cyh-group+.cyh-group{margin-top:11px;padding-top:11px;border-top:1px dashed rgba(0,71,79,.2)}
 .cyh-group-label{font-size:12.5px;font-weight:700;color:var(--brand);margin-bottom:7px}
+.cyh-sc-label{font-size:12.5px;font-weight:700;margin-bottom:8px}
+.cyh-sc-pill{display:inline-block;padding:5px 13px;border-radius:999px;color:#fff;font-size:14px;font-weight:800;letter-spacing:-.2px;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.cyh-sc-0 .cyh-sc-pill{background:linear-gradient(90deg,#00474f 0%,#0a8f7a 55%,#3ddc97 100%)}
+.cyh-sc-1 .cyh-sc-pill{background:linear-gradient(90deg,#ff6a00 0%,#ff3d54 60%,#e0218a 100%)}
+.cyh-sc-2 .cyh-sc-pill{background:linear-gradient(90deg,#3a47d5 0%,#7b3fe4 55%,#c04cfd 100%)}
+.cyh-sc-rate{margin-left:6px;font-weight:700;color:var(--brand)}
+.pm-yield-side{display:none}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
 .calc-na{padding:16px 14px;font-size:13px;color:var(--muted);line-height:1.65;text-align:center}
 .calc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 15px;border-radius:999px;background:var(--orange);border:1px solid var(--orange-dark);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.4}
@@ -657,6 +664,8 @@ a{color:var(--brand);text-decoration:none}
     gap:32px; align-items:start; }
   #prodModal .pm-col-main{ min-width:0; }
   #prodModal .pm-col-side{ min-width:0; }
+  #prodModal .pm-yield-side{ display:block; margin-top:14px; }
+  #prodModal .pm-yield-side:empty{ display:none; }
   /* 첨부 자료(기술자료·도장사양서) 버튼 — 넓은 화면에서 키워 가독성 확보 */
   #prodModal .pm-pdf-btn{ font-size:14.5px; padding:14px 16px; }
   #prodModal .pm-pdf-btn::after{ font-size:11.5px; }
@@ -5260,7 +5269,7 @@ function openProduct(name){
     } else {
       body.innerHTML = '<div class="pm-cols">' +
         '<div class="pm-col-main" id="pmColMain">' + mainHtml + '</div>' +
-        '<div class="pm-col-side">' + sideHtml + '</div>' +
+        '<div class="pm-col-side">' + sideHtml + '<div id="pmcalc-yield-side" class="pm-yield-side"></div></div>' +
         '</div>';
     }
   }
@@ -5667,10 +5676,10 @@ function calcYieldHighlight(p){
      rate 는 이미 완성두께 기준 kg/㎡ 이므로 도장횟수를 곱하지 않는다(coatsOverride=1). */
   var scenarios = Array.isArray(s.yield_scenarios) ? s.yield_scenarios : null;
   if (scenarios){
-    var scBlocks = scenarios.map(function(sc){
+    var scBlocks = scenarios.map(function(sc, scIdx){
       var rows = calcYieldRows(p, sc.kg_per_m2, null, 1);
       if (!rows.length) return '';
-      return '<div class="cyh-group"><div class="cyh-group-label">' + (sc.label || '') + ' · ' + sc.kg_per_m2 + 'kg/㎡' +
+      return '<div class="cyh-group cyh-sc-' + (scIdx % 3) + '"><div class="cyh-group-label cyh-sc-label"><span class="cyh-sc-pill">' + (sc.label || '') + '</span><span class="cyh-sc-rate">' + sc.kg_per_m2 + 'kg/㎡</span>' +
         (sc.note ? '<span style="display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px;">' + sc.note + '</span>' : '') +
         '</div><div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
     }).join('');
@@ -6129,6 +6138,8 @@ function calcFill(name, uid){
     if (!panel) return;
     var p = calcFindProduct(db, name);
     if (yieldEl) yieldEl.innerHTML = p ? calcYieldHighlight(p) : '';
+    var yieldSide = document.getElementById('pmcalc-yield-side');
+    if (yieldSide) yieldSide.innerHTML = p ? calcYieldHighlight(p) : '';
     if (!p || !p.spec || (p.spec.coverage_m2_per_l == null && p.spec.coverage_kg_per_m2 == null)){
       panel.innerHTML = '<div class="calc-na">이 제품은 이론도포면적이 아직 등록되지 않아<br>소요량을 계산할 수 없습니다.<br><span style="font-size:12px;">기술자료(TDS)가 확보되면 계산기가 활성화됩니다.</span></div>';
       return;
