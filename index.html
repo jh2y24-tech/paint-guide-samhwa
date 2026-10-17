@@ -178,8 +178,6 @@ a{color:var(--brand);text-decoration:none}
 .cyh-sc-2 .cyh-sc-pill{background:linear-gradient(100deg,#1f3fd0 0%,#6a3de8 45%,#c04cfd 78%,#ff7ad9 100%)}
 .cyh-sc-rate{margin-left:8px;font-weight:800;color:var(--ink,#222);font-size:13px}
 .cyh-sc-sub{margin-left:6px;font-size:12px;font-weight:700;color:var(--muted)}
-.calc-yield-hero .cyh-group[class*="cyh-sc-"]{border:2px solid var(--scc);border-left-width:7px;border-radius:12px;background:var(--scbg);padding:10px 12px 11px;margin-top:10px}
-.calc-yield-hero .cyh-group[class*="cyh-sc-"]+.cyh-group{border-top:2px solid var(--scc);padding-top:10px}
 .cyh-sc-0{--scc:#0a8f7a;--scbg:#effaf6}
 .cyh-sc-1{--scc:#ee3d60;--scbg:#fff1f3}
 .cyh-sc-2{--scc:#7b3fe4;--scbg:#f5f0ff}
@@ -187,7 +185,6 @@ a{color:var(--brand);text-decoration:none}
 .cyh-sc-0{--scg:linear-gradient(90deg,#effaf6 0%,#d4f7e4 100%)}
 .cyh-sc-1{--scg:linear-gradient(90deg,#fff1f3 0%,#ffe0d0 100%)}
 .cyh-sc-2{--scg:linear-gradient(90deg,#f5f0ff 0%,#ffe3f6 100%)}
-.calc-yield-hero .cyh-group[class*="cyh-sc-"]{background:var(--scg)}
 .cyh-sc-label+.cyh-chips .cyc-area{font-size:1.25em;font-weight:800}
 .pm-yield-side{display:none}
 .calc-warn{margin-top:10px;background:var(--warn-bg);border:1px solid rgba(138,100,16,.28);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--warn);line-height:1.6}
@@ -5662,6 +5659,7 @@ function calcScLabel(l){
 }
 function calcScSub(l){
   var m = /\(([^)]+)\)/.exec(l || '');
+  if (calcScLabel(l) === '본도장') return '<span class="cyh-sc-sub">(2회~3회 · 1mm 기준)</span>';
   if (m && /참고/.test(m[1])) return '';
   return m ? '<span class="cyh-sc-sub">(' + m[1] + ')</span>' : '';
 }
