@@ -177,6 +177,8 @@ a{color:var(--brand);text-decoration:none}
 .cyh-sc-1 .cyh-sc-pill{background:linear-gradient(100deg,#ff9a00 0%,#ff4d3d 40%,#e0218a 75%,#8a2be2 100%)}
 .cyh-sc-2 .cyh-sc-pill{background:linear-gradient(100deg,#1f3fd0 0%,#6a3de8 45%,#c04cfd 78%,#ff7ad9 100%)}
 .cyh-sc-rate{margin-left:8px;font-weight:800;color:var(--ink,#222);font-size:13px}
+.cyh-prereq{display:block;margin-top:5px;padding:5px 9px;border-radius:8px;background:#fff6e0;border:1px solid #f0c15a;color:#7a4b00;font-size:12px;font-weight:600}
+.cyh-prereq b{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;background:#e08a00;color:#fff;font-size:11px}
 .cyh-sc-sub{margin-left:6px;font-size:12px;font-weight:700;color:var(--muted)}
 .cyh-sc-0{--scc:#0a8f7a;--scbg:#effaf6}
 .cyh-sc-1{--scc:#ee3d60;--scbg:#fff1f3}
@@ -5652,16 +5654,24 @@ function calcYieldRows(p, covKg, covL, coatsOverride){
 }
 function calcScLabel(l){
   l = l || '';
-  if (/하도/.test(l) && /(중상도|본도장)/.test(l) && /\+/.test(l)) return '하도+본도장';
-  if (/(중상도|본도장)/.test(l)) return '본도장';
-  if (/하도/.test(l)) return '하도만(참고)';
+  if (/하도/.test(l) && /(중상도|본도장)/.test(l) && /\+/.test(l)) return '하도+본도장으로 사용했을 때';
+  if (/(중상도|본도장)/.test(l)) return '본도장으로만 사용했을 때';
+  if (/하도/.test(l)) return '하도로만 사용했을 때';
   return l;
 }
 function calcScSub(l){
   var m = /\(([^)]+)\)/.exec(l || '');
-  if (calcScLabel(l) === '본도장') return '<span class="cyh-sc-sub">(2회~3회 · 1mm 기준)</span>';
-  if (m && /참고/.test(m[1])) return '';
+  if (calcScLabel(l) === '본도장으로만 사용했을 때') return '<span class="cyh-sc-sub">(2회~3회 · 1mm 기준)</span>';
   return m ? '<span class="cyh-sc-sub">(' + m[1] + ')</span>' : '';
+}
+function calcScNote(sc){
+  var kind = calcScLabel(sc.label);
+  var st = 'display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px;';
+  if (kind === '본도장으로만 사용했을 때'){
+    return '<span style="' + st + '">원터치 제품을 물 1 : 제품 1 비율로 교반, 도장(하도)한 후 본도장으로만 사용했을 경우</span>' +
+      '<span class="cyh-prereq"><b>전제조건</b> 최소 하도 1회 + 본도장 2회를 칠했을 때 1mm가 되어야 함</span>';
+  }
+  return sc.note ? '<span style="' + st + '">' + String(sc.note).replace(/중상도/g, '본도장') + '</span>' : '';
 }
 function calcYieldChipsHtml(rows){
   return rows.map(function(r){
@@ -5703,7 +5713,7 @@ function calcYieldHighlight(p){
       var rows = calcYieldRows(p, sc.kg_per_m2, null, 1);
       if (!rows.length) return '';
       return '<div class="cyh-group cyh-sc-' + (scIdx % 3) + '"><div class="cyh-group-label cyh-sc-label"><span class="cyh-sc-pill">' + calcScLabel(sc.label) + '</span><span class="cyh-sc-rate">' + sc.kg_per_m2 + 'kg/㎡ 기준</span>' + calcScSub(sc.label) +
-        (sc.note ? '<span style="display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px;">' + sc.note + '</span>' : '') +
+        calcScNote(sc) +
         '</div><div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
     }).join('');
     if (scBlocks) return '<div class="calc-yield-hero"><div class="cyh-top">' +
