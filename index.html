@@ -819,6 +819,111 @@ a{color:var(--brand);text-decoration:none}
 @media (max-width:479px){
   .mat-title{background-image:none !important}
 }
+/* ===== 이지필 (박리형 · 원상복구) ===== */
+:root{--peel:#C8232B;--peel-bg:rgba(200,35,43,.07)}
+#peel::before{display:none}
+.mat-peel{--mat:var(--peel);--mat-bg:var(--peel-bg)}
+.chip-peel{background:var(--peel-bg);color:var(--peel);border-color:rgba(200,35,43,.28)}
+.badge-peel{background:var(--peel-bg);color:var(--peel)}
+.hi-peel{color:var(--peel);font-weight:700}
+#peel .step-badge.badge-peel{color:#fff;background:linear-gradient(135deg,#EE4B4B,#B01F27)}
+#peel .product-chip.chip-peel{color:#fff;background:linear-gradient(135deg,#EE4B4B,#B01F27);border-color:transparent}
+#peel .step-num{background:linear-gradient(135deg,#EE4B4B,#B01F27);color:#fff;border-color:transparent}
+#peel .step-label,#peel b,#peel strong{color:#8E1A21}
+#peel .step-arrow{color:#C8232B}
+.mat-nav a.nav-peel{--pc:#B01F27}
+.pdf-btn.pb-peel{background:linear-gradient(135deg,#F59A9A,#E04A4A 50%,#A51D25)}
+.diag-item.dg-peel .diag-a{color:var(--peel)}
+.ep-photos{display:flex;gap:12px;flex-wrap:wrap;margin:2px 0 12px}
+.ep-fig{margin:0;width:clamp(140px,30%,200px)}
+.ep-photo{display:block;width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border:1px solid var(--border);border-radius:12px;cursor:zoom-in;image-rendering:auto}
+.ep-fig figcaption{font-size:12.5px;font-weight:700;line-height:1.4;margin-top:5px;color:var(--text)}
+.ep-fig figcaption span{display:block;font-weight:500;font-size:11.8px;color:var(--muted)}
+
+/* ===== 자주 묻는 질문(FAQ) ===== */
+.faq-browse{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)}
+.faq-browse-t{font-size:14px;font-weight:700;color:var(--brand);margin:0 2px 8px;line-height:1.5}
+.faq-browse-t small{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:1px}
+.faq-group{margin-bottom:10px}
+.faq-group-t{font-size:12.5px;font-weight:700;color:var(--muted);margin:0 2px 5px}
+.faq-tq{display:flex;align-items:flex-start;gap:8px;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:9px 11px;margin-bottom:6px;font-family:var(--sans);font-size:13.5px;line-height:1.45;color:var(--text);cursor:pointer}
+.faq-tq:hover,.faq-tq:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(0,71,79,.1)}
+.faq-qmark,.faq-amark{flex:none;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-size:11.5px;font-weight:800;color:#fff;background:var(--brand);margin-top:1px}
+.faq-amark{background:var(--roof)}
+.faq-teaser{background:var(--card2);border:1px solid var(--border);border-left:4px solid var(--roof);border-radius:10px;padding:10px 11px 5px;margin:0 0 10px}
+.faq-teaser-h{font-size:12.5px;font-weight:700;color:var(--muted);margin:0 1px 7px;line-height:1.5}
+
+.faq-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 14px 12px;margin:0 0 10px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.faq-back{display:block;border:0;background:none;color:var(--brand);font-family:var(--sans);font-size:12.5px;font-weight:600;padding:0 0 9px;cursor:pointer;text-align:left}
+.faq-back:hover{text-decoration:underline}
+.faq-q{display:flex;gap:9px;align-items:flex-start;font-size:16px;font-weight:800;line-height:1.45;color:var(--text)}
+.faq-q .faq-qmark{width:24px;height:24px;font-size:13px;margin-top:0}
+.faq-lead{display:flex;gap:9px;align-items:flex-start;margin-top:9px;padding:11px 12px;background:var(--brand-tint);border-radius:10px;font-size:14px;line-height:1.65;color:var(--text)}
+.faq-lead .faq-amark{width:24px;height:24px;font-size:13px;margin-top:1px}
+.faq-sec{font-size:13.5px;font-weight:800;color:var(--brand);margin:15px 1px 7px;line-height:1.4}
+.faq-note{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.faq-sub{font-size:13px;font-weight:800;color:var(--roof);margin:14px 1px 2px;padding-top:2px;border-top:1px dashed var(--border);line-height:1.4}
+.faq-sub:first-child{border-top:0;margin-top:2px}
+
+.faq-check,.faq-warn{border-radius:10px;padding:2px 12px 10px;margin-top:12px}
+.faq-check{background:rgba(27,126,78,.07)}
+.faq-check .faq-sec{color:var(--primer-w)}
+.faq-warn{background:var(--warn-bg);border:1px solid rgba(138,100,16,.18)}
+.faq-warn .faq-sec{color:var(--warn)}
+.faq-check ul,.faq-warn ul{margin:0;padding-left:18px}
+.faq-check li,.faq-warn li{font-size:13.2px;line-height:1.65;margin:3px 0;color:var(--text)}
+
+.faq-stack{display:flex;flex-direction:column;gap:3px;max-width:520px}
+.faq-layer{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.45;border-left:5px solid transparent}
+.faq-layer b{font-weight:800}
+.faq-layer span{font-size:12.2px;color:var(--muted)}
+.faq-l-l3{background:var(--roof-bg);border-left-color:var(--roof)}
+.faq-l-l2{background:var(--water-bg);border-left-color:var(--water)}
+.faq-l-l1{background:var(--primer-w-bg);border-left-color:var(--primer-w)}
+.faq-l-base{background:var(--road-bg);border-left-color:var(--road)}
+
+.faq-steps{display:flex;flex-direction:column}
+.faq-step{position:relative;padding:2px 0 12px 36px}
+.faq-step:before{content:"";position:absolute;left:11px;top:26px;bottom:2px;width:2px;background:var(--border)}
+.faq-step:last-child:before{display:none}
+.faq-n{position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.faq-step-h{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;min-height:26px}
+.faq-step-t{font-size:14.5px;font-weight:800;line-height:1.4}
+.faq-time{font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:999px;padding:2px 9px;line-height:1.5}
+.faq-body{font-size:13.3px;line-height:1.65;margin:5px 0 6px;color:var(--text)}
+.faq-src{font-size:11.5px;color:var(--faint);margin:2px 0 0}
+.faq-prod{margin:6px 0 0;padding:10px 12px}
+.faq-role{margin-top:3px;font-size:12.8px;line-height:1.55}
+.faq-pdfs{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:7px}
+.faq-pdf{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--brand);cursor:pointer;font-family:var(--sans);line-height:1.5}
+.faq-pdf:hover,.faq-pdf:focus{border-color:var(--brand);outline:none}
+.faq-more{margin-left:auto;font-size:12px;color:var(--faint)}
+
+.faq-tablewrap{overflow-x:auto;margin-top:12px;border:1px solid var(--border);border-radius:10px;-webkit-overflow-scrolling:touch}
+.faq-table{border-collapse:collapse;width:100%;min-width:640px;font-size:12.8px;line-height:1.55}
+.faq-table th,.faq-table td{padding:8px 10px;border-bottom:1px solid var(--border-2);text-align:left;vertical-align:top}
+.faq-table thead th{background:var(--brand);color:#fff;font-weight:700;white-space:nowrap}
+.faq-table tbody th{background:var(--card2);color:var(--brand);font-weight:800;white-space:nowrap;position:sticky;left:0}
+.faq-table tbody tr:last-child th,.faq-table tbody tr:last-child td{border-bottom:0}
+
+.faq-foot{margin-top:14px;padding-top:11px;border-top:1px dashed var(--border)}
+.faq-copy{border:1px solid var(--brand);background:var(--card);color:var(--brand);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+.faq-copy:hover{background:var(--brand-tint)}
+.faq-basis{font-size:11.5px;line-height:1.55;color:var(--faint);margin-top:8px}
+.faq-card .sp-chips{margin-top:0}
+.faq-card .sp-guides{margin-top:12px}
+@media (max-width:480px){
+  .faq-card{padding:12px 11px 10px}
+  .faq-q{font-size:15px}
+  .faq-step{padding-left:33px}
+}
+.faq-nopdf{font-size:12px;color:var(--faint)}
+
+/* ===== 이지필(원상복구) 섹션 ===== */
+:root{--peel:#D03A3A;--peel-bg:rgba(208,58,58,.08)}
+.mat-peel{--mat:var(--peel);--mat-bg:var(--peel-bg)}
+.mat-nav a.nav-peel{--pc:#D03A3A}
+
 </style>
 </head>
 <body>
@@ -879,6 +984,7 @@ a{color:var(--brand);text-decoration:none}
   <a href="javascript:void(0)" onclick="goTo('pool')" class="nav-pool">🏊 실내외 수영장</a>
   <a href="javascript:void(0)" onclick="goTo('wp')" class="nav-wp">💧 옥상방수(우레탄)</a>
   <a href="javascript:void(0)" onclick="goTo('floor')" class="nav-floor">🏭 실내방진(에폭시)</a>
+  <a href="javascript:void(0)" onclick="goTo('peel')" class="nav-peel">🏷 이지필(원상복구)</a>
 </div>
 
 <!-- 증상・소재 검색 -->
@@ -891,6 +997,7 @@ a{color:var(--brand);text-decoration:none}
   </div>
   <div id="searchResult" class="search-result"></div>
   <div id="searchProducts" class="sp-list"></div>
+  <div class="faq-browse" id="faqBrowse"></div>
 </div>
 
 <!-- 증상별 빠른 진단 -->
@@ -983,6 +1090,14 @@ a{color:var(--brand);text-decoration:none}
       <span class="diag-text">
         <div class="diag-q">실외 수영장 콘크리트 바닥·벽면을 칠하고 물을 채우려고 해요</div>
         <div class="diag-a">→ 실내외 수영장 가이드 (대형 실외 : 슈퍼폭시 370 / 실내·소규모 : 워터세이프 300)</div>
+      </span>
+      <span class="diag-arrow">▶</span>
+    </div>
+    <div onclick="goTo('peel')" class="diag-item dg-peel">
+      <span class="diag-icon">🏷</span>
+      <span class="diag-text">
+        <div class="diag-q">나중에 벗겨낼 수 있어서 원상복구가 쉬운 실내 페인트를 찾아요</div>
+        <div class="diag-a">→ 이지필(박리형) 가이드 (하도 : 이지필 프라이머 / 상도 : 이지필 멀티)</div>
       </span>
       <span class="diag-arrow">▶</span>
     </div>
@@ -2881,6 +2996,129 @@ a{color:var(--brand);text-decoration:none}
   </div>
 </div>
 
+<!-- ══ 이지필 (박리형 · 원상복구 실내 인테리어) ══ -->
+<div class="mat-section mat-peel" id="peel">
+  <div class="mat-title">
+    <span class="icon">🏷</span>
+    <span>이지필 (박리형 · 원상복구)</span>
+    <span class="sub">실내 수성 · 프라이머 + 멀티</span>
+  </div>
+  <div class="mat-body">
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">0</span><span class="step-label">이지필은 2가지가 한 세트입니다</span><span class="step-badge badge-peel">제품 구성</span></div>
+      <div class="step-content">
+        <div class="ep-photos">
+          <figure class="ep-fig"><img class="ep-photo" src="img/easypeel-primer.jpg" alt="이지필 프라이머" loading="lazy" decoding="async" onclick="openImgLightbox('img/easypeel-primer.jpg','이지필 프라이머')" onerror="this.parentNode.style.display='none'"><figcaption>① 이지필 프라이머 <span>하도</span></figcaption></figure>
+          <figure class="ep-fig"><img class="ep-photo" src="img/easypeel-multi.jpg" alt="이지필 멀티 1L" loading="lazy" decoding="async" onclick="openImgLightbox('img/easypeel-multi.jpg','이지필 멀티 1L')" onerror="this.parentNode.style.display='none'"><figcaption>② 이지필 멀티 <span>상도 · 1L</span></figcaption></figure>
+        </div>
+        <div class="spec-grid">
+          <div class="spec-item full"><strong><span class="product-chip chip-peel">이지필 프라이머</span> — 하도</strong><span class="val">이지필 멀티를 칠하기 전에 먼저 바르는 하도입니다. 이지필 멀티는 벽지·목재 등 다양한 소지에 <b>프라이머와 함께</b> 도장합니다.</span></div>
+          <div class="spec-item full"><strong><span class="product-chip chip-peel">이지필 멀티</span> — 상도</strong><span class="val">필러블(박리) 성능이 우수한 특수 수지를 쓴 1액형 수성페인트 · 에그쉘광 · 백색·담색. <b>건조 후 손쉽게 도막을 벗겨낼 수 있어 원상복구가 간편한</b> DIY용 실내 인테리어 도료입니다.</span></div>
+        </div>
+        <div class="info-box">
+          💡 <b>적용 범위(내부용):</b> 콘크리트 · 시멘트 · 몰탈 · 석고 · 벽지 · 유리 · 목재<br>
+          KSM 6010 2종2급에 적합하도록 설계되었고, 유해 유기용제·중금속을 쓰지 않으며 VOC 함량을 최소화해 <b>환경마크</b>를 획득한 친환경 수성페인트입니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">1</span><span class="step-label">표면처리</span><span class="step-badge badge-prep">필수</span></div>
+      <div class="step-content">
+        신축 건축물의 시멘트 소재는 <b>28일 이상 양생</b>(25℃ · 상대습도 50% 기준)합니다.<br>
+        적정 <b>함수율 10% 이하</b> · 적정 <b>pH 7~9</b><br>
+        피도면의 <b>레이턴스·시멘트가루·모래·흙·유분</b>이 없도록 깨끗이 합니다.<br>
+        틈새나 홈은 <b>월드퍼티로 메꾸고</b> 표면조정(샌딩) 후 도장합니다.<br>
+        보수도장 시 <span class="hi-orange">노화된 구도막은 완전히 제거</span>하십시오.
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 소지 상태가 불량하면 수성바인다200 먼저</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">2</span><span class="step-label">하도 — 이지필 프라이머</span><span class="step-badge badge-peel">하도</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-peel">이지필 프라이머</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('이지필 프라이머')">상세 보기 <span class="vc-chev">▾</span></button>
+        <div class="spec-grid">
+          <div class="spec-item full"><strong>제품 특징</strong><span class="val">흡수성 소재의 필러블 성능을 위한 <b>이지필 멀티 전용 전처리 수성도료</b> · 투명 · 1액형 · 피도면에 흡수</span></div>
+          <div class="spec-item"><strong>도장횟수</strong><span class="val"><b>2회 이상</b> (피도면에 스며듦)</span></div>
+          <div class="spec-item"><strong>이론도포면적</strong><span class="val">15.4㎡/L (1회) · 손실량·표면상태 고려</span></div>
+          <div class="spec-item"><strong>희석</strong><span class="val"><span class="hi-orange">희석하지 않음</span> (그대로 도장)</span></div>
+          <div class="spec-item"><strong>건조 (25℃)</strong><span class="val">고화건조 2시간 이내 · 재도장 <b>4시간 이후</b></span></div>
+          <div class="spec-item"><strong>피도면</strong><span class="val">콘크리트 · 시멘트 · 몰탈</span></div>
+          <div class="spec-item"><strong>포장 · 부피고형분</strong><span class="val">0.4L · 15.4%</span></div>
+          <div class="spec-item full"><strong>도장사양서 일위대가(참고)</strong><span class="val">1회 · 0.06 L/㎡ · 2회 이상 도장</span></div>
+        </div>
+        <div class="warn-box" style="margin-top:10px;">
+          ⚠ <b>수성바인다200이 먼저 필요한 경우</b> — 콘크리트 소지 상태 불량 · 구도막 부위 · 동절기 · 시멘트 견출·미장면 등의 쵸킹 소지 · 흡수차가 심한 바탕면 · 시멘트 용출이 심한 부위는 <b>수성바인다200을 하도 도장한 뒤 이지필 프라이머 → 이지필 멀티</b> 순서로 도장합니다.
+          <button type="button" class="vcard-more" style="vertical-align:middle;margin-left:4px;" onclick="openProduct('수성바인다200')">수성바인다200 보기 <span class="vc-chev">▾</span></button>
+        </div>
+        <div class="note-small" style="margin-top:8px;">※ 프라이머 물성은 제품 물성표 기준이며, 일위대가는 이지필 멀티 도장사양서 기준입니다.</div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 완전 건조를 확인한 뒤</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">3</span><span class="step-label">상도 — 이지필 멀티</span><span class="step-badge badge-peel">박리형 상도</span></div>
+      <div class="step-content">
+        <span class="product-chip chip-peel">이지필 멀티</span> <button type="button" class="vcard-more" style="vertical-align:middle;" onclick="openProduct('이지필 멀티')">상세 보기 <span class="vc-chev">▾</span></button>
+        <div class="danger-box" style="margin-top:10px;">
+          ⚠️ <b>나중에 벗겨낼(제거할) 계획이 있다면 3회 이상 필히 도장하세요.</b> 물성자료의 도장횟수는 2~3회이며, 도장사양서는 붓·로라로 3회 이상 도장하도록 안내합니다.
+        </div>
+        <div class="spec-grid">
+          <div class="spec-item"><strong>도장 도구</strong><span class="val">붓 · 로라</span></div>
+          <div class="spec-item"><strong>희석</strong><span class="val">물(청수) 최대 5% 이내 (도료 부피비)</span></div>
+          <div class="spec-item"><strong>재도장 간격</strong><span class="val">25℃ 기준 <b>3시간 이후</b> · 습도·통풍에 따라 달라지므로 완전 건조 확인</span></div>
+          <div class="spec-item"><strong>고화건조</strong><span class="val">25℃ 1시간 이내</span></div>
+          <div class="spec-item"><strong>이론도포면적</strong><span class="val">13.8㎡/L (1회 · 건조도막 30㎛ 기준) · 손실량·표면상태 고려</span></div>
+          <div class="spec-item"><strong>마감 · 색상 · 포장</strong><span class="val">에그쉘광 · 백색, 담색 · 1L · 부피고형분 41.5%(백색)</span></div>
+        </div>
+        <div class="note-small" style="margin-top:10px;">💡 상세 사양 · <b>소요량 계산</b> · 주의사항 · 기술자료는 <b>상세 보기</b>에서 확인하세요.</div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓ 소요량 기준</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">4</span><span class="step-label">일위대가 (도장사양서)</span><span class="step-badge badge-peel">소요량</span></div>
+      <div class="step-content">
+        <div class="spec-grid">
+          <div class="spec-item"><strong>하도 · 이지필 프라이머</strong><span class="val">1회 · 피도체 스며듦 · <b>0.06 L/㎡</b>/1회 · 2회 이상 도장</span></div>
+          <div class="spec-item"><strong>상도 · 이지필 멀티</strong><span class="val">1회 · 30㎛ · <b>0.07 L/㎡</b>/1회 · 3회 이상 도장</span></div>
+        </div>
+        <div class="note-small" style="margin-top:8px;">* 실제 소요량은 작업조건·작업방법 등에 따라 가감될 수 있습니다.</div>
+      </div>
+    </div>
+
+    <div class="step-arrow">↓</div>
+
+    <div class="step">
+      <div class="step-header"><span class="step-num">5</span><span class="step-label">도장 전 꼭 확인하세요</span><span class="step-badge badge-peel">주의</span></div>
+      <div class="step-content">
+        <div class="warn-box">
+          ⚠ <b>기상조건</b>: 대기온도 5~35℃ · 상대습도 85% 이하. 비 오는 날 · 습도 85% 이상 · 기온 5℃ 이하에는 정상 물성이 나오지 않으므로 도장 금지(도막 균열·부착불량).<br>
+          ⚠ <b>유성도료가 도장된 목재·철재·플라스틱</b> 소지에는 부착이 불량하므로 도장을 금합니다(소비자상담실 확인).<br>
+          ⚠ <b>가소제가 든 피도면·발포벽지·가죽소파</b> 등에 도장·접촉하면 오염·끈적거림·변색이 생길 수 있습니다.<br>
+          ⚠ 구도막 위 보수도장은 <b>구도막과의 적합성</b>을 소비자상담실로 확인한 뒤 사용합니다.<br>
+          ⚠ 동일 제품·색상·LOT라도 희석비·도장기구·방법이 다르면 <b>이색현상</b>이 생길 수 있으니 동일 LOT·동일 도구로 작업하고, 도장 전·중 균일하게 교반합니다(믹서 교반 시 기포 주의).<br>
+          ⚠ 현장 조색은 수성잉크 <b>아크로텍스잉크 최대 5%(부피비)</b> 이내. 과량 사용 시 이색·건조불량·내수성 불량·VOC 증가.<br>
+          ⚠ 스프레이 도장은 연속 작업이 끊기면 광택 차이로 이색이 생기므로 연속으로 작업하거나 골부위 등 경계에서 끊어 작업합니다.<br>
+          ⚠ 타 도료와 혼합 금지 · 얼지 않게 보관 · <b>개봉 후 즉시 사용</b> · 상온(5~35℃) 건냉암소에 밀폐·직립 보관 · 저장기간 12개월.
+        </div>
+        <div class="pdf-btns">
+          <button type="button" class="pdf-btn pb-peel" onclick="openPdf('pdf/1tech3052481.pdf','이지필 멀티 기술자료')">📄 기술자료</button>
+          <button type="button" class="pdf-btn pb-peel" onclick="openPdf('pdf/1pntg3052481.pdf','이지필 멀티 도장사양서')">📐 도장사양서</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- SP삼화 배너 -->
 <a href="https://spsamhwa.com/paints/search" target="_blank" class="sp-banner">
     <div class="sp-banner-left">
@@ -3779,8 +4017,9 @@ function searchSymptom() {
     </div>
     <iframe id="pdfFrame" class="pv-frame" title="PDF 문서" src="about:blank"></iframe>
     <div class="pv-fallback">
-      📄 휴대폰 브라우저는 PDF를 화면 안에서 바로 열지 못합니다.<br>
-      위의 <b>새 탭에서 열기</b>를 눌러 확인하세요.
+      📄 휴대폰·태블릿 브라우저는 PDF를 화면 안에서 바로 열지 못합니다.<br>
+      위의 <b>새 탭에서 열기</b>를 눌러 확인하세요.<br>
+      <span style="font-size:12px;">카카오톡 등 앱 안 브라우저에서 열리지 않으면 <b>크롬·사파리로 열기</b>를 선택하세요.</span>
     </div>
   </div>
 </div>
@@ -5380,7 +5619,11 @@ function openPdf(url, title){
   document.getElementById('pdfTitle').textContent = title || 'PDF 문서';
   document.getElementById('pdfOpenNew').href = url;
   if (isMobileUA()){
-    v.classList.add('mobile');
+    var abs = url; try { abs = new URL(url, document.baseURI).href; } catch(e){}
+    document.getElementById('pdfOpenNew').href = abs;
+    var w = null; try { w = window.open(abs, '_blank'); } catch(e){}
+    if (w) return;                 /* 새 탭에서 바로 열림 */
+    v.classList.add('mobile');     /* 팝업이 막히면 안내 창 + 버튼 */
     document.getElementById('pdfFrame').src = 'about:blank';
   } else {
     v.classList.remove('mobile');
@@ -5499,10 +5742,55 @@ var CALC_STATE = {};
 function calcEnsureCatalog(){
   if (window.PRODUCTS_CATALOG) return Promise.resolve(window.PRODUCTS_CATALOG);
   if (window.__calcCatalogPromise) return window.__calcCatalogPromise;
-  window.__calcCatalogPromise = fetch('products.json?v=4', { cache:'no-cache' })
-    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  function fail(reason){ var e = new Error(reason); e.reason = reason; return e; }
+  if (location.protocol === 'file:'){
+    window.__calcCatalogPromise = Promise.reject(fail('FILE'));
+    window.__calcCatalogPromise.catch(function(){ window.__calcCatalogPromise = null; });
+    return window.__calcCatalogPromise;
+  }
+  var base = (document.baseURI || location.href).split('#')[0].split('?')[0].replace(/[^\/]*$/, '');
+  function viaFetch(url){
+    return fetch(url, { cache:'no-store' }).then(function(r){
+      if (!r.ok) throw fail('HTTP ' + r.status);
+      return r.text();
+    });
+  }
+  function viaXhr(url){
+    return new Promise(function(res, rej){
+      var x = new XMLHttpRequest(); x.open('GET', url, true);
+      x.onload = function(){ (x.status>=200 && x.status<300) ? res(x.responseText) : rej(fail('HTTP ' + x.status)); };
+      x.onerror = function(){ rej(fail('NETWORK')); }; x.timeout = 20000; x.ontimeout = function(){ rej(fail('TIMEOUT')); };
+      x.send();
+    });
+  }
+  function parse(t){
+    try { return JSON.parse(String(t).replace(/^﻿/, '')); } catch(e){ throw fail('JSON'); }
+  }
+  function load(url){
+    return (window.fetch ? viaFetch(url) : viaXhr(url)).catch(function(e){
+      if (e && /^HTTP/.test(e.reason||'')) throw e;
+      return viaXhr(url);
+    });
+  }
+  var urls = [ base + 'products.json?v=' + Date.now(), base + 'products.json' ];
+  window.__calcCatalogPromise = load(urls[0]).catch(function(){ return load(urls[1]); })
+    .then(parse)
     .then(function(db){ window.PRODUCTS_CATALOG = db; return db; });
+  window.__calcCatalogPromise.catch(function(){ window.__calcCatalogPromise = null; });
   return window.__calcCatalogPromise;
+}
+/* 계산기 로딩 실패 원인을 화면에 표시 (휴대폰에서 원인 파악용) */
+function calcFailHtml(err){
+  var r = (err && err.reason) || (err && err.message) || '';
+  var msg;
+  if (r === 'FILE') msg = '저장된 파일(file://)로 열면 계산기·기술자료가 작동하지 않습니다.<br>카톡·메일에서 받은 파일이 아니라 <b>GitHub Pages 주소</b>를 브라우저(크롬·사파리)에서 열어주세요.';
+  else if (/^HTTP 404/.test(r)) msg = 'products.json 파일을 찾지 못했습니다(404).<br>GitHub에 <b>products.json</b>이 index.html과 같은 위치에 있는지 확인하세요.';
+  else if (r === 'JSON') msg = 'products.json 형식 오류입니다.<br>쉼표·따옴표가 빠지지 않았는지 확인하세요.';
+  else if (r === 'NETWORK' || r === 'TIMEOUT' || /Failed to fetch|NetworkError|Load failed/i.test(r)) msg = '네트워크 또는 브라우저 제한으로 데이터를 받지 못했습니다.<br>와이파이/데이터 연결을 확인하고, 카카오톡 등 <b>앱 안 브라우저</b>라면 크롬·사파리로 열어주세요.';
+  else msg = '제품 데이터를 불러오지 못했습니다.<br>GitHub Pages 주소로 접속했는지 확인하세요.';
+  return '<div class="calc-na">' + msg +
+    '<br><button type="button" class="vcard-more" style="margin-top:10px;" onclick="location.reload()">↻ 새로고침</button>' +
+    '<div style="font-size:11px;opacity:.6;margin-top:8px;">진단: ' + String(r||'알 수 없음').replace(/[<>]/g,'') + ' · ' + location.protocol + '//' + location.host + '</div></div>';
 }
 
 /* NFC 정규화 필수 — macOS 에서 입력된 한글은 자모 분리(NFD)라 눈으로 같아도 === 가 실패한다 */
@@ -6180,9 +6468,9 @@ function calcFill(name, uid){
     CALC_STATE[uid] = { product: p };
     panel.innerHTML = calcRenderShell(uid, p);
     calcUpdate(uid);
-  }).catch(function(){
+  }).catch(function(err){
     var panel = document.getElementById(uid + '-panel');
-    if (panel) panel.innerHTML = '<div class="calc-na">제품 데이터를 불러오지 못했습니다.<br>GitHub Pages 주소로 접속했는지 확인하세요.</div>';
+    if (panel) panel.innerHTML = calcFailHtml(err);
   });
 }
 
@@ -6206,8 +6494,8 @@ function openCalcStandalone(preName){
     body.innerHTML = sel;
     window.__calcList = list;
     calcPick();
-  }).catch(function(){
-    body.innerHTML = '<div class="calc-na">제품 데이터를 불러오지 못했습니다.<br>GitHub Pages 주소로 접속했는지 확인하세요.</div>';
+  }).catch(function(err){
+    body.innerHTML = calcFailHtml(err);
   });
 }
 
@@ -6455,6 +6743,1018 @@ function enhanceTermLinks(){
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enhanceTermLinks);
 else enhanceTermLinks();
+
+</script>
+
+<script>
+/* ══════════ 이지필 멀티 · 이지필 프라이머 ══════════
+   근거: 이지필 멀티 기술자료(1tech3052481) · 도장사양서(1pntg3052481)
+   이지필 프라이머 물성은 사용자 제공 물성표 기준입니다. 기술자료 PDF 파일명이 확정되면 pdfs에 추가하세요(pdfNote).
+   ─────────────────────────────────────────────── */
+Object.assign(window.PRODUCT_DB, {
+  "이지필 멀티": {
+    category: "상도 · 박리형(필러블) 수성 · 실내 (KSM6010 2종2급)",
+    image: "img/easypeel-multi.jpg",
+    desc: "필러블 성능이 우수한 특수 수지와 내후성이 우수한 안료를 주성분으로 하는 1액형 친환경 수성페인트. 건조 후 손쉽게 도막을 벗겨낼 수 있는 박리형이라 원상복구가 간편한 DIY용 실내 인테리어 도료입니다. 콘크리트·시멘트·몰탈·석고뿐 아니라 벽지·목재 등 다양한 소지에 프라이머와 함께 도장할 수 있습니다.",
+    uses: "콘크리트 · 시멘트 · 몰탈 · 석고 · 벽지 · 유리 · 목재 등의 내부용 수성 도료 (원상복구가 필요한 DIY 실내 인테리어)",
+    spec: "마감 에그쉘광 · 색상 백색, 담색 · 조성 1액형\n피도면 콘크리트, 시멘트몰탈, 석고보드, 벽지, 유리, 목재\n부피고형분 41.5%(백색) · 건조도막두께 30㎛(1회 도장 기준)\n도장횟수 2~3회 (제거할 계획 있을 시 3회 이상 필히 도장)\n이론도포면적 13.8㎡/L/1회 (도장작업 시 손실량과 표면상태를 고려)\n건조(25℃) 고화건조 1시간 이내 · 재도장간격 3시간 이후\n희석 물 5% 이내(도료 부피비) · 도장기구 붓, 로라\n도장시스템 — 하도 이지필 프라이머 / 상도 이지필 멀티\n일위대가 — 하도 이지필 프라이머 1회 · 피도체 스며듦 · 0.06 L/㎡/1회 (2회 이상 도장) / 상도 이지필 멀티 1회 · 30㎛ · 0.07 L/㎡/1회 (3회 이상 도장)\n작업 기상조건 대기온도 5~35℃ · 상대습도 85% 이하",
+    packaging: "1L (저장기간 12개월 / 5~35℃ 실내보관)",
+    filters: "KSM 6010 2종2급 적합 · 환경마크 인증(지역 환경오염 감소, 유해물질 감소, 생활 환경오염감소) · 대기환경보전법 VOC 규제 만족",
+    cautions: [
+      "제거(박리)할 계획이 있으면 3회 이상 필히 도장 — 도장사양서는 붓·로라로 3회 이상 도장하도록 안내",
+      "콘크리트 소지 상태 불량·구도막 부위·동절기·시멘트 견출/미장면 쵸킹·흡수차가 심한 바탕면·시멘트 용출이 심한 부위는 수성바인다200을 하도 도장한 뒤 이지필 프라이머 및 이지필 멀티를 도장",
+      "신축 시멘트 소재는 28일 이상 양생(25℃·상대습도 50%), 함수율 10% 이하, pH 7~9 · 레이턴스·시멘트가루·모래·흙·유분 제거 · 틈새·홈은 월드퍼티로 메꾼 뒤 표면조정",
+      "보수도장 시 노화된 구도막은 완전히 제거 · 구도막 위 보수도장은 구도막과의 적합성을 소비자상담실로 확인 후 사용",
+      "비 오는 날·습도 85% 이상·기온 5℃ 이하에는 도장 금지 (도막 균열·부착불량)",
+      "목재·철재·플라스틱 등 소지에 유성도료가 도장된 부위는 부착 불량 — 도장 금지(소비자상담실 확인)",
+      "가소제가 함유된 피도면·발포벽지·가죽소파 등에 도장·접촉 시 오염·끈적거림·변색 발생 가능",
+      "동일 제품·색상·LOT라도 희석비·도장기구·도장방법에 따라 이색현상 발생 가능 — 동일 LOT·동일 도장용구·방법 권장",
+      "현장 조색은 수성잉크 아크로텍스잉크 최대 5%(부피비) 이내 — 과량 사용 시 이색현상·건조불량·내수성 불량·VOC 증가",
+      "스프레이 도장 시 연속작업이 끊기면 광택 차이로 이색현상 발생 — 연속 작업하거나 골부위 등 경계에서 끊어 작업",
+      "도장 전 균일하게 혼합(믹서 교반 시 기포 주의)하고 도장 중에도 주기적으로 교반",
+      "타 도료와 혼합 금지 · 얼지 않게 보관 · 개봉 후 즉시 사용 · 용기는 밀폐해 주입구가 상단을 향하게 세워 보관"
+    ],
+    pdfs: [
+      { label: "📄 기술자료", url: "pdf/1tech3052481.pdf" },
+      { label: "📐 도장사양서", url: "pdf/1pntg3052481.pdf" }
+    ]
+  },
+  "이지필 프라이머": {
+    category: "하도 · 박리형 이지필 멀티 전용 전처리 수성도료",
+    image: "img/easypeel-primer.jpg",
+    desc: "흡수성 소재의 필러블 성능을 위한 이지필 멀티 전용 전처리 수성도료입니다. 투명한 1액형으로, 피도면에 흡수(스며듦)되어 이지필 멀티의 박리 성능을 돕습니다.",
+    uses: "이지필 멀티 도장 전 하도 (콘크리트 · 시멘트 · 몰탈 등 흡수성 소재)",
+    spec: "마감 피도면에 흡수 · 색상 투명 · 조성 1액형\n피도면 콘크리트, 시멘트, 몰탈\n부피고형분 15.4% · 추천 건조도막두께 피도면에 스며듬\n도장횟수 2회 이상\n이론도포면적 15.4㎡/L/1회 (도장작업 시 손실량과 표면상태를 고려)\n건조(25℃) 고화건조 2시간 이내 · 재도장간격 4시간 이후\n희석 희석하지 않음\n도장시스템 — 하도 이지필 프라이머 / 상도 이지필 멀티\n일위대가(이지필 멀티 도장사양서) — 하도 이지필 프라이머 1회 · 피도체 스며듦 · 0.06 L/㎡/1회 (2회 이상 도장)",
+    packaging: "0.4L",
+    filters: "이지필 멀티 전용 · 투명 · 희석하지 않음",
+    cautions: [
+      "이지필 멀티 전용 하도입니다 — 물 등으로 희석하지 말고 그대로 도장 (희석하지 않음)",
+      "2회 이상 도장 · 재도장은 25℃ 기준 4시간 이후 · 고화건조 2시간 이내",
+      "콘크리트 소지 상태 불량·구도막 부위·동절기·시멘트 견출/미장면 쵸킹·흡수차가 심한 바탕면·시멘트 용출이 심한 부위는 수성바인다200을 하도 도장한 뒤 이지필 프라이머 및 이지필 멀티를 도장",
+      "소지 표면은 레이턴스·시멘트가루·모래·흙·유분을 제거하고, 틈새·홈은 월드퍼티로 메꾼 뒤 표면조정 후 도장"
+    ],
+    pdfs: [],
+    pdfNote: "기술자료 파일 연결 예정"
+  }
+});
+
+/* 검색 연결: 키워드 · 태그 · 일상어 규칙 */
+(function(){
+  if (typeof SYMPTOM_MAP !== 'undefined'){
+    SYMPTOM_MAP.peel = { label: '🏷 이지필(박리형·원상복구) 가이드',
+      keywords: ['이지필','이지필멀티','이지필프라이머','easypeel','박리','박리형','필러블','원상복구','셀프인테리어','벗겨내는페인트','벗겨지는페인트'] };
+  }
+  if (typeof SP_TAGS !== 'undefined'){
+    ['수성페인트','수성도료'].forEach(function(k){ if (SP_TAGS[k]) SP_TAGS[k].push('이지필 멀티'); });
+    SP_TAGS['이지필'] = ['이지필 프라이머','이지필 멀티'];
+    SP_TAGS['박리형'] = ['이지필 프라이머','이지필 멀티'];
+    SP_TAGS['원상복구'] = ['이지필 프라이머','이지필 멀티'];
+  }
+  if (typeof SP_INTENTS !== 'undefined'){
+    SP_INTENTS.push({ id:'peel', pri:12, always:true,
+      re:/이지필|easypeel|박리|필러블|원상복구|벗겨내|벗겨낼|벗겨지는|떼어낼/,
+      title:'박리형(원상복구) 도장 — 이지필',
+      note:'건조 후 손쉽게 도막을 벗겨낼 수 있는 박리형 수성페인트입니다. 이지필 프라이머(하도)를 먼저 바르고 이지필 멀티(상도)를 칠하며, 제거할 계획이 있으면 3회 이상 도장합니다.',
+      products:['이지필 프라이머','이지필 멀티'], guide:['peel'] });
+  }
+  window._spIndex = null; window._spVocab = null;
+})();
+
+/* 소요량 계산기 — products.json에 이지필이 없으면 같은 형식으로 보충 (products.json에 추가되면 그 값이 우선) */
+var EASYPEEL_CALC = [
+  { id:'easypeel-multi', name:'이지필 멀티', aliases:['이지필멀티','Easy Peel Multi','EASYPEEL MULTI'], role:'topcoat',
+    system:{ primer:'이지필 프라이머' },
+    spec:{ coverage_m2_per_l:13.8, dft_um:30, coats:'2~3', spread_basis:'per_coat', pack_sizes:['1L'],
+           thinner:'물', thinning_pct_max:5, thinning_basis:'도료 부피비', tools:['붓','로라'],
+           thinning_note:'최대 5%(부피비)까지 물(청수) 희석' },
+    estimate:{ primer_l_per_m2:0.06, topcoat_l_per_m2:0.07, basis:'이지필 멀티 도장사양서 일위대가' } },
+  { id:'easypeel-primer', name:'이지필 프라이머', aliases:['이지필프라이머','Easy Peel Primer'], role:'primer',
+    system:{ primer:'이지필 프라이머' },
+    spec:{ coverage_m2_per_l:15.4, coats:'2', spread_basis:'per_coat', pack_sizes:['0.4L'],
+           thinner:'희석하지 않음', thinning_pct_max:0, thinning_basis:'도료 부피비',
+           thinning_note:'희석하지 않음 (이지필 멀티 전용 하도)' },
+    estimate:{ primer_l_per_m2:0.06, basis:'이지필 멀티 도장사양서 일위대가' } }
+];
+(function(){
+  function inject(db){
+    if (!db || !db.products) return db;
+    EASYPEEL_CALC.forEach(function(e){
+      var has = db.products.some(function(p){ return p.name === e.name || p.id === e.id; });
+      if (!has) db.products.push(JSON.parse(JSON.stringify(e)));
+    });
+    return db;
+  }
+  var _ens = window.calcEnsureCatalog;
+  if (typeof _ens === 'function'){
+    window.calcEnsureCatalog = function(){
+      return _ens.apply(this, arguments).then(inject);
+    };
+  }
+  /* products.js가 따로 받아둔 카탈로그에도 보충 */
+  var n = 0, t = setInterval(function(){
+    if (window.PRODUCTS_CATALOG){ inject(window.PRODUCTS_CATALOG); clearInterval(t); }
+    else if (++n > 60) clearInterval(t);
+  }, 250);
+})();
+
+</script>
+
+<script>
+/* ───────────────────────────────────────────────────────────────
+   FAQ 데이터 (상황별 자주 묻는 질문)
+   - 모든 문구는 이 파일의 PRODUCT_DB(제품 상세)와 각 가이드 섹션(시공 순서)에 적힌 내용만 사용했습니다.
+   - 제품 카드의 📄기술자료 / 📐도장사양서 버튼은 PRODUCT_DB의 pdfs를 자동으로 연결합니다(수동 입력 없음).
+   - 항목 추가: FAQ_DATA 배열에 같은 형식으로 추가하면 검색·목록·복사 기능이 자동으로 적용됩니다.
+   형식: id · cat · q(질문) · kw(검색어 정규식, 띄어쓰기 없이) · intents(연결할 SP_INTENTS id)
+        lead(한 줄 답) · check(먼저 확인) · layers(층 구성도, 아래→위) · steps · table · cautions · guide · ask
+   steps 항목: {h:'소제목'} 또는 {t:제목, time:'시점', body:'설명', prods:[[제품명,'역할'],...], src:'근거 표기'}
+   ─────────────────────────────────────────────────────────────── */
+var FAQ_CATS = [
+  { id:'wp',    label:'💧 누수 · 방수' },
+  { id:'mold',  label:'🦠 곰팡이 · 결로' },
+  { id:'wall',  label:'🧱 벽 · 벽지' },
+  { id:'iron',  label:'⚙️ 철재' },
+  { id:'wood',  label:'🪵 목재' },
+  { id:'floor', label:'🏭 바닥 · 기타' }
+];
+
+var FAQ_DATA = [
+
+/* ═════ 누수 · 방수 ═════ */
+{ id:'roof-leak', cat:'wp', q:'옥상에서 물이 새요. 어떻게 해야 하나요?',
+  kw:/옥상.*(누수|방수|물이?새|새요|우레탄)|(누수|방수).*옥상|옥상방수|옥상누수/,
+  intents:['roof-waterproof','ceiling-leak'],
+  variants:{ 'ceiling-leak':{ q:'천장에서 물이 새요. 어떻게 해야 하나요?',
+    lead:'천장에서 물이 샌다고 문의하시는 경우는 옥상 방수가 필요한 경우가 많습니다. 옥상 바닥은 우레탄 방수층으로 시공하며, 순서는 바탕 정리 → 하도 → 균열·줄눈 실링 → 중도(방수층) → 상도입니다.' } },
+  lead:'옥상 바닥은 우레탄 방수층으로 시공합니다. 순서는 바탕 정리 → 하도 → 균열·줄눈 실링 → 중도(방수층) → 상도입니다. 중도는 3가지 중에서 고릅니다.',
+  check:[
+    '콘크리트 함수율 6% 이하를 확인합니다. 수분이 있는 상태에서 우레탄을 시공하면 부풀음·박리 위험이 있습니다.',
+    '레이턴스(초벌시멘트 분리층)를 연마기·샌딩으로 완전히 제거하고, 먼지·기름·이물질·들뜬 구도막을 없앱니다.',
+    '균열·신축줄눈은 V-cutting 후 우레탄 실란트 등으로 씰링한 뒤 도장합니다.',
+    '비 오는 날 · 습도 80% 이상 · 기온 5℃ 이하 · 표면온도 40℃ 이상에서는 도장하지 않습니다. 하절기 폭염(대기온도 28℃ 이상) 예상일 옥외 작업도 금지입니다.'
+  ],
+  layers:[
+    { t:'콘크리트 바닥', s:'함수율 6% 이하 · 레이턴스 제거', c:'base' },
+    { t:'① 하도', s:'방수에이스 하도 · 건조도막 50㎛', c:'l1' },
+    { t:'② 중도 (방수층)', s:'방수에이스 중도 3mm / 원샷탄 1mm 중 선택', c:'l2' },
+    { t:'③ 상도', s:'방수에이스 상도 · 건조도막 45㎛', c:'l3' }
+  ],
+  layerNote:'두께는 실제 비율이 아닙니다. 삼화 원터치 방수를 쓰면 이 3단계를 한 제품으로 시공합니다.',
+  steps:[
+    { t:'하도', time:'바탕 정리 후', src:'방수에이스 하도 상세',
+      body:'콘크리트와 중도 우레탄의 접착력을 높이는 단계입니다. 소지가 완전히 흡수하도록 롤러로 얇게 충분히 바릅니다. 과하게 바르면 표면에 막이 생겨 중도 접착이 나빠질 수 있습니다.',
+      prods:[['방수에이스 하도','침투형 우레탄 하도 · 신규 도장은 원액 사용 · 재도장 간격(20℃) 8~48시간']] },
+    { t:'균열·줄눈 실링', time:'하도 도장 후 6~48시간 이내', src:'옥상방수 가이드 · 씰링',
+      body:'크랙·신축줄눈은 V-cutting 후 실란트로 채웁니다. 하도가 처리되지 않은 부분은 기포가 생기니 빠짐없이 바릅니다.',
+      prods:[['스피실 원샷 실란트','1액형 폴리우레탄 실란트 · 혼합 없이 코킹건으로 충진 · 크랙 보수·하지 처리용']] },
+    { t:'중도 (방수층) — 3가지 중 선택', time:'실란트 경화 후', src:'옥상방수 가이드 · 중도',
+      body:'세 제품의 차이는 「방수 중도 어떤 걸 골라요?」에서 표로 비교해 볼 수 있습니다.',
+      prods:[
+        ['방수에이스 중도','2액형 · 권장 도막 3mm · 20kg 1통 ≒ 4.1㎡(약 1.2평) · 가사시간 20℃ 30분'],
+        ['원샷탄','1액형 습기경화형 · 권장 도막 1mm · 경화제 혼합 불필요 · 18kg 1통 ≒ 11.3㎡(약 3.4평) · 가이드에서 초보자 권장'],
+        ['삼화 원터치 방수','1액형 · 하도·중도·상도를 이 제품 하나로 시공 · 하도 생략 불가']
+      ] },
+    { t:'상도', time:'중도 도장 후 20℃ 기준 24~48시간 이후', src:'방수에이스 상도 상세',
+      body:'방수층을 자외선·물리적 충격에서 보호하는 최종 코팅입니다. 희석은 5% 미만으로 최소화합니다.',
+      prods:[['방수에이스 상도','2액형 우레탄 상도 · 주제:경화제 6.3:1(부피비) · 가사시간 20℃ 3시간']] }
+  ],
+  cautions:[
+    '혼합비를 지키지 않으면 미경화·부풀음이 생깁니다(방수에이스 중도 주제:경화제 16.6:3.4 무게비). 가사시간을 넘긴 도료는 사용 금지입니다.',
+    '알코올 성분이 든 신나(에폭시신나·락카신나·사제신나)는 절대 사용 금지 — 건조되지 않습니다.',
+    '원샷탄은 ‘가사시간 무제한’이 아닙니다. 공기 중 수분과 반응해 굳으므로 개봉하면 즉시 전량 사용합니다.',
+    '원샷탄의 표준 시스템은 그린방수마스터 계열(하도·상도)입니다. 방수에이스 하도·상도와 조합할 때는 사전 시험도장으로 부착력을 확인합니다.',
+    '고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량이 생길 수 있어 블라스팅 후 부착성능을 확인합니다.'
+  ],
+  guide:['wp'],
+  ask:[ {label:'중도, 어떤 걸 골라요?', faq:'wp-compare'}, {label:'바닥에 금(균열)이 갔어요', faq:'roof-crack'}, {label:'타일·몰탈로 덮는 방수예요 (욕실 등)', faq:'bath-wp'} ]
+},
+
+{ id:'roof-crack', cat:'wp', q:'옥상 바닥에 금(균열)이 갔어요',
+  kw:/옥상.*(금이?(가|갔|갈)|갈라|균열|크랙|터졌|벌어)|(금이?(가|갔|갈)|갈라|균열|크랙).*옥상/,
+  intents:['roof-crack'],
+  lead:'금이 간 부분은 방수층을 바르기 전에 먼저 보수합니다. V자로 홈을 낸 뒤 백업재를 넣고 하도를 바른 다음 우레탄 실란트로 채우고, 이어서 방수층 시공으로 넘어갑니다.',
+  steps:[
+    { t:'V-cutting과 청소', src:'옥상방수 가이드 · 씰링 시공 방법',
+      body:'균열·신축줄눈은 V-cutting 합니다. 조인트의 먼지·기름·수분·연마 잔여물을 제거한 뒤 용제로 세척합니다.' },
+    { t:'백업재 넣기', src:'스피실 원샷 실란트 상세',
+      body:'폴리에틸렌(PE) 백업재를 조인트 폭보다 3~4㎜ 두껍게 삽입합니다.' },
+    { t:'하도', src:'스피실 원샷 실란트 상세',
+      body:'하도가 처리되지 않은 부위는 실란트 충진 시 기포가 생깁니다. 빠짐없이 바릅니다.',
+      prods:[['방수에이스 하도','침투형 우레탄 하도 · 신규 도장은 원액 사용']] },
+    { t:'실란트 충진', time:'하도 후 6시간 이상 48시간 이내', src:'스피실 원샷 실란트 상세',
+      body:'교차부·가장자리부터 빈틈·기포 없이 채우고, 경화 전에 주걱(헤라)으로 표면을 마무리합니다. 줄눈폭 대비 충진 깊이는 ½이 적합하고, 실란트와 피착면의 접착면은 6㎜ 이상 확보합니다.',
+      prods:[['스피실 원샷 실란트','추천 소요량 150g(깊이 10㎜ × 폭 10㎜ × 길이 1,000㎜) — 면적이 아닌 줄눈 길이(m) 기준']] },
+    { t:'방수층 시공으로 이어가기', time:'실란트 도장 후 20℃에서 최소 24시간 경과 후', src:'스피실 원샷 실란트 상세',
+      body:'보수가 끝나면 옥상 방수(하도 → 중도 → 상도) 순서대로 시공합니다.' }
+  ],
+  cautions:[
+    'PE·PP 등 일부 플라스틱에는 부착되지 않습니다. 반드시 부착 테스트 후 사용합니다.',
+    '피착재 온도 50℃ 이상 또는 5℃ 이하에서는 사용 금지, 습도 80% 이상·기온 5℃ 이하에서는 작업 금지입니다.',
+    '실리콘 실란트와 만나는 부위나 석유류 가스·산화물에 노출되면 변색이 생깁니다.',
+    '개봉 후 잔량은 굳으므로 즉시 전량 사용합니다.'
+  ],
+  guide:['wp'],
+  ask:[ {label:'옥상 방수 전체 순서 보기', faq:'roof-leak'} ]
+},
+
+{ id:'wp-compare', cat:'wp', q:'방수 중도, 어떤 걸 골라요? (방수에이스 중도 · 원샷탄 · 원터치)',
+  kw:/(방수에이스|원샷탄|원터치|우레탄중도|방수중도).*(차이|비교|뭐가|어떤|골라|고르|추천|뭐써|써야)|(차이|비교).*(방수에이스|원샷탄|원터치)|방수중도/,
+  intents:['wp-compare'],
+  lead:'세 제품 모두 옥상 우레탄 방수 중도입니다. 가이드 기준 차이는 아래 표와 같고, 현장 조건에 맞춰 고릅니다. 경화제 배합 실수가 걱정되면 1액형(원샷탄·원터치)이 가이드에서 초보자·부담 적은 선택으로 안내됩니다.',
+  table:{
+    head:['구분','방수에이스 중도','원샷탄','삼화 원터치 방수'],
+    rows:[
+      ['형태','2액형 (주제+경화제)','1액형 습기경화형','1액형 수용성 (아크릴에멀젼화 우레탄)'],
+      ['혼합','주제:경화제 16.6:3.4 (무게비) · 전동교반기 2~3분','경화제 혼합 불필요 · 교반 후 바로 사용','하도는 원액:물 1:1 · 중도는 무희석'],
+      ['권장 도막','3mm','1mm','하도 50㎛ + 중도 1,000㎛ (합계 1,050㎛)'],
+      ['표준 시스템','방수에이스 하도 → 중도 → 방수에이스 상도','그린방수마스터 하도 → 원샷탄 → 그린방수마스터 상도','이 제품 하나로 하도·중도·상도'],
+      ['소요량','4.86kg/㎡ (3mm) · 20kg 1통 ≒ 4.1㎡','1.6kg/㎡ (1mm) · 18kg 1통 ≒ 11.3㎡','하도 0.123kg/㎡ · 중도 2.450kg/㎡'],
+      ['시간','가사시간 20℃ 30분 (5℃ 40분 · 30℃ 20분)','개봉하면 즉시 전량 사용 (잔량은 굳음)','재도장 간격 20℃ 6시간 이후'],
+      ['가이드 안내','방수층 본체 · 균열부 수분 침투를 막음','배합 실수가 나올 여지가 없어 초보자 권장','다른 제품 조합이 부담스러운 현장·초보 시공에 안내하기 좋음']
+    ]
+  },
+  steps:[
+    { t:'제품별 상세·PDF 확인', src:'제품 상세(기술자료·도장사양서)',
+      prods:[
+        ['방수에이스 중도','2액형 · 권장 도막 3mm'],
+        ['원샷탄','1액형 습기경화형 · 권장 도막 1mm'],
+        ['삼화 원터치 방수','1액형 · 하도+중도+상도 겸용']
+      ] }
+  ],
+  cautions:[
+    '원샷탄의 표준 시스템은 그린방수마스터 계열입니다. 방수에이스 하도·상도와 조합해 쓸 때는 사전 시험도장으로 부착력을 확인합니다.',
+    '삼화 원터치 방수는 ‘한 통’이 한 번만 바르면 된다는 뜻이 아닙니다. 하도·중도·상도를 모두 이 제품으로 바르며 하도는 생략할 수 없습니다.',
+    '타일·몰탈로 덮이는 방수(욕실·화장실 등)는 비노출 제품이 따로 있습니다.'
+  ],
+  guide:['wp'],
+  ask:[ {label:'옥상 방수 전체 순서 보기', faq:'roof-leak'}, {label:'욕실·타일로 덮는 방수', faq:'bath-wp'} ]
+},
+
+{ id:'bath-wp', cat:'wp', q:'욕실·화장실 방수는 어떻게 하나요?',
+  kw:/(욕실|화장실|샤워|베란다|발코니).*(방수|누수|물이?새|새요)|비노출/,
+  intents:['bath-waterproof'],
+  lead:'타일이나 보호몰탈로 덮이는 비노출 방수는 「비노출 방수에이스 2류(KSF3211)」를 사용합니다. 세대 욕실·발코니는 도막두께 1.0mm 이상이면 방수성능 확보가 가능하다고 안내되어 있습니다. 타일 줄눈만 생활방수로 보강하는 경우는 안심누수를 씁니다.',
+  steps:[
+    { t:'바탕 정리', src:'옥상방수 가이드 · 시공 순서',
+      body:'레이턴스·먼지·유분을 제거하고, 함수율 6% 이하 · pH 7~9 · 28일 양생을 확인합니다.' },
+    { t:'하도', src:'옥상방수 가이드 · 시공 순서',
+      body:'방수에이스 하도를 1회(50㎛) 로울러 또는 붓으로 바릅니다.',
+      prods:[['방수에이스 하도','침투형 우레탄 하도']] },
+    { t:'방수층(상도)', time:'하도 후 6~48시간 이내', src:'비노출 방수에이스 2류 상세',
+      body:'주제:경화제 4:1(무게비)로 전동교반기로 2~3분 균일하게 혼합합니다. 기포 방지를 위해 약 0.5mm 선행도장(스크래핑) → 20℃에서 24시간 이상 경과 후 2.5mm 본도장으로 총 3mm를 확보합니다. 세대 욕실·발코니는 1.0mm 이상이면 방수성능 확보가 가능합니다.',
+      prods:[['비노출 방수에이스 2류(KSF3211)','2액형 비노출 우레탄 방수 · KS F 3211 우레탄고무계 2류 · 환경마크 인증']] },
+    { t:'마감', time:'시공 완료 1일 이후 3일 이내', src:'비노출 방수에이스 2류 상세',
+      body:'콘크리트 또는 보호몰탈로 눌러 바르는 공법으로 마감합니다.' },
+    { h:'타일 줄눈만 생활방수로 보강하려면' },
+    { t:'안심누수', src:'안심누수 상세',
+      body:'타일 줄눈 및 타일면에 붓·로라로 도장하는 침투형 생활방수 투명 도료입니다.',
+      prods:[['안심누수','원액(미희석) · 1~2회 · 재도장 3시간 이후 · 물에 잠기는 부위(식수탱크·저수조 등)는 사용 불가']] }
+  ],
+  cautions:[
+    '균열이 심한 부분·신축줄눈은 V-cutting 후 폴리에틸렌 백업재를 넣고 우레탄 실란트로 씰링합니다.',
+    '경화·건조가 기온에 따라 크게 달라집니다. 완전건조는 5℃ 10일 · 20℃ 5일 · 30℃ 3일, 가사시간은 5℃ 40분 · 20℃ 30분 · 30℃ 20분입니다.',
+    '구 제품명 ‘비노출 타르방수탄’이 ‘비노출 방수에이스 2류(KSF3211)’로 변경되었습니다. 타르 제품이 아니며 실내 사용 제한도 없습니다.',
+    '알코올 성분이 든 신나(에폭시신나·락카신나·사제신나)는 절대 사용 금지입니다.'
+  ],
+  guide:['wp','tile'],
+  ask:[ {label:'타일 바닥 줄눈에서 새요', faq:'tile-joint'} ]
+},
+
+{ id:'tile-joint', cat:'wp', q:'타일 바닥 줄눈에서 물이 새요',
+  kw:/타일.*(줄눈|누수|물이?새|방수)|줄눈.*(방수|누수|물이?새)/,
+  intents:['tile-floor-waterproof'],
+  lead:'타일 바닥은 대부분 줄눈에서 누수가 생기는 편입니다. 줄눈에 안심누수를 붓으로 도장해 생활방수 처리합니다.',
+  steps:[
+    { t:'표면 정리', src:'안심누수 상세',
+      body:'레이턴스·시멘트가루·모래·유분을 제거하고, 틈새·홈은 퍼티로 메꿉니다. 신축 시멘트는 28일 이상 양생, 함수율 10% 이하, pH 7~9가 기준입니다.' },
+    { t:'안심누수 도장', src:'안심누수 상세',
+      body:'붓·로라로 원액 그대로 1~2회 도장합니다(희석하지 않음).',
+      prods:[['안심누수','아크릴수지계 1액형 수성 투명 · 이론도포면적 21.5㎡/L · 소요량 약 0.05 L/㎡']] },
+    { t:'흡수 확인 후 닦기', src:'안심누수 상세',
+      body:'침투형 제품입니다. 타일면에서는 충분히 흡수된 것을 확인한 뒤 남은 도료를 마른 걸레로 닦아냅니다. 닦지 않으면 도막 두께 차이로 광얼룩이 생깁니다.' },
+    { t:'누수가 심하면', src:'안심누수 상세',
+      body:'동일한 방법으로 1회 추가 시공을 권장합니다. 재도장은 건조(25℃) 3시간 이후입니다.' }
+  ],
+  cautions:[
+    '도막이 완전히 마를 때까지 수분 접촉을 막습니다.',
+    '생활방수 용도입니다. 식수탱크·저수조탱크 등 물에 잠기는 부위에는 사용할 수 없습니다.',
+    '광택 투명도료라 소지 흡수도에 따라 광택 차이가 생깁니다. 본 도장 전에 반드시 확인합니다.',
+    '가소제가 든 피도면·발포벽지·가죽소파 등에 도장·접촉하면 오염·끈적거림·변색이 생깁니다.'
+  ],
+  guide:['tile'],
+  ask:[ {label:'욕실 전체 방수를 하고 싶어요', faq:'bath-wp'} ]
+},
+
+{ id:'ext-wall', cat:'wp', q:'외벽(콘크리트 벽)에서 물이 스며들어요',
+  kw:/(외벽|외부|바깥).*(방수|누수|물이?새|스며|비가?새)|방수.*(외벽|외부)/,
+  intents:['exterior-wall-waterproof'],
+  lead:'외부 벽체는 방수(침투방수)에 안심누수, 색·마감에 외부용 수성페인트를 씁니다. 안심누수는 도장 후 수성페인트 후속 도장이 가능하다고 안내되어 있습니다.',
+  steps:[
+    { t:'균열·틈 메꿈 (있을 때)', src:'아이생각 수성탄성씰 상세',
+      body:'시멘트 기재 건축물의 균열부·이음새·창문틀 틈을 헤라(주걱)로 메꿉니다. 1회 도장은 1mm 이내입니다.',
+      prods:[['아이생각 수성탄성씰','1액형 고탄성 수성 메꿈제 · 상도는 25℃ 기준 24시간 이후(건조 상태 확인)']] },
+    { t:'하도 (소지 상태가 나쁠 때)', src:'안심누수 상세',
+      body:'콘크리트 소지 불량·구도막·동절기·견출/미장면 쵸킹·흡수차가 심한 바탕면·시멘트 용출 부위는 수성바인다200 하도를 먼저 바릅니다.',
+      prods:[['수성바인다200','원액 그대로 1회 · 재도장 3시간 이후 · 상도용으로 사용 불가']] },
+    { t:'침투 방수', src:'안심누수 상세',
+      body:'내외부 콘크리트 벽면에 침투해 생활방수 성능을 내는 투명 도료입니다(건조도막 15㎛, 1~2회).',
+      prods:[['안심누수','건조(25℃) 재도장 3시간 이후 · 수성도료 후속 도장 가능']] },
+    { t:'외부 상도', time:'안심누수 도장 후 3시간 이후', src:'각 제품 상세',
+      prods:[
+        ['수성외부','외부용 수성 · 무광 · 2회'],
+        ['아크로외부','외부용 수성 · 무광 · 2회'],
+        ['아이생각 원코트','내외부 겸용 · 1회 도장으로 마감 · 은폐력 높음'],
+        ['수성아크론','내외부 겸용 수성 광택 · 2~3회']
+      ] }
+  ],
+  cautions:[
+    '안심누수는 침투형 생활방수 도료입니다(건조도막 15㎛). 옥상 우레탄 방수층과는 다른 용도입니다.',
+    '건조 전에 비를 맞으면 빗물자국·물성 불량이 생길 수 있습니다.',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 작업하지 않습니다.',
+    '목재·철재·플라스틱 등 유성도료가 칠해진 부위에는 부착 불량이 생깁니다.'
+  ],
+  guide:['tile','concrete'],
+  ask:[ {label:'벽에서 하얀 가루가 묻어나요', faq:'chalking'}, {label:'벽에 금이 갔어요', faq:'wall-crack'} ]
+},
+
+{ id:'wall-crack', cat:'wp', q:'벽에 금(균열)이 갔어요',
+  kw:/(벽|외벽|내벽|담).*(금이?(가|갔|갈)|갈라|균열|크랙|터졌|벌어)|(금이?(가|갔|갈)|갈라|균열|크랙).*(벽|외벽)/,
+  intents:['wall-crack'],
+  lead:'시멘트·콘크리트 벽의 균열은 먼저 틈을 정리하고 메꿈재로 채운 뒤 상도를 칠합니다. 메꿈재는 수성(아이생각 수성탄성씰)과 에폭시 퍼티(슈퍼에폭씰) 두 가지가 등록되어 있습니다.',
+  steps:[
+    { t:'틈 정리', src:'아이생각 수성탄성씰 상세',
+      body:'레이턴스·먼지·수분·유분을 제거합니다. 얇은 틈새·홈은 V컷팅하여 충진합니다. 시멘트 소지는 28일 이상 양생이 필요합니다.' },
+    { t:'메꿈 — 두 가지 중 선택', src:'각 제품 상세',
+      prods:[
+        ['아이생각 수성탄성씰','1액형 수성 고탄성 메꿈제 · 균열부·이음새·창문틀 틈 · 시멘트·콘크리트면 · 쵸킹이 심하면 수성바인다200 도장 후 충전'],
+        ['슈퍼에폭씰','2액형 에폭시 퍼티 · 내외부 시멘트·콘크리트 바닥·벽면의 크랙보수·메꿈 · 주제:경화제 2:1(무게비) · 가사시간 20℃ 20분']
+      ] },
+    { t:'상도', src:'각 제품 상세',
+      body:'수성탄성씰은 25℃ 기준 24시간 이후 상도가 가능하지만 습도·통풍·도막두께에 따라 다르므로 건조 상태를 꼭 확인합니다. 슈퍼에폭씰은 완전건조(24시간 내) 전에 수성 상도를 바르면 크랙이 생기니 완전건조 후 도장합니다.' }
+  ],
+  cautions:[
+    '수성탄성씰 위에 안료분이 높은 페인트를 칠하면 크랙이 생길 수 있어 상도 적합성(크랙·부착·이색)을 미리 확인합니다.',
+    '슈퍼에폭씰: 기존 수성 구도막을 제거하지 않고 도장하면 도막이 박리될 수 있습니다.',
+    '슈퍼에폭씰: 주제에 경화제를 미리 부어두면 혼합하지 않아도 반응이 진행되므로 부은 즉시 혼합해 도장합니다.',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 수성탄성씰 작업을 하지 않습니다.'
+  ],
+  guide:['concrete'],
+  ask:[ {label:'옥상 바닥 균열이에요', faq:'roof-crack'} ]
+},
+
+/* ═════ 곰팡이 · 결로 ═════ */
+{ id:'mold', cat:'mold', q:'벽에 곰팡이가 폈어요',
+  kw:/곰팡/,
+  intents:['mold-only'],
+  lead:'곰팡이는 도장 전에 누수·결로 같은 원인을 먼저 해결하고, 곰팡이를 제거해 완전히 건조한 뒤에 곰팡이·결로 억제 기능이 있는 수성페인트를 칠합니다. 원인을 해결하지 않으면 재발 가능성이 높습니다.',
+  steps:[
+    { t:'원인 먼저 해결 (누수·결로)', src:'곰팡이·결로 가이드',
+      body:'누수·결로 원인을 먼저 해결한 뒤 도장합니다.' },
+    { t:'곰팡이 제거', time:'제거 후 완전 건조', src:'곰팡이·결로 가이드',
+      body:'락스를 물에 희석해 사용하고, 곰팡이가 심한 부위는 제품에 따라 원액을 사용합니다. 분무기보다 키친타월이나 휴지를 락스 용액에 적셔 곰팡이 부위에 붙이는 방법이 효과적입니다. 락스 작업 시 환기하고 다른 세제(특히 산성 제품)와 절대 섞지 않습니다.' },
+    { t:'표면처리 · 하도 판단', src:'곰팡이·결로 가이드',
+      body:'신축 시멘트 28일 이상 양생, 함수율 10% 이하, pH 7~9를 확인합니다. 레이턴스·시멘트가루·모래·흙·기름·녹·유분을 제거하고, 얇은 틈새·홈은 V컷팅 후 아이생각 수성탄성씰로 메꿉니다. 콘크리트 소지 불량·구도막·동절기·쵸킹·흡수차가 심한 면·시멘트 용출 부위는 하도를 반드시 바릅니다.',
+      prods:[['수성바인다200','하도 1회 · 0.1 L/㎡ (피도체에 스며듦)']] },
+    { t:'상도 — 곰팡이·결로 억제 제품', time:'25℃ 기준 3시간 이후 재도장', src:'곰팡이·결로 가이드',
+      prods:[
+        ['아이럭스 결로스탑규조토','결로가 심한 경우 우선 권장 · 도막 위 곰팡이 생성도 억제'],
+        ['아이럭스 멀티플랫','극무광 · 항균·곰팡이 억제 성능'],
+        ['아이럭스 멀티에그쉘','저광 에그쉘 · 항균·곰팡이 억제 성능 · 오염물 제거가 쉬움'],
+        ['아이생각 원코트','1회 도장으로 마감되는 고은폐 수성'],
+        ['홈스타파스텔OK플러스','내세척성·오염제거 성능이 좋은 실내 수성'],
+        ['아이럭스 듀로X','고강도 도막 · 흠집·스크래치·오염 방지']
+      ] }
+  ],
+  cautions:[
+    '결로스탑규조토는 결로를 흡수하는 타입이라 결로량이 많으면 도막 강도가 떨어져 문지르거나 긁으면 묻어납니다. 결로가 심한 곳은 단열 공사를 먼저 합니다.',
+    '곰팡이 제거 후에는 완전히 건조된 상태에서 도장합니다.'
+  ],
+  guide:['mold'],
+  ask:[ {label:'결로(물맺힘)가 원인이에요', faq:'condensation'}, {label:'옥상·천장에서 새요', faq:'roof-leak'} ]
+},
+
+{ id:'condensation', cat:'mold', q:'베란다·벽에 결로(물맺힘)가 생겨요',
+  kw:/결로|물맺힘|이슬/,
+  intents:['condensation','condensation-mold'],
+  lead:'결로가 심한 곳은 단열 공사를 먼저 하고, 결로를 보완하는 아이럭스 결로스탑규조토를 칠합니다. 결로방지 페인트는 보조 수단이라 환기·제습을 함께 해야 합니다.',
+  steps:[
+    { t:'결로가 심하면 단열 공사 먼저', src:'아이럭스 결로스탑규조토 상세',
+      body:'결로가 심한 곳은 단열 공사 후 도장합니다.' },
+    { t:'곰팡이 제거 · 표면처리', src:'곰팡이·결로 가이드',
+      body:'곰팡이가 있으면 제거 후 완전 건조합니다. 신축 시멘트 28일 이상 양생, 함수율 10% 이하, pH 7~9이며, 소지가 불량하면 수성바인다200을 하도로 바릅니다.',
+      prods:[['수성바인다200','하도 1회 · 0.1 L/㎡ (필요 시)']] },
+    { t:'결로스탑규조토 도장', time:'25℃ 기준 3시간 이후 재도장', src:'곰팡이·결로 가이드',
+      body:'2~3회 · 건조도막 100㎛ 기준 0.26 L/㎡입니다. 베란다 등 결로가 잘 생기는 구간에 강력 추천되는 제품입니다.',
+      prods:[['아이럭스 결로스탑규조토','규조토의 호흡성으로 표면 결로를 흡수했다가 서서히 방출 · 환경마크 인증']] },
+    { t:'결로 줄이기 — 함께 하세요', src:'곰팡이·결로 가이드',
+      body:'① 주기적 환기(특히 요리·샤워·빨래 건조 후) ② 제습기·환풍기로 실내 습기 낮추기 ③ 가구를 벽에서 살짝 띄워 공기 순환 확보' }
+  ],
+  cautions:[
+    '결로방지 페인트만으로는 결로가 100% 해결되지 않습니다. 보조 수단입니다.',
+    '결로를 흡수하는 타입이라 결로량이 많으면 도막 강도가 낮아져 문지르거나 긁으면 묻어납니다.',
+    '손 닿는 벽, 가구 뒤처럼 주거활동으로 긁힘·마찰이 잦은 부위에는 부적합합니다.'
+  ],
+  guide:['mold'],
+  ask:[ {label:'곰팡이도 폈어요', faq:'mold'} ]
+},
+
+/* ═════ 벽 · 벽지 ═════ */
+{ id:'chalking', cat:'wall', q:'벽에서 하얀 가루가 묻어나요 (쵸킹)',
+  kw:/(하얀|흰)가루|쵸킹|분필|백아화/,
+  intents:['chalking','white-powder'],
+  lead:'도장된 면(수성페인트 면)의 수지가 날아가고 안료만 남아 생기는 현상입니다. 청소·건조한 벽에 하도(수성바인다200 또는 고점도 믹싱)를 스며들게 도장해 수지를 채우고 접착력을 높인 뒤, 건조 후 수성페인트를 칠합니다.',
+  steps:[
+    { t:'청소 · 건조', src:'수성바인다200 상세',
+      body:'신축 시멘트는 28일 이상 양생, 함수율 10% 이하, pH 7~9를 확인하고 레이턴스·먼지·유분을 제거합니다.' },
+    { t:'하도 — 둘 중 선택', time:'청소·건조한 벽에 먼저', src:'각 제품 상세',
+      prods:[
+        ['수성바인다200','원액 그대로(희석 안 함) · 1회 · 약 10㎡/L · 알카리성 기재의 백화·풍화·쵸킹 방지'],
+        ['아이생각 고점도 믹싱','물과 1:3으로 반드시 희석 · 약 30㎡/L(희석 후) · 신축물 풍화·쵸킹 방지, 보수도장 전처리']
+      ] },
+    { t:'상도 (수성페인트)', time:'바인다200 재도장 3시간 이후 · 고점도 믹싱은 25℃ 2시간 경과 후', src:'각 제품 상세',
+      body:'하도가 마른 뒤 수성페인트를 칠합니다. 제품 목록은 아래 ‘수성페인트 제품 보기’에서 볼 수 있습니다.' }
+  ],
+  cautions:[
+    '두 하도 모두 피도면에 스며들도록 도장하는 하지 보강재이며 상도용으로는 쓸 수 없습니다.',
+    '고점도 믹싱은 반드시 지정 비율(물 1:3)로 희석합니다. 과도막이면 후속 도장에서 물성 저하가 생길 수 있습니다.',
+    '목재·철재·플라스틱 및 유성도료 도장면에는 부착이 불량하여 도장하지 않습니다(수성바인다200).',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 작업하지 않습니다.'
+  ],
+  guide:['concrete'],
+  ask:[ {label:'수성페인트 제품 보기', q:'수성페인트'}, {label:'시멘트·벽돌 표면에 하얗게 배어 나와요(백화)', q:'백화가 뭐예요'} ]
+},
+
+{ id:'wallpaper', cat:'wall', q:'벽지 위에 그냥 페인트칠해도 되나요?',
+  kw:/벽지|합지|실크/,
+  intents:['silk-wallpaper','paper-wallpaper'],
+  lead:'기존 벽지의 디자인·색상 위에 그대로 도장할 수 있습니다. 다만 진한 색·오염·낙서가 있거나 발포·비닐 코팅된 벽지는 파워젯소로 먼저 하도를 잡아 부착력·은폐력·발색을 높입니다. 깨끗한 일반 합지는 파워젯소를 생략해도 됩니다.',
+  steps:[
+    { t:'전처리', src:'합지·실크벽지 가이드',
+      body:'표면의 유분·먼지를 제거하고, 들뜬 부분은 접착하며, 이음새·찢어진 곳은 퍼티로 평탄하게 정리합니다.' },
+    { t:'하도 — 파워젯소', time:'필요한 경우', src:'파워젯소 상세',
+      body:'실크벽지, 코팅·오염·낙서가 있는 합지에 바릅니다. 깨끗한 일반 합지는 생략할 수 있습니다.',
+      prods:[['파워젯소','수성 젯소 · 희석 물 10% 이내 · 25℃ 기준 3시간 이후 상도 가능']] },
+    { t:'상도 — 벽지 종류별', time:'25℃ 기준 3시간 경과 후', src:'합지·실크벽지 가이드',
+      prods:[
+        ['홈스타파스텔OK플러스','합지 ✔ · 실크벽지 ✔ (실크는 파워젯소 먼저)'],
+        ['아이럭스 멀티플랫','합지 ✔ · 실크벽지 ✔ (젯소 생략 가능) · 극무광'],
+        ['아이럭스 멀티에그쉘','합지 ✔ · 실크벽지 ✔ (실크는 파워젯소 먼저) · 저광 에그쉘'],
+        ['아이럭스 듀로X','합지 ✔ · 실크벽지 ✔ (실크는 파워젯소 먼저) · 고강도 무광'],
+        ['아이럭스 결로스탑규조토','실크벽지 ✔ (젯소 생략 가능) · 결로 보완 기능성']
+      ] }
+  ],
+  cautions:[
+    '들뜸이 있는 벽지면에 도장하면 주름이 생길 수 있습니다(멀티플랫).',
+    '1회 칠한 뒤 25℃ 기준 3시간 이후 재도장할 수 있습니다.'
+  ],
+  guide:['silk','coated']
+},
+
+{ id:'sheet', cat:'wall', q:'시트지 위에 페인트칠 할 수 있나요?',
+  kw:/시트지/,
+  intents:['sheet'],
+  lead:'시트지 위에는 파워젯소를 먼저 도장한 뒤 상도를 칠합니다.',
+  steps:[
+    { t:'먼저 도장 — 파워젯소', src:'파워젯소 상세',
+      body:'시트지 · 철재 · 비철재 · 목재 · 실크벽지 · 유성도막 위 등 접착이 어려운 소지의 전처리용 내부 수성 프라이머입니다.',
+      prods:[['파워젯소','희석 물 10% 이내 · 고화건조 25℃ 1시간 이내 · 3시간 이후 상도 가능']] },
+    { t:'파워젯소 도장 후 상도', time:'25℃ 기준 3시간 이후', src:'각 제품 상세',
+      prods:[
+        ['홈스타파스텔OK플러스','내세척성·오염제거 성능이 좋은 실내 수성'],
+        ['아이럭스 멀티플랫','극무광 · 은폐력 우수'],
+        ['아이럭스 멀티에그쉘','저광 에그쉘 · 표면처리된 가정용 목재·철재 상도'],
+        ['아이럭스 듀로X','고강도 무광 · 표면처리된 가구·목재']
+      ] }
+  ],
+  cautions:[ '파워젯소는 내부용 수성 프라이머입니다.' ],
+  guide:['coated']
+},
+
+{ id:'easypeel', cat:'wall', q:'나중에 벗겨낼 수 있는(원상복구) 페인트가 있나요?',
+  kw:/원상복구|이지필|박리형|필러블|셀프인테리어|벗겨(내|낼)|떼어(내|낼)/,
+  intents:['peel'],
+  lead:'이지필 멀티는 박리형 수성페인트라 건조 후 손쉽게 도막을 벗겨낼 수 있어 원상복구가 간편한 실내 인테리어 도료입니다. 하도로 이지필 프라이머를 먼저 바르고 이지필 멀티를 칠하며, 나중에 제거할 계획이 있으면 이지필 멀티를 3회 이상 필히 도장합니다.',
+  check:[
+    '신축 시멘트는 28일 이상 양생(25℃·상대습도 50% 기준), 함수율 10% 이하, pH 7~9를 확인합니다.',
+    'LAITANCE·시멘트가루·모래·흙·유분을 깨끗이 제거하고, 틈새·홈은 월드퍼티로 메꾼 뒤 표면조정(샌딩)합니다. 보수도장 시에는 노화된 구도막을 완전히 제거합니다.',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 도장하지 않습니다.'
+  ],
+  layers:[
+    { t:'피도면', s:'콘크리트·시멘트몰탈·석고보드·벽지·유리·목재', c:'base' },
+    { t:'① 하도', s:'이지필 프라이머 · 2회 이상', c:'l1' },
+    { t:'② 상도', s:'이지필 멀티 · 1회 건조도막 30㎛ · 3회 이상', c:'l3' }
+  ],
+  layerNote:'두께는 실제 비율이 아닙니다.',
+  steps:[
+    { t:'소지가 나쁘면 수성바인다200 먼저', src:'이지필 멀티 도장사양서',
+      body:'콘크리트 소지 불량·구도막 부위·동절기·쵸킹 소지(시멘트 견출·미장면)·흡수차가 심한 바탕면·시멘트 용출이 심한 부위는 수성바인다200을 먼저 도장합니다.',
+      prods:[['수성바인다200','원액 그대로 1회 · 상도용으로 사용 불가']] },
+    { t:'하도', src:'이지필 멀티 도장사양서 일위대가',
+      body:'도막은 피도체에 스며들 정도로, 2회 이상 도장합니다. 이론 소요량은 1회 0.06 L/㎡입니다.',
+      prods:[['이지필 프라이머','이지필 멀티의 하도']] },
+    { t:'상도', time:'25℃ 기준 재도장 3시간 이후', src:'이지필 멀티 기술자료 · 도장사양서',
+      body:'붓·로라로 도장하고, 물 5% 이내(도료 부피비)로 희석할 수 있습니다. 이론 소요량은 1회 0.07 L/㎡이며 3회 이상 도장합니다.',
+      prods:[['이지필 멀티','박리형 수성 · 에그쉘광 · 백색·담색 · 이론도포면적 13.8㎡/L(1회) · 1L']] }
+  ],
+  cautions:[
+    '제거(박리)할 계획이 있으면 이지필 멀티를 3회 이상 필히 도장합니다.',
+    '가소제가 함유된 피도면·발포벽지·가죽소파 등에 도장·접촉하면 오염·끈적거림·변색이 생길 수 있습니다.',
+    '목재·철재·플라스틱 등의 소지에 유성도료가 도장되어 있는 부위는 부착 불량이므로 도장하지 않습니다.',
+    '구도막 위에 보수도장할 때는 구도막과의 적합성을 소비자상담실로 먼저 확인합니다.',
+    '동일 제품·색상·LOT라도 희석비·도장기구·도장방법에 따라 이색현상이 생길 수 있어 가급적 동일 LOT, 동일 도장용구로 작업합니다.'
+  ],
+  guide:['peel']
+},
+
+/* ═════ 철재 ═════ */
+{ id:'rust', cat:'iron', q:'철재 난간·문에 녹이 슬었어요',
+  kw:/녹(?!색)|방청|부식/,
+  intents:['rust'],
+  lead:'녹을 제거한 경우는 방청프라이머 도장 후 건조해 777에나멜로 마감합니다. 심하지 않은 녹은 녹스탑으로 녹을 전환시킨 뒤, 전환이 끝나면 상도(777에나멜·매직탄·스피롤탄 등)로 반드시 마감합니다.',
+  steps:[
+    { h:'A. 녹을 제거한 경우' },
+    { t:'방청프라이머', src:'방청프라이머 상세',
+      body:'철재의 부식을 막고 철과 페인트의 접착력을 높이는 하도입니다. 노후 철재를 보수하는 재도장에도 많이 쓰입니다.',
+      prods:[['방청프라이머','알키드계 방청 프라이머 · 1~2회 · 재도장 20℃ 기준 12시간 이후']] },
+    { t:'777에나멜로 마감', time:'방청프라이머 건조 후', src:'777에나멜 상세',
+      prods:[['777에나멜','외부 철재·목재용 고광택 알키드 에나멜 · 재도장 25℃ 9시간 이후']] },
+    { h:'B. 심하지 않은 녹을 제거하지 않고 전환하는 경우' },
+    { t:'녹스탑 (녹 전환)', src:'녹스탑 상세',
+      body:'녹 발생 철재를 제거 없이 도장해 녹을 안정한 상태로 바꾸고 추가 발청을 억제합니다. 도장하면 유백색이 흑색(갈색미)으로 변하며, 갈색이면 변환이 덜 된 것이니 추가 도장합니다.',
+      prods:[['녹스탑','수성 녹전환 방청 프라이머 · 1회 · 재도장 25℃ 24시간 이후']] },
+    { t:'상도로 반드시 마감', time:'녹스탑 도장 후 24시간 이후', src:'녹스탑 · 각 상도 제품 상세',
+      body:'녹스탑 하도는 건조 후 흑색이라 상도 은폐가 불량할 수 있어 상도를 추가 도장하는 것이 권장됩니다.',
+      prods:[
+        ['777에나멜','알키드 에나멜 · 외부 철재·목재 상도'],
+        ['매직탄','2액형 아크릴 폴리우레탄 · 하도 없이 도장 가능한 소지가 다양'],
+        ['스피롤탄','2액형 무황변 아크릴 우레탄 · 공업용 일반철재 상도']
+      ] }
+  ],
+  cautions:[
+    '방청프라이머·녹스탑 모두 타 도료와 혼합해 쓰지 않습니다.',
+    '녹스탑은 하도 건조 후 수분에 노출되면 오염 우려가 있어 수분 접촉을 피합니다(상도 완료 후엔 양호).',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 작업하지 않습니다.',
+    '페인트 묻은 헝겊·필터는 자연발화 위험이 있어 물에 적셔 그늘진 곳에 보관합니다(방청프라이머).'
+  ],
+  guide:['iron'],
+  ask:[ {label:'아연도금·알루미늄이에요', faq:'galv'} ]
+},
+
+{ id:'galv', cat:'iron', q:'아연도금 각관·알루미늄에는 어떤 프라이머를 쓰나요?',
+  kw:/아연|도금|갈바|알루미늄|비철|각관|사각관|각파이프|frp/,
+  intents:['galv'],
+  lead:'아연도금·알루미늄 같은 비철금속에는 일반 철재용 하도 대신 스피폭시FD 프라이머(스텐·FRP 같은 비철재에도 사용) 또는 워시프라이머를 씁니다. 상도는 777에나멜·매직탄·스피롤탄 등으로 안내합니다.',
+  steps:[
+    { t:'하도 — 둘 중 선택', src:'각 제품 상세',
+      prods:[
+        ['스피폭시FD 프라이머','2액형 에폭시 · 철재·아연도금소재·FRP·알루미늄·콘크리트·타일소재 하도용 · 스텐 같은 비철재에도 사용 · 혼합비 1:1(부피비) · 재도장 25℃ 6시간 이상~3일 이내'],
+        ['워시프라이머','1액형 에칭 프라이머 · 경금속·동판·아연판·알루미늄·주석판 등 비철재 전처리용 · 건조도막 10㎛ 1회 · 상도는 25℃ 16시간 이후']
+      ] },
+    { t:'상도', src:'각 제품 상세',
+      prods:[
+        ['777에나멜','알키드 에나멜 · 방청프라이머가 처리된 철재·목재 상도'],
+        ['매직탄','2액형 아크릴 폴리우레탄 · 철재·비철금속·목재 등 상도'],
+        ['스피롤탄','2액형 무황변 아크릴 우레탄 · 하도 스피폭시FD 프라이머 등과 함께 쓰는 시스템']
+      ] }
+  ],
+  cautions:[
+    '스피폭시FD 프라이머: 재도장은 6시간~3일 이내를 지켜야 하며 3일을 넘기면 재샌딩이 필요합니다. 지정된 신나(신나395)만 사용합니다.',
+    '워시프라이머: 매끄러운 금속면은 접착력이 불량할 수 있어 시범 도장이나 샌딩 후 사용합니다.',
+    '매직탄은 방수재·보행용 바닥재 용도로는 사용할 수 없습니다. 매직탄·스피롤탄 모두 계절별 지정신나를 사용합니다.',
+    '비 오는 날·습도 85% 이상·기온 5℃ 이하에는 워시프라이머 작업을 하지 않습니다.'
+  ],
+  guide:['iron'],
+  ask:[ {label:'녹이 슬었어요', faq:'rust'} ]
+},
+
+/* ═════ 목재 ═════ */
+{ id:'deck', cat:'wood', q:'외부 데크·방부목에는 어떤 제품을 쓰나요?',
+  kw:/데크|방부목|오일스테인|스테인/,
+  intents:['deck-oil','treated-wood','stain-exterior','stain-interior','stain-water','stain'],
+  lead:'외부 데크·방부목은 월드스테인마스터(실외 전용 오일 스테인)로 안내합니다. 실내 목재는 아이생각수성스테인입니다.',
+  steps:[
+    { h:'외부(데크·방부목 등)' },
+    { t:'월드스테인마스터', src:'월드스테인마스터 상세',
+      body:'목재의 결을 살리며 착색하고 방부·방충성과 내후성이 우수한 실외 전용 오일 스테인입니다. 투명 및 유색(반투명), 2회 도장합니다.',
+      prods:[['월드스테인마스터','실외 전용 · 재도장 25℃ 3시간 이상 · 희석 없음(원액)']] },
+    { t:'후속 도장이 필요하면', src:'월드스테인마스터 상세',
+      body:'충분히 건조·연마한 뒤 40바루스파 유광을 추천합니다. 우레탄·락카는 내후성이 떨어져 권장하지 않습니다.',
+      prods:[['40바루스파','유성 바니시 · 실내·실외 목재 · A급 유광 3~4회 / 크리어 무광 1~2회']] },
+    { h:'실내 목재' },
+    { t:'아이생각수성스테인', src:'아이생각수성스테인 상세',
+      body:'냄새가 적고 물로 정리할 수 있는 수성 스테인입니다. 페인트 칠이 되지 않은 목재 전용입니다.',
+      prods:[['아이생각수성스테인','수성 · 2회 · 재도장 2시간 이상 · 투명 제품은 외부에 권장하지 않음']] }
+  ],
+  cautions:[
+    '월드스테인마스터는 실내 사용 금지, 실외 전용입니다. 유성이라 냄새가 나므로 환기가 필요합니다.',
+    '월드스테인마스터: 피막형 구도막이 있으면 완전히 제거한 뒤 도장합니다. 과도막이면 광택이 올라가고 건조가 불량해져 방부·방미성이 떨어집니다.',
+    '아이생각수성스테인: 기존 도막이 있는 목재에는 사용할 수 없습니다. 도막을 제거한 뒤 도장합니다.',
+    '아이생각수성스테인: 내부 바닥에 물이 고이면 백화·들뜸이 생길 수 있습니다.'
+  ],
+  guide:['wood']
+},
+
+{ id:'wood-varnish', cat:'wood', q:'마루·장판(한지장판)에는 어떤 니스(바니시)를 쓰나요?',
+  kw:/마루|장판|바니시|바니쉬|니스/,
+  intents:['wood-floor','wood-clear'],
+  lead:'‘마루 바닥’ 전용이라고 명시된 제품은 자료에 없어서, 실내 목재용 바니시(니스)류를 안내합니다. 한지장판은 우레탄바니시·우레탄멕기스 3000에 명시되어 있습니다.',
+  steps:[
+    { t:'제품 선택', src:'각 제품 상세',
+      prods:[
+        ['우레탄바니시','실내 목재·한지장판용 유광 우레탄 바니시 · 재도장 25℃ 6시간 이후 · 에나멜신나 10% 이내 · ※ 제품 기술자료 미보유(상세 물성은 확인 후 안내)'],
+        ['우레탄멕기스 3000','한지장판·실내 목재 보호용 고광택 투명 상도 · 2회 이상 · 원액 사용 · ⚠ 다중이용시설 및 100세대 이상 공동주택 실내에는 사용 불가'],
+        ['40바루스파','유성 바니시 · 실내·실외 목재 · A급 투명유광 3~4회 / 크리어 투명무광 1~2회 · EN신나3000 30% 이내']
+      ] }
+  ],
+  cautions:[
+    '우레탄멕기스 3000은 락카 샌딩실라 위에는 도장하지 않습니다(접착력 불량). 1회에 두껍게 바르면 주름이 생기니 2~3회 얇게 나눠 도장합니다.',
+    '우레탄바니시는 1회에 두껍게 바르면 건조가 지연되므로 얇게 나눠 도장합니다.',
+    '수성우드바니시는 가구용으로 많이 쓰여 이 안내에서는 제외했습니다.'
+  ],
+  guide:['wood']
+},
+
+/* ═════ 바닥 · 기타 ═════ */
+{ id:'epoxy-floor', cat:'floor', q:'공장·사무실 바닥(콘크리트)에 에폭시 방진 도장은 어떻게 하나요?',
+  kw:/에폭시|방진|공장바닥|사무실바닥|바닥.*(도장|페인트|코팅)|(도장|페인트|코팅).*바닥/,
+  intents:['epoxy-floor'],
+  lead:'콘크리트 바닥은 하도 → 상도(또는 자체평활 바닥재)로 시공합니다. 냄새가 민감한 곳은 수성 에폭시(에포코트아쿠아)가 있고, 하도 없이 1회로 마감하는 투명 방진 제품(A플로어투명)도 있습니다.',
+  layers:[
+    { t:'콘크리트 바닥', s:'고강도(260kgf/㎠ 이상)는 블라스팅 후 부착성능 확인', c:'base' },
+    { t:'① 하도', s:'에포코트 하도 · 건조도막 50㎛', c:'l1' },
+    { t:'② 상도', s:'에포코트 상도 / 에포코트라이닝 중 선택', c:'l3' }
+  ],
+  layerNote:'두께는 실제 비율이 아닙니다.',
+  steps:[
+    { t:'하도', src:'에포코트 하도 상세',
+      prods:[['에포코트 하도','2액형 에폭시 · 주제:경화제 1:1(부피비) · 추천 건조도막두께 50㎛ · 가사시간 20℃ 20시간']] },
+    { t:'상도 — 마감 방식 선택', src:'각 제품 상세',
+      prods:[
+        ['에포코트 상도','에폭시 2액형 마감재 · 내마모·방진·내약품성 · 주제:경화제 2.7:1(부피비)'],
+        ['에포코트라이닝','무용제 에폭시 자체평활 바닥재 · 추천 도막 약 1~3㎜ · A부:B부 5:1(무게비)'],
+        ['컬러데코라이닝','무용제 에폭시 자체평활 바닥재 · 추천 도막 1~2㎜ · 주제:경화제 3:1(부피비)']
+      ] },
+    { h:'냄새가 민감한 곳 — 수성 에폭시' },
+    { t:'에포코트아쿠아', src:'각 제품 상세',
+      prods:[
+        ['에포코트아쿠아 하도','수성 에폭시 하도 · 1:1(부피비) · 희석제 물 10% 이내'],
+        ['에포코트아쿠아 상도','수성 에폭시 상도 · 1:1(부피비) · 작업가능시간 25℃ 40분 이내']
+      ] },
+    { h:'간단한 투명 방진' },
+    { t:'A플로어투명', src:'A플로어투명 상세',
+      body:'콘크리트 바닥 침투성 강화 방진용 투명 코팅제로, 하도 없이 1회 도장으로 마감합니다.',
+      prods:[['A플로어투명','아크릴 1액형 · 건조도막 50㎛ · 에폭시계 도료에 비해 내마모성이 떨어짐']] }
+  ],
+  cautions:[
+    '2액형은 규정 비율대로 전동교반기로 혼합하고, 가사시간이 지나 겔화된 도료는 사용할 수 없습니다.',
+    '무용제 에폭시(에포코트라이닝·컬러데코라이닝)는 희석 금지, 물·알코올 노출 시 광택저하·변색이 있으며 저온에서는 아민블러싱·백화가 동반되므로 물청소를 금지합니다.',
+    '외부 적용 시 백화·황변이 생기고, 내부라도 채광창이 있으면 황변이 생길 수 있습니다.',
+    'A플로어투명은 밀폐된 장소에서 도장하면 안 되며(질식·화재 위험), 내마모·내약품성이 중요한 환경은 에포코트를 권장합니다.',
+    '고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량이 생기므로 블라스팅 후 부착성능을 확인합니다.'
+  ],
+  guide:['floor']
+},
+
+{ id:'parking-line', cat:'floor', q:'주차선·차선은 어떤 도료로 긋나요?',
+  kw:/(주차|차선|노면|구획).*(선|라인|표시|그리|그릴|긋|칠)|(선|라인).*(그리|그릴|긋)|노면표지/,
+  intents:['parking-line'],
+  lead:'아스팔트·콘크리트 노면의 차선·주차구획선은 노면표지용 도료(KSM6080 1종)를 씁니다. 별도의 하도가 필요 없습니다.',
+  steps:[
+    { t:'노면표지용 도료 도장', src:'KSM6080 상세',
+      body:'흰색·노란색, 2회 도장(건조도막 100㎛)입니다. 희석은 노면표지용 신나 5% 이내입니다.',
+      prods:[['KSM6080 1종 상온건조형 노면표지용도료','1액형 아크릴 · 불점착 25℃ 20분 · 고화건조 30분 · 재도장 1시간 이후 · 이론도포면적 5.2㎡/L']] }
+  ],
+  cautions:[
+    '차선·표시선 전용입니다. 실내 시멘트면의 바닥재 용도로는 사용 금지입니다.',
+    '밀폐된 장소에서는 절대 도장하지 않습니다(인화성 · 질식·화재 위험).',
+    '심한 균열이 있는 노면에는 도장하지 않습니다.',
+    '고강도 콘크리트(260kgf/㎠ 이상)는 그라인딩 시 부착 불량이 생기므로 블라스팅 후 부착성능을 확인합니다.'
+  ],
+  guide:['road']
+},
+
+{ id:'fire', cat:'floor', q:'철골 보·기둥 내화도료는 어떻게 시공하나요?',
+  kw:/내화|방화|화재|발포/,
+  intents:['fire'],
+  lead:'철골 보·기둥용 1시간 내화 발포형 내화도료(플레임체크SS190)를 중도로 쓰며, 하도(방청) → 중도(내화) → 상도의 3단계로 시공합니다. 옥내 전용입니다.',
+  layers:[
+    { t:'철골', s:'', c:'base' },
+    { t:'① 하도 (방청도료)', s:'건조도막 50㎛', c:'l1' },
+    { t:'② 중도 (내화도료)', s:'플레임체크SS190 · 650㎛ · 2회', c:'l2' },
+    { t:'③ 상도', s:'건조도막 50㎛', c:'l3' }
+  ],
+  layerNote:'두께는 실제 비율이 아닙니다. 총 건조도막두께 750㎛ 이상이어야 합니다.',
+  steps:[
+    { t:'하도 · 중도 · 상도', src:'플레임체크SS190 상세 · 도장사양서',
+      body:'하도는 KSM 6030 1종 방청도료 및 동등 이상(50㎛), 중도는 플레임체크SS190보용기둥용(650㎛ · 2회), 상도는 KSM6020 1종 조합페인트·777에나멜 등(50㎛)입니다. 총 건조도막두께는 750㎛ 이상(무기질 징크 프라이머 사용 시 815㎛ 이상)입니다.',
+      prods:[['플레임체크SS190보용기둥용','1액형 유성 발포성 내화도료(1시간) · 보용·기둥용 · 옥내 전용']] }
+  ],
+  cautions:[
+    '건조도막이 인정도막 두께 이상(중도 650㎛ · 총 750㎛, 무기질 징크 사용 시 815㎛)으로 도장되어야만 내화구조로 인정됩니다.',
+    '옥내(결로 및 상시 수분 노출부위 제외) 적용에 한합니다. 옥외·상시 수분 노출부위 적용 시에는 반드시 고객상담실·연구소에 문의합니다.',
+    '1회 과도막 금지 — 습도막 1,000㎛ 이하, 1회 건조도막 300~400㎛가 적정합니다.',
+    '후속(상도) 도장은 내화도료 도장 완료 후 하절기 3일 / 동절기 7일 이후에 합니다.',
+    '우천 시 도장 부위가 비에 직접 노출되지 않도록 보양작업(가림막·보호막)이 필수입니다.'
+  ],
+  guide:['fire']
+}
+
+];
+
+/* ───────────────────────────────────────────────────────────────
+   FAQ 화면·검색 연동
+   - 검색창에 상황 문장(예: 옥상에서 물이 새요)을 넣으면 FAQ 카드가 먼저 나오고, 단계별로 관련 제품이 이어집니다.
+   - 단어만 검색(예: 곰팡이)하면 기존 제품 목록 위에 「관련 자주 묻는 질문」 버튼이 나옵니다.
+   - 검색창 아래 「자주 묻는 질문」 목록에서 눌러서도 볼 수 있습니다.
+   ─────────────────────────────────────────────────────────────── */
+(function(){
+  if (typeof FAQ_DATA === 'undefined') return;
+
+  var BY_ID = {}, INTENT_FAQ = {};
+  FAQ_DATA.forEach(function(f){
+    BY_ID[f.id] = f;
+    (f.intents || []).forEach(function(i){ INTENT_FAQ[i] = f.id; });
+  });
+
+  /* 일상어 규칙에 없는 질문은 여기서 추가 */
+  if (typeof SP_INTENTS !== 'undefined'){
+    SP_INTENTS.push(
+      { id:'wp-compare', pri:11, always:true,
+        all:[/(방수에이스|원샷탄|원터치|방수중도|우레탄중도|중도)/, /(차이|비교|뭐가|어떤|골라|고르|추천|뭐써|써야)/],
+        title:'방수 중도 고르기', note:'' },
+      { id:'wall-crack', pri:10, always:true,
+        re:/(벽|외벽|내벽|담).*(금이?(가|갔|갈)|갈라|균열|크랙|터졌|벌어)|(금이?(가|갔|갈)|갈라|균열|크랙).*(벽|외벽)/,
+        title:'벽 균열 보수', note:'' }
+    );
+  }
+
+  /* FAQ가 있는 상황은 단어만 검색해도 FAQ 카드를 먼저 보여줌 */
+  if (typeof SP_INTENTS !== 'undefined'){
+    SP_INTENTS.forEach(function(r){ if (INTENT_FAQ[r.id] || BY_ID[r.id]) r.always = true; });
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function mk(tag, cls, html){ var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function norm(x){ return String(x == null ? '' : x).toLowerCase().replace(/[\s,.\-?!~·()\/]+/g, ''); }
+  function dbOf(name){
+    var db = window.PRODUCT_DB || {};
+    return (typeof _spResolve === 'function') ? _spResolve(db, name) : (db[name] || null);
+  }
+
+  /* ── 제품 줄: 누르면 제품 상세, 📄/📐 버튼은 PDF 뷰어 (PDF 주소는 PRODUCT_DB에서 자동) ── */
+  function prodRow(pair){
+    var name = pair[0], role = pair[1];
+    var p = dbOf(name);
+    var row = mk('div', 'sp-card faq-prod');
+    row.setAttribute('role', 'button'); row.setAttribute('tabindex', '0'); row.setAttribute('data-pname', name);
+    var nm = mk('div', 'sp-name'); nm.textContent = name; row.appendChild(nm);
+    if (p && p.category){ var ct = mk('div', 'sp-cat'); ct.textContent = String(p.category).replace(/\s*\(?취급 품목 아님\)?/, ''); row.appendChild(ct); }
+    if (role){ var rl = mk('div', 'sp-desc faq-role'); rl.textContent = role; row.appendChild(rl); }
+    var pdfs = (p && p.pdfs) || [];
+    var bar = mk('div', 'faq-pdfs');
+    pdfs.slice(0, 4).forEach(function(d){
+      var b = mk('span', 'faq-pdf'); b.setAttribute('role', 'button'); b.setAttribute('tabindex', '0');
+      b.setAttribute('data-pdf', d.url); b.setAttribute('data-title', name + ' ' + String(d.label).replace(/^[^가-힣A-Za-z]+/, ''));
+      b.textContent = d.label; bar.appendChild(b);
+    });
+    if (p && !pdfs.length){ var np = mk('span', 'faq-nopdf'); np.textContent = p.pdfNote || '기술자료 · 도장사양서 없음'; bar.appendChild(np); }
+    var more = mk('span', 'faq-more'); more.textContent = '상세 보기 ›'; bar.appendChild(more);
+    row.appendChild(bar);
+    return row;
+  }
+
+  function layersBox(f){
+    var w = mk('div', 'faq-layers');
+    w.appendChild(mk('div', 'faq-sec', '🧱 시공 구성 (위가 마지막 단계)'));
+    var stack = mk('div', 'faq-stack');
+    f.layers.slice().reverse().forEach(function(L){
+      var b = mk('div', 'faq-layer faq-l-' + L.c);
+      b.innerHTML = '<b>' + esc(L.t) + '</b>' + (L.s ? '<span>' + esc(L.s) + '</span>' : '');
+      stack.appendChild(b);
+    });
+    w.appendChild(stack);
+    if (f.layerNote) w.appendChild(mk('div', 'faq-note', '※ ' + esc(f.layerNote)));
+    return w;
+  }
+
+  function tableBox(t){
+    var wrap = mk('div', 'faq-tablewrap');
+    var tb = mk('table', 'faq-table');
+    var h = '<thead><tr>' + t.head.map(function(x){ return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    t.rows.forEach(function(r){
+      h += '<tr>' + r.map(function(c, i){ return (i === 0 ? '<th scope="row">' : '<td>') + esc(c) + (i === 0 ? '</th>' : '</td>'); }).join('') + '</tr>';
+    });
+    tb.innerHTML = h + '</tbody>';
+    wrap.appendChild(tb);
+    return wrap;
+  }
+
+  /* ── FAQ 카드 한 장 ── */
+  function build(f, intentId, backQuery){
+    var v = (f.variants && intentId && f.variants[intentId]) || {};
+    var q = v.q || f.q, lead = v.lead || f.lead;
+    var card = mk('div', 'faq-card'); card.setAttribute('data-faq', f.id);
+    if (intentId) card.setAttribute('data-intent', intentId);
+
+    if (backQuery){
+      var back = mk('button', 'faq-back'); back.type = 'button'; back.setAttribute('data-back', backQuery);
+      back.textContent = '← “' + backQuery + '” 검색 결과로 돌아가기'; card.appendChild(back);
+    }
+    var qh = mk('div', 'faq-q'); qh.innerHTML = '<span class="faq-qmark">Q</span><span>' + esc(q) + '</span>'; card.appendChild(qh);
+    var ah = mk('div', 'faq-lead'); ah.innerHTML = '<span class="faq-amark">A</span><span>' + esc(lead) + '</span>'; card.appendChild(ah);
+
+    if (f.layers) card.appendChild(layersBox(f));
+
+    if (f.check && f.check.length){
+      var cb = mk('div', 'faq-check'); cb.appendChild(mk('div', 'faq-sec', '✅ 시공 전에 먼저 확인하세요'));
+      var ul = mk('ul'); f.check.forEach(function(c){ ul.appendChild(mk('li', null, esc(c))); }); cb.appendChild(ul);
+      card.appendChild(cb);
+    }
+
+    if (f.table) card.appendChild(tableBox(f.table));
+
+    if (f.steps && f.steps.length){
+      card.appendChild(mk('div', 'faq-sec', f.table ? '🔎 제품 상세 보기' : '🪜 순서대로 진행하세요'));
+      var n = 0, list = mk('div', 'faq-steps');
+      f.steps.forEach(function(s){
+        if (s.h){ list.appendChild(mk('div', 'faq-sub', esc(s.h))); return; }
+        n++;
+        var st = mk('div', 'faq-step');
+        var head = mk('div', 'faq-step-h');
+        head.innerHTML = '<span class="faq-n">' + n + '</span><span class="faq-step-t">' + esc(s.t) + '</span>' +
+          (s.time ? '<span class="faq-time">⏱ ' + esc(s.time) + '</span>' : '');
+        st.appendChild(head);
+        if (s.body) st.appendChild(mk('div', 'faq-body', esc(s.body)));
+        (s.prods || []).forEach(function(pr){ st.appendChild(prodRow(pr)); });
+        if (s.src) st.appendChild(mk('div', 'faq-src', '근거: ' + esc(s.src)));
+        list.appendChild(st);
+      });
+      card.appendChild(list);
+    }
+
+    if (f.cautions && f.cautions.length){
+      var wb = mk('div', 'faq-warn'); wb.appendChild(mk('div', 'faq-sec', '⚠️ 꼭 알아두세요'));
+      var ul2 = mk('ul'); f.cautions.forEach(function(c){ ul2.appendChild(mk('li', null, esc(c))); }); wb.appendChild(ul2);
+      card.appendChild(wb);
+    }
+
+    var gb = (f.guide && typeof _spGuideButtons === 'function') ? _spGuideButtons(f.guide) : null;
+    if (gb) card.appendChild(gb);
+
+    if (f.ask && f.ask.length){
+      card.appendChild(mk('div', 'faq-sec', '💬 이런 경우라면'));
+      var cw = mk('div', 'sp-chips');
+      f.ask.forEach(function(a){
+        var b = mk('button', 'sp-q'); b.type = 'button';
+        if (a.faq) b.setAttribute('data-faq', a.faq); else b.setAttribute('data-q', a.q);
+        b.textContent = a.label; cw.appendChild(b);
+      });
+      card.appendChild(cw);
+    }
+
+    var foot = mk('div', 'faq-foot');
+    var cp = mk('button', 'faq-copy'); cp.type = 'button'; cp.setAttribute('data-copy', f.id); cp.textContent = '📋 고객 안내 문구 복사';
+    foot.appendChild(cp);
+    foot.appendChild(mk('div', 'faq-basis', '근거: 삼화페인트 기술자료·도장사양서(제품 상세의 PDF)와 이 가이드의 시공 순서. 현장 상태에 따라 달라질 수 있으니 시공 전 제품 상세와 PDF를 확인해 주세요.'));
+    card.appendChild(foot);
+    return card;
+  }
+
+  /* ── 복사용 글(카톡·문자) ── */
+  function toText(f, intentId){
+    var v = (f.variants && intentId && f.variants[intentId]) || {};
+    var L = [];
+    L.push('Q. ' + (v.q || f.q)); L.push('');
+    L.push((v.lead || f.lead)); L.push('');
+    if (f.check && f.check.length){ L.push('■ 시공 전 확인'); f.check.forEach(function(c){ L.push('- ' + c); }); L.push(''); }
+    if (f.table){
+      L.push('■ 비교');
+      f.table.rows.forEach(function(r){ L.push('- ' + r[0] + ': ' + f.table.head.slice(1).map(function(h, i){ return h + ' ' + r[i + 1]; }).join(' / ')); });
+      L.push('');
+    }
+    if (f.steps && f.steps.length){
+      L.push('■ 진행 순서'); var n = 0;
+      f.steps.forEach(function(s){
+        if (s.h){ L.push('[' + s.h + ']'); return; }
+        n++;
+        L.push(n + ') ' + s.t + (s.time ? ' (' + s.time + ')' : ''));
+        if (s.body) L.push('   ' + s.body);
+        (s.prods || []).forEach(function(p){ L.push('   · ' + p[0] + (p[1] ? ' — ' + p[1] : '')); });
+      });
+      L.push('');
+    }
+    if (f.cautions && f.cautions.length){ L.push('■ 주의사항'); f.cautions.forEach(function(c){ L.push('- ' + c); }); L.push(''); }
+    L.push('※ 삼화페인트 기술자료·도장사양서 기준입니다. 현장 상태에 따라 달라질 수 있습니다.');
+    return L.join('\n');
+  }
+  function copyText(text, btn){
+    function done(){ var o = btn.textContent; btn.textContent = '✅ 복사했습니다'; setTimeout(function(){ btn.textContent = '📋 고객 안내 문구 복사'; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); } else fallback();
+    function fallback(){
+      var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = '복사 실패 — 직접 선택해 주세요'; }
+      document.body.removeChild(ta);
+    }
+  }
+
+  /* ── 화면에 열기 ── */
+  function boxEl(){ return document.getElementById('searchProducts'); }
+  function openFaq(id, backQuery, intentId){
+    var f = BY_ID[id]; var box = boxEl(); if (!f || !box) return;
+    box.innerHTML = ''; box.className = 'sp-list show';
+    var inp = document.getElementById('symptomSearch'); if (inp) inp.value = f.q;
+    var msg = document.getElementById('searchResult');
+    if (msg){ msg.className = 'search-result show found'; msg.innerHTML = '💬 <b>자주 묻는 질문</b> — 아래에서 순서대로 확인하세요'; }
+    box.appendChild(build(f, intentId, backQuery));
+    if (box.scrollIntoView) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window.openFaq = openFaq;
+
+  /* ── 검색어에 맞는 FAQ 찾기 ── */
+  function faqMatch(raw){
+    var t = norm(raw); if (!t) return [];
+    var out = [];
+    FAQ_DATA.forEach(function(f){ if (f.kw && f.kw.test(t)) out.push(f.id); });
+    return out;
+  }
+
+  /* 일상어 규칙에 FAQ가 연결된 경우: FAQ 카드를 보여주고 기존 제품 목록은 FAQ 안으로 흡수 */
+  var _origIntent = window._spRenderIntent;
+  window._spRenderIntent = function(box, r, raw){
+    var fid = INTENT_FAQ[r.id] || (r.id === 'wp-compare' ? 'wp-compare' : (r.id === 'wall-crack' ? 'wall-crack' : null));
+    if (!fid) return _origIntent.apply(this, arguments);
+    box.appendChild(build(BY_ID[fid], r.id));
+    return 1 + (BY_ID[fid].steps || []).length;
+  };
+
+  /* 단어만 검색한 경우: 제품 목록 위에 「관련 자주 묻는 질문」 */
+  var _origRender = window.renderProductResults;
+  window.renderProductResults = function(raw){
+    var r = _origRender.apply(this, arguments);
+    var box = boxEl();
+    if (!box || !String(raw || '').trim() || r.term || box.querySelector('.faq-card')) return r;
+    var ids = faqMatch(raw);
+    if (!ids.length) return r;
+    var tz = mk('div', 'faq-teaser');
+    tz.appendChild(mk('div', 'faq-teaser-h', '💬 이런 질문이 많아요 — 눌러서 해결 순서를 확인하세요'));
+    ids.slice(0, 3).forEach(function(id){
+      var b = mk('button', 'faq-tq'); b.type = 'button'; b.setAttribute('data-faq', id); b.setAttribute('data-back', String(raw).trim());
+      b.innerHTML = '<span class="faq-qmark">Q</span><span>' + esc(BY_ID[id].q) + '</span>';
+      tz.appendChild(b);
+    });
+    box.insertBefore(tz, box.firstChild);
+    if (!r.items.length){ box.className = 'sp-list show'; r.items = new Array(1); r.faqOnly = true; }
+    return r;
+  };
+
+  var _origMsg = window._spMsg;
+  window._spMsg = function(r){
+    if (r && r.faqOnly) return '💬 관련 <b>자주 묻는 질문</b>을 찾았습니다';
+    return _origMsg.apply(this, arguments);
+  };
+
+  /* ── 클릭 처리 (기존 제품 카드 처리보다 먼저 실행) ── */
+  var box = boxEl();
+  if (box){
+    box.addEventListener('click', function(e){
+      var pdf = e.target.closest('.faq-pdf');
+      if (pdf){ e.stopPropagation(); e.preventDefault(); if (typeof openPdf === 'function') openPdf(pdf.getAttribute('data-pdf'), pdf.getAttribute('data-title')); return; }
+      var bk = e.target.closest('.faq-back');
+      if (bk){ e.stopPropagation(); var inp = document.getElementById('symptomSearch'); inp.value = bk.getAttribute('data-back'); previewSymptom(); return; }
+      var cp = e.target.closest('.faq-copy');
+      if (cp){ e.stopPropagation(); var f = BY_ID[cp.getAttribute('data-copy')]; var card = cp.closest('.faq-card'); copyText(toText(f, card && card.getAttribute('data-intent')), cp); return; }
+      var fq = e.target.closest('[data-faq]:not(.faq-card)');
+      if (fq){ e.stopPropagation(); openFaq(fq.getAttribute('data-faq'), fq.getAttribute('data-back') || ''); return; }
+    }, true);
+    box.addEventListener('keydown', function(e){
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var pdf = e.target.closest && e.target.closest('.faq-pdf');
+      if (pdf){ e.preventDefault(); e.stopPropagation(); if (typeof openPdf === 'function') openPdf(pdf.getAttribute('data-pdf'), pdf.getAttribute('data-title')); }
+    }, true);
+  }
+
+  /* ── 검색창 아래 「자주 묻는 질문」 목록 ── */
+  var br = document.getElementById('faqBrowse');
+  if (br){
+    br.appendChild(mk('div', 'faq-browse-t', '💬 자주 묻는 질문 <small>눌러서 해결 순서와 관련 제품을 확인하세요</small>'));
+    FAQ_CATS.forEach(function(c){
+      var items = FAQ_DATA.filter(function(f){ return f.cat === c.id; });
+      if (!items.length) return;
+      var g = mk('div', 'faq-group');
+      g.appendChild(mk('div', 'faq-group-t', esc(c.label)));
+      items.forEach(function(f){
+        var b = mk('button', 'faq-tq'); b.type = 'button'; b.setAttribute('data-faq', f.id);
+        b.innerHTML = '<span class="faq-qmark">Q</span><span>' + esc(f.q) + '</span>';
+        g.appendChild(b);
+      });
+      br.appendChild(g);
+    });
+    br.addEventListener('click', function(e){
+      var b = e.target.closest('[data-faq]'); if (b) openFaq(b.getAttribute('data-faq'), '');
+    });
+  }
+})();
 
 </script>
 
