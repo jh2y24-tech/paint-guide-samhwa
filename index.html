@@ -676,7 +676,7 @@ a{color:var(--brand);text-decoration:none}
   #prodModal .pm-col-main{ min-width:0; }
   #prodModal .pm-col-side{ min-width:0; }
   #prodModal .pm-yield-main{ display:none; }
-  #prodModal .pm-yield-side{ display:block; margin-top:14px; }
+  #prodModal .pm-yield-side{ display:block; margin:0 0 14px; }
   #prodModal .pm-yield-side:empty{ display:none; }
   /* 첨부 자료(기술자료·도장사양서) 버튼 — 넓은 화면에서 키워 가독성 확보 */
   #prodModal .pm-pdf-btn{ font-size:14.5px; padding:14px 16px; }
@@ -5522,7 +5522,7 @@ function openProduct(name){
     } else {
       body.innerHTML = '<div class="pm-cols">' +
         '<div class="pm-col-main" id="pmColMain">' + mainHtml + '</div>' +
-        '<div class="pm-col-side">' + sideHtml + '<div id="pmcalc-yield-side" class="pm-yield-side"></div></div>' +
+        '<div class="pm-col-side"><div id="pmcalc-yield-side" class="pm-yield-side"></div>' + sideHtml + '</div>' +
         '</div>';
     }
   }
