@@ -2589,7 +2589,7 @@ a{color:var(--brand);text-decoration:none}
           <div class="spec-item"><strong>재도장 간격</strong><span class="val">5℃ 48~96h / 20℃ 24~48h / 30℃ 18~48h</span></div>
           <div class="spec-item"><strong>색상 · 포장</strong><span class="val">녹색 · 회색 / 16L용(20kg)</span></div>
           <div class="spec-item"><strong>저장기간</strong><span class="val">6개월 (5~35℃ 실내보관)</span></div>
-          <div class="spec-item full"><strong>이론소요량</strong><span class="val">3mm 시 <b>4.86kg/㎡</b> · 20kg 1통 ≒ 4.1㎡(약 1.2평)</span></div>
+          <div class="spec-item full"><strong>이론소요량</strong><span class="val">3mm 시 <b>4.86kg/㎡</b> · 20kg 1통 ≒ 4.1㎡(약 1.2평) <button type="button" class="vcard-more" style="margin-left:6px; vertical-align:middle;" onclick="openCalcStandalone('방수에이스 중도')">🧮 소요량 계산</button></span></div>
         </div>
         <div class="info-box">
           🔧 <b>시공 방법</b><br>
@@ -5740,8 +5740,35 @@ else enhanceProductLinks();
 var CALC_STATE = {};
 
 /* products.json 카탈로그 확보 (products.js 가 이미 받아뒀으면 재사용) */
+/* products.js 등이 먼저 만들어 둔 카탈로그에 계산 수치(coverage)가 없거나 옛 값이면
+   같은 폴더의 products.json 으로 보충한다 — 삼화 섹션에서 계산기가 안 뜨던 원인 대응.
+   products.json 을 못 받으면 기존 카탈로그를 그대로 쓴다. */
+function calcHasCov(p){ return !!(p && p.spec && (p.spec.coverage_m2_per_l != null || p.spec.coverage_kg_per_m2 != null)); }
+function calcMergeFromJson(base){
+  if (window.__calcMergePromise) return window.__calcMergePromise;
+  if (location.protocol === 'file:' || !window.fetch) return Promise.resolve(base);
+  var root = (document.baseURI || location.href).split('#')[0].split('?')[0].replace(/[^\/]*$/, '');
+  window.__calcMergePromise = fetch(root + 'products.json?v=' + Date.now(), { cache:'no-store' })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    .then(function(t){
+      var js = JSON.parse(String(t).replace(/^\uFEFF/, ''));
+      if (!base.products) base.products = [];
+      (js.products || []).forEach(function(np){
+        var hit = -1;
+        for (var i=0;i<base.products.length;i++){
+          var bp = base.products[i];
+          if ((bp.id && bp.id === np.id) || _cnorm(bp.name) === _cnorm(np.name)){ hit = i; break; }
+        }
+        if (hit < 0) base.products.push(np);
+        else if (!calcHasCov(base.products[hit]) && calcHasCov(np)) base.products[hit] = np;
+      });
+      return base;
+    })
+    .catch(function(){ return base; });
+  return window.__calcMergePromise;
+}
 function calcEnsureCatalog(){
-  if (window.PRODUCTS_CATALOG) return Promise.resolve(window.PRODUCTS_CATALOG);
+  if (window.PRODUCTS_CATALOG) return calcMergeFromJson(window.PRODUCTS_CATALOG);
   if (window.__calcCatalogPromise) return window.__calcCatalogPromise;
   function fail(reason){ var e = new Error(reason); e.reason = reason; return e; }
   if (location.protocol === 'file:'){
