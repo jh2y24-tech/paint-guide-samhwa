@@ -5967,6 +5967,16 @@ function calcYieldRows(p, covKg, covL, coatsOverride){
     area = area / coatsForYield;
     rows.push({ label: raw, area: area, py: area / PY_M2 });
   });
+  /* yield_ref_units — 판매 포장과 별개로 제조사 기준 단위(예: 1L)당 시공면적을 함께 보여준다(구매 계산에는 쓰지 않음) */
+  (Array.isArray(s.yield_ref_units) ? s.yield_ref_units : []).forEach(function(raw){
+    if (packs.indexOf(raw) !== -1) return;
+    var pk = calcParsePackAmount(raw), a2 = null;
+    if (covL != null && pk.l != null) a2 = pk.l * covL;
+    else if (covKg != null && pk.kg != null) a2 = pk.kg / covKg;
+    if (a2 == null) return;
+    a2 = a2 / coatsForYield;
+    rows.push({ label: raw + ' 기준', area: a2, py: a2 / PY_M2 });
+  });
   return rows;
 }
 function calcScLabel(l){
@@ -6342,7 +6352,7 @@ function calcRenderShell(uid, p){
     : isFixedCoats
     /* 1회당 기준이지만 TDS에 고정값으로 명시된 제품(예: A플로어투명 1회): 임의 변경 불가하도록 잠금 */
     ? '<div class="calc-row"><label>도장 횟수</label>' +
-        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+calcCoatsLabel(s.coats)+' 고정</b></span></div>'
+        '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')" style="opacity:.45;pointer-events:none"><span class="calc-unit">회 · <b>TDS '+(s.coats_label || (calcCoatsLabel(s.coats)+' 고정'))+'</b></span></div>'
     /* 범위 기준 제품(예: "1~2","2~3"): role=primer면 1회, 나머지 2회 기본, 사용자가 조정 가능 */
     : '<div class="calc-row"><label for="'+uid+'-coats">도장 횟수</label>' +
         '<input type="number" id="'+uid+'-coats" min="1" max="9" step="1" value="'+defCoats+'" inputmode="numeric" oninput="calcUpdate(\''+uid+'\')"><span class="calc-unit">회 · 권장 '+calcCoatsLabel(s.coats||'2')+'</span></div>'
@@ -6890,7 +6900,8 @@ var EASYPEEL_CALC = [
     system:{ primer:'이지필 프라이머' },
     spec:{ coverage_m2_per_l:15.4, coats:'2', spread_basis:'per_coat', pack_sizes:['0.4L'],
            thinner:'희석하지 않음', thinning_pct_max:0, thinning_basis:'도료 부피비',
-           thinning_note:'희석하지 않음 (이지필 멀티 전용 하도)' },
+           thinning_note:'희석하지 않음 (이지필 멀티 전용 하도)',
+           coats_label:'2회 이상(최소 2회)', yield_ref_units:['1L'] },
     estimate:{ primer_l_per_m2:0.06, basis:'이지필 멀티 도장사양서 일위대가' } }
 ];
 (function(){
