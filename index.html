@@ -6039,6 +6039,23 @@ function calcYieldHighlight(p){
     '</div>' + scBlocks + '</div>';
   }
 
+  /* yield_coat_cases — 도장 횟수에 따라 '한 통 시공면적'이 달라지는 제품(예: 이지필 멀티)은
+     횟수별로 나란히 보여준다. 이론도포면적은 1회 기준이므로 횟수로 나눈다(calcYieldRows). */
+  var coatCases = Array.isArray(s.yield_coat_cases) ? s.yield_coat_cases : null;
+  if (coatCases && !defVariant && (s.coverage_kg_per_m2 != null || s.coverage_m2_per_l != null)){
+    var ccBlocks = coatCases.map(function(cc){
+      var rows = calcYieldRows(p, s.coverage_kg_per_m2, s.coverage_m2_per_l, cc.coats);
+      if (!rows.length) return '';
+      var perCoat = s.coverage_kg_per_m2 != null ? (s.coverage_kg_per_m2 + 'kg/㎡') : (s.coverage_m2_per_l + '㎡/L');
+      return '<div class="cyh-group"><div class="cyh-group-label">' + cc.label + ' · ' + perCoat + ' ÷ ' + cc.coats + '회</div>' +
+        '<div class="cyh-chips">' + calcYieldChipsHtml(rows) + '</div></div>';
+    }).join('');
+    if (ccBlocks) return '<div class="calc-yield-hero"><div class="cyh-top">' +
+      '<span class="cyh-badge">📐 추천소요량</span>' +
+      '<span class="cyh-rate">도장 횟수별 상이' + (dftTxt ? ' · ' + dftTxt + '(1회)' : '') + '</span>' +
+    '</div>' + ccBlocks + '</div>';
+  }
+
   if (colorGroups){
     var blocks = colorGroups.map(function(v){
       var rows = calcYieldRows(p, v.coverage_kg_per_m2, v.coverage_m2_per_l, coatsForYield);
@@ -6866,7 +6883,8 @@ var EASYPEEL_CALC = [
     system:{ primer:'이지필 프라이머' },
     spec:{ coverage_m2_per_l:13.8, dft_um:30, coats:'2~3', spread_basis:'per_coat', pack_sizes:['1L'],
            thinner:'물', thinning_pct_max:5, thinning_basis:'도료 부피비', tools:['붓','로라'],
-           thinning_note:'최대 5%(부피비)까지 물(청수) 희석' },
+           thinning_note:'최대 5%(부피비)까지 물(청수) 희석',
+           yield_coat_cases:[{coats:2,label:'일반 도장 (2회)'},{coats:3,label:'제거 계획 있을 때 (3회 이상 필수)'}] },
     estimate:{ primer_l_per_m2:0.06, topcoat_l_per_m2:0.07, basis:'이지필 멀티 도장사양서 일위대가' } },
   { id:'easypeel-primer', name:'이지필 프라이머', aliases:['이지필프라이머','Easy Peel Primer'], role:'primer',
     system:{ primer:'이지필 프라이머' },
