@@ -5524,7 +5524,7 @@
         "thinning_pct_max": 0,
         "thinning_basis": "도료 부피비",
         "thinning_note": "희석하지 않음 (이지필 멀티 전용 하도)",
-        "coats_label": "2회 이상(최소 2회)",
+        "coats_label": "2회 이상",
         "yield_ref_units": [
           "1L"
         ]

@@ -6341,9 +6341,9 @@ function calcRenderShell(uid, p){
   return '' + varRow +
   '<div class="calc-row calc-row--area"><label>도장면적</label>' +
     '<span class="calc-areawrap2">' +
-      '<span class="calc-afield"><input type="number" id="'+uid+'-aream2" min="0" step="0.1" value="10" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'m2\')" aria-label="면적(제곱미터)"><span class="calc-aunitlabel">㎡</span></span>' +
+      '<span class="calc-afield"><input type="number" id="'+uid+'-aream2" min="0" step="0.1" value="" placeholder="예: 10" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'m2\')" aria-label="면적(제곱미터)"><span class="calc-aunitlabel">㎡</span></span>' +
       '<span class="calc-aeq">=</span>' +
-      '<span class="calc-afield"><input type="number" id="'+uid+'-areapy" min="0" step="0.1" value="'+_r(m2ToPy(10),2)+'" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'py\')" aria-label="면적(평)"><span class="calc-aunitlabel">평</span></span>' +
+      '<span class="calc-afield"><input type="number" id="'+uid+'-areapy" min="0" step="0.1" value="" placeholder="예: 3.3" inputmode="decimal" oninput="calcAreaSync(\''+uid+'\',\'py\')" aria-label="면적(평)"><span class="calc-aunitlabel">평</span></span>' +
     '</span></div>' +
   ( ((s.spread_basis === 'system') || (s.spread_basis !== 'per_coat' && ct.min >= 2))
     /* 완성두께(system) 기준 제품: 소요량이 도장횟수와 무관하므로 도장 횟수 입력칸을 아예 표시하지 않는다.
@@ -6901,7 +6901,7 @@ var EASYPEEL_CALC = [
     spec:{ coverage_m2_per_l:15.4, coats:'2', spread_basis:'per_coat', pack_sizes:['0.4L'],
            thinner:'희석하지 않음', thinning_pct_max:0, thinning_basis:'도료 부피비',
            thinning_note:'희석하지 않음 (이지필 멀티 전용 하도)',
-           coats_label:'2회 이상(최소 2회)', yield_ref_units:['1L'] },
+           coats_label:'2회 이상', yield_ref_units:['1L'] },
     estimate:{ primer_l_per_m2:0.06, basis:'이지필 멀티 도장사양서 일위대가' } }
 ];
 (function(){
